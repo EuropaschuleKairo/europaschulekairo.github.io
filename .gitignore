@@ -1,0 +1,28 @@
+# Scratch & temporary workspace files
+scratch/
+scratch_*
+*.scratch.*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.env
+.venv/
+venv/
+ENV/
+
+# OS / Editor artifacts
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.bak
+
+# Prevent leaking copyrighted sources or documents
+[Qq]uellen/
+**/[Qq]uellen/
+*.pdf
+*.docx

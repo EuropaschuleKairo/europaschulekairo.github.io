@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deutsch Portal • Grundschule</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Andika", "Atkinson Hyperlegible", sans-serif;
+      background: #fdfbf7;
+      background-image: radial-gradient(#e2e8f0 1.2px, transparent 1.2px);
+      background-size: 24px 24px;
+      color: #1e293b;
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-family: "Fredoka", "Atkinson Hyperlegible", sans-serif;
+      font-size: 2.4rem;
+      color: #0369a1;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      color: #64748b;
+      font-size: 1.15rem;
+      margin-bottom: 30px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: #ffffff;
+      border: 3px solid #bae6fd;
+      border-radius: 20px;
+      padding: 26px;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(2, 132, 199, 0.2);
+      border-color: #0284c7;
+    }
+    .badge {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 4px 14px;
+      border-radius: 999px;
+      background: #e0f2fe;
+      color: #0369a1;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+    .badge-highlight {
+      background: #dcfce7;
+      color: #15803d;
+      border: 1.5px solid #86efac;
+    }
+    .card-title {
+      font-family: "Fredoka", "Atkinson Hyperlegible", sans-serif;
+      font-size: 1.6rem;
+      color: #0f172a;
+      margin: 0;
+    }
+    .card-desc {
+      font-size: 1rem;
+      color: #475569;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .card-action {
+      margin-top: auto;
+      padding-top: 12px;
+      color: #0284c7;
+      font-weight: bold;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>📚 Deutsch • Grundschule</h1>
+    <p class="subtitle">Interaktive Lern- und Lese-Web-Apps für die Grundschule • Einsterns Schwester</p>
+    
+    <div class="grid">
+      <!-- Card 1: Buchstaben-Häuser (Anlauttabelle) -->
+      <a href="Lesen/index.html" class="card" style="border-color: #86efac;">
+        <span class="badge badge-highlight">🌟 Neu • Übersicht</span>
+        <h2 class="card-title">🏠 Die Buchstaben-Häuser</h2>
+        <p class="card-desc">
+          Die 6 Häuser der Anlauttabelle mit allen Buchstaben, Vokalen in Rot, Mitlauten und passenden Bildern (Löwe, Maus, Ameise, etc.).
+        </p>
+        <div class="card-action" style="color: #16a34a;">
+          Zu den Buchstaben-Häusern ➔
+        </div>
+      </a>
+
+      <!-- Card 2: Direkt zu Leseblatt 1 (Mm & Ll) -->
+      <a href="Lesen/Mm/index.html" class="card">
+        <span class="badge">1. Klasse • Leseblatt 1</span>
+        <h2 class="card-title">🛝 Buchstabe Mm &amp; Ll</h2>
+        <p class="card-desc">
+          Mit animierter Leserutsche, Ton &amp; Lautverschmelzung, Sprachaufnahme, Sätzen mit Herz &amp; Ausmalbildern, Lesemonster und 20-Flüge-Silbenteppich.
+        </p>
+        <div class="card-action">
+          Leseblatt 1 öffnen ➔
+        </div>
+      </a>
+
+      <!-- Card 3: Direkt zu Leseblatt 2 (I i) -->
+      <a href="Lesen/Ii/index.html" class="card" style="border-color: #fca5a5;">
+        <span class="badge" style="background:#fee2e2; color:#b91c1c;">1. Klasse • Leseblatt 2</span>
+        <h2 class="card-title">🦔 Buchstabe I i</h2>
+        <p class="card-desc">
+          Haus 1 Vokal I i: Mit interaktiver Leserutsche (Limo, Mimi, Lilo, Milo), 10 Sätzen mit Herz &amp; Ausmalbildern (Haus, Rad, Ofen, Computer, Pool...), Lesemonster und 48-Silbenteppich.
+        </p>
+        <div class="card-action" style="color: #dc2626;">
+          Leseblatt 2 öffnen ➔
+        </div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

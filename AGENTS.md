@@ -1,0 +1,1 @@
+All primary source materials and inspiration sources are stored privately in `internal/quellen/` (inside the `internal` submodule). Treat `internal/quellen/` as the primary source of truth. Internal generation utilities and developer tools are in `internal/Tools/`.

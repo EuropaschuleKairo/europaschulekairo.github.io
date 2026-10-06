@@ -1,0 +1,2087 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Zahlenstrahl-Wortarena • Klasse 5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Lilita+One&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --paper: #fbfcfe;
+  --grid: #dbe6f4;
+  --margin: #e8a0a0;
+  --ink: #1b2f5b;
+  --ink-soft: #4b5d82;
+  --ink-muted: #7b8ea6;
+  --line: #c9d6ea;
+  --card: #ffffff;
+  --card-2: #f1f5fb;
+  --card-hover: #eaf1fa;
+
+  --accent: #2e74b5;
+  --accent-ink: #ffffff;
+  --marker: #ffe066;
+  --marker-ink: #1b2f5b;
+
+  /* Artikel-Farben (Standard DaZ / Grundschule) */
+  --der: #2463c9;
+  --die: #d13b3b;
+  --das: #1d9458;
+
+  /* Stufen-Farben */
+  --einfach: #1d9458;
+  --einfach-bg: #e3f5ea;
+  --mittel: #d97706;
+  --mittel-bg: #fef3c7;
+  --schwer: #7c3aed;
+  --schwer-bg: #f3e8ff;
+
+  --ok: #1d9458;
+  --ok-bg: #e3f5ea;
+  --bad: #c43838;
+  --bad-bg: #fbe6e6;
+  --warn: #b86e00;
+  --warn-bg: #fff2d6;
+
+  /* Teams */
+  --t1: #2463c9; /* Löwen */
+  --t2: #1d9458; /* Delphine */
+  --t3: #d97706; /* Adler */
+  --t4: #c23f7e; /* Füchse */
+
+  --shadow: 0 2px 0 rgba(27,47,91,.1), 0 8px 24px rgba(27,47,91,.06);
+  --shadow-lg: 0 6px 0 rgba(27,47,91,.15), 0 14px 32px rgba(27,47,91,.1);
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  --display: "Lilita One", system-ui, sans-serif;
+  --body: "Andika", "Segoe UI", system-ui, sans-serif;
+}
+
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --paper: #0f172a;
+  --grid: #1e293b;
+  --margin: #5c2d3a;
+  --ink: #f1f5f9;
+  --ink-soft: #94a3b8;
+  --ink-muted: #64748b;
+  --line: #334155;
+  --card: #1e293b;
+  --card-2: #283548;
+  --card-hover: #334155;
+
+  --accent: #38bdf8;
+  --accent-ink: #0f172a;
+  --marker: #fbbf24;
+  --marker-ink: #0f172a;
+
+  --der: #60a5fa;
+  --die: #f87171;
+  --das: #34d399;
+
+  --einfach: #34d399;
+  --einfach-bg: #064e3b;
+  --mittel: #fbbf24;
+  --mittel-bg: #78350f;
+  --schwer: #c084fc;
+  --schwer-bg: #581c87;
+
+  --ok: #34d399;
+  --ok-bg: #064e3b;
+  --bad: #f87171;
+  --bad-bg: #450a0a;
+  --warn: #fbbf24;
+  --warn-bg: #451a03;
+
+  --t1: #60a5fa;
+  --t2: #34d399;
+  --t3: #fbbf24;
+  --t4: #f472b6;
+
+  --shadow: 0 4px 16px rgba(0,0,0,.4);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,.6);
+}
+
+*, *::before, *::after{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: var(--body);
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.45;
+  background-color: var(--paper);
+  background-image: 
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.wrap{
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 16px 20px 60px;
+}
+
+button{
+  font-family: inherit;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  transition: all 0.15s ease;
+}
+button:focus-visible{
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
+.site-head{
+  border-bottom: 2px solid var(--margin);
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+}
+.head-top{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.brand-group{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.brand-badge{
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--accent), var(--das));
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-family: var(--display);
+  font-size: 28px;
+  box-shadow: 0 4px 0 rgba(27,47,91,.15);
+  flex-shrink: 0;
+}
+.brand-titles h1{
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 400;
+  letter-spacing: .5px;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.brand-titles h1 span{
+  background: linear-gradient(transparent 55%, var(--marker) 55%);
+  padding-inline: 4px;
+}
+.brand-titles p{
+  margin: 4px 0 0;
+  color: var(--ink-soft);
+  font-size: 16px;
+}
+.top-actions{
+  display: flex;
+  gap: 8px;
+}
+.circle-btn{
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 2px solid var(--line);
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  box-shadow: 0 2px 0 var(--line);
+}
+.circle-btn:hover{
+  background: var(--card-hover);
+  border-color: var(--accent);
+}
+
+/* Control Pills */
+.controls-bar{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 16px;
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  box-shadow: var(--shadow);
+}
+.ctl-col{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ctl-label{
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--ink-soft);
+}
+.pills{
+  display: flex;
+  background: var(--card-2);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+  gap: 3px;
+}
+.pill{
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.pill:hover{
+  color: var(--ink);
+}
+.pill[aria-pressed="true"]{
+  background: var(--accent);
+  color: var(--accent-ink);
+  box-shadow: 0 2px 0 rgba(0,0,0,.15);
+}
+.pill.level-einfach[aria-pressed="true"]{ background: var(--einfach); }
+.pill.level-mittel[aria-pressed="true"]{ background: var(--mittel); }
+.pill.level-schwer[aria-pressed="true"]{ background: var(--schwer); }
+
+/* Banner */
+.info-banner{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 10px 18px;
+  background: var(--card-2);
+  border-left: 5px solid var(--accent);
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+.info-banner b{ color: var(--ink); }
+
+/* ==========================================================================
+   Hero: Interaktiver Schau-Zahlenstrahl
+   ========================================================================== */
+.hero-zahlenstrahl{
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow);
+}
+.hero-head{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.hero-head h2{
+  font-family: var(--display);
+  font-size: 24px;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-tip{
+  font-size: 14px;
+  color: var(--ink-soft);
+  background: var(--card-2);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+.svg-scroll-wrap{
+  width: 100%;
+  overflow-x: auto;
+  padding: 8px 0;
+}
+.svg-zahlenstrahl{
+  min-width: 760px;
+  width: 100%;
+  display: block;
+}
+.hero-hotspot{
+  cursor: pointer;
+  transition: all .15s ease;
+}
+.hero-hotspot:hover text{
+  font-weight: 700;
+  fill: var(--accent);
+}
+.hero-hotspot:hover circle, .hero-hotspot:hover line{
+  stroke: var(--accent);
+  stroke-width: 4px;
+}
+.hero-explainer{
+  margin-top: 14px;
+  background: var(--card-2);
+  border: 2px dashed var(--line);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.hero-explainer-text{
+  font-size: 16px;
+  color: var(--ink);
+}
+.hero-explainer-text b{
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   Home Activity Cards Grid (Die 3 Kern-Übungen)
+   ========================================================================== */
+.act-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 22px;
+  margin-bottom: 34px;
+}
+.act-card{
+  background: var(--card);
+  border: 3px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  transition: transform .18s, border-color .18s, box-shadow .18s;
+}
+.act-card:hover{
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-lg);
+}
+.act-card::before{
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+}
+.act-card[data-act="flashcard"]::before{ background: var(--accent); }
+.act-card[data-act="matching"]::before{ background: var(--das); }
+.act-card[data-act="cloze"]::before{ background: var(--mittel); }
+
+.act-card-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.act-card h3{
+  margin: 0;
+  font-family: var(--display);
+  font-size: 26px;
+  color: var(--ink);
+}
+.act-icon-box{
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: var(--card-2);
+  display: grid;
+  place-items: center;
+  font-size: 26px;
+  flex-shrink: 0;
+}
+.act-desc{
+  margin: 0 0 18px;
+  color: var(--ink-soft);
+  font-size: 16px;
+  flex-grow: 1;
+}
+.act-card-bottom{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 2px solid var(--line);
+}
+.act-tag{
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--card-2);
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
+}
+.start-btn-label{
+  font-family: var(--display);
+  font-size: 18px;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ==========================================================================
+   In-Game Header Bar & Delegation / Team Arena
+   ========================================================================== */
+.gbar{
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 12px 18px;
+  margin-bottom: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 10px;
+  z-index: 20;
+}
+.back-btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--card-2);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--ink);
+  box-shadow: 0 2px 0 var(--line);
+}
+.back-btn:active{ transform: translateY(2px); box-shadow: none; }
+.back-btn:hover{ border-color: var(--accent); }
+
+.gbar-title h2{
+  margin: 0;
+  font-family: var(--display);
+  font-size: 24px;
+}
+.gbar-title p{
+  margin: 0;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.timer-box{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card-2);
+  border: 2px solid var(--line);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+}
+.timer-val{
+  font-family: var(--display);
+  font-size: 24px;
+  min-width: 3ch;
+  text-align: center;
+}
+.timer-val.urgent{
+  color: var(--bad);
+  animation: pulseUrgent .8s infinite;
+}
+@keyframes pulseUrgent{
+  0%, 100%{ transform: scale(1); }
+  50%{ transform: scale(1.12); }
+}
+.mini-btn{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 2px solid var(--line);
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Teams Bar */
+.teams-bar{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.team-chip{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card);
+  border: 3px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 8px 12px;
+  box-shadow: var(--shadow);
+}
+.team-chip.active{
+  border-color: var(--tc);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--tc) 25%, transparent);
+}
+.team-title{
+  font-weight: 700;
+  color: var(--tc);
+  font-size: 16px;
+}
+.team-sc{
+  font-family: var(--display);
+  font-size: 24px;
+  min-width: 2ch;
+  text-align: center;
+}
+.pm-btn{
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 2px solid var(--line);
+  background: var(--card-2);
+  font-family: var(--display);
+  font-size: 18px;
+  display: grid;
+  place-items: center;
+}
+.pm-btn:hover{
+  background: var(--tc);
+  color: #fff;
+  border-color: var(--tc);
+}
+
+.solo-bar{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 10px 18px;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+.solo-bar b{
+  font-family: var(--display);
+  font-size: 20px;
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   Activity 1: Flashcards (Karteikarten)
+   ========================================================================== */
+.flash-wrap{
+  perspective: 1200px;
+  min-height: 420px;
+  margin-bottom: 24px;
+}
+.flash-card{
+  position: relative;
+  width: 100%;
+  min-height: 420px;
+  text-align: center;
+  transition: transform .6s cubic-bezier(.4,0,.2,1);
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+.flash-card.flipped{
+  transform: rotateY(180deg);
+}
+.flash-face{
+  position: absolute;
+  inset: 0;
+  min-height: 420px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: var(--radius-lg);
+  padding: 34px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--card);
+  border: 3px solid var(--line);
+  box-shadow: var(--shadow-lg);
+  box-sizing: border-box;
+}
+.flash-back{
+  transform: rotateY(180deg);
+  background: var(--card-2);
+  border-color: var(--accent);
+}
+.art-chip{
+  font-family: var(--display);
+  font-size: 18px;
+  padding: 3px 12px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 8px;
+}
+.art-chip.der{ background: rgba(36,99,201,.15); color: var(--der); border: 2px solid var(--der); }
+.art-chip.die{ background: rgba(209,59,59,.15); color: var(--die); border: 2px solid var(--die); }
+.art-chip.das{ background: rgba(29,148,88,.15); color: var(--das); border: 2px solid var(--das); }
+.art-chip.verb{ background: rgba(124,58,237,.15); color: #7c3aed; border: 2px solid #7c3aed; }
+.art-chip.adj{ background: rgba(217,119,6,.15); color: var(--mittel); border: 2px solid var(--mittel); }
+
+.flash-word{
+  font-family: var(--display);
+  font-size: clamp(34px, 5vw, 54px);
+  margin-bottom: 6px;
+  line-height: 1.15;
+}
+.flash-plural{
+  font-size: 16px;
+  color: var(--ink-soft);
+  margin-bottom: 16px;
+}
+.flash-symbol{
+  font-family: var(--display);
+  font-size: 22px;
+  background: var(--card-2);
+  padding: 8px 18px;
+  border-radius: var(--radius-md);
+  border: 2px dashed var(--line);
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.speak-btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--card-2);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: 6px 14px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  box-shadow: 0 2px 0 var(--line);
+}
+.speak-btn:hover{
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.flash-hint{
+  position: absolute;
+  bottom: 16px;
+  font-size: 14px;
+  color: var(--ink-muted);
+}
+.flash-def{
+  font-size: clamp(19px, 2.5vw, 26px);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 16px;
+  max-width: 38ch;
+  line-height: 1.4;
+}
+.flash-ex{
+  font-size: 17px;
+  background: var(--card);
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  border-left: 5px solid var(--das);
+  margin-bottom: 14px;
+  max-width: 90%;
+  text-align: left;
+}
+.flash-tip{
+  font-size: 15px;
+  background: var(--marker);
+  color: var(--marker-ink);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+}
+
+.act-btns{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.btn{
+  border: 2px solid var(--line);
+  background: var(--card);
+  border-radius: var(--radius-md);
+  padding: 12px 22px;
+  font-family: var(--display);
+  font-size: 19px;
+  box-shadow: 0 3px 0 var(--line);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn:active{ transform: translateY(2px); box-shadow: none; }
+.btn.primary{ background: var(--accent); color: #fff; border-color: var(--accent); box-shadow: 0 3px 0 rgba(0,0,0,.2); }
+.btn.success{ background: var(--das); color: #fff; border-color: var(--das); box-shadow: 0 3px 0 rgba(0,0,0,.2); }
+.btn.warn{ background: var(--mittel); color: #fff; border-color: var(--mittel); box-shadow: 0 3px 0 rgba(0,0,0,.2); }
+
+/* ==========================================================================
+   Activity 2: Matching Activity (Paare finden)
+   ========================================================================== */
+.matching-board{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+  margin: 20px 0;
+}
+.match-card{
+  min-height: 120px;
+  background: var(--card);
+  border: 3px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: all .15s ease;
+  user-select: none;
+}
+.match-card:hover:not(.matched){
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+.match-card.word-card{
+  background: #fdfdf9;
+  border-color: #cbd5e1;
+}
+.match-card.def-card{
+  background: #f8fafc;
+  font-size: 16px;
+  line-height: 1.35;
+}
+.match-card.selected{
+  border-color: var(--accent);
+  background: rgba(46,116,181,.12);
+  transform: scale(1.02);
+  box-shadow: 0 0 0 3px var(--accent);
+}
+.match-card.matched{
+  background: var(--ok-bg);
+  border-color: var(--ok);
+  color: var(--ok);
+  opacity: .75;
+  cursor: default;
+  pointer-events: none;
+}
+.match-card.wrong{
+  animation: shake .4s;
+  background: var(--bad-bg);
+  border-color: var(--bad);
+}
+@keyframes shake{
+  0%, 100%{ transform: translateX(0); }
+  25%{ transform: translateX(-6px); }
+  75%{ transform: translateX(6px); }
+}
+.match-stats{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--card-2);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 10px 18px;
+  font-family: var(--display);
+  font-size: 19px;
+  margin-bottom: 16px;
+}
+
+/* ==========================================================================
+   Activity 3: Lückentext Activity
+   ========================================================================== */
+.cloze-box{
+  background: var(--card);
+  border: 3px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 24px;
+}
+.cloze-head{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px dashed var(--line);
+}
+.cloze-title{
+  font-family: var(--display);
+  font-size: 24px;
+  color: var(--ink);
+}
+.cloze-text-area{
+  font-size: 21px;
+  line-height: 2;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+.cloze-blank{
+  display: inline-block;
+  min-width: 140px;
+  padding: 2px 14px;
+  margin: 0 4px;
+  border-bottom: 3px solid var(--accent);
+  background: var(--card-2);
+  border-radius: 6px;
+  font-family: var(--display);
+  font-size: 20px;
+  text-align: center;
+  color: var(--accent);
+  cursor: pointer;
+  transition: all .15s;
+}
+.cloze-blank:hover{
+  background: var(--card-hover);
+}
+.cloze-blank.filled{
+  background: rgba(46,116,181,.1);
+  color: var(--ink);
+  font-weight: 700;
+}
+.cloze-blank.correct{
+  background: var(--ok-bg) !important;
+  color: var(--ok) !important;
+  border-color: var(--ok) !important;
+}
+.cloze-blank.incorrect{
+  background: var(--bad-bg) !important;
+  color: var(--bad) !important;
+  border-color: var(--bad) !important;
+}
+
+/* Wortspeicher Bank für Lückentext */
+.word-bank-box{
+  background: var(--card-2);
+  border: 2px dashed var(--line);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 20px;
+}
+.word-bank-title{
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.word-bank-chips{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.bank-chip{
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: 6px 14px;
+  font-family: var(--display);
+  font-size: 17px;
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 0 2px 0 var(--line);
+  transition: all .15s;
+}
+.bank-chip:hover{
+  border-color: var(--accent);
+  background: var(--card-hover);
+  transform: translateY(-2px);
+}
+.bank-chip.used{
+  opacity: .35;
+  text-decoration: line-through;
+  pointer-events: none;
+}
+
+/* Einzelsatz Lückentext Options */
+.single-options{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+.single-opt-btn{
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--line);
+  background: var(--card-2);
+  font-family: var(--display);
+  font-size: 18px;
+  color: var(--ink);
+}
+.single-opt-btn:hover{
+  background: var(--card-hover);
+  border-color: var(--accent);
+}
+.single-opt-btn.correct{
+  background: var(--ok-bg);
+  border-color: var(--ok);
+  color: var(--ok);
+}
+.single-opt-btn.wrong{
+  background: var(--bad-bg);
+  border-color: var(--bad);
+  color: var(--bad);
+}
+
+/* ==========================================================================
+   Wortspeicher (Lexikon)
+   ========================================================================== */
+.lexikon-sec{
+  margin-top: 36px;
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+.lexikon-head{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.lexikon-head h3{
+  margin: 0;
+  font-family: var(--display);
+  font-size: 26px;
+}
+.lex-search{
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--line);
+  background: var(--card-2);
+  font-family: inherit;
+  font-size: 15px;
+  width: 260px;
+}
+.lex-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+}
+.lex-card{
+  background: var(--card-2);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.lex-card-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.lex-word{
+  font-family: var(--display);
+  font-size: 20px;
+}
+.lex-def{
+  font-size: 15px;
+  color: var(--ink);
+  line-height: 1.35;
+}
+.lex-ex{
+  font-size: 14px;
+  color: var(--ink-soft);
+  font-style: italic;
+  border-left: 3px solid var(--accent);
+  padding-left: 8px;
+}
+
+/* Print */
+@media print{
+  body{ background: #fff; }
+  .site-head .controls-bar, .site-head .top-actions, .act-grid, .hero-zahlenstrahl, button{
+    display: none !important;
+  }
+  .lex-grid{ grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap" id="app"></div>
+
+<script>
+/* ==========================================================================
+   MATHE-WORTSCHATZ APP DATA & STATE (Klasse 5 Zahlenstrahl)
+   ========================================================================== */
+const DATA = {"vocab": [{"id": "zs_01", "word": "Zahlenstrahl", "article": "der", "plural": "die Zahlenstrahlen", "level": "einfach", "levelLabel": "Einfach", "def": "Eine gerade Linie mit einer Pfeilspitze nach rechts, die bei der 0 beginnt. Auf ihr sind Zahlen der Größe nach geordnet.", "example": "Auf dem Zahlenstrahl liegt die 10 rechts von der 5.", "tip": "Je weiter rechts eine Zahl steht, desto größer ist sie!", "symbol": "0 ─── 10 ─── 20 ───>", "matchingShort": "Gerade Linie ab 0 mit Pfeil nach rechts für geordnete Zahlen"}, {"id": "zs_02", "word": "Nullpunkt", "article": "der", "plural": "die Nullpunkte", "level": "einfach", "levelLabel": "Einfach", "def": "Der Startpunkt ganz links auf dem Zahlenstrahl. Hier steht die Zahl 0.", "example": "Jeder Zahlenstrahl beginnt links beim Nullpunkt.", "tip": "Auch 'Anfangspunkt' oder 'Ursprung' genannt. Links von 0 gibt es bei natürlichen Zahlen nichts!", "symbol": "📍 Punkt bei 0", "matchingShort": "Der Startpunkt ganz links, an dem die Zahl 0 steht"}, {"id": "zs_03", "word": "Pfeilspitze", "article": "die", "plural": "die Pfeilspitzen", "level": "einfach", "levelLabel": "Einfach", "def": "Der Pfeil ganz rechts am Zahlenstrahl. Er zeigt, dass die Zahlen immer größer werden und niemals aufhören.", "example": "Die Pfeilspitze zeigt nach rechts ins Unbegrenzte.", "tip": "Ein Strahl hat einen Anfangspunkt, aber kein Ende!", "symbol": "───>", "matchingShort": "Zeigt nach rechts und bedeutet: Die Zahlen hören niemals auf"}, {"id": "zs_04", "word": "Vorgänger", "article": "der", "plural": "die Vorgänger", "level": "einfach", "levelLabel": "Einfach", "def": "Die Zahl, die direkt vor einer Zahl kommt. Sie ist genau um 1 kleiner (Zahl − 1).", "example": "5 ist der Vorgänger von 6.", "tip": "Auf dem Zahlenstrahl steht der Vorgänger genau einen Schritt links!", "symbol": "Zahl − 1  (links)", "matchingShort": "Die um 1 kleinere Zahl (steht direkt links daneben)"}, {"id": "zs_05", "word": "Nachfolger", "article": "der", "plural": "die Nachfolger", "level": "einfach", "levelLabel": "Einfach", "def": "Die Zahl, die direkt nach einer Zahl kommt. Sie ist genau um 1 größer (Zahl + 1).", "example": "7 ist der Nachfolger von 6.", "tip": "Auf dem Zahlenstrahl steht der Nachfolger genau einen Schritt rechts!", "symbol": "Zahl + 1  (rechts)", "matchingShort": "Die um 1 größere Zahl (steht direkt rechts daneben)"}, {"id": "zs_06", "word": "größer als", "article": "das Zeichen", "plural": ">", "level": "einfach", "levelLabel": "Einfach", "def": "Vergleichszeichen (>). Die Zahl, die weiter rechts auf dem Zahlenstrahl steht, ist größer.", "example": "17 ist größer als 12 (17 > 12).", "tip": "Die breite Öffnung schaut zur großen Zahl, die kleine Spitze zeigt zur kleineren Zahl!", "symbol": ">", "matchingShort": "Vergleichszeichen (>): Die weiter rechts stehende Zahl ist mehr wert"}, {"id": "zs_07", "word": "kleiner als", "article": "das Zeichen", "plural": "<", "level": "einfach", "levelLabel": "Einfach", "def": "Vergleichszeichen (<). Die Zahl, die weiter links auf dem Zahlenstrahl steht, ist kleiner.", "example": "4 ist kleiner als 9 (4 < 9).", "tip": "Das Zeichen sieht aus wie ein K: < wie 'kleiner'! Die Spitze piekst die kleinere Zahl.", "symbol": "<", "matchingShort": "Vergleichszeichen (<): Die weiter links stehende Zahl ist weniger wert"}, {"id": "zs_08", "word": "Teilstrich", "article": "der", "plural": "die Teilstriche", "level": "mittel", "levelLabel": "Mittel", "def": "Kurze senkrechte Striche auf dem Zahlenstrahl, die die Positionen für Zahlen markieren.", "example": "An jedem Teilstrich tragen wir eine passende Zahl ein.", "tip": "Manchmal sind die Fünfer- oder Zehner-Teilstriche etwas länger gezeichnet.", "symbol": "┼───┼───┼", "matchingShort": "Kleine senkrechte Markierungsstriche für die Zahlen"}, {"id": "zs_09", "word": "Abstand", "article": "der", "plural": "die Abstände", "level": "mittel", "levelLabel": "Mittel", "def": "Die Entfernung zwischen zwei benachbarten Teilstrichen auf dem Papier.", "example": "Der Abstand zwischen den Strichen muss immer genau gleich lang sein.", "tip": "Benutze immer dein Lineal oder die Kästchen im Heft, damit alle Abstände gleichmäßig sind!", "symbol": "├── 1 cm ──┤", "matchingShort": "Die Entfernung zwischen zwei Strichen (muss immer gleich groß sein!)"}, {"id": "zs_10", "word": "Schrittweite", "article": "die", "plural": "die Schrittweiten", "level": "mittel", "levelLabel": "Mittel", "def": "Der Wert, um den die Zahlen von einem Teilstrich zum nächsten wachsen (z. B. 1er-, 10er-, 50er- oder 100er-Schritte).", "example": "Wenn die Striche 0, 20, 40, 60 heißen, ist die Schrittweite 20.", "tip": "Rechne: Zweite Zahl minus erste Zahl = Schrittweite!", "symbol": "+10, +20, +50...", "matchingShort": "Um wie viel die Zahlen von Strich zu Strich größer werden"}, {"id": "zs_11", "word": "Einheit", "article": "die", "plural": "die Einheiten", "level": "mittel", "levelLabel": "Mittel", "def": "Die festgelegte Länge für einen Schritt auf dem Zahlenstrahl (z. B. 1 cm oder 2 Kästchen).", "example": "Als Einheit wählen wir 1 cm für 10 Zahlen.", "tip": "Einheit und Schrittweite bestimmen zusammen, wie dein Zahlenstrahl aussieht.", "symbol": "1 cm = 10", "matchingShort": "Die festgelegte Zeichenlänge für einen Schritt (z. B. 1 cm oder 2 Kästchen)"}, {"id": "zs_12", "word": "Ordnungskette", "article": "die", "plural": "die Ordnungsketten", "level": "mittel", "levelLabel": "Mittel", "def": "Eine Reihe von mehreren Zahlen, die mit den Zeichen < oder > sortiert aufgeschrieben sind.", "example": "3 < 7 < 12 ist eine Ordnungskette von klein nach groß.", "tip": "Auf dem Zahlenstrahl stehen die Zahlen einer Ordnungskette genau in dieser Reihenfolge von links nach rechts.", "symbol": "3 < 7 < 12", "matchingShort": "Sortierte Zahlenreihe mit Vergleichszeichen (z. B. 3 < 7 < 12)"}, {"id": "zs_13", "word": "natürliche Zahl", "article": "die", "plural": "die natürlichen Zahlen", "level": "mittel", "levelLabel": "Mittel", "def": "Die Zahlen 0, 1, 2, 3, 4, 5 ..., die wir zum Zählen von Dingen benutzen. Ihr Formelzeichen ist ℕ.", "example": "Die Menge der natürlichen Zahlen beginnt bei 0 und ist unbegrenzt.", "tip": "Keine Kommazahlen und keine Brüche!", "symbol": "ℕ = {0, 1, 2, 3...}", "matchingShort": "Die Zählzahlen 0, 1, 2, 3, 4 ... (Menge ℕ)"}, {"id": "zs_14", "word": "vergleichen", "article": "das Verb", "plural": "vergleicht, verglich", "level": "mittel", "levelLabel": "Mittel", "def": "Zwei Zahlen gegenüberstellen und prüfen, welche größer ist, welche kleiner ist oder ob beide gleich sind (<, >, =).", "example": "Vergleiche 12 und 17: Es gilt 12 < 17.", "tip": "Blick auf den Zahlenstrahl: Die Zahl weiter rechts gewinnt immer!", "symbol": "<  oder  >  oder  =", "matchingShort": "Prüfen, welche von zwei Zahlen größer, kleiner oder gleich ist"}, {"id": "zs_15", "word": "unbegrenzt", "article": "das Adjektiv", "plural": "endlos", "level": "schwer", "levelLabel": "Schwer", "def": "Ohne Ende. Man kann immer noch 1 dazuzählen, deshalb hört der Zahlenstrahl nach rechts hin niemals auf.", "example": "Der Zahlenstrahl und die Menge der natürlichen Zahlen sind unbegrenzt.", "tip": "Deshalb zeichnen wir am rechten Ende die Pfeilspitze!", "symbol": "∞ (endlos)", "matchingShort": "Niemals endend; es gibt keine allergrößte Zahl"}, {"id": "zs_16", "word": "Skalierung", "article": "die", "plural": "die Skalierungen", "level": "schwer", "levelLabel": "Schwer", "def": "Die Einteilung und Beschriftung der Teilstriche mit passenden Werten, damit die gewünschten Zahlen gut auf das Blatt passen.", "example": "Für große Zahlen bis 1000 wählen wir eine Skalierung in Hunderterschritten.", "tip": "Skalierung bedeutet: schlaue Einteilung wählen!", "symbol": "0, 100, 200, 300...", "matchingShort": "Die schlaue Einteilung der Werte, damit alle Zahlen aufs Blatt passen"}, {"id": "zs_17", "word": "ablesen", "article": "das Verb", "plural": "liest ab, las ab", "level": "schwer", "levelLabel": "Schwer", "def": "Anhand der Teilstriche und der Schrittweite bestimmen, welche Zahl an einer bestimmten Markierung steht.", "example": "Lies den Wert am roten Pfeil ab: Der Strich steht bei 60.", "tip": "Zuerst die Schrittweite herausfinden, dann die Striche ab 0 abzählen!", "symbol": "👁️ Wert erkennen", "matchingShort": "Anhand der Striche und Schritte herausfinden, welche Zahl markiert ist"}, {"id": "zs_18", "word": "eintragen", "article": "das Verb", "plural": "trägt ein, trug ein", "level": "schwer", "levelLabel": "Schwer", "def": "Eine vorgegebene Zahl an der exakt richtigen Position auf dem Zahlenstrahl mit einem Kreuz oder Strich markieren.", "example": "Trage die Zahl 35 mit einem kleinen Kreuzchen am Zahlenstrahl ein.", "tip": "Liegt die Zahl genau auf einem Teilstrich oder genau in der Mitte zwischen zwei Strichen?", "symbol": "✍️ Markierung setzen", "matchingShort": "Eine Zahl an der richtigen Stelle auf dem Zahlenstrahl einzeichnen"}, {"id": "zs_19", "word": "Ziffer", "article": "die", "plural": "die Ziffern", "level": "schwer", "levelLabel": "Schwer", "def": "Die zehn einzelnen Zeichen 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, aus denen man alle Zahlen zusammensetzt.", "example": "Die Zahl 245 besteht aus den drei Ziffern 2, 4 und 5.", "tip": "Ziffern sind wie Buchstaben im Alphabet, Zahlen sind wie ganze Wörter!", "symbol": "0, 1, 2, 3, 4, 5, 6, 7, 8, 9", "matchingShort": "Die zehn Grundbausteine (0 bis 9), aus denen alle Zahlen gebaut werden"}, {"id": "zs_20", "word": "Rundungsstelle", "article": "die", "plural": "die Rundungsstellen", "level": "schwer", "levelLabel": "Schwer", "def": "Die Stelle in einer Zahl (Zehner, Hunderter, Tausender), auf die gerundet werden soll.", "example": "Bei 63 ≈ 60 ist die Zehnerstelle die Rundungsstelle.", "tip": "Am Zahlenstrahl heißt Runden: Zu welchem glatten Teilstrich liegt die Zahl näher?", "symbol": "≈ (ungefähr)", "matchingShort": "Die Stelle (z. B. Zehner oder Hunderter), auf die gerundet werden soll"}], "cloze": [{"id": "cloze_easy_01", "level": "einfach", "title": "Basiswissen: Der Zahlenstrahl im Überblick", "type": "single", "items": [{"sentence": "Der Zahlenstrahl beginnt ganz links beim [Nullpunkt].", "answer": "Nullpunkt", "options": ["Nullpunkt", "Nachfolger", "Schrittweite"]}, {"sentence": "Am rechten Ende zeigt eine [Pfeilspitze], dass der Zahlenstrahl unbegrenzt weitergeht.", "answer": "Pfeilspitze", "options": ["Pfeilspitze", "Nullpunkt", "Ziffer"]}, {"sentence": "Die Zahl, die genau um 1 kleiner ist und direkt davor steht, heißt [Vorgänger].", "answer": "Vorgänger", "options": ["Vorgänger", "Nachfolger", "Teilstrich"]}, {"sentence": "Die Zahl, die genau um 1 größer ist und direkt danach kommt, heißt [Nachfolger].", "answer": "Nachfolger", "options": ["Nachfolger", "Vorgänger", "Einheit"]}, {"sentence": "Auf dem Zahlenstrahl gilt: Je weiter [rechts] eine Zahl steht, desto größer ist sie.", "answer": "rechts", "options": ["rechts", "links", "unten"]}, {"sentence": "Beim Vergleichszeichen (< oder >) zeigt die kleine Spitze immer zur [kleineren] Zahl.", "answer": "kleineren", "options": ["kleineren", "größeren", "geraden"]}]}, {"id": "cloze_med_01", "level": "mittel", "title": "Merktext: Wie ist ein Zahlenstrahl aufgebaut?", "type": "story", "storyText": "Ein Zahlenstrahl dient dazu, die [natürlichen Zahlen] übersichtlich darzustellen. Ganz links beginnt er beim [Nullpunkt], an dem die Zahl 0 steht. Nach rechts zeigt eine [Pfeilspitze], denn die Reihe der Zahlen ist [unbegrenzt]. Die kurzen senkrechten Markierungen nennt man [Teilstriche]. Der [Abstand] zwischen zwei benachbarten Strichen muss auf dem Papier immer genau gleich lang sein. Den Zahlenwert von Strich zu Strich nennt man [Schrittweite].", "blanks": ["natürlichen Zahlen", "Nullpunkt", "Pfeilspitze", "unbegrenzt", "Teilstriche", "Abstand", "Schrittweite"], "wordBank": ["natürlichen Zahlen", "Nullpunkt", "Pfeilspitze", "unbegrenzt", "Teilstriche", "Abstand", "Schrittweite", "Nachfolger", "Ziffern", "Ordnungskette"]}, {"id": "cloze_med_02", "level": "mittel", "title": "Merktext: Vorgänger, Nachfolger und Ordnen", "type": "story", "storyText": "Jede Zahl auf dem Zahlenstrahl hat Nachbarn. Die Zahl direkt links ist um 1 kleiner und heißt [Vorgänger]. Die Zahl direkt rechts ist um 1 größer und heißt [Nachfolger]. Möchte man mehrere Zahlen vergleichen und der Größe nach sortieren, schreibt man eine [Ordnungskette]. Dabei benutzt man die Vergleichszeichen [kleiner als] (<) oder [größer als] (>).", "blanks": ["Vorgänger", "Nachfolger", "Ordnungskette", "kleiner als", "größer als"], "wordBank": ["Vorgänger", "Nachfolger", "Ordnungskette", "kleiner als", "größer als", "Teilstrich", "Nullpunkt", "Abstand"]}, {"id": "cloze_hard_01", "level": "schwer", "title": "Profi-Training: Zahlen ablesen und eintragen", "type": "story", "storyText": "Möchte man an einem Zahlenstrahl eine Zahl [ablesen], muss man zuerst die [Schrittweite] ermitteln. Dazu zählt man die Teilschritte zwischen zwei beschrifteten Zahlen ab. Danach kann man jede Zahl an der passenden Stelle [eintragen]. Für sehr große Zahlen wählt man eine schlaue [Skalierung], zum Beispiel in Hunderter- oder Tausenderschritten. Runden an der [Rundungsstelle] bedeutet, zum am nächsten liegenden glatten Teilstrich zu springen.", "blanks": ["ablesen", "Schrittweite", "eintragen", "Skalierung", "Rundungsstelle"], "wordBank": ["ablesen", "Schrittweite", "eintragen", "Skalierung", "Rundungsstelle", "Vorgänger", "Nullpunkt", "Pfeilspitze"]}]};
+
+const S = {
+  view: "home",            // "home" | "flashcard" | "matching" | "cloze"
+  level: "all",            // "all" | "einfach" | "mittel" | "schwer"
+  mode: "solo",            // "solo" | "team"
+  numTeams: 2,             // 1, 2, 3, 4
+  activeTeamIdx: 0,
+  teams: [
+    { name: "🦁 Team Löwe", score: 0, color: "var(--t1)" },
+    { name: "🐬 Team Delphin", score: 0, color: "var(--t2)" },
+    { name: "🦅 Team Adler", score: 0, color: "var(--t3)" },
+    { name: "🦊 Team Fuchs", score: 0, color: "var(--t4)" }
+  ],
+  soloStats: { correct: 0, total: 0, streak: 0, stars: 0 },
+  timerSetting: 0,         // 0 (aus), 30, 60, 90
+  timerRemaining: 0,
+  timerRunning: false,
+  timerInterval: null,
+  sound: true,
+  theme: "light",
+  showLexikon: false,
+  lexikonSearch: "",
+
+  // Activity Session States
+  flash: {
+    deck: [],
+    idx: 0,
+    flipped: false
+  },
+  matching: {
+    pairs: [],
+    selectedCard: null,
+    matchedCount: 0,
+    moves: 0,
+    startTime: null,
+    elapsedSeconds: 0,
+    finished: false
+  },
+  cloze: {
+    activeStoryIdx: 0,
+    singleIdx: 0,
+    selectedBlankId: null,
+    userAnswers: {},
+    checked: false
+  }
+};
+
+// Web Audio Sound Synthesizer
+let audioCtx = null;
+function playSfx(type){
+  if(!S.sound) return;
+  try {
+    if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if(audioCtx.state === 'suspended') audioCtx.resume();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    const now = audioCtx.currentTime;
+
+    if(type === 'correct'){
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(440, now); // A4
+      osc.frequency.exponentialRampToValueAtTime(554.37, now + 0.1); // C#5
+      osc.frequency.exponentialRampToValueAtTime(659.25, now + 0.22); // E5
+      gain.gain.setValueAtTime(0.25, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+      osc.start(now);
+      osc.stop(now + 0.4);
+    } else if(type === 'wrong'){
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(240, now);
+      osc.frequency.linearRampToValueAtTime(170, now + 0.25);
+      gain.gain.setValueAtTime(0.2, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+      osc.start(now);
+      osc.stop(now + 0.35);
+    } else if(type === 'click'){
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(520, now);
+      gain.gain.setValueAtTime(0.08, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+      osc.start(now);
+      osc.stop(now + 0.08);
+    } else if(type === 'fanfare'){
+      const notes = [523.25, 659.25, 783.99, 1046.50];
+      notes.forEach((freq, idx) => {
+        const o = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
+        o.connect(g);
+        g.connect(audioCtx.destination);
+        o.frequency.setValueAtTime(freq, now + idx * 0.12);
+        g.gain.setValueAtTime(0.2, now + idx * 0.12);
+        g.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.12 + 0.35);
+        o.start(now + idx * 0.12);
+        o.stop(now + idx * 0.12 + 0.35);
+      });
+    }
+  } catch(e) {}
+}
+
+// Deutsche Sprachausgabe (Web Speech API)
+function speakGerman(text){
+  if(!('speechSynthesis' in window)) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'de-DE';
+  u.rate = 0.95;
+  window.speechSynthesis.speak(u);
+}
+
+function shuffle(arr){
+  const a = [...arr];
+  for(let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function filterVocabByLevel(level){
+  if(!level || level === 'all') return DATA.vocab;
+  return DATA.vocab.filter(v => v.level === level);
+}
+
+/* ==========================================================================
+   RENDER DISPATCHER
+   ========================================================================== */
+function render(){
+  const app = document.getElementById('app');
+  if(!app) return;
+
+  if(S.view === "home"){
+    renderHome(app);
+  } else if(S.view === "flashcard"){
+    renderFlashcardView(app);
+  } else if(S.view === "matching"){
+    renderMatchingView(app);
+  } else if(S.view === "cloze"){
+    renderClozeView(app);
+  }
+}
+
+// --------------------------------------------------------------------------
+// HOME VIEW
+// --------------------------------------------------------------------------
+function renderHome(app){
+  const activeCount = filterVocabByLevel(S.level).length;
+
+  app.innerHTML = `
+    <header class="site-head">
+      <div class="head-top">
+        <div class="brand-group">
+          <div class="brand-badge">0➔</div>
+          <div class="brand-titles">
+            <h1>Zahlenstrahl-<span>Wortarena</span></h1>
+            <p>Mathematischer Fachwortschatz Klasse 5 • Begleitheft „Natürliche Zahlen“</p>
+          </div>
+        </div>
+        <div class="top-actions">
+          <button class="circle-btn" id="theme-btn" title="Dunkel/Hell">${S.theme === 'dark' ? '☀️' : '🌙'}</button>
+          <button class="circle-btn" id="sound-btn" title="Ton an/aus">${S.sound ? '🔔' : '🔕'}</button>
+        </div>
+      </div>
+
+      <!-- Einstellungen & Filter -->
+      <div class="controls-bar">
+        <!-- Stufe (Einfach / Mittel / Schwer) -->
+        <div class="ctl-col">
+          <span class="ctl-label">Schwierigkeitsstufe</span>
+          <div class="pills" id="level-pills">
+            <button class="pill" data-lvl="all" aria-pressed="${S.level === 'all'}">⭐ Alle Stufen (20)</button>
+            <button class="pill level-einfach" data-lvl="einfach" aria-pressed="${S.level === 'einfach'}">🟢 Einfach (7)</button>
+            <button class="pill level-mittel" data-lvl="mittel" aria-pressed="${S.level === 'mittel'}">🟡 Mittel (7)</button>
+            <button class="pill level-schwer" data-lvl="schwer" aria-pressed="${S.level === 'schwer'}">🔴 Schwer (6)</button>
+          </div>
+        </div>
+
+        <!-- Spielmodus: Solo / Teams -->
+        <div class="ctl-col">
+          <span class="ctl-label">Spielmodus</span>
+          <div class="pills" id="mode-pills">
+            <button class="pill" data-m="solo" aria-pressed="${S.mode === 'solo'}">👤 Solo-Lernen</button>
+            <button class="pill" data-m="team" data-n="2" aria-pressed="${S.mode === 'team' && S.numTeams === 2}">👥 2 Teams</button>
+            <button class="pill" data-m="team" data-n="3" aria-pressed="${S.mode === 'team' && S.numTeams === 3}">👥 3 Teams</button>
+            <button class="pill" data-m="team" data-n="4" aria-pressed="${S.mode === 'team' && S.numTeams === 4}">👥 4 Teams</button>
+          </div>
+        </div>
+
+        <!-- Timer -->
+        <div class="ctl-col">
+          <span class="ctl-label">Timer</span>
+          <div class="pills" id="timer-pills">
+            <button class="pill" data-t="0" aria-pressed="${S.timerSetting === 0}">Ohne Zeit</button>
+            <button class="pill" data-t="30" aria-pressed="${S.timerSetting === 30}">30s</button>
+            <button class="pill" data-t="60" aria-pressed="${S.timerSetting === 60}">60s</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-banner">
+        <div>
+          🎯 Aktiver Wortschatz-Pool: <b>${activeCount} Begriffe</b> (${
+            S.level === 'all' ? 'Alle Grund- und Profibegriffe' :
+            S.level === 'einfach' ? 'Basisbegriffe: Strahl, Nullpunkt, Vorgänger, Nachfolger, <, >' :
+            S.level === 'mittel' ? 'Aufbau: Teilstrich, Schrittweite, Abstand, Einheit, Ordnungskette' :
+            'Fachsprache: Skalierung, unbegrenzt, ablesen, eintragen, Runden'
+          })
+        </div>
+        <div>
+          🎒 Klasse 5 Mathematik • Lehrwerk Cornelsen / Begleitheft
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- INTERAKTIVER SCHAU-ZAHLENSTRAHL -->
+      <section class="hero-zahlenstrahl">
+        <div class="hero-head">
+          <h2>📏 Schau-Zahlenstrahl zum Ausprobieren</h2>
+          <span class="hero-tip">💡 Fahre mit der Maus über die Elemente oder tippe darauf!</span>
+        </div>
+        <div class="svg-scroll-wrap">
+          <svg class="svg-zahlenstrahl" viewBox="0 0 880 130" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent)"/>
+              </marker>
+            </defs>
+
+            <!-- Hauptstrahl mit Pfeilspitze -->
+            <line x1="40" y1="65" x2="750" y2="65" stroke="var(--accent)" stroke-width="4" marker-end="url(#arrow)"/>
+
+            <!-- Teilstriche & Zahlen (0 bis 100 in 10er-Schritten) -->
+            ${[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100].map((val, idx) => {
+              const x = 50 + idx * 65;
+              const isNull = idx === 0;
+              const isHighlight = val === 40;
+              return `
+                <g class="hero-hotspot" onmouseover="showHeroTip('${isNull ? 'null' : val === 100 ? 'arrow' : 'tick'}', '${val}')" onclick="showHeroTip('${isNull ? 'null' : val === 100 ? 'arrow' : 'tick'}', '${val}')">
+                  <!-- Teilstrich -->
+                  <line x1="${x}" y1="48" x2="${x}" y2="82" stroke="${isHighlight ? 'var(--die)' : 'var(--ink)'}" stroke-width="${isHighlight ? '4' : '3'}"/>
+                  <!-- Zahl -->
+                  <text x="${x}" y="105" text-anchor="middle" font-family="var(--display)" font-size="${isNull ? '22' : '18'}" fill="${isHighlight ? 'var(--die)' : 'var(--ink)'}">${val}</text>
+                  ${isNull ? `<text x="${x}" y="35" text-anchor="middle" font-family="var(--body)" font-weight="700" font-size="13" fill="var(--das)">Nullpunkt (0)</text>` : ''}
+                </g>
+              `;
+            }).join("")}
+
+            <!-- Zwischenschritte (5er) -->
+            ${[5, 15, 25, 35, 45, 55, 65, 75, 85, 95].map(val => {
+              const x = 50 + (val / 10) * 65;
+              return `<line x1="${x}" y1="56" x2="${x}" y2="74" stroke="var(--ink-soft)" stroke-width="1.8"/>`;
+            }).join("")}
+
+            <!-- Pfeilspitze Hotspot -->
+            <g class="hero-hotspot" onmouseover="showHeroTip('arrow')" onclick="showHeroTip('arrow')">
+              <circle cx="750" cy="65" r="24" fill="transparent"/>
+              <text x="750" y="24" text-anchor="middle" font-family="var(--body)" font-weight="700" font-size="13" fill="var(--accent)">Pfeilspitze</text>
+              <text x="750" y="40" text-anchor="middle" font-family="var(--body)" font-weight="700" font-size="12" fill="var(--accent)">(unbegrenzt)</text>
+            </g>
+
+            <!-- Schrittweite Bogen zwischen 20 und 30 -->
+            <path d="M 180 46 Q 212 25 245 46" fill="none" stroke="var(--mittel)" stroke-width="2.5" stroke-dasharray="4 2"/>
+            <text x="212.5" y="22" text-anchor="middle" font-family="var(--display)" font-size="14" fill="var(--mittel)">+10 Schrittweite</text>
+          </svg>
+        </div>
+
+        <div class="hero-explainer" id="hero-explainer">
+          <div class="hero-explainer-text" id="hero-expl-text">
+            👈 <b>Klicke auf den Zahlenstrahl:</b> Entdecke <i>Nullpunkt</i>, <i>Teilstrich</i>, <i>Schrittweite</i> und <i>Pfeilspitze</i>!
+          </div>
+          <button class="speak-btn" onclick="speakGerman(document.getElementById('hero-expl-text').textContent)">🔊 Vorlesen</button>
+        </div>
+      </section>
+
+      <!-- DIE 3 KERN-ÜBUNGEN -->
+      <div class="act-grid">
+        <!-- 1. Flashcards -->
+        <div class="act-card" data-act="flashcard" onclick="startActivity('flashcard')">
+          <div class="act-card-top">
+            <div>
+              <span class="act-tag" style="color:var(--accent);">Übung 1</span>
+              <h3 style="margin-top:6px;">🎴 Flashcards</h3>
+            </div>
+            <div class="act-icon-box">🎴</div>
+          </div>
+          <p class="act-desc">Lerne die Fachbegriffe mit interaktiven Wendekarten. Mit Artikelfarben (der/die/das), Vorlese-Funktion und Merksätzen aus dem Begleitheft.</p>
+          <div class="act-card-bottom">
+            <span class="act-tag">${activeCount} Karten • 3 Stufen</span>
+            <span class="start-btn-label">Starten →</span>
+          </div>
+        </div>
+
+        <!-- 2. Matching Activity -->
+        <div class="act-card" data-act="matching" onclick="startActivity('matching')">
+          <div class="act-card-top">
+            <div>
+              <span class="act-tag" style="color:var(--das);">Übung 2</span>
+              <h3 style="margin-top:6px;">🧩 Paare finden</h3>
+            </div>
+            <div class="act-icon-box">🧩</div>
+          </div>
+          <p class="act-desc">Finde zusammengehörige Paare: Welcher Begriff passt zu welcher Erklärung? Schult das genaue Zuordnen und Verstehen.</p>
+          <div class="act-card-bottom">
+            <span class="act-tag">4–8 Paare • Neu gemischt</span>
+            <span class="start-btn-label">Starten →</span>
+          </div>
+        </div>
+
+        <!-- 3. Lückentext -->
+        <div class="act-card" data-act="cloze" onclick="startActivity('cloze')">
+          <div class="act-card-top">
+            <div>
+              <span class="act-tag" style="color:var(--mittel);">Übung 3</span>
+              <h3 style="margin-top:6px;">✍️ Lückentext</h3>
+            </div>
+            <div class="act-icon-box">✍️</div>
+          </div>
+          <p class="act-desc">Setze die fehlenden Mathe-Wörter in Merktexte und Sätze ein. Von Klick-Chips bis zur Freitext-Eingabe für echte Zahlenstrahl-Profis!</p>
+          <div class="act-card-bottom">
+            <span class="act-tag">4 Merktexte • Vielseitig</span>
+            <span class="start-btn-label">Starten →</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Aufklappbarer Wortspeicher (Lexikon) -->
+      <section class="lexikon-sec">
+        <div class="lexikon-head">
+          <h3>📖 Wortspeicher zum Nachschlagen (${DATA.vocab.length} Begriffe)</h3>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+            <input type="text" id="lex-search-input" class="lex-search" placeholder="Begriff suchen..." value="${S.lexikonSearch}">
+            <button class="btn" id="lex-print-btn" onclick="window.print()">🖨️ Drucken</button>
+            <button class="btn primary" id="lex-toggle-btn">${S.showLexikon ? '▲ Zuklappen' : '▼ Alle Wörter anzeigen'}</button>
+          </div>
+        </div>
+
+        ${S.showLexikon ? renderLexikonGrid() : `<p style="margin:0; color:var(--ink-soft); font-size:16px;">Klicke auf den Button, um alle Wörter, Artikel, Pluralformen und Erklärungen auf einen Blick nachzulesen.</p>`}
+      </section>
+    </main>
+  `;
+
+  // Event Handlers
+  document.getElementById('theme-btn').onclick = toggleTheme;
+  document.getElementById('sound-btn').onclick = toggleSound;
+
+  document.querySelectorAll('#level-pills button').forEach(btn => {
+    btn.onclick = () => {
+      S.level = btn.dataset.lvl;
+      playSfx('click');
+      render();
+    };
+  });
+
+  document.querySelectorAll('#mode-pills button').forEach(btn => {
+    btn.onclick = () => {
+      S.mode = btn.dataset.m;
+      if(btn.dataset.n) S.numTeams = parseInt(btn.dataset.n);
+      playSfx('click');
+      render();
+    };
+  });
+
+  document.querySelectorAll('#timer-pills button').forEach(btn => {
+    btn.onclick = () => {
+      S.timerSetting = parseInt(btn.dataset.t);
+      S.timerRemaining = S.timerSetting;
+      playSfx('click');
+      render();
+    };
+  });
+
+  const lexTog = document.getElementById('lex-toggle-btn');
+  if(lexTog){
+    lexTog.onclick = () => {
+      S.showLexikon = !S.showLexikon;
+      playSfx('click');
+      render();
+    };
+  }
+
+  const lexSrch = document.getElementById('lex-search-input');
+  if(lexSrch){
+    lexSrch.oninput = (e) => {
+      S.lexikonSearch = e.target.value.toLowerCase();
+      const grid = document.getElementById('lex-grid-box');
+      if(grid) grid.innerHTML = renderLexikonCards();
+    };
+  }
+}
+
+function showHeroTip(type, val){
+  const el = document.getElementById('hero-expl-text');
+  if(!el) return;
+  playSfx('click');
+
+  if(type === 'null'){
+    el.innerHTML = `📍 <b>Der Nullpunkt (Anfangspunkt):</b> Hier beginnt der Zahlenstrahl ganz links bei der Zahl 0. Bei den natürlichen Zahlen gibt es links davon nichts!`;
+  } else if(type === 'arrow'){
+    el.innerHTML = `➡️ <b>Die Pfeilspitze:</b> Sie zeigt nach rechts und bedeutet: Der Zahlenstrahl ist <b>unbegrenzt</b>! Die Zahlen hören niemals auf.`;
+  } else if(val === '40'){
+    el.innerHTML = `👥 <b>Nachbarn von 40:</b> Der <b>Vorgänger</b> ist 39 (Zahl − 1, steht links). Der <b>Nachfolger</b> ist 41 (Zahl + 1, steht rechts)!`;
+  } else {
+    el.innerHTML = `📏 <b>Teilstriche & Schrittweite:</b> Die kurzen Striche heißen <b>Teilstriche</b>. Der Abstand zwischen ihnen muss immer gleich groß sein. Hier beträgt die <b>Schrittweite 10</b>!`;
+  }
+}
+
+function renderLexikonGrid(){
+  return `
+    <div class="lex-grid" id="lex-grid-box">
+      ${renderLexikonCards()}
+    </div>
+  `;
+}
+
+function renderLexikonCards(){
+  const q = S.lexikonSearch;
+  const filtered = DATA.vocab.filter(v => {
+    if(!q) return true;
+    return v.word.toLowerCase().includes(q) ||
+           v.def.toLowerCase().includes(q) ||
+           v.example.toLowerCase().includes(q);
+  });
+
+  if(filtered.length === 0){
+    return `<div style="grid-column:1/-1; text-align:center; padding:20px; color:var(--ink-soft);">Kein Begriff gefunden für "${q}".</div>`;
+  }
+
+  return filtered.map(v => `
+    <div class="lex-card">
+      <div class="lex-card-top">
+        <span class="art-chip ${getArticleClass(v.article)}">${v.article}</span>
+        <span class="act-tag" style="font-size:11px;">${v.levelLabel}</span>
+      </div>
+      <div class="lex-word">${v.word}</div>
+      <div style="font-size:13px; color:var(--ink-soft);">${v.plural}</div>
+      <div class="lex-def">${v.def}</div>
+      <div class="lex-ex">„${v.example}“</div>
+      <button class="speak-btn" style="align-self:flex-start; margin-top:auto;" onclick="speakGerman('${v.article} ${v.word}')">🔊 Vorlesen</button>
+    </div>
+  `).join("");
+}
+
+function getArticleClass(art){
+  if(art === 'der') return 'der';
+  if(art === 'die') return 'die';
+  if(art === 'das') return 'das';
+  if(art.includes('Verb')) return 'verb';
+  return 'adj';
+}
+
+/* ==========================================================================
+   START ACTIVITIES
+   ========================================================================== */
+function startActivity(actId){
+  S.view = actId;
+  resetTimer();
+  playSfx('click');
+
+  if(actId === 'flashcard'){
+    initFlashcards();
+  } else if(actId === 'matching'){
+    initMatching();
+  } else if(actId === 'cloze'){
+    initCloze();
+  }
+  render();
+}
+
+// --------------------------------------------------------------------------
+// 1. FLASHCARDS ACTIVITY
+// --------------------------------------------------------------------------
+function initFlashcards(){
+  const pool = filterVocabByLevel(S.level);
+  S.flash.deck = shuffle(pool);
+  S.flash.idx = 0;
+  S.flash.flipped = false;
+}
+
+function renderFlashcardView(app){
+  const card = S.flash.deck[S.flash.idx];
+  const total = S.flash.deck.length;
+
+  app.innerHTML = `
+    <!-- In-Game Bar -->
+    <header class="gbar">
+      <button class="back-btn" id="exit-btn">← Zur Übersicht</button>
+      <div class="gbar-title">
+        <h2>🎴 Flashcards • Karteikarten-Training</h2>
+        <p>Karte <b>${S.flash.idx + 1}</b> von <b>${total}</b> • Stufe: <b>${S.level === 'all' ? 'Alle Stufen' : S.level.toUpperCase()}</b></p>
+      </div>
+      <div>
+        <button class="btn" id="flash-shuffle-btn" title="Stapel mischen">🔀 Neu mischen</button>
+      </div>
+    </header>
+
+    ${S.mode === 'team' ? renderTeamsBar() : renderSoloBar()}
+
+    <main style="max-width:780px; margin:0 auto;">
+      <div class="flash-wrap" id="flash-card-wrap">
+        <div class="flash-card ${S.flash.flipped ? 'flipped' : ''}" id="flash-card">
+          <!-- VORDERSEITE -->
+          <div class="flash-face flash-front">
+            <span class="art-chip ${getArticleClass(card.article)}">${card.article}</span>
+            <div class="flash-word">${card.word}</div>
+            <div class="flash-plural">${card.plural}</div>
+            <div class="flash-symbol">${card.symbol}</div>
+            
+            <button class="speak-btn" onclick="event.stopPropagation(); speakGerman('${card.article} ${card.word}')">🔊 Wort anhören</button>
+            <div class="flash-hint">💡 Klicke auf die Karte oder drücke die Leertaste zum Umdrehen</div>
+          </div>
+
+          <!-- RÜCKSEITE -->
+          <div class="flash-face flash-back">
+            <span class="act-tag" style="background:var(--ok-bg); color:var(--ok); border-color:var(--ok); margin-bottom:12px;">✓ Erklärung & Merkhilfe</span>
+            <div class="flash-def">${card.def}</div>
+            <div class="flash-ex"><b>Beispiel:</b> „${card.example}“</div>
+            <div class="flash-tip">💡 <b>Merkhilfe:</b> ${card.tip}</div>
+            <button class="speak-btn" style="margin-top:16px;" onclick="event.stopPropagation(); speakGerman('${card.def}. ${card.tip}')">🔊 Erklärung vorlesen</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="act-btns">
+        <button class="btn" id="fc-flip-btn">🔄 Umdrehen (Leertaste)</button>
+        <button class="btn success" id="fc-know-btn">Gewusst! ✓ (+1)</button>
+        <button class="btn warn" id="fc-retry-btn">Noch üben 🔁</button>
+        <button class="btn primary" id="fc-next-btn">Nächste Karte →</button>
+      </div>
+    </main>
+  `;
+
+  // Attach handlers
+  document.getElementById('exit-btn').onclick = () => { S.view = 'home'; playSfx('click'); render(); };
+  document.getElementById('flash-shuffle-btn').onclick = () => { initFlashcards(); playSfx('click'); render(); };
+
+  const fcCard = document.getElementById('flash-card');
+  const fcFlip = document.getElementById('fc-flip-btn');
+  const doFlip = () => {
+    S.flash.flipped = !S.flash.flipped;
+    playSfx('click');
+    if(fcCard) fcCard.classList.toggle('flipped');
+  };
+  if(fcCard) fcCard.onclick = doFlip;
+  if(fcFlip) fcFlip.onclick = doFlip;
+
+  document.getElementById('fc-know-btn').onclick = () => {
+    awardPoints(1);
+    S.soloStats.correct++;
+    S.soloStats.total++;
+    S.soloStats.streak++;
+    playSfx('correct');
+    nextFlashcard();
+  };
+
+  document.getElementById('fc-retry-btn').onclick = () => {
+    S.soloStats.total++;
+    S.soloStats.streak = 0;
+    playSfx('click');
+    // Am Ende anfügen für Wiederholung
+    S.flash.deck.push(card);
+    nextFlashcard();
+  };
+
+  document.getElementById('fc-next-btn').onclick = () => {
+    nextFlashcard();
+  };
+}
+
+function nextFlashcard(){
+  if(S.flash.idx < S.flash.deck.length - 1){
+    S.flash.idx++;
+  } else {
+    S.flash.idx = 0;
+  }
+  S.flash.flipped = false;
+  rotateTurn();
+  render();
+}
+
+// --------------------------------------------------------------------------
+// 2. MATCHING ACTIVITY (Paare finden)
+// --------------------------------------------------------------------------
+function initMatching(){
+  const pool = filterVocabByLevel(S.level);
+  let pairCount = 6;
+  if(S.level === 'einfach') pairCount = 4;
+  else if(S.level === 'schwer') pairCount = 8;
+
+  const chosen = shuffle(pool).slice(0, Math.min(pairCount, pool.length));
+
+  const cards = [];
+  chosen.forEach(item => {
+    cards.push({
+      id: item.id + '_word',
+      pairId: item.id,
+      type: 'word',
+      text: `${item.article} ${item.word}`,
+      symbol: item.symbol
+    });
+    cards.push({
+      id: item.id + '_def',
+      pairId: item.id,
+      type: 'def',
+      text: item.matchingShort || item.def,
+      symbol: ''
+    });
+  });
+
+  S.matching.pairs = shuffle(cards);
+  S.matching.selectedCard = null;
+  S.matching.matchedCount = 0;
+  S.matching.moves = 0;
+  S.matching.finished = false;
+  S.matching.startTime = Date.now();
+}
+
+function renderMatchingView(app){
+  const totalPairs = S.matching.pairs.length / 2;
+  const isFinished = S.matching.matchedCount >= totalPairs;
+
+  app.innerHTML = `
+    <header class="gbar">
+      <button class="back-btn" id="exit-btn">← Zur Übersicht</button>
+      <div class="gbar-title">
+        <h2>🧩 Paare finden • Begriffs-Zuordnung</h2>
+        <p>Finde passende Paare: Fachwort ➔ Erklärung • Stufe: <b>${S.level.toUpperCase()}</b></p>
+      </div>
+      <div>
+        <button class="btn" id="match-restart-btn">🔄 Neue Paare</button>
+      </div>
+    </header>
+
+    ${S.mode === 'team' ? renderTeamsBar() : renderSoloBar()}
+
+    <main>
+      <div class="match-stats">
+        <div>Gefundene Paare: <b>${S.matching.matchedCount} / ${totalPairs}</b></div>
+        <div>Züge: <b>${S.matching.moves}</b></div>
+        <div>Stufe: <b>${S.level.toUpperCase()}</b></div>
+      </div>
+
+      ${!isFinished ? `
+        <div class="matching-board">
+          ${S.matching.pairs.map(card => {
+            const isSelected = S.matching.selectedCard && S.matching.selectedCard.id === card.id;
+            const isMatched = card.matched;
+            return `
+              <div class="match-card ${card.type === 'word' ? 'word-card' : 'def-card'} ${isSelected ? 'selected' : ''} ${isMatched ? 'matched' : ''}" 
+                   data-cid="${card.id}" 
+                   onclick="handleMatchCardClick('${card.id}')">
+                ${card.type === 'word' ? `
+                  <div style="font-family:var(--display); font-size:22px; color:var(--ink);">${card.text}</div>
+                  ${card.symbol ? `<div style="font-size:14px; color:var(--accent); margin-top:4px;">${card.symbol}</div>` : ''}
+                ` : `
+                  <div style="color:var(--ink-soft); font-weight:600;">${card.text}</div>
+                `}
+              </div>
+            `;
+          }).join("")}
+        </div>
+      ` : `
+        <div style="text-align:center; background:var(--card); border:3px solid var(--ok); border-radius:var(--radius-lg); padding:40px 24px; box-shadow:var(--shadow-lg);">
+          <div style="font-size:64px; margin-bottom:10px;">🎉 ⭐⭐⭐</div>
+          <h2 style="font-family:var(--display); font-size:36px; color:var(--ok); margin:0 0 10px;">Klasse gemacht! Alle Paare gefunden!</h2>
+          <p style="font-size:18px; color:var(--ink-soft); margin-bottom:24px;">Du hast alle ${totalPairs} Paare in <b>${S.matching.moves} Zügen</b> gelöst.</p>
+          <div class="act-btns">
+            <button class="btn success" onclick="initMatching(); render();">Nochmal mit neuen Paaren spielen 🔄</button>
+            <button class="btn" onclick="S.view='home'; render();">Zurück zur Hauptseite</button>
+          </div>
+        </div>
+      `}
+    </main>
+  `;
+
+  document.getElementById('exit-btn').onclick = () => { S.view = 'home'; playSfx('click'); render(); };
+  document.getElementById('match-restart-btn').onclick = () => { initMatching(); playSfx('click'); render(); };
+}
+
+function handleMatchCardClick(cid){
+  const card = S.matching.pairs.find(c => c.id === cid);
+  if(!card || card.matched) return;
+
+  if(!S.matching.selectedCard){
+    // Erste Karte ausgewählt
+    S.matching.selectedCard = card;
+    playSfx('click');
+    render();
+  } else {
+    if(S.matching.selectedCard.id === card.id) return; // gleiche Karte
+
+    S.matching.moves++;
+    const first = S.matching.selectedCard;
+
+    if(first.pairId === card.pairId && first.type !== card.type){
+      // Treffer!
+      first.matched = true;
+      card.matched = true;
+      S.matching.matchedCount++;
+      S.matching.selectedCard = null;
+      awardPoints(1);
+      playSfx('correct');
+
+      const totalPairs = S.matching.pairs.length / 2;
+      if(S.matching.matchedCount >= totalPairs){
+        setTimeout(() => { playSfx('fanfare'); }, 300);
+      }
+      render();
+    } else {
+      // Falsches Paar
+      playSfx('wrong');
+      const el1 = document.querySelector(`[data-cid="${first.id}"]`);
+      const el2 = document.querySelector(`[data-cid="${card.id}"]`);
+      if(el1) el1.classList.add('wrong');
+      if(el2) el2.classList.add('wrong');
+
+      setTimeout(() => {
+        S.matching.selectedCard = null;
+        rotateTurn();
+        render();
+      }, 700);
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// 3. LÜCKENTEXT ACTIVITY
+// --------------------------------------------------------------------------
+function initCloze(){
+  S.cloze.selectedBlankId = null;
+  S.cloze.userAnswers = {};
+  S.cloze.checked = false;
+  S.cloze.singleIdx = 0;
+}
+
+function renderClozeView(app){
+  let clozeStories = DATA.cloze;
+  if(S.level !== 'all'){
+    const filtered = DATA.cloze.filter(c => c.level === S.level);
+    if(filtered.length > 0) clozeStories = filtered;
+  }
+  const story = clozeStories[S.cloze.activeStoryIdx % clozeStories.length];
+
+  app.innerHTML = `
+    <header class="gbar">
+      <button class="back-btn" id="exit-btn">← Zur Übersicht</button>
+      <div class="gbar-title">
+        <h2>✍️ Lückentext-Training</h2>
+        <p>${story.title} • Stufe: <b>${story.level.toUpperCase()}</b></p>
+      </div>
+      <div>
+        <button class="btn" id="cloze-switch-btn" title="Anderen Text wählen">📖 Nächster Text (${(S.cloze.activeStoryIdx % clozeStories.length) + 1}/${clozeStories.length})</button>
+      </div>
+    </header>
+
+    ${S.mode === 'team' ? renderTeamsBar() : renderSoloBar()}
+
+    <main style="max-width:860px; margin:0 auto;">
+      <div class="cloze-box">
+        <div class="cloze-head">
+          <div class="cloze-title">${story.title}</div>
+          <span class="act-tag" style="background:${story.level === 'einfach' ? 'var(--einfach-bg)' : story.level === 'mittel' ? 'var(--mittel-bg)' : 'var(--schwer-bg)'}; color:${story.level === 'einfach' ? 'var(--einfach)' : story.level === 'mittel' ? 'var(--mittel)' : 'var(--schwer)'}">
+            ${story.level.toUpperCase()}
+          </span>
+        </div>
+
+        ${story.type === 'single' ? renderSingleCloze(story) : renderStoryCloze(story)}
+      </div>
+    </main>
+  `;
+
+  document.getElementById('exit-btn').onclick = () => { S.view = 'home'; playSfx('click'); render(); };
+  document.getElementById('cloze-switch-btn').onclick = () => {
+    S.cloze.activeStoryIdx++;
+    initCloze();
+    playSfx('click');
+    render();
+  };
+}
+
+// Level Einfach: Einzelsätze mit Klickchips
+function renderSingleCloze(story){
+  const item = story.items[S.cloze.singleIdx % story.items.length];
+  const parts = item.sentence.split('[' + item.answer + ']');
+  const isChecked = S.cloze.checked;
+  const userAns = S.cloze.userAnswers[S.cloze.singleIdx];
+
+  return `
+    <div style="font-size:24px; line-height:1.7; margin-bottom:24px;">
+      Satz ${ (S.cloze.singleIdx % story.items.length) + 1 } von ${ story.items.length }:
+      <div style="background:var(--card-2); padding:20px; border-radius:var(--radius-md); border-left:5px solid var(--accent); margin-top:10px;">
+        ${parts[0]} <span class="cloze-blank filled ${isChecked ? (userAns === item.answer ? 'correct' : 'incorrect') : ''}">${userAns || '__________'}</span> ${parts[1]}
+      </div>
+    </div>
+
+    <div style="margin-bottom:20px;">
+      <div style="font-size:14px; font-weight:700; text-transform:uppercase; color:var(--ink-soft); margin-bottom:8px;">Wähle das passende Wort:</div>
+      <div class="single-options">
+        ${shuffle(item.options).map(opt => {
+          let cls = "";
+          if(isChecked){
+            if(opt === item.answer) cls = "correct";
+            else if(opt === userAns) cls = "wrong";
+          }
+          return `
+            <button class="single-opt-btn ${cls}" onclick="handleSingleClozeChoice('${opt}', '${item.answer}')" ${isChecked ? 'disabled' : ''}>
+              ${opt}
+            </button>
+          `;
+        }).join("")}
+      </div>
+    </div>
+
+    ${isChecked ? `
+      <div class="act-btns">
+        <button class="btn primary" onclick="nextSingleCloze(${story.items.length})">Nächster Satz →</button>
+      </div>
+    ` : ''}
+  `;
+}
+
+function handleSingleClozeChoice(chosen, answer){
+  S.cloze.userAnswers[S.cloze.singleIdx] = chosen;
+  S.cloze.checked = true;
+  const isCorrect = chosen === answer;
+
+  if(isCorrect){
+    playSfx('correct');
+    awardPoints(1);
+    S.soloStats.correct++;
+    S.soloStats.total++;
+    S.soloStats.streak++;
+  } else {
+    playSfx('wrong');
+    S.soloStats.total++;
+    S.soloStats.streak = 0;
+  }
+  render();
+}
+
+function nextSingleCloze(total){
+  S.cloze.singleIdx = (S.cloze.singleIdx + 1) % total;
+  S.cloze.checked = false;
+  rotateTurn();
+  render();
+}
+
+// Level Mittel & Schwer: Zusammenhängender Text mit Wortbank
+function renderStoryCloze(story){
+  let text = story.storyText;
+  const isChecked = S.cloze.checked;
+
+  story.blanks.forEach((b, i) => {
+    const val = S.cloze.userAnswers[i] || '';
+    const isSelected = S.cloze.selectedBlankId === i;
+    let cls = val ? 'filled' : '';
+    if(isChecked){
+      cls += (val.trim().toLowerCase() === b.trim().toLowerCase() ? ' correct' : ' incorrect');
+    }
+    const span = `<span class="cloze-blank ${cls} ${isSelected ? 'selected' : ''}" onclick="selectBlank(${i})">${val || `(${i+1}) _____`}</span>`;
+    text = text.replace('[' + b + ']', span);
+  });
+
+  return `
+    <div class="cloze-text-area">
+      ${text}
+    </div>
+
+    <div class="word-bank-box">
+      <div class="word-bank-title">🗃️ Wortspeicher (Klicke zuerst auf eine Lücke, dann auf das Wort):</div>
+      <div class="word-bank-chips">
+        ${shuffle(story.wordBank).map(word => {
+          const isUsed = Object.values(S.cloze.userAnswers).includes(word);
+          return `
+            <button class="bank-chip ${isUsed ? 'used' : ''}" onclick="insertWordIntoBlank('${word}')">
+              ${word}
+            </button>
+          `;
+        }).join("")}
+      </div>
+    </div>
+
+    <div class="act-btns">
+      ${!isChecked ? `
+        <button class="btn success" onclick="checkStoryCloze()">Lücken überprüfen ✓</button>
+        <button class="btn" onclick="initCloze(); render();">Zurücksetzen ↺</button>
+      ` : `
+        <button class="btn primary" onclick="initCloze(); render();">Nochmal versuchen 🔄</button>
+        <button class="btn" onclick="S.cloze.activeStoryIdx++; initCloze(); render();">Nächster Text →</button>
+      `}
+    </div>
+  `;
+}
+
+function selectBlank(idx){
+  S.cloze.selectedBlankId = idx;
+  playSfx('click');
+  render();
+}
+
+function insertWordIntoBlank(word){
+  if(S.cloze.selectedBlankId === null){
+    // Finde erste freie Lücke
+    const freeIdx = [0,1,2,3,4,5,6].find(i => !S.cloze.userAnswers[i]);
+    if(freeIdx !== undefined) S.cloze.selectedBlankId = freeIdx;
+    else S.cloze.selectedBlankId = 0;
+  }
+  S.cloze.userAnswers[S.cloze.selectedBlankId] = word;
+  S.cloze.selectedBlankId = null;
+  playSfx('click');
+  render();
+}
+
+function checkStoryCloze(){
+  S.cloze.checked = true;
+  let correctCount = 0;
+  let story = DATA.cloze[S.cloze.activeStoryIdx % DATA.cloze.length];
+
+  story.blanks.forEach((b, i) => {
+    const val = (S.cloze.userAnswers[i] || '').trim().toLowerCase();
+    if(val === b.trim().toLowerCase()) correctCount++;
+  });
+
+  if(correctCount === story.blanks.length){
+    playSfx('fanfare');
+    awardPoints(correctCount);
+  } else if(correctCount > 0){
+    playSfx('correct');
+    awardPoints(correctCount);
+  } else {
+    playSfx('wrong');
+  }
+  render();
+}
+
+// --------------------------------------------------------------------------
+// TEAMS & SCORING
+// --------------------------------------------------------------------------
+function renderTeamsBar(){
+  return `
+    <div class="teams-bar">
+      ${S.teams.slice(0, S.numTeams).map((t, i) => `
+        <div class="team-chip ${i === S.activeTeamIdx ? 'active' : ''}" style="--tc:${t.color}">
+          <button class="team-title" onclick="setActiveTeam(${i})">${t.name}</button>
+          <div class="team-sc" id="tsc-${i}">${t.score}</div>
+          <button class="pm-btn" onclick="adjustScore(${i}, 1)">+</button>
+          <button class="pm-btn" onclick="adjustScore(${i}, -1)">−</button>
+        </div>
+      `).join("")}
+      <div style="font-size:13px; color:var(--ink-soft); align-self:center; margin-left:auto;">
+        👉 Klicke ein Team an, um die Punkte zu vergeben
+      </div>
+    </div>
+  `;
+}
+
+function renderSoloBar(){
+  return `
+    <div class="solo-bar">
+      <div>Punkte: <b>${S.soloStats.correct}</b></div>
+      <div>Fragen gesamt: <b>${S.soloStats.total}</b></div>
+      <div>Serie: <b>${S.soloStats.streak} 🔥</b></div>
+    </div>
+  `;
+}
+
+function setActiveTeam(idx){
+  S.activeTeamIdx = idx;
+  playSfx('click');
+  render();
+}
+
+function adjustScore(idx, delta){
+  S.teams[idx].score = Math.max(0, S.teams[idx].score + delta);
+  if(delta > 0) playSfx('correct');
+  const el = document.getElementById('tsc-' + idx);
+  if(el) el.textContent = S.teams[idx].score;
+}
+
+function awardPoints(pts){
+  if(S.mode === 'team'){
+    adjustScore(S.activeTeamIdx, pts);
+  }
+}
+
+function rotateTurn(){
+  if(S.mode === 'team' && S.numTeams > 1){
+    S.activeTeamIdx = (S.activeTeamIdx + 1) % S.numTeams;
+  }
+}
+
+// --------------------------------------------------------------------------
+// TIMER
+// --------------------------------------------------------------------------
+function resetTimer(){
+  clearInterval(S.timerInterval);
+  S.timerRunning = false;
+  S.timerRemaining = S.timerSetting;
+}
+
+// --------------------------------------------------------------------------
+// THEME & SOUND
+// --------------------------------------------------------------------------
+function toggleTheme(){
+  S.theme = S.theme === 'light' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', S.theme);
+  playSfx('click');
+  render();
+}
+
+function toggleSound(){
+  S.sound = !S.sound;
+  render();
+}
+
+// Keyboard listener (Leertaste für Flashcard)
+window.addEventListener('keydown', (e) => {
+  if(e.code === 'Space' && S.view === 'flashcard' && e.target.tagName !== 'INPUT'){
+    e.preventDefault();
+    const fc = document.getElementById('flash-card');
+    if(fc) fc.click();
+  }
+});
+
+// Boot
+document.documentElement.setAttribute('data-theme', S.theme);
+render();
+</script>
+</body>
+</html>
