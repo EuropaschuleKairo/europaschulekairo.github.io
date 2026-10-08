@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mein Mathe-Wortschatz • Klasse 5</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Lilita+One&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #fbfcfe;
+      --ink: #1b2f5b;
+      --ink-soft: #4b5d82;
+      --line: #c9d6ea;
+      --card: #ffffff;
+      --card-hover: #f1f5fb;
+      --accent: #0284c7;
+      --display: "Lilita One", system-ui, sans-serif;
+      --body: "Andika", system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: var(--body);
+      background-color: var(--paper);
+      background-image: 
+        linear-gradient(#dbe6f4 1px, transparent 1px),
+        linear-gradient(90deg, #dbe6f4 1px, transparent 1px);
+      background-size: 24px 24px;
+      color: var(--ink);
+      margin: 0;
+      padding: 40px 20px 80px;
+    }
+    .wrap {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .site-head {
+      margin-bottom: 34px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #e8a0a0;
+    }
+    h1 {
+      font-family: var(--display);
+      font-size: clamp(32px, 5vw, 48px);
+      color: #0369a1;
+      margin: 0 0 8px;
+    }
+    .subtitle {
+      color: var(--ink-soft);
+      font-size: 1.15rem;
+      margin: 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 26px;
+    }
+    .card {
+      background: var(--card);
+      border: 3px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 4px 12px rgba(27,47,91,0.06);
+      transition: all 0.22s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 32px rgba(2, 132, 199, 0.18);
+      border-color: var(--accent);
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 6px;
+    }
+    .card.c-strahl::before { background: #2563eb; }
+    .card.c-groessen::before { background: #16a34a; }
+
+    .badge {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-weight: bold;
+      font-size: 0.88rem;
+    }
+    .badge-strahl {
+      background: #dbeafe;
+      color: #1d4ed8;
+      border: 1.5px solid #93c5fd;
+    }
+    .badge-groessen {
+      background: #dcfce7;
+      color: #15803d;
+      border: 1.5px solid #86efac;
+    }
+    .card-title {
+      font-family: var(--display);
+      font-size: 1.85rem;
+      color: var(--ink);
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-desc {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      line-height: 1.5;
+      margin: 0;
+      flex-grow: 1;
+    }
+    .features-list {
+      list-style: none;
+      padding: 0;
+      margin: 4px 0 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+    }
+    .features-list li::before {
+      content: "✓ ";
+      color: #16a34a;
+      font-weight: bold;
+    }
+    .card-action {
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 2px solid var(--line);
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--display);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-head">
+      <h1>📐 Mein Mathe-Wortschatz • Klasse 5</h1>
+      <p class="subtitle">Interaktive Trainer für den mathematischen Fachwortschatz • Begleithefte &amp; Lehrwerk</p>
+    </header>
+    
+    <div class="grid">
+      <!-- Card 1: Mein Zahlenstrahl-Wortschatz -->
+      <a href="Zahlenstrahl/" class="card c-strahl">
+        <span class="badge badge-strahl">Kapitel 1.5 • Begleitheft</span>
+        <h2 class="card-title">0➔ Mein Zahlenstrahl-Wortschatz</h2>
+        <p class="card-desc">
+          Entdecke den Zahlenstrahl interaktiv: Nullpunkt, Pfeilspitze, Vorgänger, Nachfolger, Schrittweite, Einheiten und Runden.
+        </p>
+        <ul class="features-list">
+          <li>Interaktiver Schau-Zahlenstrahl</li>
+          <li>🎴 Flashcards mit Artikelfarben &amp; Sprachausgabe</li>
+          <li>🧩 Paare finden &amp; ✍️ Merktexte-Lückentext</li>
+          <li>👥 Team-Modus &amp; Solo-Lernen mit Sternen</li>
+        </ul>
+        <div class="card-action">
+          Zum Zahlenstrahl-Wortschatz ➔
+        </div>
+      </a>
+
+      <!-- Card 2: Mein Größen-Wortschatz -->
+      <a href="Groessen/" class="card c-groessen">
+        <span class="badge badge-groessen">Kapitel 1.7 &amp; 1.8 • Begleitheft</span>
+        <h2 class="card-title">⚖️📏 Mein Größen-Wortschatz</h2>
+        <p class="card-desc">
+          Größen schätzen und umrechnen: Längen, Gewichte, Zeiten, Stützpunktgrößen, Umrechnungs-Treppe und Tier-Weltrekorde.
+        </p>
+        <ul class="features-list">
+          <li>Interaktives Größen-Labor &amp; Umrechnungs-Treppe</li>
+          <li>Stützpunktgrößen (Mehl, Schokolade, Körpermaße)</li>
+          <li>🎯 Stolperstellen-Quiz (Julia &amp; Sabrina)</li>
+          <li>6 Merktexte, Paare finden &amp; Wortspeicher</li>
+        </ul>
+        <div class="card-action" style="color: #16a34a;">
+          Zum Größen-Wortschatz ➔
+        </div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
+

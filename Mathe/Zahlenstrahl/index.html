@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Zahlenstrahl-Wortarena • Klasse 5</title>
+<title>Mein Zahlenstrahl-Wortschatz • Klasse 5</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Lilita+One&display=swap" rel="stylesheet">
@@ -210,6 +210,23 @@ button:focus-visible{
 .circle-btn:hover{
   background: var(--card-hover);
   border-color: var(--accent);
+}
+.hub-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--card-2);
+  border: 2px solid var(--line);
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+}
+.hub-link:hover{
+  border-color: var(--accent);
+  color: var(--ink);
 }
 
 /* Control Pills */
@@ -449,7 +466,7 @@ button:focus-visible{
 }
 
 /* ==========================================================================
-   In-Game Header Bar & Delegation / Team Arena
+   In-Game Header Bar & Team-Modus
    ========================================================================== */
 .gbar{
   background: var(--card);
@@ -632,6 +649,25 @@ button:focus-visible{
   border: 3px solid var(--line);
   box-shadow: var(--shadow-lg);
   box-sizing: border-box;
+}
+.flash-card:not(.flipped) .flash-back {
+  visibility: hidden;
+  pointer-events: none;
+}
+.flash-card.flipped .flash-front {
+  visibility: hidden;
+  pointer-events: none;
+}
+.flash-prompt{
+  font-size: 17px;
+  color: var(--ink-soft);
+  max-width: 520px;
+  margin: 16px 0 18px;
+  padding: 10px 16px;
+  background: var(--card-2);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-md);
+  font-style: italic;
 }
 .flash-back{
   transform: rotateY(180deg);
@@ -1209,11 +1245,12 @@ function renderHome(app){
         <div class="brand-group">
           <div class="brand-badge">0➔</div>
           <div class="brand-titles">
-            <h1>Zahlenstrahl-<span>Wortarena</span></h1>
+            <h1>Mein Zahlenstrahl-<span>Wortschatz</span></h1>
             <p>Mathematischer Fachwortschatz Klasse 5 • Begleitheft „Natürliche Zahlen“</p>
           </div>
         </div>
         <div class="top-actions">
+          <a href="../index.html" class="hub-link" title="Zur Mathe-Übersicht">🏠 Mathe-Portal</a>
           <button class="circle-btn" id="theme-btn" title="Dunkel/Hell">${S.theme === 'dark' ? '☀️' : '🌙'}</button>
           <button class="circle-btn" id="sound-btn" title="Ton an/aus">${S.sound ? '🔔' : '🔕'}</button>
         </div>
@@ -1556,24 +1593,28 @@ function renderFlashcardView(app){
     <main style="max-width:780px; margin:0 auto;">
       <div class="flash-wrap" id="flash-card-wrap">
         <div class="flash-card ${S.flash.flipped ? 'flipped' : ''}" id="flash-card">
-          <!-- VORDERSEITE -->
+          <!-- VORDERSEITE: NUR BEGRIFF & FRAGE -->
           <div class="flash-face flash-front">
             <span class="art-chip ${getArticleClass(card.article)}">${card.article}</span>
             <div class="flash-word">${card.word}</div>
             <div class="flash-plural">${card.plural}</div>
-            <div class="flash-symbol">${card.symbol}</div>
+            
+            <div class="flash-prompt">
+              🤔 <b>Deine Aufgabe:</b> Was bedeutet dieser Begriff am Zahlenstrahl? Überlege zuerst selbst, bevor du die Karte umdrehst!
+            </div>
             
             <button class="speak-btn" onclick="event.stopPropagation(); speakGerman('${card.article} ${card.word}')">🔊 Wort anhören</button>
-            <div class="flash-hint">💡 Klicke auf die Karte oder drücke die Leertaste zum Umdrehen</div>
+            <div class="flash-hint" style="margin-top:16px;">💡 Klicke auf die Karte oder drücke die Leertaste zum Umdrehen</div>
           </div>
 
-          <!-- RÜCKSEITE -->
+          <!-- RÜCKSEITE: LÖSUNG, ERKLÄRUNG & MERKHILFE -->
           <div class="flash-face flash-back">
-            <span class="act-tag" style="background:var(--ok-bg); color:var(--ok); border-color:var(--ok); margin-bottom:12px;">✓ Erklärung & Merkhilfe</span>
+            <span class="act-tag" style="background:var(--ok-bg); color:var(--ok); border-color:var(--ok); margin-bottom:12px;">✓ Erklärung &amp; Lösung</span>
+            ${card.symbol ? `<div class="flash-symbol" style="margin-bottom:10px; font-size:20px;">${card.symbol}</div>` : ''}
             <div class="flash-def">${card.def}</div>
             <div class="flash-ex"><b>Beispiel:</b> „${card.example}“</div>
             <div class="flash-tip">💡 <b>Merkhilfe:</b> ${card.tip}</div>
-            <button class="speak-btn" style="margin-top:16px;" onclick="event.stopPropagation(); speakGerman('${card.def}. ${card.tip}')">🔊 Erklärung vorlesen</button>
+            <button class="speak-btn" style="margin-top:14px;" onclick="event.stopPropagation(); speakGerman('${card.def}. ${card.tip}')">🔊 Erklärung vorlesen</button>
           </div>
         </div>
       </div>
