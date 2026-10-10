@@ -1,0 +1,5 @@
+# Repo-only files that must never be published on the site.
+exclude:
+  - AGENTS.md
+  - CLAUDE.md
+  - internal
