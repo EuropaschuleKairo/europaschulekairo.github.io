@@ -444,6 +444,26 @@ button:focus-visible{
   stroke-width: 1.1px !important;
 }
 
+/* ==========================================================================
+   LESERICHTUNGS-PFEILE: Standardmäßig unsichtbar, nur beim Klick sichtbar
+   ========================================================================== */
+.scale-direction-indicator{
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.28s ease, visibility 0.28s ease;
+}
+
+.geo-part-skala-aussen.is-active .scale-direction-indicator-outer{
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.geo-part-skala-innen.is-active .scale-direction-indicator-inner{
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
 .geo-part-mittellinie.is-active line{
   stroke: #991b1b !important;
   stroke-width: 3.5px !important;
@@ -1690,6 +1710,13 @@ function renderHeroContent(){
             <filter id="geoShadow" x="-5%" y="-5%" width="110%" height="110%">
               <feDropShadow dx="0" dy="4" stdDeviation="5" flood-opacity="0.12"/>
             </filter>
+            <!-- Pfeilspitzen für Leserichtung der Skalen -->
+            <marker id="arrowOuter" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#b45309"/>
+            </marker>
+            <marker id="arrowInner" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#c2410c"/>
+            </marker>
           </defs>
 
           <!-- Geodreieck Körper (45°-45°-90° Dreieck) -->
@@ -1706,6 +1733,15 @@ function renderHeroContent(){
             <path class="arc-band" d="M 190,380 A 210,210 0 0,1 610,380 L 586,380 A 186,186 0 0,0 214,380 Z"/>
             ${outerTicks}
             ${outerTexts}
+
+            <!-- LESERICHTUNGS-PFEIL: Nur beim Anklicken sichtbar! -->
+            <g class="scale-direction-indicator scale-direction-indicator-outer">
+              <path d="M 188,335 A 217,217 0 0,1 612,335" fill="none" stroke="#b45309" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arrowOuter)"/>
+              <rect x="265" y="128" width="270" height="24" rx="12" fill="#b45309" fill-opacity="0.95"/>
+              <text x="400" y="144" font-family="var(--body)" font-weight="700" font-size="11.5" fill="#ffffff" text-anchor="middle">➔ Leserichtung: 10° bis 170° (im Uhrzeigersinn)</text>
+              <text x="175" y="325" font-family="var(--body)" font-weight="800" font-size="11" fill="#b45309" text-anchor="end">Start 10° ➔</text>
+              <text x="625" y="325" font-family="var(--body)" font-weight="800" font-size="11" fill="#b45309">➔ 170° Ende</text>
+            </g>
           </g>
 
           <!-- ========================================== -->
@@ -1718,6 +1754,15 @@ function renderHeroContent(){
             ${innerTexts}
             <!-- Trennlinie zwischen den beiden Skalen -->
             <path d="M 214,380 A 186,186 0 0,1 586,380" fill="none" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="3 2"/>
+
+            <!-- LESERICHTUNGS-PFEIL: Nur beim Anklicken sichtbar! -->
+            <g class="scale-direction-indicator scale-direction-indicator-inner">
+              <path d="M 550,348 A 153,153 0 0,0 250,348" fill="none" stroke="#c2410c" stroke-width="3.5" stroke-linecap="round" marker-end="url(#arrowInner)"/>
+              <rect x="255" y="234" width="290" height="24" rx="12" fill="#c2410c" fill-opacity="0.95"/>
+              <text x="400" y="250" font-family="var(--body)" font-weight="700" font-size="11.5" fill="#ffffff" text-anchor="middle">⬅ Leserichtung: 10° bis 170° (gegen Uhrzeigersinn)</text>
+              <text x="560" y="358" font-family="var(--body)" font-weight="800" font-size="11" fill="#c2410c">⬅ Start 10°</text>
+              <text x="240" y="358" font-family="var(--body)" font-weight="800" font-size="11" fill="#c2410c" text-anchor="end">170° Ende ⬅</text>
+            </g>
           </g>
 
           <!-- ========================================== -->
@@ -2052,9 +2097,9 @@ function showHeroTip(type){
 
   let text = '';
   if(type === 'skala-aussen'){
-    text = '🟡 <b>Die äußere Gradskala (Winkel-Außenskala):</b> Verläuft von links nach rechts (10°, 20°, 30° ... 90° ... bis 170°). Mit ihr misst und zeichnest du Winkel, deren erster Schenkel nach links zeigt. Bei 90° steht der rechte Winkel!';
+    text = '🟡 <b>Die äußere Gradskala (Winkel-Außenskala):</b> Verläuft von <b>links nach rechts</b> (10° ➔ 90° ➔ 170° im Uhrzeigersinn). Beachte den jetzt eingeblendeten <b>Pfeil für die Leserichtung</b>! Mit ihr misst du Winkel, deren erster Schenkel nach links zeigt.';
   } else if(type === 'skala-innen'){
-    text = '🟡 <b>Die innere Gradskala (Winkel-Innenskala):</b> Verläuft gegenläufig von rechts nach links (10°, 20°, 30° ... 90° ... bis 170°). Mit ihr misst du Winkel, deren erster Schenkel nach rechts zeigt. Dank zweier Skalen muss man das Geodreieck nie umdrehen!';
+    text = '🟡 <b>Die innere Gradskala (Winkel-Innenskala):</b> Verläuft gegenläufig von <b>rechts nach links</b> (10° ⬅ 90° ⬅ 170° gegen den Uhrzeigersinn). Beachte den jetzt eingeblendeten <b>Pfeil für die Leserichtung</b>! Mit ihr misst du Winkel, deren erster Schenkel nach rechts zeigt.';
   } else if(type === 'laengenskala'){
     text = '📏 <b>Die Längenskala (Millimeter &amp; Zentimeter):</b> Liegt an der langen Zeichenkante. Die 0 liegt genau in der Mitte. Nach links und rechts zählt die Skala jeweils bis 7 cm (insgesamt 14 cm Länge). Jeder Zentimeter hat 10 feine Millimeter-Teilstriche.';
   } else if(type === 'nullpunkt'){
