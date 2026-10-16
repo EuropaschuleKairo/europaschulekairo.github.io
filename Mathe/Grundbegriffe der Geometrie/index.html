@@ -1,0 +1,2645 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Mein Geometrie-Wortschatz • Das Geodreieck &amp; Grundbegriffe • Klasse 5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Lilita+One&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --paper: #fbfcfe;
+  --grid: #dbe6f4;
+  --margin: #e8a0a0;
+  --ink: #1b2f5b;
+  --ink-soft: #4b5d82;
+  --ink-muted: #7b8ea6;
+  --line: #c9d6ea;
+  --card: #ffffff;
+  --card-2: #f1f5fb;
+  --card-hover: #eaf1fa;
+
+  --accent: #0284c7;
+  --accent-ink: #ffffff;
+  --marker: #fde047;
+  --marker-ink: #1b2f5b;
+
+  /* DaZ Artikelfarben - kräftig und barrierefrei */
+  --der: #1d4ed8;
+  --die: #b91c1c;
+  --das: #15803d;
+  --verb: #6d28d9;
+  --adj: #c2410c;
+
+  /* Stufen */
+  --einfach: #15803d;
+  --einfach-bg: #dcfce7;
+  --mittel: #b45309;
+  --mittel-bg: #fef3c7;
+  --schwer: #6d28d9;
+  --schwer-bg: #f3e8ff;
+
+  --ok: #15803d;
+  --ok-bg: #dcfce7;
+  --bad: #b91c1c;
+  --bad-bg: #fee2e2;
+  --warn: #b45309;
+  --warn-bg: #fef3c7;
+
+  /* Teams */
+  --t1: #1d4ed8; /* Löwen */
+  --t2: #15803d; /* Delphine */
+  --t3: #b45309; /* Adler */
+  --t4: #be185d; /* Füchse */
+
+  --shadow: 0 2px 0 rgba(27,47,91,.1), 0 8px 24px rgba(27,47,91,.06);
+  --shadow-lg: 0 6px 0 rgba(27,47,91,.15), 0 14px 32px rgba(27,47,91,.1);
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  --display: "Lilita One", system-ui, sans-serif;
+  --body: "Andika", "Segoe UI", system-ui, sans-serif;
+}
+
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --paper: #0f172a;
+  --grid: #1e293b;
+  --margin: #5c2d3a;
+  --ink: #f1f5f9;
+  --ink-soft: #94a3b8;
+  --ink-muted: #64748b;
+  --line: #334155;
+  --card: #1e293b;
+  --card-2: #283548;
+  --card-hover: #334155;
+
+  --accent: #38bdf8;
+  --accent-ink: #0f172a;
+  --marker: #fbbf24;
+  --marker-ink: #0f172a;
+
+  --der: #3b82f6;
+  --die: #ef4444;
+  --das: #22c55e;
+  --verb: #a855f7;
+  --adj: #f97316;
+
+  --einfach: #22c55e;
+  --einfach-bg: #064e3b;
+  --mittel: #fbbf24;
+  --mittel-bg: #78350f;
+  --schwer: #c084fc;
+  --schwer-bg: #581c87;
+
+  --ok: #22c55e;
+  --ok-bg: #064e3b;
+  --bad: #ef4444;
+  --bad-bg: #450a0a;
+  --warn: #fbbf24;
+  --warn-bg: #451a03;
+
+  --t1: #60a5fa;
+  --t2: #34d399;
+  --t3: #fbbf24;
+  --t4: #f472b6;
+
+  --shadow: 0 4px 16px rgba(0,0,0,.4);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,.6);
+}
+
+*, *::before, *::after{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: var(--body);
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.45;
+  background-color: var(--paper);
+  background-image: 
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.wrap{
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 16px 20px 60px;
+}
+
+button{
+  font-family: inherit;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  transition: all 0.15s ease;
+}
+button:focus-visible{
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Header */
+.site-head{
+  border-bottom: 2px solid var(--margin);
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+}
+.head-top{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.brand-group{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.brand-badge{
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--accent), var(--das));
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-family: var(--display);
+  font-size: 28px;
+  box-shadow: 0 4px 0 rgba(27,47,91,.15);
+  flex-shrink: 0;
+}
+.brand-titles h1{
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(26px, 3.8vw, 42px);
+  font-weight: 400;
+  letter-spacing: .5px;
+  line-height: 1.15;
+  color: var(--ink);
+}
+.brand-titles h1 span{
+  background: linear-gradient(transparent 55%, var(--marker) 55%);
+  padding-inline: 4px;
+}
+.brand-titles p{
+  margin: 4px 0 0;
+  color: var(--ink-soft);
+  font-size: 16px;
+}
+.top-actions{
+  display: flex;
+  gap: 8px;
+}
+.circle-btn{
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 2px solid var(--line);
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  box-shadow: 0 2px 0 var(--line);
+}
+.circle-btn:hover{
+  background: var(--card-hover);
+  border-color: var(--accent);
+}
+.hub-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--card-2);
+  border: 2px solid var(--line);
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+}
+.hub-link:hover{
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+/* Controls Bar */
+.controls-bar{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 16px;
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  box-shadow: var(--shadow);
+}
+.ctl-col{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ctl-label{
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--ink-muted);
+}
+.pills{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.pill{
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--card-2);
+  border: 2px solid var(--line);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+}
+.pill:hover{
+  background: var(--card-hover);
+  border-color: var(--accent);
+}
+.pill[aria-pressed="true"]{
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  box-shadow: 0 2px 0 rgba(0,0,0,.15);
+}
+.pill.level-einfach[aria-pressed="true"]{ background: var(--einfach); border-color: var(--einfach); color:#fff; }
+.pill.level-mittel[aria-pressed="true"]{ background: var(--mittel); border-color: var(--mittel); color:#fff; }
+.pill.level-schwer[aria-pressed="true"]{ background: var(--schwer); border-color: var(--schwer); color:#fff; }
+
+.info-banner{
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--ink-soft);
+  background: var(--card-2);
+  border: 1px dashed var(--line);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+}
+
+/* Hero Section: Interaktives Geometrie-Labor */
+.hero-geometrie{
+  background: var(--card);
+  border: 3px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  margin-bottom: 30px;
+  box-shadow: var(--shadow);
+}
+.hero-head{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.hero-head h2{
+  margin: 0;
+  font-family: var(--display);
+  font-size: 24px;
+  color: var(--ink);
+}
+.hero-tabs{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.hero-tab{
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--card-2);
+  border: 2px solid var(--line);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+}
+.hero-tab:hover{
+  border-color: var(--accent);
+}
+.hero-tab.active{
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.svg-scroll-wrap{
+  width: 100%;
+  overflow-x: auto;
+  padding: 10px 0;
+  text-align: center;
+}
+.svg-geodreieck{
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  user-select: none;
+}
+
+/* ==========================================================================
+   GEODREIECK INTERACTION: BLASS STANDARD -> BEIM KLICK DUNKEL & DEUTLICH
+   ========================================================================== */
+.geo-part{
+  opacity: 0.45;
+  transition: opacity 0.22s ease, filter 0.22s ease;
+  cursor: pointer;
+}
+.geo-part text{
+  fill: #64748b;
+  font-weight: 500;
+  transition: fill 0.22s ease, font-weight 0.22s ease;
+}
+.geo-part line, .geo-part path{
+  stroke: #94a3b8;
+  transition: stroke 0.22s ease, stroke-width 0.22s ease;
+}
+.geo-part path.arc-band{
+  fill: #fef08a;
+  fill-opacity: 0.22;
+  stroke: #cbd5e1;
+  stroke-width: 1px;
+}
+
+/* Zahlen auf den Skalen: weißer Kontur-Rand für optimale Lesbarkeit */
+.scale-number{
+  paint-order: stroke fill;
+  stroke: #ffffff;
+  stroke-width: 2.4px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  user-select: none;
+}
+
+/* Hover-Vorschau */
+.geo-part:hover:not(.is-active){
+  opacity: 0.85;
+}
+.geo-part:hover:not(.is-active) text{
+  fill: #1e293b;
+}
+
+/* AKTIV / ANGEKLICKT: Mit deutlichen Farben, aber Skalenbogen bleibt blass! */
+.geo-part.is-active{
+  opacity: 1 !important;
+}
+.geo-part.is-active text{
+  fill: #091e42 !important;
+  font-weight: 700 !important;
+}
+.geo-part.is-active line{
+  stroke: #091e42 !important;
+  stroke-width: 1.8px !important;
+}
+
+/* Skalen: Bogen bleibt beim Antippen bewusst BLASS, damit die Zahlen perfekt lesbar sind */
+.geo-part-skala-aussen.is-active path.arc-band{
+  fill: #fef08a !important;
+  fill-opacity: 0.25 !important;
+  stroke: #ca8a04 !important;
+  stroke-width: 1.2px !important;
+}
+.geo-part-skala-aussen.is-active text.scale-number{
+  fill: #0f172a !important;
+  font-weight: 700 !important;
+}
+.geo-part-skala-aussen.is-active line{
+  stroke: #334155 !important;
+  stroke-width: 1.1px !important;
+}
+
+.geo-part-skala-innen.is-active path.arc-band{
+  fill: #fef9c3 !important;
+  fill-opacity: 0.25 !important;
+  stroke: #d97706 !important;
+  stroke-width: 1.2px !important;
+}
+.geo-part-skala-innen.is-active text.scale-number{
+  fill: #0f172a !important;
+  font-weight: 700 !important;
+}
+.geo-part-skala-innen.is-active line{
+  stroke: #334155 !important;
+  stroke-width: 1.1px !important;
+}
+
+.geo-part-mittellinie.is-active line{
+  stroke: #991b1b !important;
+  stroke-width: 3.5px !important;
+}
+.geo-part-mittellinie.is-active text{
+  fill: #991b1b !important;
+  font-weight: 800 !important;
+}
+
+.geo-part-nullpunkt.is-active circle{
+  fill: #dc2626 !important;
+  fill-opacity: 0.55 !important;
+  stroke: #991b1b !important;
+  stroke-width: 3.5px !important;
+}
+.geo-part-nullpunkt.is-active text{
+  fill: #991b1b !important;
+  font-weight: 800 !important;
+}
+
+.geo-part-laengenskala.is-active line{
+  stroke: #091e42 !important;
+  stroke-width: 2px !important;
+}
+.geo-part-laengenskala.is-active text{
+  fill: #091e42 !important;
+  font-weight: 800 !important;
+}
+
+.geo-part-parallelen.is-active line{
+  stroke: #0369a1 !important;
+  stroke-width: 2.5px !important;
+}
+.geo-part-parallelen.is-active text{
+  fill: #0c4a6e !important;
+  font-weight: 800 !important;
+}
+
+.geo-part-zeichenkante.is-active line{
+  stroke: #0284c7 !important;
+  stroke-width: 6px !important;
+}
+.geo-part-zeichenkante.is-active text{
+  fill: #0369a1 !important;
+  font-weight: 800 !important;
+}
+
+.geo-part-winkel.is-active text{
+  fill: #0369a1 !important;
+  font-weight: 800 !important;
+}
+
+/* Quick selector buttons directly under Geodreieck */
+.geo-inspect-bar{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 10px;
+  background: var(--card-2);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-md);
+  align-items: center;
+}
+.geo-inspect-label{
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin-right: 4px;
+}
+.geo-inspect-btn{
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+}
+.geo-inspect-btn:hover{
+  border-color: var(--accent);
+  background: var(--card-hover);
+}
+.geo-inspect-btn.active{
+  background: #091e42;
+  border-color: #091e42;
+  color: #fff;
+}
+
+.hero-explainer{
+  margin-top: 14px;
+  background: var(--card-2);
+  border: 2px dashed var(--line);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.hero-explainer-text{
+  font-size: 16px;
+  color: var(--ink);
+  line-height: 1.45;
+}
+.hero-explainer-text b{
+  color: var(--accent);
+}
+.speak-btn{
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: 6px 14px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.speak-btn:hover{
+  border-color: var(--accent);
+  background: var(--card-hover);
+}
+
+/* Activity Grid */
+.act-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 34px;
+}
+.act-card{
+  background: var(--card);
+  border: 3px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  transition: transform .18s, border-color .18s, box-shadow .18s;
+  cursor: pointer;
+}
+.act-card:hover{
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-lg);
+}
+.act-card::before{
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+}
+.act-card[data-act="flashcard"]::before{ background: var(--accent); }
+.act-card[data-act="matching"]::before{ background: var(--das); }
+.act-card[data-act="cloze"]::before{ background: var(--mittel); }
+.act-card[data-act="quiz"]::before{ background: var(--schwer); }
+
+.act-card-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.act-card h3{
+  margin: 0;
+  font-family: var(--display);
+  font-size: 24px;
+  color: var(--ink);
+}
+.act-icon-box{
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--card-2);
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.act-desc{
+  margin: 0 0 16px;
+  color: var(--ink-soft);
+  font-size: 15px;
+  flex-grow: 1;
+}
+.act-card-bottom{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 2px solid var(--line);
+}
+.act-tag{
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-muted);
+}
+.start-btn-label{
+  font-family: var(--display);
+  font-size: 16px;
+  color: var(--accent);
+}
+
+/* Activity Container Common */
+.activity-container{
+  background: var(--card);
+  border: 3px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  box-shadow: var(--shadow);
+  margin-bottom: 30px;
+}
+.act-header{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding-bottom: 18px;
+  margin-bottom: 22px;
+  border-bottom: 2px solid var(--line);
+}
+.act-title-box{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.act-title-box h2{
+  margin: 0;
+  font-family: var(--display);
+  font-size: 28px;
+  color: var(--ink);
+}
+.back-btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--card-2);
+  border: 2px solid var(--line);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--ink);
+  cursor: pointer;
+}
+.back-btn:hover{
+  background: var(--card-hover);
+  border-color: var(--accent);
+}
+
+/* Team / Solo Status Bar */
+.game-status-bar{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--card-2);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  margin-bottom: 22px;
+}
+.team-pills{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.team-badge{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 14px;
+  border: 2px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+}
+.team-badge.active{
+  border-color: currentColor;
+  box-shadow: 0 0 0 2px rgba(37,99,235,.2);
+  transform: scale(1.05);
+}
+
+/* Flashcards View */
+.flash-wrap{
+  max-width: 680px;
+  margin: 0 auto;
+}
+.flash-card-scene{
+  perspective: 1000px;
+  margin-bottom: 22px;
+}
+.flash-card{
+  width: 100%;
+  min-height: 360px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.4, 0.2, 0.2, 1);
+  cursor: pointer;
+}
+.flash-card.is-flipped{
+  transform: rotateY(180deg);
+}
+.flash-face{
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  backface-visibility: hidden;
+  border-radius: var(--radius-lg);
+  border: 3px solid var(--line);
+  background: var(--card);
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+}
+.flash-face.back{
+  transform: rotateY(180deg);
+  background: var(--card-2);
+}
+.flash-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* DaZ Artikelfarben Pills - kräftig und immer sichtbar */
+.article-pill{
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 13px;
+  color: #ffffff !important;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.18);
+  letter-spacing: .5px;
+}
+.article-der{ background-color: var(--der) !important; color: #ffffff !important; }
+.article-die{ background-color: var(--die) !important; color: #ffffff !important; }
+.article-das{ background-color: var(--das) !important; color: #ffffff !important; }
+.article-verb{ background-color: var(--verb) !important; color: #ffffff !important; }
+.article-adjektiv{ background-color: var(--adj) !important; color: #ffffff !important; }
+.article-nomen{ background-color: var(--accent) !important; color: #ffffff !important; }
+
+.flash-word{
+  text-align: center;
+  margin: auto 0;
+}
+.flash-word-title{
+  font-family: var(--display);
+  font-size: clamp(34px, 5.5vw, 48px);
+  margin: 0 0 10px;
+  color: var(--ink);
+}
+.flash-word-plural{
+  font-size: 19px;
+  color: var(--ink-soft);
+  font-weight: 700;
+}
+.flash-flip-hint{
+  text-align: center;
+  font-size: 14px;
+  color: var(--ink-muted);
+}
+.flash-symbol{
+  font-family: var(--display);
+  font-size: 22px;
+  color: var(--accent);
+  background: var(--card);
+  border: 2px solid var(--line);
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+}
+.flash-def{
+  font-size: 19px;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.flash-example{
+  font-size: 16px;
+  color: var(--ink-soft);
+  font-style: italic;
+  border-left: 3px solid var(--accent);
+  padding-left: 10px;
+  margin-bottom: 12px;
+}
+.flash-tip{
+  background: #fef9c3;
+  color: #854d0e;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+}
+:root[data-theme="dark"] .flash-tip{
+  background: #713f12;
+  color: #fef08a;
+}
+.flash-controls{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.flash-nav-btn{
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
+  background: var(--card-2);
+  border: 2px solid var(--line);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+}
+.flash-nav-btn:hover{
+  border-color: var(--accent);
+}
+.flash-rate-btn{
+  flex: 1;
+  padding: 12px 18px;
+  border-radius: var(--radius-pill);
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 400;
+  cursor: pointer;
+  color: #fff;
+}
+.flash-rate-btn.repeat{
+  background: var(--bad);
+}
+.flash-rate-btn.known{
+  background: var(--ok);
+}
+
+/* Matching Activity */
+.match-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.match-card{
+  min-height: 120px;
+  background: var(--card);
+  border: 3px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform .15s, border-color .15s;
+}
+.match-card:hover{
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+.match-card.selected{
+  border-color: var(--accent);
+  background: var(--card-hover);
+  box-shadow: 0 0 0 3px rgba(2,132,199,.25);
+}
+.match-card.matched{
+  border-color: var(--ok);
+  background: var(--ok-bg);
+  cursor: default;
+  transform: none;
+}
+.match-card.wrong{
+  border-color: var(--bad);
+  background: var(--bad-bg);
+  animation: shake 0.4s;
+}
+@keyframes shake{
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+.match-card-word{
+  font-family: var(--display);
+  font-size: 22px;
+  color: var(--ink);
+}
+.match-card-def{
+  font-size: 15px;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+/* Cloze View */
+.cloze-story{
+  background: var(--card-2);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 22px;
+  font-size: 20px;
+  line-height: 2;
+  color: var(--ink);
+}
+.cloze-blank{
+  display: inline-block;
+  min-width: 140px;
+  height: 38px;
+  padding: 0 12px;
+  margin: 0 4px;
+  border-radius: var(--radius-sm);
+  border: 2px dashed var(--accent);
+  background: var(--card);
+  color: var(--ink);
+  font-weight: 700;
+  text-align: center;
+  line-height: 34px;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.cloze-blank.active{
+  border-style: solid;
+  border-color: var(--accent);
+  background: #e0f2fe;
+}
+.cloze-blank.filled{
+  border-style: solid;
+  border-color: var(--accent);
+}
+.cloze-blank.correct{
+  border-color: var(--ok);
+  background: var(--ok-bg);
+  color: #15803d;
+}
+.cloze-blank.wrong{
+  border-color: var(--bad);
+  background: var(--bad-bg);
+  color: #b91c1c;
+}
+.word-bank{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+  padding: 16px;
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-md);
+}
+.word-chip{
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--card-2);
+  border: 2px solid var(--line);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 0 2px 0 var(--line);
+}
+.word-chip:hover{
+  border-color: var(--accent);
+  background: var(--card-hover);
+}
+.word-chip.used{
+  opacity: 0.35;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+/* Quiz View */
+.quiz-card{
+  max-width: 720px;
+  margin: 0 auto;
+}
+.quiz-q-num{
+  font-family: var(--display);
+  font-size: 16px;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.quiz-q-title{
+  font-family: var(--display);
+  font-size: 26px;
+  margin: 0 0 12px;
+  color: var(--ink);
+}
+.quiz-q-text{
+  font-size: 20px;
+  line-height: 1.45;
+  margin-bottom: 22px;
+  color: var(--ink);
+}
+.quiz-options{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+.quiz-opt-btn{
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  border: 3px solid var(--line);
+  background: var(--card);
+  text-align: left;
+  font-size: 17px;
+  line-height: 1.4;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.15s ease;
+}
+.quiz-opt-btn:hover:not(:disabled){
+  border-color: var(--accent);
+  background: var(--card-hover);
+}
+.quiz-opt-btn.correct{
+  border-color: var(--ok);
+  background: var(--ok-bg);
+  font-weight: 700;
+}
+.quiz-opt-btn.wrong{
+  border-color: var(--bad);
+  background: var(--bad-bg);
+}
+.quiz-opt-mark{
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--line);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.quiz-explanation{
+  background: var(--card-2);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 16px 18px;
+  font-size: 16px;
+  line-height: 1.45;
+  margin-bottom: 20px;
+}
+
+/* Action Buttons */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 16px;
+  border: 2px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+}
+.btn:hover{
+  border-color: var(--accent);
+  background: var(--card-hover);
+}
+.btn.primary{
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 0 rgba(2,132,199,.25);
+}
+.btn.primary:hover{
+  filter: brightness(1.08);
+}
+
+/* Wortspeicher (Lexikon) */
+.lexikon-sec{
+  background: var(--card);
+  border: 3px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+.lexikon-head{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.lexikon-head h3{
+  margin: 0;
+  font-family: var(--display);
+  font-size: 24px;
+  color: var(--ink);
+}
+.lex-search{
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--line);
+  font-size: 15px;
+  background: var(--card-2);
+  color: var(--ink);
+  outline: none;
+  min-width: 220px;
+}
+.lex-search:focus{
+  border-color: var(--accent);
+}
+.lex-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+.lex-card{
+  background: var(--card-2);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.lex-card-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.lex-word{
+  font-family: var(--display);
+  font-size: 20px;
+}
+.lex-def{
+  font-size: 15px;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.lex-ex{
+  font-size: 14px;
+  color: var(--ink-soft);
+  font-style: italic;
+  border-left: 3px solid var(--accent);
+  padding-left: 8px;
+}
+
+/* Print */
+@media print{
+  body{ background: #fff; }
+  .site-head .controls-bar, .site-head .top-actions, .act-grid, .hero-geometrie, button{
+    display: none !important;
+  }
+  .lex-grid{ grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap" id="app"></div>
+
+<script>
+/* ==========================================================================
+   MATHE-WORTSCHATZ APP DATA & STATE (Grundbegriffe der Geometrie)
+   ========================================================================== */
+const DATA = {"vocab": [{"id": "geo_01", "word": "Geodreieck", "article": "das", "plural": "die Geodreiecke", "category": "nomen", "level": "einfach", "levelLabel": "Einfach", "def": "Ein rechtwinkliges, gleichschenkliges Zeichendreieck mit Skala und Hilfslinien zum genauen Messen und Zeichnen von Strecken und Winkeln.", "example": "Mit dem Geodreieck zeichnen wir senkrechte und parallele Geraden.", "tip": "Das wichtigste Werkzeug in der Geometrie! Es vereint Lineal, Winkelmesser und Parallellinien.", "symbol": "📐 90°-Dreieck", "matchingShort": "Rechtwinkliges Zeichendreieck mit Skala und Hilfslinien"}, {"id": "geo_02", "word": "Zeichenkante", "article": "die", "plural": "die Zeichenkanten", "category": "nomen", "level": "einfach", "levelLabel": "Einfach", "def": "Die lange Grundseite des Geodreiecks mit der Millimeterskala, an der man mit dem Bleistift gerade Linien zieht.", "example": "Lege den Bleistift an die Zeichenkante des Geodreiecks und ziehe eine saubere Linie.", "tip": "Wird auch Grundkante oder Grundseite genannt. In ihrer Mitte liegt die Null!", "symbol": "📏 Kante mit Skala", "matchingShort": "Die lange Kante des Geodreiecks zum Ziehen gerader Linien"}, {"id": "geo_03", "word": "Nullpunkt", "article": "der", "plural": "die Nullpunkte", "category": "nomen", "level": "einfach", "levelLabel": "Einfach", "def": "Die Markierung mit der Zahl 0 genau in der Mitte der Zeichenkante des Geodreiecks.", "example": "Setze den Nullpunkt genau auf den Anfangspunkt der Strecke, um ihre Länge zu messen.", "tip": "Von der 0 zählt die Skala nach links und nach rechts jeweils bis 7 cm!", "symbol": "📍 0 in der Kantenmitte", "matchingShort": "Die Markierung mit der Zahl 0 genau in der Mitte der Zeichenkante"}, {"id": "geo_04", "word": "Skala", "article": "die", "plural": "die Skalen", "category": "nomen", "level": "einfach", "levelLabel": "Einfach", "def": "Die genaue Einteilung in Zentimeter und Millimeter auf der Zeichenkante zum Messen von Längen.", "example": "Lies an der Skala ab, wie viele Millimeter die Strecke lang ist.", "tip": "10 Millimeter (mm) ergeben genau 1 Zentimeter (cm).", "symbol": "├──┼──┤ mm/cm", "matchingShort": "Genaue Millimeter- und Zentimeter-Einteilung zum Längenmessen"}, {"id": "geo_05", "word": "Punkt", "article": "der", "plural": "die Punkte", "category": "nomen", "level": "einfach", "levelLabel": "Einfach", "def": "Eine ganz bestimmte, exakte Stelle in der Geometrie. Man zeichnet ihn als feines Kreuzchen oder Punkt und benennt ihn mit einem Großbuchstaben.", "example": "Markiere den Punkt A und den Punkt B im Heft.", "tip": "Punkte haben keine Ausdehnung (weder Länge noch Breite) und heißen immer A, B, C, P...", "symbol": "✕ A oder • P", "matchingShort": "Ganz bestimmte Stelle, benannt mit Großbuchstaben (A, B, P)"}, {"id": "geo_06", "word": "Strecke", "article": "die", "plural": "die Strecken", "category": "nomen", "level": "einfach", "levelLabel": "Einfach", "def": "Die gerade Linie zwischen zwei Punkten A und B. Sie hat einen Anfangspunkt, einen Endpunkt und eine messbare Länge. Sie ist die kürzeste Verbindung.", "example": "Die Strecke AB ist genau 4 cm lang. Man schreibt: AB mit Querstrich oben drüber.", "tip": "Eine Strecke hat zwei feste Endpunkte. Du kannst ihre Länge mit dem Lineal messen!", "symbol": "A •──────• B", "matchingShort": "Gerade Linie zwischen 2 Punkten mit Anfangs- und Endpunkt"}, {"id": "geo_07", "word": "Strahl", "article": "der", "plural": "die Strahlen", "category": "nomen", "level": "einfach", "levelLabel": "Einfach", "def": "Eine gerade Linie, die einen festen Anfangspunkt hat, aber keinen Endpunkt. Er geht in eine Richtung unendlich weiter (auch Halbgerade genannt).", "example": "Der Strahl beginnt im Punkt C und verläuft durch den Punkt A ins Unendliche.", "tip": "Wie ein Sonnenstrahl: Er startet an der Sonne (Anfangspunkt) und fliegt endlos ins Weltall!", "symbol": "A •───────>", "matchingShort": "Gerade Linie mit 1 Anfangspunkt, die endlos in eine Richtung verläuft"}, {"id": "geo_08", "word": "Gerade", "article": "die", "plural": "die Geraden", "category": "nomen", "level": "einfach", "levelLabel": "Einfach", "def": "Eine gerade Linie ohne Anfangspunkt und ohne Endpunkt. Sie reicht in beide Richtungen unbegrenzt weit ins Unendliche und wird mit Kleinbuchstaben benannt (g, h).", "example": "Zeichne eine Gerade g durch die beiden Punkte A und B.", "tip": "Eine Gerade hat kein Ende! Im Heft zeichnen wir nur einen Ausschnitt davon.", "symbol": "<───────> g", "matchingShort": "Gerade Linie ohne Anfang und Ende (unendlich in beide Richtungen)"}, {"id": "geo_09", "word": "senkrecht", "article": "das Adjektiv", "plural": "senkrecht zueinander", "category": "adjektiv", "level": "einfach", "levelLabel": "Einfach", "def": "Zwei Geraden oder Strecken stehen senkrecht zueinander, wenn sie sich schneiden und einen rechten Winkel (90°) bilden. Mathematisches Zeichen: ⊥.", "example": "Die Gerade f steht senkrecht auf der Geraden g. Man schreibt: f ⊥ g.", "tip": "Erinnere dich an das T-förmige Zeichen: Der Querbalken steht senkrecht auf dem Fuß!", "symbol": "f ⊥ g (90°)", "matchingShort": "Linien schneiden sich im rechten Winkel von genau 90° (f ⊥ g)"}, {"id": "geo_10", "word": "parallel", "article": "das Adjektiv", "plural": "parallel zueinander", "category": "adjektiv", "level": "einfach", "levelLabel": "Einfach", "def": "Zwei Geraden in einer Ebene sind parallel, wenn sie überall denselben Abstand haben und sich niemals schneiden. Mathematisches Zeichen: ∥.", "example": "Die Bahngleise verlaufen parallel zueinander. Man schreibt: h ∥ k.", "tip": "Das Symbol ∥ sieht selbst wie zwei parallele Geraden aus!", "symbol": "h ∥ k", "matchingShort": "Geraden haben überall denselben Abstand und schneiden sich nie (h ∥ k)"}, {"id": "geo_11", "word": "Mittellinie", "article": "die", "plural": "die Mittellinien", "category": "nomen", "level": "mittel", "levelLabel": "Mittel", "def": "Die senkrechte Hilfslinie des Geodreiecks, die von der 90°-Spitze genau durch den Nullpunkt verläuft.", "example": "Lege die Mittellinie auf die Gerade g, um eine Senkrechte zu zeichnen.", "tip": "Sie teilt das Geodreieck in zwei spiegelgleiche Hälften und garantiert exakte 90°-Winkel!", "symbol": "▲ Senkrechte Linie im Dreieck", "matchingShort": "Hilfslinie von der Spitze zur 0 zum Zeichnen von 90°-Winkeln"}, {"id": "geo_12", "word": "Parallelenlinie", "article": "die", "plural": "die Parallelenlinien", "category": "nomen", "level": "mittel", "levelLabel": "Mittel", "def": "Die Hilfslinien im Inneren des Geodreiecks, die parallel zur Zeichenkante im Abstand von Millimetern und Zentimetern angeordnet sind.", "example": "Lege die 2-cm-Parallelenlinie auf die gegebene Gerade, um eine Parallele im Abstand von 2 cm zu ziehen.", "tip": "Perfekt für kleine Abstände bis ca. 3 cm ohne extra Hilfslinien konstruieren zu müssen!", "symbol": "═ Waagerechte Hilfslinien", "matchingShort": "Waagerechte Hilfslinien im Geodreieck zum Zeichnen paralleler Linien"}, {"id": "geo_13", "word": "rechter Winkel", "article": "der", "plural": "die rechten Winkel", "category": "nomen", "level": "mittel", "levelLabel": "Mittel", "def": "Ein Winkel von genau 90 Grad. Er entsteht, wenn zwei Linien genau senkrecht aufeinander stehen. Man markiert ihn mit einem Bogen und einem Punkt darin.", "example": "Die beiden Schenkel an der oberen Spitze des Geodreiecks bilden einen rechten Winkel.", "tip": "Ein rechter Winkel ist wie die Ecke eines Schulhefts oder eines Zimmers!", "symbol": "📐 90° mit Bogen & Punkt", "matchingShort": "Winkel von genau 90 Grad, markiert mit einem Bogen und Punkt"}, {"id": "geo_14", "word": "Schnittpunkt", "article": "der", "plural": "die Schnittpunkte", "category": "nomen", "level": "mittel", "levelLabel": "Mittel", "def": "Der gemeinsame Punkt, an dem sich zwei nicht parallele Geraden oder Strecken kreuzen.", "example": "Die Geraden g und h schneiden sich im Schnittpunkt S.", "tip": "Parallele Geraden haben niemals einen Schnittpunkt! Zwei verschiedene Geraden haben höchstens einen Schnittpunkt.", "symbol": "✕ Schnittpunkt S", "matchingShort": "Der gemeinsame Punkt, an dem sich zwei Geraden kreuzen"}, {"id": "geo_15", "word": "Abstand", "article": "der", "plural": "die Abstände", "category": "nomen", "level": "mittel", "levelLabel": "Mittel", "def": "Die kürzeste Verbindung zwischen zwei zueinander parallelen Geraden oder von einem Punkt zu einer Geraden. Er wird immer senkrecht gemessen.", "example": "Der Abstand der parallelen Geraden g und h beträgt genau 3 cm.", "tip": "Stolperfalle: Miss den Abstand niemals schräg! Er muss immer im rechten 90°-Winkel gemessen werden.", "symbol": "├── kürzeste Strecke ──┤", "matchingShort": "Kürzeste, immer senkrecht gemessene Verbindung zweier Parallelen"}, {"id": "geo_16", "word": "Anfangspunkt", "article": "der", "plural": "die Anfangspunkte", "category": "nomen", "level": "mittel", "levelLabel": "Mittel", "def": "Der Startpunkt, an dem eine Strecke oder ein Strahl beginnt.", "example": "Punkt A ist der Anfangspunkt der Strecke AB.", "tip": "Eine Strecke hat Anfangs- und Endpunkt; ein Strahl hat nur einen Anfangspunkt; eine Gerade hat keinen!", "symbol": "• Anfang", "matchingShort": "Der feste Startpunkt, an dem eine Strecke oder ein Strahl beginnt"}, {"id": "geo_17", "word": "Endpunkt", "article": "der", "plural": "die Endpunkte", "category": "nomen", "level": "mittel", "levelLabel": "Mittel", "def": "Der Schlusspunkt, an dem eine Strecke aufhört.", "example": "Punkt B ist der Endpunkt der Strecke AB.", "tip": "Ein Strahl und eine Gerade haben niemals einen Endpunkt, nur eine Strecke!", "symbol": "Ende •", "matchingShort": "Der Schlusspunkt, an dem eine Strecke endet"}, {"id": "geo_18", "word": "Hilfslinie", "article": "die", "plural": "die Hilfslinien", "category": "nomen", "level": "mittel", "levelLabel": "Mittel", "def": "Eine feine zusätzliche Linie im Heft oder auf dem Geodreieck, die hilft, genaue Konstruktionen wie große Abstände oder Senkrechte zu zeichnen.", "example": "Für einen Abstand von 6 cm zeichnen wir zuerst eine senkrechte Hilfslinie h.", "tip": "Hilfslinien zeichnet man im Heft mit spitzem Bleistift ganz zart!", "symbol": "┆ gestrichelte Linie", "matchingShort": "Zusätzliche feine Linie, die beim genauen Konstruieren hilft"}, {"id": "geo_19", "word": "waagerecht", "article": "das Adjektiv", "plural": "horizontal", "category": "adjektiv", "level": "mittel", "levelLabel": "Mittel", "def": "Gerade Linie parallel zum flachen Horizont oder zum oberen/unteren Blattrand (von links nach rechts). In der Fachsprache horizontal.", "example": "Die Zeilen in deinem Schreibheft verlaufen waagerecht.", "tip": "Alltagssprache: waagerecht; mathematische Fachsprache: horizontal.", "symbol": "──── (horizontal)", "matchingShort": "Verlauf wie der Horizont von links nach rechts (horizontal)"}, {"id": "geo_20", "word": "vertikal", "article": "das Adjektiv", "plural": "lotrecht", "category": "adjektiv", "level": "mittel", "levelLabel": "Mittel", "def": "Genau von oben nach unten verlaufend (wie eine Lotschnur oder eine Hauswand). In der Alltagssprache wird dies oft senkrecht genannt.", "example": "Die Mittellinie des Geodreiecks zeigt vertikal nach oben.", "tip": "Achtung: Im Alltag meint man mit senkrecht oft vertikal (nach oben). In der Mathe meint senkrecht aber 90° zueinander!", "symbol": "│ (lotrecht)", "matchingShort": "Gerade von oben nach unten verlaufend (lotrecht)"}, {"id": "geo_21", "word": "orthogonal", "article": "das Adjektiv", "plural": "senkrecht aufeinander", "category": "adjektiv", "level": "schwer", "levelLabel": "Schwer", "def": "Der vornehme mathematische Fachbegriff für senkrecht zueinander. Stammt aus dem Griechischen (orthos = recht/gerade, gonia = Winkel).", "example": "Zwei orthogonale Geraden schneiden sich unter einem Winkel von 90°.", "tip": "Orthogonal und senkrecht zueinander bedeuten in der Mathematik genau dasselbe!", "symbol": "⊥ (orthogonal)", "matchingShort": "Vornehmer mathematischer Fachbegriff für senkrecht zueinander (90°)"}, {"id": "geo_22", "word": "Parallelverschiebung", "article": "die", "plural": "die Parallelverschiebungen", "category": "nomen", "level": "schwer", "levelLabel": "Schwer", "def": "Eine geometrische Abbildung, bei der alle Punkte einer Figur in dieselbe Richtung um Strecken mit gleicher Länge verschoben werden.", "example": "Mit Geodreieck und Lineal führen wir eine Parallelverschiebung des Quadrats durch.", "tip": "Bei der Parallelverschiebung bleiben Streckenlängen, Winkelgrößen und die Form komplett erhalten!", "symbol": "⇗ Figur verschieben", "matchingShort": "Verschieben aller Punkte einer Figur in dieselbe Richtung und Weite"}, {"id": "geo_23", "word": "Verschiebungspfeil", "article": "der", "plural": "die Verschiebungspfeile", "category": "nomen", "level": "schwer", "levelLabel": "Schwer", "def": "Ein gerichteter Pfeil, dessen Richtung die Verschiebungsrichtung und dessen Länge die genaue Verschiebungslänge angibt.", "example": "Zeichne den Verschiebungspfeil von Punkt D zum Bildpunkt D' ein.", "tip": "Ein einziger Verschiebungspfeil genügt, um eine Parallelverschiebung eindeutig festzulegen!", "symbol": "•───> Pfeil", "matchingShort": "Pfeil, der Richtung und Länge einer Parallelverschiebung festlegt"}, {"id": "geo_24", "word": "messen", "article": "das Verb", "plural": "misst, maß, gemessen", "category": "verb", "level": "einfach", "levelLabel": "Einfach", "def": "Mit der Skala des Geodreiecks oder Lineals die genaue Länge einer Strecke bestimmen.", "example": "Wir messen die Strecke AB: Sie ist genau 5,3 cm lang.", "tip": "Immer den Nullpunkt exakt an den Anfangspunkt anlegen und bis zum Endpunkt ablesen!", "symbol": "📐 Längenbestimmung", "matchingShort": "Mit dem Geodreieck die genaue Länge einer Strecke bestimmen"}, {"id": "geo_25", "word": "anlegen", "article": "das Verb", "plural": "legt an, legte an, angelegt", "category": "verb", "level": "einfach", "levelLabel": "Einfach", "def": "Das Geodreieck mit der Zeichenkante oder Mittellinie exakt an eine Gerade oder einen Punkt platzieren.", "example": "Lege das Geodreieck mit der Mittellinie auf die Gerade g an.", "tip": "Das Geodreieck mit den Fingern gut festhalten, damit es beim Zeichnen nicht verrutscht!", "symbol": "📐 Platzieren", "matchingShort": "Das Geodreieck sauber an einer Linie oder einem Punkt platzieren"}, {"id": "geo_26", "word": "schneiden", "article": "das Verb", "plural": "schneiden sich, schnitt, geschnitten", "category": "verb", "level": "mittel", "levelLabel": "Mittel", "def": "Wenn zwei Geraden einen gemeinsamen Schnittpunkt haben und sich kreuzen.", "example": "Die beiden Geraden schneiden sich im Punkt S im rechten Winkel.", "tip": "Parallele Geraden schneiden sich niemals!", "symbol": "✕ Kreuzen", "matchingShort": "Einen gemeinsamen Schnittpunkt haben (sich kreuzen)"}, {"id": "geo_27", "word": "verlängern", "article": "das Verb", "plural": "verlängert, verlängerte, verlängert", "category": "verb", "level": "mittel", "levelLabel": "Mittel", "def": "Eine Strecke mit dem Lineal über ihre Endpunkte hinaus weiterzeichnen (so entsteht ein Strahl oder eine Gerade).", "example": "Verlängert man die Strecke über Punkt B hinaus, erhält man einen Strahl.", "tip": "Theo dachte, Geraden schneiden sich nicht – aber verlängert man sie, kreuzen sie sich oft doch!", "symbol": "───•───> Weiterzeichnen", "matchingShort": "Eine Linie über ihre Endpunkte hinaus geradlinig weiterzeichnen"}, {"id": "geo_28", "word": "verbinden", "article": "das Verb", "plural": "verbindet, verband, verbunden", "category": "verb", "level": "einfach", "levelLabel": "Einfach", "def": "Mit dem Geodreieck eine gerade Linie zwischen zwei Punkten zeichnen.", "example": "Verbinde Punkt A mit Punkt B, um die Strecke AB zu zeichnen.", "tip": "Die kürzeste Verbindung zwischen zwei Punkten ist immer die gerade Strecke!", "symbol": "A ── B Linie ziehen", "matchingShort": "Eine gerade Linie zwischen zwei Punkten mit dem Lineal ziehen"}], "cloze": [{"id": "cloze_01", "level": "einfach", "title": "Basiswissen: Strecke, Strahl und Gerade", "storyText": "In der Geometrie unterscheiden wir drei wichtige Linien. Die gerade Linie von Punkt A nach Punkt B heißt [Strecke]. Sie hat einen Anfangspunkt und einen [Endpunkt]. Eine Strecke ist die kürzeste [Verbindung] zwischen zwei Punkten. Ihre Länge kann man mit der [Skala] des Geodreiecks messen. Verlängert man die Strecke über einen der Punkte hinaus, entsteht ein [Strahl]. Er hat einen Anfangspunkt, aber keinen Endpunkt. Verlängert man die Linie über beide Punkte unendlich weit, erhält man eine [Gerade]. Eine Gerade hat weder Anfangspunkt noch Endpunkt und wird mit einem [Kleinbuchstaben] bezeichnet.", "blanks": ["Strecke", "Endpunkt", "Verbindung", "Skala", "Strahl", "Gerade", "Kleinbuchstaben"], "wordBank": ["Strecke", "Endpunkt", "Verbindung", "Skala", "Strahl", "Gerade", "Kleinbuchstaben", "Nullpunkt", "Mittellinie", "Abstand"]}, {"id": "cloze_02", "level": "mittel", "title": "Merktext: Das Geodreieck und seine Hilfslinien", "storyText": "Das Geodreieck ist das wichtigste Werkzeug für den Geometrieunterricht. Die lange Kante zum Zeichnen nennt man [Zeichenkante]. Genau in der Mitte dieser Kante liegt der [Nullpunkt]. Von der 0 aus verläuft die Skala in Zentimetern und Millimetern nach links und rechts. Von der oberen Spitze genau zur 0 verläuft die [Mittellinie]. Mit ihrer Hilfe zeichnet man [senkrechte] Geraden und rechte Winkel. Im Inneren des Geodreiecks verlaufen waagerechte [Parallelenlinien]. Mit ihnen kann man parallele Geraden mit festem [Abstand] zeichnen.", "blanks": ["Zeichenkante", "Nullpunkt", "Mittellinie", "senkrechte", "Parallelenlinien", "Abstand"], "wordBank": ["Zeichenkante", "Nullpunkt", "Mittellinie", "senkrechte", "Parallelenlinien", "Abstand", "Verschiebungspfeil", "Strahl", "Gerade"]}, {"id": "cloze_03", "level": "mittel", "title": "Merktext: Senkrecht und parallel zueinander", "storyText": "Zwei Geraden f und g sind [senkrecht] zueinander (oder [orthogonal]), wenn sie einen gemeinsamen [Schnittpunkt] haben und einen [rechten Winkel] bilden. In der Mathematik schreibt man dafür f ⊥ g. Zwei Geraden h und k sind [parallel] zueinander, wenn sie überall denselben [Abstand] voneinander haben und somit keinen gemeinsamen Schnittpunkt besitzen. Man schreibt dafür h ∥ k. In der Alltagssprache sagt man oft [waagerecht] (horizontal) und senkrecht (vertikal).", "blanks": ["senkrecht", "orthogonal", "Schnittpunkt", "rechten Winkel", "parallel", "Abstand", "waagerecht"], "wordBank": ["senkrecht", "orthogonal", "Schnittpunkt", "rechten Winkel", "parallel", "Abstand", "waagerecht", "Nullpunkt", "Endpunkt", "Strecke"]}, {"id": "cloze_04", "level": "schwer", "title": "Profi-Wissen: Abstand und Parallelverschiebung", "storyText": "Der [Abstand] von zwei zueinander parallelen Geraden ist immer die [kürzeste Verbindung] zwischen diesen Geraden. Man misst ihn immer im [rechten Winkel] (also senkrecht), niemals schräg! Bei einer [Parallelverschiebung] werden alle Punkte einer geometrischen Figur in dieselbe Richtung um Strecken mit gleicher Länge verschoben. Die Richtung und Weite wird durch einen [Verschiebungspfeil] angegeben. Bei der Verschiebung bleiben alle Streckenlängen, [Winkelgrößen] und die Form der Figur vollständig erhalten.", "blanks": ["Abstand", "kürzeste Verbindung", "rechten Winkel", "Parallelverschiebung", "Verschiebungspfeil", "Winkelgrößen"], "wordBank": ["Abstand", "kürzeste Verbindung", "rechten Winkel", "Parallelverschiebung", "Verschiebungspfeil", "Winkelgrößen", "Zeichenkante", "Skala", "Punkt"]}], "quiz": [{"id": "q1", "title": "Stolperstelle Theo", "text": "Theo schaut auf zwei gezeichnete Geraden g und h, die sich auf seinem Blatt Papier nicht berühren. Er behauptet: „g liegt parallel zu h, da sich die Geraden nicht schneiden.“ Was meinst du zu Theos Aussage?", "options": [{"text": "Theo irrt sich: Geraden sind unendlich lang! Wenn man sie über das Heft hinaus verlängert, können sie sich trotzdem schneiden.", "correct": true}, {"text": "Theo hat recht: Wenn sich zwei Linien im Heft nicht kreuzen, sind sie immer parallel.", "correct": false}, {"text": "Theo hat unrecht, weil parallele Geraden immer genau 10 cm lang sein müssen.", "correct": false}, {"text": "Geraden schneiden sich grundsätzlich immer, parallele Geraden gibt es in der Realität nicht.", "correct": false}], "explanation": "Stolperfalle aus Schulbuch 2.1! Geraden haben weder Anfang noch Ende, sie reichen unendlich weit. Nur wenn sie überall denselben Abstand haben und sich auch bei unendlicher Verlängerung nie schneiden, sind sie parallel!"}, {"id": "q2", "title": "Geodreieck: Mittellinie", "text": "Wozu dient die Mittellinie auf deinem Geodreieck?", "options": [{"text": "Zum Zeichnen von senkrechten Geraden und zum Prüfen rechter 90°-Winkel.", "correct": true}, {"text": "Zum Messen von krummen Linien.", "correct": false}, {"text": "Ausschließlich zum Zeichnen von Parallelen im Abstand von 5 cm.", "correct": false}, {"text": "Um das Geodreieck in der Schultasche festzuhalten.", "correct": false}], "explanation": "Die Mittellinie verläuft von der 90°-Spitze genau zur 0 auf der Zeichenkante. Legt man sie exakt auf eine Gerade g, zeichnet man entlang der Kante eine senkrechte Gerade (90°)."}, {"id": "q3", "title": "Mathematische Symbole: Senkrecht", "text": "Was bedeutet der mathematische Ausdruck f ⊥ g?", "options": [{"text": "Die Gerade f steht senkrecht auf der Geraden g (sie bilden einen rechten 90°-Winkel).", "correct": true}, {"text": "Die Gerade f ist parallel zur Geraden g.", "correct": false}, {"text": "Die Gerade f ist kürzer als die Gerade g.", "correct": false}, {"text": "Gerade f und Gerade g haben denselben Namen.", "correct": false}], "explanation": "Das Symbol ⊥ steht für senkrecht (orthogonal). Es zeigt zwei Linien, die im rechten Winkel aufeinander stehen."}, {"id": "q4", "title": "Abstand richtig messen", "text": "Wie misst man den Abstand zwischen zwei zueinander parallelen Geraden g und h?", "options": [{"text": "Immer senkrecht (im 90°-Winkel) als kürzeste Verbindung zwischen den Geraden.", "correct": true}, {"text": "Beliebig schräg zwischen zwei Punkten der Geraden.", "correct": false}, {"text": "Man misst die Gesamtlänge beider Geraden zusammen.", "correct": false}, {"text": "Der Abstand von Parallelen ist in der Mathematik nicht messbar.", "correct": false}], "explanation": "Der Abstand ist immer die kürzeste Verbindung zwischen zwei parallelen Linien. Misst man schräg, misst man falsch!"}, {"id": "q5", "title": "Mathematische Symbole: Parallel", "text": "Was bedeutet die Schreibweise h ∥ k?", "options": [{"text": "Die Geraden h und k sind parallel zueinander (gleicher Abstand, kein Schnittpunkt).", "correct": true}, {"text": "Die Geraden h und k schneiden sich im rechten Winkel.", "correct": false}, {"text": "Gerade h ist genau halb so lang wie Gerade k.", "correct": false}, {"text": "Gerade h verläuft senkrecht nach oben.", "correct": false}], "explanation": "Das Symbol ∥ (zwei aufrechte parallele Striche) steht für parallel zueinander."}, {"id": "q6", "title": "Strecke vs. Strahl vs. Gerade", "text": "Was ist der Unterschied zwischen einer Strecke und einem Strahl?", "options": [{"text": "Eine Strecke hat zwei feste Endpunkte; ein Strahl hat einen Anfangspunkt, aber keinen Endpunkt.", "correct": true}, {"text": "Eine Strecke ist unendlich lang, ein Strahl ist nur 5 cm lang.", "correct": false}, {"text": "Ein Strahl ist immer gekrümmt, eine Strecke immer gerade.", "correct": false}, {"text": "Es gibt keinen Unterschied, beides meint dasselbe.", "correct": false}], "explanation": "Strecke = Anfangs- und Endpunkt (messbare Länge). Strahl (Halbgerade) = Anfangspunkt, geht in eine Richtung unendlich weiter. Gerade = kein Anfang, kein Ende."}, {"id": "q7", "title": "Parallele mit großem Abstand", "text": "Du möchtest eine Parallele zu einer Geraden g im Abstand von 7 cm zeichnen. Die Parallelenlinien auf dem Geodreieck reichen aber nur bis ca. 3 cm. Wie gehst du vor?", "options": [{"text": "Mit der Mittellinie eine senkrechte Hilfslinie zeichnen, 7 cm abtragen und dort wieder eine Senkrechte zeichnen.", "correct": true}, {"text": "Man schätzt den Abstand mit dem Daumen ab und zeichnet freihändig.", "correct": false}, {"text": "Mit dem Geodreieck kann man grundsätzlich keine Abstände über 3 cm zeichnen.", "correct": false}, {"text": "Man legt das Geodreieck einfach doppelt so schräg an.", "correct": false}], "explanation": "Schulbuch 2.1 Beispiel 2b: Bei großen Abständen zeichnet man zuerst eine senkrechte Hilfslinie, markiert den Punkt P im Abstand 7 cm und zeichnet durch P die zweite Senkrechte!"}, {"id": "q8", "title": "Fachbegriff: Orthogonal", "text": "Was bedeutet das Wort „orthogonal“ in der Mathematik?", "options": [{"text": "Es ist der mathematische Fachbegriff für „senkrecht zueinander“ (rechter Winkel).", "correct": true}, {"text": "Es bedeutet, dass zwei Geraden parallel zueinander verlaufen.", "correct": false}, {"text": "Es bedeutet, dass eine Linie genau 10 cm lang ist.", "correct": false}, {"text": "Es bedeutet, dass eine Figur keine Ecken hat.", "correct": false}], "explanation": "Orthogonal kommt aus dem Griechischen und bedeutet rechtwinklig bzw. senkrecht aufeinander stehend (⊥)."}, {"id": "q9", "title": "Parallelverschiebung", "text": "Was passiert mit einer Figur bei einer Parallelverschiebung im Heft?", "options": [{"text": "Alle Punkte werden in die gleiche Richtung um die gleiche Länge verschoben; Form, Längen und Winkel bleiben erhalten.", "correct": true}, {"text": "Die Figur wird dabei auf den Kopf gestellt und verdoppelt.", "correct": false}, {"text": "Die Figur wird zu einem Kreis verformt.", "correct": false}, {"text": "Nur der Mittelpunkt der Figur wird verschoben, die Ecken bleiben stehen.", "correct": false}], "explanation": "Bei einer Parallelverschiebung bleiben Streckenlängen, Winkelgrößen und das Aussehen der Figur unverändert erhalten (Verschiebungspfeil gibt Richtung und Weite an)!"}, {"id": "q10", "title": "Nullpunkt auf dem Geodreieck", "text": "Wo liegt der Nullpunkt auf deinem Geodreieck und wie misst man eine Strecke damit?", "options": [{"text": "Genau in der Mitte der Zeichenkante. Man legt die 0 an den Anfangspunkt und liest am Endpunkt die Länge ab.", "correct": true}, {"text": "Ganz links an der äußersten Spitze bei 7 cm.", "correct": false}, {"text": "An der oberen 90°-Spitze des Geodreiecks.", "correct": false}, {"text": "Im gelben Kreis in der Mitte ohne Verbindung zur Kante.", "correct": false}], "explanation": "Der Nullpunkt liegt genau in der Mitte der Zeichenkante. Von dort aus zählt die Skala symmetrisch nach links und rechts bis 7 cm."}]};
+
+const S = {
+  view: "home",            // "home" | "flashcard" | "matching" | "cloze" | "quiz"
+  level: "all",            // "all" | "einfach" | "mittel" | "schwer"
+  mode: "solo",            // "solo" | "team"
+  numTeams: 2,             // 1, 2, 3, 4
+  activeTeamIdx: 0,
+  teams: [
+    { name: "🦁 Team Löwe", score: 0, color: "var(--t1)" },
+    { name: "🐬 Team Delphin", score: 0, color: "var(--t2)" },
+    { name: "🦅 Team Adler", score: 0, color: "var(--t3)" },
+    { name: "🦊 Team Fuchs", score: 0, color: "var(--t4)" }
+  ],
+  soloStats: { correct: 0, total: 0, streak: 0, stars: 0 },
+  timerSetting: 0,         // 0 (aus), 30, 60
+  timerRemaining: 0,
+  timerRunning: false,
+  timerInterval: null,
+  sound: true,
+  theme: "light",
+  showLexikon: false,
+  lexikonSearch: "",
+  lexikonCategory: "all",  // "all" | "nomen" | "adjektiv" | "verb"
+  heroTab: "dreieck",      // "dreieck" | "senkrecht" | "parallel" | "vergleich"
+  heroStep: 1,
+  activeGeoPart: "all",    // Welches Teil des Geodreiecks gerade dunkel hervorgehoben ist
+
+  // Flashcards state
+  flash: {
+    deck: [],
+    idx: 0,
+    flipped: false
+  },
+
+  // Matching state
+  matching: {
+    pairs: [],
+    selectedCard: null,
+    matchedCount: 0,
+    moves: 0,
+    startTime: null,
+    elapsedSeconds: 0,
+    finished: false
+  },
+
+  // Cloze state
+  cloze: {
+    storyIdx: 0,
+    activeBlankId: null,
+    userAnswers: {},
+    checked: false
+  },
+
+  // Quiz state
+  quiz: {
+    idx: 0,
+    selectedOption: null,
+    answered: false,
+    score: 0
+  }
+};
+
+// Artikel-Klasse ermitteln für garantierte Sichtbarkeit
+function getArticleClass(v){
+  const art = (v.article || "").toLowerCase().trim();
+  if(art === "der" || art.startsWith("der ")) return "article-der";
+  if(art === "die" || art.startsWith("die ")) return "article-die";
+  if(art === "das" || art.startsWith("das ")) return "article-das";
+  if(v.category === "verb") return "article-verb";
+  if(v.category === "adjektiv") return "article-adjektiv";
+  return "article-nomen";
+}
+
+// Web Audio Sound Synthesizer
+let audioCtx = null;
+function playSfx(type){
+  if(!S.sound) return;
+  try {
+    if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if(audioCtx.state === 'suspended') audioCtx.resume();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    const now = audioCtx.currentTime;
+
+    if(type === 'correct'){
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(440, now);
+      osc.frequency.exponentialRampToValueAtTime(554.37, now + 0.1);
+      osc.frequency.exponentialRampToValueAtTime(659.25, now + 0.22);
+      gain.gain.setValueAtTime(0.25, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+      osc.start(now);
+      osc.stop(now + 0.4);
+    } else if(type === 'wrong'){
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(240, now);
+      osc.frequency.linearRampToValueAtTime(170, now + 0.25);
+      gain.gain.setValueAtTime(0.2, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+      osc.start(now);
+      osc.stop(now + 0.35);
+    } else if(type === 'click'){
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(520, now);
+      gain.gain.setValueAtTime(0.08, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+      osc.start(now);
+      osc.stop(now + 0.08);
+    } else if(type === 'fanfare'){
+      const notes = [523.25, 659.25, 783.99, 1046.50];
+      notes.forEach((freq, idx) => {
+        const o = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
+        o.connect(g);
+        g.connect(audioCtx.destination);
+        o.frequency.setValueAtTime(freq, now + idx * 0.12);
+        g.gain.setValueAtTime(0.2, now + idx * 0.12);
+        g.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.12 + 0.35);
+        o.start(now + idx * 0.12);
+        o.stop(now + idx * 0.12 + 0.35);
+      });
+    }
+  } catch(e) {}
+}
+
+// Deutsche Sprachausgabe (Web Speech API)
+function speakGerman(text){
+  if(!('speechSynthesis' in window)) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'de-DE';
+  u.rate = 0.92;
+  window.speechSynthesis.speak(u);
+}
+
+function shuffle(arr){
+  const a = [...arr];
+  for(let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function filterVocabByLevel(level){
+  if(!level || level === 'all') return DATA.vocab;
+  return DATA.vocab.filter(v => v.level === level);
+}
+
+/* ==========================================================================
+   RENDER DISPATCHER
+   ========================================================================== */
+function render(){
+  const app = document.getElementById("app");
+  if(!app) return;
+
+  if(S.view === "home"){
+    renderHome(app);
+  } else if(S.view === "flashcard"){
+    renderFlashcardView(app);
+  } else if(S.view === "matching"){
+    renderMatchingView(app);
+  } else if(S.view === "cloze"){
+    renderClozeView(app);
+  } else if(S.view === "quiz"){
+    renderQuizView(app);
+  }
+}
+
+/* ==========================================================================
+   HOME VIEW
+   ========================================================================== */
+function renderHome(app){
+  const activeCount = filterVocabByLevel(S.level).length;
+
+  app.innerHTML = `
+    <header class="site-head">
+      <div class="head-top">
+        <div class="brand-group">
+          <div class="brand-badge">📐</div>
+          <div class="brand-titles">
+            <h1>Mein Geometrie-<span>Wortschatz</span></h1>
+            <p>Klasse 5 • Schulbuch 2.1 &amp; Begleitheft „Grundbegriffe der Geometrie“</p>
+          </div>
+        </div>
+        <div class="top-actions">
+          <a href="../index.html" class="hub-link" title="Zur Mathe-Übersicht">🏠 Mathe-Portal</a>
+          <button class="circle-btn" id="theme-btn" title="Dunkel/Hell">${S.theme === 'dark' ? '☀️' : '🌙'}</button>
+          <button class="circle-btn" id="sound-btn" title="Ton an/aus">${S.sound ? '🔔' : '🔕'}</button>
+        </div>
+      </div>
+
+      <!-- Einstellungen & Filter -->
+      <div class="controls-bar">
+        <!-- Stufe -->
+        <div class="ctl-col">
+          <span class="ctl-label">Schwierigkeitsstufe</span>
+          <div class="pills" id="level-pills">
+            <button class="pill" data-lvl="all" aria-pressed="${S.level === 'all'}">⭐ Alle Stufen (${DATA.vocab.length})</button>
+            <button class="pill level-einfach" data-lvl="einfach" aria-pressed="${S.level === 'einfach'}">🟢 Einfach (12)</button>
+            <button class="pill level-mittel" data-lvl="mittel" aria-pressed="${S.level === 'mittel'}">🟡 Mittel (11)</button>
+            <button class="pill level-schwer" data-lvl="schwer" aria-pressed="${S.level === 'schwer'}">🔴 Schwer (5)</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-banner">
+        <div>
+          🎯 Aktiver Fachwortschatz: <b>${activeCount} Begriffe</b> (${
+            S.level === 'all' ? 'Geodreieck, Strecke, Strahl, Gerade, Senkrecht ⊥, Parallel ∥, Abstand' :
+            S.level === 'einfach' ? 'Basiswissen: Geodreieck, Kante, 0-Punkt, Punkt, Strecke, Strahl, Gerade, senkrecht, parallel' :
+            S.level === 'mittel' ? 'Konstruktion: Mittellinie, Parallelenlinien, 90°-Winkel, Schnittpunkt, Abstand, Hilfslinie' :
+            'Fachbegriffe: orthogonal, Parallelverschiebung, Verschiebungspfeil'
+          })
+        </div>
+        <div>
+          🎒 Klasse 5 Mathematik • Lehrwerk Cornelsen &amp; Begleitheft
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO: INTERAKTIVES GEOMETRIE-LABOR -->
+      <section class="hero-geometrie">
+        <div class="hero-head">
+          <h2>📐 Interaktives Geometrie-Labor</h2>
+          <div class="hero-tabs">
+            <button class="hero-tab ${S.heroTab === 'dreieck' ? 'active' : ''}" onclick="setHeroTab('dreieck')">📐 Geodreieck erkunden</button>
+            <button class="hero-tab ${S.heroTab === 'senkrecht' ? 'active' : ''}" onclick="setHeroTab('senkrecht')">⊥ Senkrechte zeichnen</button>
+            <button class="hero-tab ${S.heroTab === 'parallel' ? 'active' : ''}" onclick="setHeroTab('parallel')">∥ Parallele zeichnen</button>
+            <button class="hero-tab ${S.heroTab === 'vergleich' ? 'active' : ''}" onclick="setHeroTab('vergleich')">📏 Strecke vs. Strahl vs. Gerade</button>
+          </div>
+        </div>
+
+        <div id="hero-interactive-content">
+          ${renderHeroContent()}
+        </div>
+      </section>
+
+      <!-- DIE 4 KERN-ÜBUNGEN -->
+      <div class="act-grid">
+        <!-- 1. Flashcards -->
+        <div class="act-card" data-act="flashcard" onclick="startActivity('flashcard')">
+          <div class="act-card-top">
+            <div>
+              <span class="act-tag" style="color:var(--accent);">Übung 1</span>
+              <h3 style="margin-top:6px;">🎴 Flashcards</h3>
+            </div>
+            <div class="act-icon-box">🎴</div>
+          </div>
+          <p class="act-desc">Lerne alle Geometrie-Fachbegriffe mit interaktiven Wendekarten. Mit Artikelfarben (der/die/das), Vorlesefunktion und Bild-Merkhilfen auf der Rückseite.</p>
+          <div class="act-card-bottom">
+            <span class="act-tag">${activeCount} Karten • 3 Stufen</span>
+            <span class="start-btn-label">Starten →</span>
+          </div>
+        </div>
+
+        <!-- 2. Matching Activity -->
+        <div class="act-card" data-act="matching" onclick="startActivity('matching')">
+          <div class="act-card-top">
+            <div>
+              <span class="act-tag" style="color:var(--das);">Übung 2</span>
+              <h3 style="margin-top:6px;">🧩 Paare finden</h3>
+            </div>
+            <div class="act-icon-box">🧩</div>
+          </div>
+          <p class="act-desc">Finde zusammengehörige Paare: Welcher Fachbegriff passt zu welcher Erklärung oder Skizze? Trainiert genaues Begriffsverständnis.</p>
+          <div class="act-card-bottom">
+            <span class="act-tag">6–8 Paare • Gemischt</span>
+            <span class="start-btn-label">Starten →</span>
+          </div>
+        </div>
+
+        <!-- 3. Lückentext -->
+        <div class="act-card" data-act="cloze" onclick="startActivity('cloze')">
+          <div class="act-card-top">
+            <div>
+              <span class="act-tag" style="color:var(--mittel);">Übung 3</span>
+              <h3 style="margin-top:6px;">✍️ Lückentext</h3>
+            </div>
+            <div class="act-icon-box">✍️</div>
+          </div>
+          <p class="act-desc">Setze die mathematischen Fachwörter in die originalen Merktexte aus Schulbuch 2.1 und Begleitheft ein. Mit praktischen Klick-Chips!</p>
+          <div class="act-card-bottom">
+            <span class="act-tag">4 Merktexte • Schulbuch 2.1</span>
+            <span class="start-btn-label">Starten →</span>
+          </div>
+        </div>
+
+        <!-- 4. Stolperstellen-Quiz -->
+        <div class="act-card" data-act="quiz" onclick="startActivity('quiz')">
+          <div class="act-card-top">
+            <div>
+              <span class="act-tag" style="color:var(--schwer);">Übung 4</span>
+              <h3 style="margin-top:6px;">🎯 Quiz &amp; Stolperstellen</h3>
+            </div>
+            <div class="act-icon-box">🎯</div>
+          </div>
+          <p class="act-desc">Theos Denkfehler entlarven, Abstände senkrecht messen, Formelsymbole (⊥, ∥) verstehen und Geodreieck-Tricks anwenden.</p>
+          <div class="act-card-bottom">
+            <span class="act-tag">10 Aufgaben • Sofortfeedback</span>
+            <span class="start-btn-label">Starten →</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Aufklappbarer Wortspeicher (Lexikon) -->
+      <section class="lexikon-sec">
+        <div class="lexikon-head">
+          <h3>📖 Wortspeicher zum Nachschlagen (${DATA.vocab.length} Begriffe)</h3>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+            <input type="text" id="lex-search-input" class="lex-search" placeholder="Fachbegriff suchen..." value="${S.lexikonSearch}">
+            <button class="btn" id="lex-print-btn" onclick="window.print()">🖨️ Drucken</button>
+            <button class="btn primary" id="lex-toggle-btn">${S.showLexikon ? '▲ Zuklappen' : '▼ Alle Wörter anzeigen'}</button>
+          </div>
+        </div>
+
+        ${S.showLexikon ? renderLexikonGrid() : `<p style="margin:0; color:var(--ink-soft); font-size:16px;">Klicke auf den Button, um alle Wörter, Artikel, Pluralformen, Erklärungen und Symbole auf einen Blick nachzulesen.</p>`}
+      </section>
+    </main>
+  `;
+
+  attachHomeEvents();
+}
+
+function attachHomeEvents(){
+  document.getElementById('theme-btn').onclick = toggleTheme;
+  document.getElementById('sound-btn').onclick = toggleSound;
+
+  document.querySelectorAll('#level-pills button').forEach(btn => {
+    btn.onclick = () => {
+      S.level = btn.dataset.lvl;
+      playSfx('click');
+      render();
+    };
+  });
+
+  const lexTog = document.getElementById('lex-toggle-btn');
+  if(lexTog){
+    lexTog.onclick = () => {
+      S.showLexikon = !S.showLexikon;
+      playSfx('click');
+      render();
+    };
+  }
+
+  const lexSrch = document.getElementById('lex-search-input');
+  if(lexSrch){
+    lexSrch.oninput = (e) => {
+      S.lexikonSearch = e.target.value.toLowerCase();
+      const grid = document.getElementById('lex-grid-box');
+      if(grid) grid.innerHTML = renderLexikonCards();
+    };
+  }
+}
+
+/* ==========================================================================
+   HERO CONTENT RENDERERS
+   ========================================================================== */
+function setHeroTab(tab){
+  S.heroTab = tab;
+  S.heroStep = 1;
+  playSfx('click');
+  const el = document.getElementById('hero-interactive-content');
+  if(el) el.innerHTML = renderHeroContent();
+  document.querySelectorAll('.hero-tab').forEach(b => {
+    b.classList.toggle('active', b.textContent.includes(
+      tab === 'dreieck' ? 'Geodreieck' :
+      tab === 'senkrecht' ? 'Senkrechte' :
+      tab === 'parallel' ? 'Parallele' : 'Vergleich'
+    ));
+  });
+}
+
+function setHeroStep(step){
+  S.heroStep = step;
+  playSfx('click');
+  const el = document.getElementById('hero-interactive-content');
+  if(el) el.innerHTML = renderHeroContent();
+}
+
+function renderHeroContent(){
+  if(S.heroTab === 'dreieck'){
+    const cx = 400;
+    const cy = 380;
+
+    // R_outer = 210, R_inner = 186. Maximaler Abstand von der Mitte zu den Kanten ist 247.5 px!
+    // Damit liegen alle Teilstriche und Texte mit mindestens 35 px Sicherheitsabstand VOLLSTÄNDIG IM DREIECK!
+    let outerTicks = '';
+    let outerTexts = '';
+    for(let deg = 10; deg <= 170; deg += 1){
+      const rad = (180 - deg) * Math.PI / 180;
+      const is10 = deg % 10 === 0;
+      const is5 = deg % 5 === 0;
+      const rOuter = 210;
+      // Striche von der Außenkante: bei 10° lassen wir Platz für die Zahl
+      const rInner = is10 ? 201 : is5 ? 203 : 206;
+      const x1 = cx + rInner * Math.cos(rad);
+      const y1 = cy - rInner * Math.sin(rad);
+      const x2 = cx + rOuter * Math.cos(rad);
+      const y2 = cy - rOuter * Math.sin(rad);
+      outerTicks += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}"/>`;
+
+      // Bei 10er-Schritten ein kurzer Gegenstrich an der Innenkante (186 bis 189)
+      if(is10){
+        const x3 = cx + 186 * Math.cos(rad);
+        const y3 = cy - 186 * Math.sin(rad);
+        const x4 = cx + 189 * Math.cos(rad);
+        const y4 = cy - 189 * Math.sin(rad);
+        outerTicks += `<line x1="${x3.toFixed(1)}" y1="${y3.toFixed(1)}" x2="${x4.toFixed(1)}" y2="${y4.toFixed(1)}"/>`;
+
+        // Zahl liegt im freien Bereich zwischen R=189 und R=201
+        const xt = cx + 195 * Math.cos(rad);
+        const yt = cy - 195 * Math.sin(rad);
+        outerTexts += `<text class="scale-number" x="${xt.toFixed(1)}" y="${(yt + 3.5).toFixed(1)}" font-family="var(--body)" font-size="9" text-anchor="middle">${deg}°</text>`;
+      }
+    }
+
+    // Innere Skala: R_outer = 186, R_inner = 162. Gegenläufig 10° bis 170° von rechts nach links
+    let innerTicks = '';
+    let innerTexts = '';
+    for(let deg = 10; deg <= 170; deg += 1){
+      const rad = deg * Math.PI / 180; // Gegenläufig!
+      const is10 = deg % 10 === 0;
+      const is5 = deg % 5 === 0;
+      const rInner = 162;
+      // Striche von der Innenkante: bei 10° lassen wir Platz für die Zahl
+      const rOuter = is10 ? 171 : is5 ? 169 : 166;
+      const x1 = cx + rInner * Math.cos(rad);
+      const y1 = cy - rInner * Math.sin(rad);
+      const x2 = cx + rOuter * Math.cos(rad);
+      const y2 = cy - rOuter * Math.sin(rad);
+      innerTicks += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}"/>`;
+
+      // Bei 10er-Schritten ein kurzer Gegenstrich an der Außenkante (183 bis 186)
+      if(is10){
+        const x3 = cx + 183 * Math.cos(rad);
+        const y3 = cy - 183 * Math.sin(rad);
+        const x4 = cx + 186 * Math.cos(rad);
+        const y4 = cy - 186 * Math.sin(rad);
+        innerTicks += `<line x1="${x3.toFixed(1)}" y1="${y3.toFixed(1)}" x2="${x4.toFixed(1)}" y2="${y4.toFixed(1)}"/>`;
+
+        // Zahl liegt im freien Bereich zwischen R=171 und R=183
+        const xt = cx + 177 * Math.cos(rad);
+        const yt = cy - 177 * Math.sin(rad);
+        innerTexts += `<text class="scale-number" x="${xt.toFixed(1)}" y="${(yt + 3.5).toFixed(1)}" font-family="var(--body)" font-size="8.5" text-anchor="middle">${deg}°</text>`;
+      }
+    }
+
+    const curActive = S.activeGeoPart || "all";
+
+    return `
+      <div class="svg-scroll-wrap">
+        <svg class="svg-geodreieck" viewBox="0 0 800 425" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="geoGlass" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.18"/>
+              <stop offset="100%" stop-color="#bae6fd" stop-opacity="0.08"/>
+            </linearGradient>
+            <filter id="geoShadow" x="-5%" y="-5%" width="110%" height="110%">
+              <feDropShadow dx="0" dy="4" stdDeviation="5" flood-opacity="0.12"/>
+            </filter>
+          </defs>
+
+          <!-- Geodreieck Körper (45°-45°-90° Dreieck) -->
+          <polygon points="50,380 400,30 750,380" fill="url(#geoGlass)" stroke="#0284c7" stroke-width="2.5" filter="url(#geoShadow)"/>
+
+          <!-- Innerer Griff-Ausschnitt (angepasst unterhalb R=162) -->
+          <polygon points="270,360 400,230 530,360" fill="var(--paper)" stroke="#93c5fd" stroke-width="1.8" stroke-dasharray="4 2"/>
+
+          <!-- ========================================== -->
+          <!-- ÄUßERE GRADSKALA (R=186 bis R=210)         -->
+          <!-- ========================================== -->
+          <g class="geo-part geo-part-skala-aussen ${curActive === 'skala-aussen' ? 'is-active' : ''}" onclick="showHeroTip('skala-aussen')" title="Äußere Gradskala anklicken">
+            <!-- Gelber Bogen für Außenskala (bleibt dezent blass) -->
+            <path class="arc-band" d="M 190,380 A 210,210 0 0,1 610,380 L 586,380 A 186,186 0 0,0 214,380 Z"/>
+            ${outerTicks}
+            ${outerTexts}
+          </g>
+
+          <!-- ========================================== -->
+          <!-- INNERE GRADSKALA (R=162 bis R=186)         -->
+          <!-- ========================================== -->
+          <g class="geo-part geo-part-skala-innen ${curActive === 'skala-innen' ? 'is-active' : ''}" onclick="showHeroTip('skala-innen')" title="Innere Gradskala anklicken">
+            <!-- Heller Bogen für Innenskala (bleibt dezent blass) -->
+            <path class="arc-band" d="M 214,380 A 186,186 0 0,1 586,380 L 562,380 A 162,162 0 0,0 238,380 Z"/>
+            ${innerTicks}
+            ${innerTexts}
+            <!-- Trennlinie zwischen den beiden Skalen -->
+            <path d="M 214,380 A 186,186 0 0,1 586,380" fill="none" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="3 2"/>
+          </g>
+
+          <!-- ========================================== -->
+          <!-- PARALLELENLINIEN                            -->
+          <!-- ========================================== -->
+          <g class="geo-part geo-part-parallelen ${curActive === 'parallelen' ? 'is-active' : ''}" onclick="showHeroTip('parallelen')" title="Parallelenlinien anklicken">
+            ${[1, 2, 3, 4].map(cm => {
+              const y = 380 - cm * 32;
+              const xOffset = cm * 32;
+              return `
+                <line x1="${50 + xOffset}" y1="${y}" x2="${750 - xOffset}" y2="${y}" stroke-width="1.5" stroke-dasharray="7 4"/>
+                <text x="${50 + xOffset + 14}" y="${y - 3}" font-size="11" font-weight="700">${cm} cm</text>
+                <text x="${750 - xOffset - 14}" y="${y - 3}" font-size="11" font-weight="700" text-anchor="end">${cm} cm</text>
+              `;
+            }).join('')}
+          </g>
+
+          <!-- ========================================== -->
+          <!-- MITTELLINIE (Senkrechte von 90° zur 0)     -->
+          <!-- ========================================== -->
+          <g class="geo-part geo-part-mittellinie ${curActive === 'mittellinie' ? 'is-active' : ''}" onclick="showHeroTip('mittellinie')" title="Mittellinie (90°) anklicken">
+            <line x1="400" y1="30" x2="400" y2="380" stroke-width="2.5"/>
+            <!-- 90°-Winkelmarkierung an der Spitze -->
+            <path d="M 384,46 L 400,62 L 416,46" fill="none" stroke-width="1.8"/>
+            <circle cx="400" cy="49" r="2.5"/>
+            <text x="412" y="105" font-family="var(--display)" font-size="14">Mittellinie</text>
+          </g>
+
+          <!-- ========================================== -->
+          <!-- LÄNGENSKALA AN DER ZEICHENKANTE            -->
+          <!-- ========================================== -->
+          <g class="geo-part geo-part-laengenskala ${curActive === 'laengenskala' ? 'is-active' : ''}" onclick="showHeroTip('laengenskala')" title="Längenskala anklicken">
+            ${[-7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7].map(cm => {
+              const cxTick = 400 + cm * 45;
+              const isZero = cm === 0;
+              let ticks = '';
+              if(cm < 7){
+                for(let m = 1; m < 10; m++){
+                  const mx = cxTick + m * 4.5;
+                  const len = m === 5 ? 10 : 5;
+                  ticks += `<line x1="${mx}" y1="${380 - len}" x2="${mx}" y2="380" stroke-width="0.8"/>`;
+                }
+              }
+              return `
+                <line x1="${cxTick}" y1="${380 - (isZero ? 22 : 16)}" x2="${cxTick}" y2="380" stroke-width="${isZero ? '3' : '1.8'}"/>
+                <text x="${cxTick}" y="356" font-family="var(--display)" font-size="${isZero ? '20' : '15'}" text-anchor="middle">${Math.abs(cm)}</text>
+                ${ticks}
+              `;
+            }).join('')}
+          </g>
+
+          <!-- ========================================== -->
+          <!-- ZEICHENKANTE / GRUNDKANTE                  -->
+          <!-- ========================================== -->
+          <g class="geo-part geo-part-zeichenkante ${curActive === 'zeichenkante' ? 'is-active' : ''}" onclick="showHeroTip('zeichenkante')" title="Zeichenkante anklicken">
+            <line x1="45" y1="380" x2="755" y2="380" stroke-width="4"/>
+            <text x="630" y="408" font-weight="700" font-size="13" text-anchor="middle">Zeichenkante (Grundseite) ➔</text>
+          </g>
+
+          <!-- ========================================== -->
+          <!-- NULLPUNKT (0)                              -->
+          <!-- ========================================== -->
+          <g class="geo-part geo-part-nullpunkt ${curActive === 'nullpunkt' ? 'is-active' : ''}" onclick="showHeroTip('nullpunkt')" title="Nullpunkt anklicken">
+            <circle cx="400" cy="380" r="12" fill="#ef4444" fill-opacity="0.3" stroke="#dc2626" stroke-width="1.8"/>
+            <text x="400" y="408" font-family="var(--display)" font-size="14" text-anchor="middle">Nullpunkt (0)</text>
+          </g>
+
+          <!-- ========================================== -->
+          <!-- RECHTER WINKEL (90°-SPITZE)                -->
+          <!-- ========================================== -->
+          <g class="geo-part geo-part-winkel ${curActive === 'winkel' ? 'is-active' : ''}" onclick="showHeroTip('winkel')" title="90°-Spitze anklicken">
+            <text x="400" y="22" font-family="var(--display)" font-size="15" text-anchor="middle">Rechter Winkel (90°-Spitze)</text>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Schnell-Klick-Leiste für alle Bauteile -->
+      <div class="geo-inspect-bar">
+        <span class="geo-inspect-label">🔍 Bauteil wählen:</span>
+        <button class="geo-inspect-btn ${curActive === 'skala-aussen' ? 'active' : ''}" onclick="showHeroTip('skala-aussen')">🟡 Äußere Skala (10°➔170°)</button>
+        <button class="geo-inspect-btn ${curActive === 'skala-innen' ? 'active' : ''}" onclick="showHeroTip('skala-innen')">🟡 Innere Skala (170°⬅10°)</button>
+        <button class="geo-inspect-btn ${curActive === 'laengenskala' ? 'active' : ''}" onclick="showHeroTip('laengenskala')">📏 Längenskala (-7 bis +7 cm)</button>
+        <button class="geo-inspect-btn ${curActive === 'nullpunkt' ? 'active' : ''}" onclick="showHeroTip('nullpunkt')">📍 Nullpunkt (0)</button>
+        <button class="geo-inspect-btn ${curActive === 'mittellinie' ? 'active' : ''}" onclick="showHeroTip('mittellinie')">▲ Mittellinie (90°)</button>
+        <button class="geo-inspect-btn ${curActive === 'parallelen' ? 'active' : ''}" onclick="showHeroTip('parallelen')">═ Parallelenlinien</button>
+        <button class="geo-inspect-btn ${curActive === 'zeichenkante' ? 'active' : ''}" onclick="showHeroTip('zeichenkante')">📐 Zeichenkante</button>
+        <button class="geo-inspect-btn ${curActive === 'winkel' ? 'active' : ''}" onclick="showHeroTip('winkel')">📐 90°-Winkel</button>
+        <button class="geo-inspect-btn ${curActive === 'all' ? 'active' : ''}" style="margin-left:auto; background:var(--card-2);" onclick="showHeroTip('all')">👁️ Alle blass anzeigen</button>
+      </div>
+
+      <div class="hero-explainer" id="hero-explainer">
+        <div class="hero-explainer-text" id="hero-expl-text">
+          💡 <b>Tippe auf das Geodreieck oder wähle oben ein Bauteil:</b> Im Ruhezustand ist die Beschriftung dezent blass – beim Anklicken leuchtet sie <b>dunkel, kräftig und deutlich</b> auf!
+        </div>
+        <button class="speak-btn" onclick="speakGerman(document.getElementById('hero-expl-text').textContent)">🔊 Vorlesen</button>
+      </div>
+    `;
+  } else if(S.heroTab === 'senkrecht'){
+    return `
+      <div style="display:flex; justify-content:center; gap:8px; margin-bottom:16px;">
+        <button class="pill ${S.heroStep === 1 ? 'level-einfach' : ''}" aria-pressed="${S.heroStep === 1}" onclick="setHeroStep(1)">Schritt 1: Ausgangslage (Gerade g)</button>
+        <button class="pill ${S.heroStep === 2 ? 'level-mittel' : ''}" aria-pressed="${S.heroStep === 2}" onclick="setHeroStep(2)">Schritt 2: Mittellinie anlegen</button>
+        <button class="pill ${S.heroStep === 3 ? 'level-schwer' : ''}" aria-pressed="${S.heroStep === 3}" onclick="setHeroStep(3)">Schritt 3: Senkrechte h zeichnen (g ⊥ h)</button>
+      </div>
+
+      <div class="svg-scroll-wrap">
+        <svg viewBox="0 0 760 320" style="max-width:100%; height:auto; background:var(--card-2); border-radius:var(--radius-md); border:2px solid var(--line);">
+          <!-- Gerade g (horizontal im Heft) -->
+          <line x1="60" y1="170" x2="700" y2="170" stroke="#2563eb" stroke-width="4"/>
+          <text x="715" y="176" font-family="var(--display)" font-size="22" fill="#2563eb">g</text>
+
+          ${S.heroStep >= 2 ? `
+            <!-- GEODREIECK UM 90° GEDREHT:
+                 Mittellinie liegt genau waagerecht auf der Geraden g!
+                 Zeichenkante steht senkrecht bei x=380.
+                 Spitze (90°-Winkel) liegt rechts bei (510, 170).
+                 Hypotenuse (Zeichenkante) verläuft vertikal von (380, 40) bis (380, 300).
+            -->
+            <!-- Geodreieck-Körper -->
+            <polygon points="380,40 510,170 380,300" fill="#38bdf8" fill-opacity="0.22" stroke="#0284c7" stroke-width="2.5"/>
+
+            <!-- Parallellinien im Geodreieck (jetzt vertikal im gedrehten Dreieck) -->
+            <line x1="410" y1="70" x2="410" y2="270" stroke="#0284c7" stroke-width="1.2" stroke-dasharray="5 3"/>
+            <line x1="440" y1="100" x2="440" y2="240" stroke="#0284c7" stroke-width="1.2" stroke-dasharray="5 3"/>
+            <line x1="470" y1="130" x2="470" y2="210" stroke="#0284c7" stroke-width="1.2" stroke-dasharray="5 3"/>
+
+            <!-- Innerer Griff-Ausschnitt -->
+            <polygon points="405,105 470,170 405,235" fill="var(--paper)" stroke="#93c5fd" stroke-width="1.5" stroke-dasharray="4 2"/>
+
+            <!-- Teilstriche an der senkrechten Zeichenkante -->
+            ${[-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6].map(cm => {
+              const yTick = 170 + cm * 20;
+              const len = cm === 0 ? 14 : (cm % 5 === 0 ? 10 : 6);
+              return `<line x1="380" y1="${yTick}" x2="${380 + len}" y2="${yTick}" stroke="#0284c7" stroke-width="${cm === 0 ? '2.5' : '1.2'}"/>`;
+            }).join('')}
+
+            <!-- MITTELLINIE: Liegt exakt auf der Geraden g! -->
+            <line x1="510" y1="170" x2="380" y2="170" stroke="#dc2626" stroke-width="4" stroke-dasharray="7 3"/>
+            <rect x="405" y="142" width="165" height="20" rx="10" fill="var(--card)" stroke="#dc2626" stroke-width="1.2"/>
+            <text x="487" y="156" font-family="var(--body)" font-weight="700" font-size="11.5" fill="#dc2626" text-anchor="middle">▲ Mittellinie liegt auf g!</text>
+
+            <!-- Nullpunkt (0) an der Zeichenkante -->
+            <circle cx="380" cy="170" r="5" fill="#dc2626"/>
+            <text x="365" y="195" font-family="var(--display)" font-size="14" fill="#dc2626" font-weight="700" text-anchor="end">Nullpunkt (0)</text>
+
+            <!-- Beschriftung Zeichenkante -->
+            <text x="365" y="65" font-family="var(--display)" font-size="13" fill="#0284c7" font-weight="700" text-anchor="end">Zeichenkante ➔</text>
+          ` : `
+            <text x="380" y="140" font-size="16" fill="var(--ink-soft)" text-anchor="middle">1. Gegeben ist die Gerade g auf deinem Blatt.</text>
+          `}
+
+          ${S.heroStep === 3 ? `
+            <!-- Senkrechte Gerade h gezeichnet entlang der Zeichenkante -->
+            <line x1="380" y1="20" x2="380" y2="310" stroke="#16a34a" stroke-width="4"/>
+            <text x="360" y="35" font-family="var(--display)" font-size="22" fill="#16a34a">h</text>
+
+            <!-- RECHTER WINKEL (90°):
+                 Viertelkreisbogen umschließt den Punkt im Winkel!
+                 Bogen von der senkrechten Geraden h (380, 142) zur waagerechten Geraden g (352, 170).
+                 Punkt liegt mittig im 90°-Sektor bei (367, 157).
+            -->
+            <path d="M 380,142 A 28,28 0 0,0 352,170" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+            <circle cx="367" cy="157" r="3.5" fill="#dc2626"/>
+            <text x="335" y="148" font-family="var(--display)" font-size="14" font-weight="700" fill="#dc2626">90°</text>
+
+            <!-- Schnittpunkt S -->
+            <circle cx="380" cy="170" r="4.5" fill="#dc2626"/>
+            <text x="395" y="195" font-family="var(--display)" font-size="18" fill="#dc2626" font-weight="700">S</text>
+            <text x="380" y="305" font-family="var(--display)" font-size="15" fill="#16a34a" text-anchor="middle">g ⊥ h (g steht senkrecht auf h)</text>
+          ` : ''}
+        </svg>
+      </div>
+
+      <div class="hero-explainer">
+        <div class="hero-explainer-text" id="perp-expl-text">
+          ${S.heroStep === 1 ? '<b>Schritt 1:</b> Gegeben ist die Gerade g. Du möchtest eine Gerade h zeichnen, die senkrecht auf g steht.' :
+            S.heroStep === 2 ? '<b>Schritt 2:</b> Drehe das Geodreieck um 90° und lege es so an, dass die <b>Mittellinie</b> exakt auf der Geraden g liegt. Die senkrechte Zeichenkante bestimmt die Lage der Senkrechten!' :
+            '<b>Schritt 3:</b> Ziehe entlang der Zeichenkante die neue Gerade h. Sie schneidet g im Schnittpunkt S und bildet einen <b>rechten Winkel (90°)</b>. Der rechte Winkel wird durch einen Viertelkreisbogen gekennzeichnet, der den Punkt darin umschließt: <b>g ⊥ h</b>.'}
+        </div>
+        <button class="speak-btn" onclick="speakGerman(document.getElementById('perp-expl-text').textContent)">🔊 Vorlesen</button>
+      </div>
+    `;
+  } else if(S.heroTab === 'parallel'){
+    return `
+      <div style="display:flex; justify-content:center; gap:8px; margin-bottom:16px;">
+        <button class="pill ${S.heroStep === 1 ? 'level-einfach' : ''}" aria-pressed="${S.heroStep === 1}" onclick="setHeroStep(1)">Fall A: Kleiner Abstand (mit Parallelenlinien)</button>
+        <button class="pill ${S.heroStep === 2 ? 'level-mittel' : ''}" aria-pressed="${S.heroStep === 2}" onclick="setHeroStep(2)">Fall B: Großer Abstand (senkrechte Hilfslinie)</button>
+        <button class="pill ${S.heroStep === 3 ? 'level-schwer' : ''}" aria-pressed="${S.heroStep === 3}" onclick="setHeroStep(3)">Fall C: Parallelverschiebung mit Lineal</button>
+      </div>
+
+      <div class="svg-scroll-wrap">
+        <svg viewBox="0 0 760 280" style="max-width:100%; height:auto; background:var(--card-2); border-radius:var(--radius-md); border:2px solid var(--line);">
+          ${S.heroStep === 1 ? `
+            <!-- Fall A: Parallelenlinien nutzen -->
+            <line x1="60" y1="190" x2="700" y2="190" stroke="#2563eb" stroke-width="4"/>
+            <text x="715" y="195" font-family="var(--display)" font-size="20" fill="#2563eb">g</text>
+
+            <!-- Geodreieck mit 2cm Parallelenlinie auf g -->
+            <polygon points="120,100 400,-180 680,100" fill="#38bdf8" fill-opacity="0.2" stroke="#0284c7" stroke-width="2"/>
+            <line x1="210" y1="190" x2="590" y2="190" stroke="#dc2626" stroke-width="3" stroke-dasharray="6 3"/>
+            <text x="400" y="175" font-weight="700" font-size="14" fill="#dc2626" text-anchor="middle">2-cm-Parallelenlinie liegt auf Gerade g</text>
+
+            <!-- Parallele Gerade h an Zeichenkante gezeichnet -->
+            <line x1="60" y1="100" x2="700" y2="100" stroke="#16a34a" stroke-width="4"/>
+            <text x="715" y="105" font-family="var(--display)" font-size="20" fill="#16a34a">h</text>
+
+            <!-- Abstandspfeil 2 cm -->
+            <line x1="120" y1="100" x2="120" y2="190" stroke="#d97706" stroke-width="2" marker-start="url(#dot)" marker-end="url(#dot)"/>
+            <text x="135" y="150" font-family="var(--display)" font-size="16" fill="#d97706">Abstand = 2 cm (h ∥ g)</text>
+          ` : S.heroStep === 2 ? `
+            <!-- Fall B: Senkrechte Hilfslinie für große Abstände (z. B. 6 cm) -->
+            <line x1="60" y1="210" x2="700" y2="210" stroke="#2563eb" stroke-width="4"/>
+            <text x="715" y="215" font-family="var(--display)" font-size="20" fill="#2563eb">g</text>
+
+            <!-- Senkrechte Hilfslinie h -->
+            <line x1="250" y1="40" x2="250" y2="240" stroke="#9333ea" stroke-width="2.5" stroke-dasharray="6 4"/>
+            <text x="260" y="70" font-weight="700" font-size="14" fill="#9333ea">senkrechte Hilfslinie</text>
+
+            <!-- Punkt P im Abstand 6 cm -->
+            <circle cx="250" cy="70" r="5" fill="#dc2626"/>
+            <text x="230" y="75" font-family="var(--display)" font-size="18" fill="#dc2626">P</text>
+            <text x="150" y="145" font-weight="700" font-size="15" fill="#d97706">Abstand 6 cm</text>
+
+            <!-- Neue Parallele durch P -->
+            <line x1="60" y1="70" x2="700" y2="70" stroke="#16a34a" stroke-width="4"/>
+            <text x="715" y="75" font-family="var(--display)" font-size="20" fill="#16a34a">k</text>
+            <text x="450" y="55" font-family="var(--display)" font-size="16" fill="#16a34a">k ∥ g (Abstand 6 cm)</text>
+          ` : `
+            <!-- Fall C: Parallelverschiebung mit Lineal -->
+            <line x1="60" y1="200" x2="600" y2="200" stroke="#2563eb" stroke-width="4"/>
+            <text x="615" y="205" font-family="var(--display)" font-size="20" fill="#2563eb">g</text>
+
+            <!-- Festes Lineal links -->
+            <rect x="140" y="30" width="40" height="230" fill="#cbd5e1" stroke="#475569" stroke-width="2"/>
+            <text x="160" y="150" font-weight="700" font-size="13" fill="#475569" transform="rotate(-90 160 150)" text-anchor="middle">Lineal festhalten</text>
+
+            <!-- Verschiebungspfeil -->
+            <line x1="320" y1="200" x2="320" y2="80" stroke="#dc2626" stroke-width="3" marker-end="url(#arrowRed)"/>
+            <text x="335" y="140" font-family="var(--display)" font-size="15" fill="#dc2626">Verschiebungspfeil</text>
+
+            <!-- Verschobene Gerade -->
+            <line x1="60" y1="80" x2="600" y2="80" stroke="#16a34a" stroke-width="4"/>
+            <text x="615" y="85" font-family="var(--display)" font-size="20" fill="#16a34a">g'</text>
+            <circle cx="450" cy="80" r="5" fill="#dc2626"/>
+            <text x="460" y="75" font-family="var(--display)" font-size="16" fill="#dc2626">P</text>
+          `}
+        </svg>
+      </div>
+
+      <div class="hero-explainer">
+        <div class="hero-explainer-text" id="para-expl-text">
+          ${S.heroStep === 1 ? '<b>Fall A (Kleiner Abstand bis ca. 3 cm):</b> Lege eine der waagerechten <b>Parallelenlinien</b> des Geodreiecks genau auf Gerade g. Entlang der Zeichenkante ziehst du die Parallele h. Sie haben überall denselben Abstand (z. B. 2 cm).' :
+            S.heroStep === 2 ? '<b>Fall B (Großer Abstand, z. B. 6 cm):</b> Schulbuch 2.1 Beispiel 2b! Zeichne zuerst eine senkrechte Hilfslinie zu g. Markiere darauf den Punkt P im Abstand 6 cm. Zeichne durch P eine zweite Senkrechte k. Es gilt: k ∥ g!' :
+            '<b>Fall C (Parallelverschiebung):</b> Lege das Geodreieck an Gerade g. Drücke ein Lineal fest an die andere Kante. Schiebe das Geodreieck am Lineal entlang bis zum Punkt P. Zeichne die Parallele und markiere den Verschiebungspfeil!'}
+        </div>
+        <button class="speak-btn" onclick="speakGerman(document.getElementById('para-expl-text').textContent)">🔊 Vorlesen</button>
+      </div>
+    `;
+  } else {
+    // Vergleich Strecke vs Strahl vs Gerade
+    return `
+      <div class="svg-scroll-wrap">
+        <svg viewBox="0 0 760 260" style="max-width:100%; height:auto; background:var(--card-2); border-radius:var(--radius-md); border:2px solid var(--line);">
+          <!-- 1. STRECKE -->
+          <g>
+            <circle cx="100" cy="60" r="6" fill="#2563eb"/>
+            <text x="100" y="42" font-family="var(--display)" font-size="18" fill="#2563eb" text-anchor="middle">A</text>
+            <line x1="100" y1="60" x2="420" y2="60" stroke="#2563eb" stroke-width="4"/>
+            <circle cx="420" cy="60" r="6" fill="#2563eb"/>
+            <text x="420" y="42" font-family="var(--display)" font-size="18" fill="#2563eb" text-anchor="middle">B</text>
+            <text x="460" y="66" font-family="var(--display)" font-size="20" fill="#2563eb">Strecke AB</text>
+            <text x="620" y="66" font-size="14" font-weight="700" fill="var(--ink-soft)">2 Endpunkte • messbare Länge</text>
+          </g>
+
+          <!-- 2. STRAHL -->
+          <g>
+            <circle cx="100" cy="130" r="6" fill="#b45309"/>
+            <text x="100" y="112" font-family="var(--display)" font-size="18" fill="#b45309" text-anchor="middle">A (Anfang)</text>
+            <line x1="100" y1="130" x2="420" y2="130" stroke="#b45309" stroke-width="4"/>
+            <polygon points="420,123 435,130 420,137" fill="#b45309"/>
+            <text x="460" y="136" font-family="var(--display)" font-size="20" fill="#b45309">Strahl s</text>
+            <text x="620" y="136" font-size="14" font-weight="700" fill="var(--ink-soft)">1 Anfangspunkt • kein Endpunkt</text>
+          </g>
+
+          <!-- 3. GERADE -->
+          <g>
+            <polygon points="80,200 65,200 80,193" fill="#15803d"/>
+            <line x1="70" y1="200" x2="430" y2="200" stroke="#15803d" stroke-width="4"/>
+            <polygon points="430,193 445,200 430,207" fill="#15803d"/>
+            <text x="460" y="206" font-family="var(--display)" font-size="20" fill="#15803d">Gerade g</text>
+            <text x="620" y="206" font-size="14" font-weight="700" fill="var(--ink-soft)">Weder Anfang noch Ende (unendlich)</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="hero-explainer">
+        <div class="hero-explainer-text" id="lines-expl-text">
+          <b>Die drei Linienarten im Direktvergleich:</b><br>
+          • <b>Strecke:</b> Hat zwei feste Punkte (Anfang &amp; Ende) und eine messbare Länge. Kürzeste Verbindung!<br>
+          • <b>Strahl (Halbgerade):</b> Startet an einem festen Anfangspunkt und geht in eine Richtung unendlich weiter.<br>
+          • <b>Gerade:</b> Hat keinen Anfang und kein Ende. Sie ist in beide Richtungen unendlich lang und wird mit Kleinbuchstaben (g, h) bezeichnet.
+        </div>
+        <button class="speak-btn" onclick="speakGerman(document.getElementById('lines-expl-text').textContent)">🔊 Vorlesen</button>
+      </div>
+    `;
+  }
+}
+
+function showHeroTip(type){
+  const el = document.getElementById('hero-expl-text');
+  if(!el) return;
+  playSfx('click');
+
+  S.activeGeoPart = type;
+
+  // Setze alle Teile blass, aktiviere nur das angeklickte
+  document.querySelectorAll('.geo-part').forEach(p => {
+    p.classList.remove('is-active');
+  });
+
+  if(type !== 'all' && type !== 'none'){
+    document.querySelectorAll('.geo-part-' + type).forEach(p => {
+      p.classList.add('is-active');
+    });
+  }
+
+  // Buttons in der Inspect-Bar markieren
+  document.querySelectorAll('.geo-inspect-btn').forEach(btn => {
+    const isAct = btn.getAttribute('onclick').includes("'" + type + "'");
+    btn.classList.toggle('active', isAct);
+  });
+
+  let text = '';
+  if(type === 'skala-aussen'){
+    text = '🟡 <b>Die äußere Gradskala (Winkel-Außenskala):</b> Verläuft von links nach rechts (10°, 20°, 30° ... 90° ... bis 170°). Mit ihr misst und zeichnest du Winkel, deren erster Schenkel nach links zeigt. Bei 90° steht der rechte Winkel!';
+  } else if(type === 'skala-innen'){
+    text = '🟡 <b>Die innere Gradskala (Winkel-Innenskala):</b> Verläuft gegenläufig von rechts nach links (10°, 20°, 30° ... 90° ... bis 170°). Mit ihr misst du Winkel, deren erster Schenkel nach rechts zeigt. Dank zweier Skalen muss man das Geodreieck nie umdrehen!';
+  } else if(type === 'laengenskala'){
+    text = '📏 <b>Die Längenskala (Millimeter &amp; Zentimeter):</b> Liegt an der langen Zeichenkante. Die 0 liegt genau in der Mitte. Nach links und rechts zählt die Skala jeweils bis 7 cm (insgesamt 14 cm Länge). Jeder Zentimeter hat 10 feine Millimeter-Teilstriche.';
+  } else if(type === 'nullpunkt'){
+    text = '📍 <b>Der Nullpunkt (0):</b> Liegt genau in der Mitte der Zeichenkante. Hier treffen sich die Längenskala und die Mittellinie. Zum Messen einer Strecke legst du die 0 exakt an den Anfangspunkt und liest am Endpunkt die Länge ab!';
+  } else if(type === 'zeichenkante'){
+    text = '📏 <b>Die Zeichenkante (Grundkante):</b> Die lange Grundseite des Geodreiecks. An ihr führt man den Bleistift sauber entlang, um gerade Strecken und Linien zu zeichnen.';
+  } else if(type === 'mittellinie'){
+    text = '▲ <b>Die Mittellinie:</b> Die senkrechte Hilfslinie von der 90°-Spitze genau durch die 0. Legst du die Mittellinie auf eine Gerade g, zeichnest du an der Zeichenkante eine Senkrechte (g ⊥ h).';
+  } else if(type === 'parallelen'){
+    text = '═ <b>Die Parallelenlinien:</b> Waagerechte Hilfslinien im Inneren des Geodreiecks im Abstand von 1 cm, 2 cm, 3 cm und 4 cm. Liegt eine Parallelenlinie auf einer Geraden, ziehst du an der Zeichenkante eine exakte Parallele mit diesem Abstand!';
+  } else if(type === 'winkel'){
+    text = '📐 <b>Der rechte Winkel (90°):</b> Befindet sich an der oberen Spitze des Geodreiecks. Zwei zueinander senkrechte Geraden bilden genau diesen 90°-Winkel!';
+  } else {
+    text = '💡 <b>Tippe auf ein Bauteil des Geodreiecks:</b> Alle Beschriftungen sind dezent blass – beim Anklicken wird das gewählte Element <b>dunkel, kräftig und deutlich</b> hervorgehoben!';
+  }
+
+  el.innerHTML = text;
+}
+
+/* ==========================================================================
+   FLASHCARDS VIEW
+   ========================================================================== */
+function renderFlashcardView(app){
+  const pool = filterVocabByLevel(S.level);
+  if(S.flash.deck.length === 0){
+    S.flash.deck = shuffle(pool);
+    S.flash.idx = 0;
+    S.flash.flipped = false;
+  }
+  const cur = S.flash.deck[S.flash.idx] || pool[0];
+
+  app.innerHTML = `
+    <div class="activity-container">
+      <div class="act-header">
+        <div class="act-title-box">
+          <button class="back-btn" onclick="exitToHome()">← Zurück</button>
+          <h2>🎴 Flashcards • Fachbegriffe üben</h2>
+        </div>
+        <div style="font-size:16px; font-weight:700; color:var(--ink-soft);">
+          Karte ${S.flash.idx + 1} von ${S.flash.deck.length}
+        </div>
+      </div>
+
+      ${renderGameBar()}
+
+      <div class="flash-wrap">
+        <div class="flash-card-scene" onclick="flipFlashCard()">
+          <div class="flash-card ${S.flash.flipped ? 'is-flipped' : ''}">
+            <!-- VORDERSEITE (OHNE BILD-MERKHILFE, NUR BEGRIFF & ARTIKEL) -->
+            <div class="flash-face front">
+              <div class="flash-top">
+                <span class="article-pill ${getArticleClass(cur)}">${cur.article.toUpperCase()}</span>
+                <span class="act-tag">${cur.levelLabel}</span>
+              </div>
+              <div class="flash-word">
+                <div class="flash-word-title">${cur.word}</div>
+                <div class="flash-word-plural">${cur.plural}</div>
+              </div>
+              <div class="flash-flip-hint">
+                🔄 Zum Umdrehen auf die Karte tippen
+              </div>
+            </div>
+
+            <!-- RÜCKSEITE (HIER IST DIE BILD-MERKHILFE / DAS SYMBOL!) -->
+            <div class="flash-face back">
+              <div class="flash-top">
+                <span class="act-tag" style="color:var(--accent);">Erklärung &amp; Bild-Merkhilfe</span>
+                <button class="speak-btn" onclick="event.stopPropagation(); speakGerman('${cur.word}. ${cur.def}')">🔊 Vorlesen</button>
+              </div>
+              <div>
+                <!-- BILD-MERKHILFE HIER AUF DER RÜCKSEITE -->
+                <div style="text-align:center; margin-bottom:14px;">
+                  <div class="flash-symbol">${cur.symbol}</div>
+                </div>
+                <div class="flash-def">${cur.def}</div>
+                <div class="flash-example">„${cur.example}“</div>
+                <div class="flash-tip">💡 Tipp: ${cur.tip}</div>
+              </div>
+              <div class="flash-flip-hint">
+                🔄 Tippen, um wieder die Vorderseite zu sehen
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flash-controls">
+          <button class="flash-rate-btn repeat" onclick="rateFlashCard(false)">❌ Nochmal üben</button>
+          <button class="btn" onclick="flipFlashCard()">🔄 Umdrehen</button>
+          <button class="flash-rate-btn known" onclick="rateFlashCard(true)">✅ Gewusst! (+1)</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function flipFlashCard(){
+  S.flash.flipped = !S.flash.flipped;
+  playSfx('click');
+  render();
+}
+
+function rateFlashCard(known){
+  if(known){
+    playSfx('correct');
+    addScore(1);
+  } else {
+    playSfx('wrong');
+  }
+
+  S.flash.flipped = false;
+  if(S.flash.idx < S.flash.deck.length - 1){
+    S.flash.idx++;
+  } else {
+    playSfx('fanfare');
+    alert("🎉 Großartig! Du hast alle Flashcards in dieser Runde durchgearbeitet!");
+    S.flash.deck = shuffle(filterVocabByLevel(S.level));
+    S.flash.idx = 0;
+  }
+  render();
+}
+
+/* ==========================================================================
+   MATCHING VIEW (PAARE FINDEN)
+   ========================================================================== */
+function renderMatchingView(app){
+  if(S.matching.pairs.length === 0){
+    initMatchingGame();
+  }
+
+  app.innerHTML = `
+    <div class="activity-container">
+      <div class="act-header">
+        <div class="act-title-box">
+          <button class="back-btn" onclick="exitToHome()">← Zurück</button>
+          <h2>🧩 Paare finden • Begriff &amp; Bedeutung</h2>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center;">
+          <span style="font-weight:700; color:var(--ink-soft);">Züge: ${S.matching.moves}</span>
+          <button class="btn" onclick="initMatchingGame()">🔄 Neu mischen</button>
+        </div>
+      </div>
+
+      ${renderGameBar()}
+
+      <div class="match-grid">
+        ${S.matching.pairs.map((card, idx) => `
+          <div class="match-card ${card.matched ? 'matched' : ''} ${S.matching.selectedCard === idx ? 'selected' : ''}" onclick="clickMatchCard(${idx})">
+            ${card.type === 'word' ? `
+              <span class="article-pill ${getArticleClass(card)}" style="margin-bottom:8px; font-size:11.5px; padding:2px 10px;">${card.article.toUpperCase()}</span>
+              <div class="match-card-word">${card.text}</div>
+            ` : `
+              <div class="match-card-def">${card.text}</div>
+            `}
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function initMatchingGame(){
+  const pool = shuffle(filterVocabByLevel(S.level)).slice(0, 8);
+  const cards = [];
+
+  pool.forEach(item => {
+    cards.push({
+      id: item.id,
+      type: 'word',
+      text: item.word,
+      article: item.article,
+      category: item.category,
+      matched: false
+    });
+    cards.push({
+      id: item.id,
+      type: 'def',
+      text: item.matchingShort,
+      matched: false
+    });
+  });
+
+  S.matching.pairs = shuffle(cards);
+  S.matching.selectedCard = null;
+  S.matching.matchedCount = 0;
+  S.matching.moves = 0;
+  S.matching.finished = false;
+  render();
+}
+
+function clickMatchCard(idx){
+  const card = S.matching.pairs[idx];
+  if(card.matched || S.matching.selectedCard === idx) return;
+
+  playSfx('click');
+
+  if(S.matching.selectedCard === null){
+    S.matching.selectedCard = idx;
+    render();
+  } else {
+    S.matching.moves++;
+    const firstIdx = S.matching.selectedCard;
+    const first = S.matching.pairs[firstIdx];
+
+    if(first.id === card.id && first.type !== card.type){
+      // MATCH!
+      first.matched = true;
+      card.matched = true;
+      S.matching.selectedCard = null;
+      S.matching.matchedCount += 2;
+      playSfx('correct');
+      addScore(2);
+
+      if(S.matching.matchedCount === S.matching.pairs.length){
+        playSfx('fanfare');
+        setTimeout(() => {
+          alert(`🏆 Fantastisch! Du hast alle ${S.matching.pairs.length / 2} Paare in ${S.matching.moves} Zügen gefunden!`);
+        }, 300);
+      }
+      render();
+    } else {
+      // WRONG
+      playSfx('wrong');
+      const cards = document.querySelectorAll('.match-card');
+      if(cards[firstIdx]) cards[firstIdx].classList.add('wrong');
+      if(cards[idx]) cards[idx].classList.add('wrong');
+
+      setTimeout(() => {
+        S.matching.selectedCard = null;
+        render();
+      }, 700);
+    }
+  }
+}
+
+/* ==========================================================================
+   CLOZE VIEW (LÜCKENTEXT)
+   ========================================================================== */
+function renderClozeView(app){
+  const story = DATA.cloze[S.cloze.storyIdx];
+
+  app.innerHTML = `
+    <div class="activity-container">
+      <div class="act-header">
+        <div class="act-title-box">
+          <button class="back-btn" onclick="exitToHome()">← Zurück</button>
+          <h2>✍️ Lückentext • ${story.title}</h2>
+        </div>
+        <div class="pills">
+          ${DATA.cloze.map((s, idx) => `
+            <button class="pill ${S.cloze.storyIdx === idx ? 'level-mittel' : ''}" aria-pressed="${S.cloze.storyIdx === idx}" onclick="selectClozeStory(${idx})">Text ${idx + 1}</button>
+          `).join('')}
+        </div>
+      </div>
+
+      ${renderGameBar()}
+
+      <div class="cloze-story">
+        ${renderClozeStoryText(story)}
+      </div>
+
+      <div style="margin-bottom:12px; font-weight:700; color:var(--ink-soft);">
+        👇 Wähle zuerst eine freie Lücke oben aus und klicke dann auf das passende Wort:
+      </div>
+
+      <div class="word-bank">
+        ${story.wordBank.map(w => {
+          const isUsed = Object.values(S.cloze.userAnswers).includes(w);
+          return `
+            <button class="word-chip ${isUsed ? 'used' : ''}" onclick="insertWordIntoBlank('${w}')">${w}</button>
+          `;
+        }).join('')}
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
+        <button class="btn" onclick="resetCloze()">🔄 Lücken leeren</button>
+        <button class="btn primary" onclick="checkClozeAnswers()">✔️ Überprüfen</button>
+      </div>
+    </div>
+  `;
+}
+
+function renderClozeStoryText(story){
+  let html = story.storyText;
+  story.blanks.forEach((b, idx) => {
+    const userVal = S.cloze.userAnswers[idx] || "";
+    const isActive = S.cloze.activeBlankId === idx;
+    let statusClass = "";
+    if(S.cloze.checked){
+      statusClass = userVal.toLowerCase() === b.toLowerCase() ? "correct" : "wrong";
+    }
+
+    const span = `<span class="cloze-blank ${isActive ? 'active' : ''} ${userVal ? 'filled' : ''} ${statusClass}" onclick="selectBlank(${idx})">${userVal || `[ Lücke ${idx+1} ]`}</span>`;
+    html = html.replace(`[${b}]`, span);
+  });
+  return html;
+}
+
+function selectClozeStory(idx){
+  S.cloze.storyIdx = idx;
+  S.cloze.activeBlankId = 0;
+  S.cloze.userAnswers = {};
+  S.cloze.checked = false;
+  playSfx('click');
+  render();
+}
+
+function selectBlank(idx){
+  S.cloze.activeBlankId = idx;
+  playSfx('click');
+  render();
+}
+
+function insertWordIntoBlank(word){
+  if(S.cloze.activeBlankId === null){
+    const story = DATA.cloze[S.cloze.storyIdx];
+    for(let i = 0; i < story.blanks.length; i++){
+      if(!S.cloze.userAnswers[i]){
+        S.cloze.activeBlankId = i;
+        break;
+      }
+    }
+  }
+  if(S.cloze.activeBlankId === null) return;
+
+  S.cloze.userAnswers[S.cloze.activeBlankId] = word;
+  playSfx('click');
+
+  const story = DATA.cloze[S.cloze.storyIdx];
+  const nextEmpty = story.blanks.findIndex((_, i) => i > S.cloze.activeBlankId && !S.cloze.userAnswers[i]);
+  S.cloze.activeBlankId = nextEmpty !== -1 ? nextEmpty : null;
+
+  render();
+}
+
+function resetCloze(){
+  S.cloze.userAnswers = {};
+  S.cloze.activeBlankId = 0;
+  S.cloze.checked = false;
+  playSfx('click');
+  render();
+}
+
+function checkClozeAnswers(){
+  const story = DATA.cloze[S.cloze.storyIdx];
+  let correctCount = 0;
+
+  story.blanks.forEach((b, idx) => {
+    if((S.cloze.userAnswers[idx] || "").toLowerCase() === b.toLowerCase()){
+      correctCount++;
+    }
+  });
+
+  S.cloze.checked = true;
+
+  if(correctCount === story.blanks.length){
+    playSfx('fanfare');
+    addScore(story.blanks.length * 2);
+    alert(`🎉 Perfekt gelöst! Alle ${correctCount} Lücken sind fehlerfrei ausgefüllt!`);
+  } else {
+    playSfx(correctCount > 0 ? 'correct' : 'wrong');
+    addScore(correctCount);
+  }
+  render();
+}
+
+/* ==========================================================================
+   QUIZ VIEW
+   ========================================================================== */
+function renderQuizView(app){
+  const q = DATA.quiz[S.quiz.idx];
+
+  app.innerHTML = `
+    <div class="activity-container">
+      <div class="act-header">
+        <div class="act-title-box">
+          <button class="back-btn" onclick="exitToHome()">← Zurück</button>
+          <h2>🎯 Geometrie-Quiz &amp; Stolperstellen</h2>
+        </div>
+        <div style="font-weight:700; color:var(--ink-soft);">
+          Frage ${S.quiz.idx + 1} von ${DATA.quiz.length} • Punkte: ${S.quiz.score}
+        </div>
+      </div>
+
+      ${renderGameBar()}
+
+      <div class="quiz-card">
+        <div class="quiz-q-num">Aufgabe ${S.quiz.idx + 1}</div>
+        <h3 class="quiz-q-title">${q.title}</h3>
+        <div class="quiz-q-text">${q.text}</div>
+
+        <div class="quiz-options">
+          ${q.options.map((opt, optIdx) => {
+            let cls = "";
+            if(S.quiz.answered){
+              if(opt.correct) cls = "correct";
+              else if(S.quiz.selectedOption === optIdx) cls = "wrong";
+            }
+            return `
+              <button class="quiz-opt-btn ${cls}" onclick="answerQuiz(${optIdx})" ${S.quiz.answered ? 'disabled' : ''}>
+                <div class="quiz-opt-mark">${String.fromCharCode(65 + optIdx)}</div>
+                <div>${opt.text}</div>
+              </button>
+            `;
+          }).join('')}
+        </div>
+
+        ${S.quiz.answered ? `
+          <div class="quiz-explanation">
+            💡 <b>Erklärung:</b> ${q.explanation}
+          </div>
+          <div style="text-align:right;">
+            <button class="btn primary" onclick="nextQuizQuestion()">
+              ${S.quiz.idx < DATA.quiz.length - 1 ? 'Nächste Frage →' : 'Ergebnis anzeigen 🏆'}
+            </button>
+          </div>
+        ` : ''}
+      </div>
+    </div>
+  `;
+}
+
+function answerQuiz(optIdx){
+  if(S.quiz.answered) return;
+  S.quiz.selectedOption = optIdx;
+  S.quiz.answered = true;
+
+  const q = DATA.quiz[S.quiz.idx];
+  const isCorrect = q.options[optIdx].correct;
+
+  if(isCorrect){
+    playSfx('correct');
+    S.quiz.score += 2;
+    addScore(2);
+  } else {
+    playSfx('wrong');
+  }
+  render();
+}
+
+function nextQuizQuestion(){
+  if(S.quiz.idx < DATA.quiz.length - 1){
+    S.quiz.idx++;
+    S.quiz.answered = false;
+    S.quiz.selectedOption = null;
+    playSfx('click');
+    render();
+  } else {
+    playSfx('fanfare');
+    alert(`🏆 Quiz beendet!\nDu hast ${S.quiz.score} von ${DATA.quiz.length * 2} Punkten erzielt!`);
+    S.quiz.idx = 0;
+    S.quiz.answered = false;
+    S.quiz.selectedOption = null;
+    S.quiz.score = 0;
+    exitToHome();
+  }
+}
+
+/* ==========================================================================
+   LEXIKON GRID
+   ========================================================================== */
+function renderLexikonGrid(){
+  return `
+    <div style="display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap;">
+      <button class="pill ${S.lexikonCategory === 'all' ? 'level-einfach' : ''}" aria-pressed="${S.lexikonCategory === 'all'}" onclick="setLexCategory('all')">Alle Wortarten</button>
+      <button class="pill ${S.lexikonCategory === 'nomen' ? 'level-mittel' : ''}" aria-pressed="${S.lexikonCategory === 'nomen'}" onclick="setLexCategory('nomen')">Nomen (der/die/das)</button>
+      <button class="pill ${S.lexikonCategory === 'adjektiv' ? 'level-schwer' : ''}" aria-pressed="${S.lexikonCategory === 'adjektiv'}" onclick="setLexCategory('adjektiv')">Adjektive (senkrecht/parallel)</button>
+      <button class="pill ${S.lexikonCategory === 'verb' ? 'level-mittel' : ''}" aria-pressed="${S.lexikonCategory === 'verb'}" onclick="setLexCategory('verb')">Verben (messen/zeichnen)</button>
+    </div>
+    <div class="lex-grid" id="lex-grid-box">
+      ${renderLexikonCards()}
+    </div>
+  `;
+}
+
+function setLexCategory(cat){
+  S.lexikonCategory = cat;
+  playSfx('click');
+  render();
+}
+
+function renderLexikonCards(){
+  let items = DATA.vocab;
+  if(S.lexikonCategory !== 'all'){
+    items = items.filter(v => v.category === S.lexikonCategory);
+  }
+  if(S.lexikonSearch){
+    items = items.filter(v => 
+      v.word.toLowerCase().includes(S.lexikonSearch) ||
+      v.def.toLowerCase().includes(S.lexikonSearch) ||
+      v.example.toLowerCase().includes(S.lexikonSearch)
+    );
+  }
+
+  if(items.length === 0){
+    return `<div style="grid-column:1/-1; padding:30px; text-align:center; color:var(--ink-soft);">Kein passender Begriff gefunden.</div>`;
+  }
+
+  return items.map(v => `
+    <div class="lex-card">
+      <div class="lex-card-top">
+        <span class="article-pill ${getArticleClass(v)}">${v.article.toUpperCase()}</span>
+        <button class="speak-btn" style="padding:2px 8px; font-size:12px;" onclick="speakGerman('${v.word}. ${v.def}')">🔊 Vorlesen</button>
+      </div>
+      <div class="lex-word">${v.word}</div>
+      <div style="font-size:13px; font-weight:700; color:var(--ink-soft);">${v.plural} • Symbol: ${v.symbol}</div>
+      <div class="lex-def">${v.def}</div>
+      <div class="lex-ex">„${v.example}“</div>
+    </div>
+  `).join('');
+}
+
+/* ==========================================================================
+   GAME STATE & HELPERS
+   ========================================================================== */
+function renderGameBar(){
+  return `
+    <div class="game-status-bar">
+      <div>
+        ⭐ Richtig gelöst: <b>${S.soloStats.correct}</b> von ${S.soloStats.total}
+        ${S.soloStats.stars > 0 ? `&nbsp;|&nbsp; 🌟 Bonus-Sterne: <b>${S.soloStats.stars}</b>` : ''}
+      </div>
+      <div style="font-size:14px; color:var(--ink-soft); font-weight:600;">
+        🎯 Wortschatz-Training
+      </div>
+    </div>
+  `;
+}
+
+function addScore(pts){
+  S.soloStats.correct += (pts > 0 ? 1 : 0);
+  S.soloStats.total++;
+  if(pts > 0){
+    S.soloStats.streak++;
+    if(S.soloStats.streak % 3 === 0) S.soloStats.stars++;
+  } else {
+    S.soloStats.streak = 0;
+  }
+}
+
+function startActivity(act){
+  playSfx('click');
+  S.view = act;
+  if(act === 'flashcard'){
+    S.flash.deck = shuffle(filterVocabByLevel(S.level));
+    S.flash.idx = 0;
+    S.flash.flipped = false;
+  } else if(act === 'matching'){
+    initMatchingGame();
+  } else if(act === 'cloze'){
+    S.cloze.storyIdx = 0;
+    S.cloze.activeBlankId = 0;
+    S.cloze.userAnswers = {};
+    S.cloze.checked = false;
+  } else if(act === 'quiz'){
+    S.quiz.idx = 0;
+    S.quiz.answered = false;
+    S.quiz.selectedOption = null;
+    S.quiz.score = 0;
+  }
+  render();
+}
+
+function exitToHome(){
+  playSfx('click');
+  S.view = 'home';
+  render();
+}
+
+function toggleTheme(){
+  S.theme = S.theme === 'light' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', S.theme);
+  playSfx('click');
+  render();
+}
+
+function toggleSound(){
+  S.sound = !S.sound;
+  playSfx('click');
+  render();
+}
+
+// Initial Boot
+document.addEventListener("DOMContentLoaded", () => {
+  render();
+});
+</script>
+</body>
+</html>
