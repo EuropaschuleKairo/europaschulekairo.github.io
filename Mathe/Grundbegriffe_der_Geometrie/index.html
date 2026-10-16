@@ -1271,6 +1271,8 @@ const S = {
   lexikonCategory: "all",  // "all" | "nomen" | "adjektiv" | "verb"
   heroTab: "dreieck",      // "dreieck" | "senkrecht" | "parallel" | "vergleich"
   heroStep: 1,
+  parallelCase: "A",       // "A" | "B" | "C"
+  parallelStep: 1,         // 1, 2, 3
   activeGeoPart: "all",    // Welches Teil des Geodreiecks gerade dunkel hervorgehoben ist
 
   // Flashcards state
@@ -1629,6 +1631,21 @@ function setHeroStep(step){
   if(el) el.innerHTML = renderHeroContent();
 }
 
+function setParallelCase(c){
+  S.parallelCase = c;
+  S.parallelStep = 1;
+  playSfx('click');
+  const el = document.getElementById('hero-interactive-content');
+  if(el) el.innerHTML = renderHeroContent();
+}
+
+function setParallelStep(step){
+  S.parallelStep = step;
+  playSfx('click');
+  const el = document.getElementById('hero-interactive-content');
+  if(el) el.innerHTML = renderHeroContent();
+}
+
 function renderHeroContent(){
   if(S.heroTab === 'dreieck'){
     const cx = 400;
@@ -1946,77 +1963,323 @@ function renderHeroContent(){
       </div>
     `;
   } else if(S.heroTab === 'parallel'){
+    const pCase = S.parallelCase || 'A';
+    const pStep = S.parallelStep || 1;
+
+    let svgContent = '';
+    let explText = '';
+
+    if(pCase === 'A'){
+      // ==========================================
+      // FALL A: Kleiner Abstand (mit Parallelenlinien)
+      // ==========================================
+      svgContent = `
+        <!-- Gerade g -->
+        <line x1="60" y1="180" x2="700" y2="180" stroke="#2563eb" stroke-width="4"/>
+        <text x="715" y="186" font-family="var(--display)" font-size="22" fill="#2563eb">g</text>
+
+        ${pStep === 1 ? `
+          <!-- Schritt 1: Ziel anzeigen -->
+          <line x1="60" y1="120" x2="700" y2="120" stroke="#16a34a" stroke-width="2.5" stroke-dasharray="6 4" opacity="0.6"/>
+          <text x="380" y="105" font-family="var(--display)" font-size="16" fill="#16a34a" text-anchor="middle">🎯 Geplante Parallele h im Abstand 2 cm</text>
+          <!-- Abstand 2 cm Markierung -->
+          <line x1="160" y1="120" x2="160" y2="180" stroke="#d97706" stroke-width="2.5" marker-start="url(#dot)" marker-end="url(#dot)"/>
+          <text x="175" y="155" font-family="var(--display)" font-size="15" fill="#d97706" font-weight="700">Abstand 2 cm</text>
+          <text x="380" y="250" font-size="16" fill="var(--ink-soft)" text-anchor="middle">1. Gegeben ist die Gerade g. Du möchtest eine Parallele h im Abstand von 2 cm zeichnen.</text>
+        ` : ''}
+
+        ${pStep >= 2 ? `
+          <!-- Schritt 2: Geodreieck angelegt mit 2-cm-Parallelenlinie auf g -->
+          <!-- Geodreieck-Körper (Zeichenkante oben bei y=120, Spitze zeigt nach unten zu y=320) -->
+          <polygon points="180,120 580,120 380,320" fill="#38bdf8" fill-opacity="0.22" stroke="#0284c7" stroke-width="2.5"/>
+
+          <!-- Innere Parallellinien des Geodreiecks -->
+          <!-- 1 cm (y=150) -->
+          <line x1="210" y1="150" x2="550" y2="150" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5 3"/>
+          <text x="215" y="146" font-size="10" fill="#64748b" font-weight="700">1 cm</text>
+
+          <!-- 2 cm (y=180) -> LIEGT EXAKT AUF GERADE g! -->
+          <line x1="240" y1="180" x2="520" y2="180" stroke="#dc2626" stroke-width="4" stroke-dasharray="7 3"/>
+          <rect x="245" y="196" width="270" height="22" rx="11" fill="var(--card)" stroke="#dc2626" stroke-width="1.3"/>
+          <text x="380" y="211" font-family="var(--body)" font-weight="700" font-size="11.5" fill="#dc2626" text-anchor="middle">▲ 2-cm-Parallelenlinie liegt exakt auf Gerade g!</text>
+
+          <!-- 3 cm (y=210) -->
+          <line x1="270" y1="210" x2="490" y2="210" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5 3"/>
+          <text x="275" y="206" font-size="10" fill="#64748b" font-weight="700">3 cm</text>
+
+          <!-- Mittellinie des Geodreiecks (senkrecht von 380,120 bis 380,320) -->
+          <line x1="380" y1="120" x2="380" y2="320" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="4 2"/>
+          <text x="388" y="290" font-size="11" fill="#0284c7" font-weight="700">Mittellinie</text>
+
+          <!-- Zeichenkante bei y=120 -->
+          <line x1="180" y1="120" x2="580" y2="120" stroke="#0284c7" stroke-width="3"/>
+          <!-- Teilstriche an Zeichenkante -->
+          ${[-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6].map(cm => {
+            const xt = 380 + cm * 25;
+            const len = cm === 0 ? 12 : (cm % 5 === 0 ? 8 : 5);
+            return `<line x1="${xt}" y1="120" x2="${xt}" y2="${120 + len}" stroke="#0284c7" stroke-width="${cm === 0 ? '2' : '1'}"/>`;
+          }).join('')}
+          <text x="595" y="115" font-family="var(--display)" font-size="13" font-weight="700" fill="#0284c7">Zeichenkante ➔</text>
+        ` : ''}
+
+        ${pStep === 3 ? `
+          <!-- Schritt 3: Parallele Gerade h gezeichnet -->
+          <line x1="60" y1="120" x2="700" y2="120" stroke="#16a34a" stroke-width="4"/>
+          <text x="715" y="126" font-family="var(--display)" font-size="22" fill="#16a34a">h</text>
+
+          <!-- Abstandspfeil mit rechtem Winkel -->
+          <line x1="120" y1="120" x2="120" y2="180" stroke="#d97706" stroke-width="2.5" marker-start="url(#dot)" marker-end="url(#dot)"/>
+          <text x="135" y="155" font-family="var(--display)" font-size="16" fill="#d97706" font-weight="700">Abstand = 2 cm</text>
+          <!-- Rechter Winkel an Gerade g -->
+          <path d="M 120,165 A 15,15 0 0,0 135,180" fill="none" stroke="#d97706" stroke-width="2"/>
+          <circle cx="127" cy="173" r="2" fill="#d97706"/>
+
+          <!-- Ergebnis Badge -->
+          <text x="380" y="55" font-family="var(--display)" font-size="17" fill="#16a34a" text-anchor="middle" font-weight="700">h ∥ g (Gerade h verläuft parallel zu g im Abstand 2 cm)</text>
+        ` : ''}
+      `;
+
+      if(pStep === 1){
+        explText = '<b>Schritt 1:</b> Gegeben ist die Gerade g auf deinem Blatt. Du möchtest eine Parallele h im Abstand von 2 cm zeichnen.';
+      } else if(pStep === 2){
+        explText = '<b>Schritt 2:</b> Lege das Geodreieck so an, dass die waagerechte <b>2-cm-Parallelenlinie</b> exakt auf der Geraden g liegt. Die lange <b>Zeichenkante</b> oben liegt dadurch automatisch im perfekten 2-cm-Abstand parallel zu g!';
+      } else {
+        explText = '<b>Schritt 3:</b> Führe deinen Bleistift sauber an der Zeichenkante entlang und ziehe die Gerade h. Da alle Punkte der Zeichenkante genau 2 cm Abstand zu g haben, gilt: <b>h ∥ g</b>.';
+      }
+
+    } else if(pCase === 'B'){
+      // ==========================================
+      // FALL B: Großer Abstand (z. B. 6 cm) mit senkrechter Hilfslinie
+      // ==========================================
+      svgContent = `
+        <!-- Gerade g -->
+        <line x1="60" y1="200" x2="700" y2="200" stroke="#2563eb" stroke-width="4"/>
+        <text x="715" y="206" font-family="var(--display)" font-size="22" fill="#2563eb">g</text>
+
+        ${pStep >= 1 ? `
+          <!-- Senkrechte Hilfslinie f (f ⊥ g) bei x=260 -->
+          <line x1="260" y1="35" x2="260" y2="260" stroke="#9333ea" stroke-width="3" stroke-dasharray="6 4"/>
+          <text x="270" y="50" font-family="var(--display)" font-size="16" fill="#9333ea" font-weight="700">Hilfslinie f</text>
+
+          <!-- Rechter Winkel zwischen f und g bei (260, 200) -->
+          <path d="M 260,175 A 25,25 0 0,0 235,200" fill="none" stroke="#dc2626" stroke-width="2.2"/>
+          <circle cx="242" cy="182" r="3" fill="#dc2626"/>
+          <text x="215" y="180" font-family="var(--display)" font-size="13" fill="#dc2626">90°</text>
+        ` : ''}
+
+        ${pStep === 1 ? `
+          <!-- Schritt 1: Geodreieck angelegt mit Mittellinie auf g, um Hilfslinie zu zeichnen -->
+          <polygon points="260,60 400,200 260,340" fill="#38bdf8" fill-opacity="0.20" stroke="#0284c7" stroke-width="2.5"/>
+          <!-- Mittellinie auf g -->
+          <line x1="400" y1="200" x2="260" y2="200" stroke="#dc2626" stroke-width="3.5" stroke-dasharray="6 3"/>
+          <rect x="285" y="215" width="230" height="22" rx="11" fill="var(--card)" stroke="#dc2626" stroke-width="1.2"/>
+          <text x="400" y="230" font-family="var(--body)" font-weight="700" font-size="11.5" fill="#dc2626" text-anchor="middle">▲ Mittellinie liegt genau auf g</text>
+
+          <!-- Zeichenkante bei x=260 -->
+          <text x="245" y="85" font-family="var(--display)" font-size="13" font-weight="700" fill="#0284c7" text-anchor="end">Zeichenkante ➔</text>
+          <circle cx="260" cy="200" r="5" fill="#dc2626"/>
+        ` : ''}
+
+        ${pStep === 2 ? `
+          <!-- Schritt 2: Geodreieck BLEIBT STABIL mit Mittellinie auf g liegen, 6 cm abmessen -->
+          <polygon points="260,60 400,200 260,340" fill="#38bdf8" fill-opacity="0.20" stroke="#0284c7" stroke-width="2.5"/>
+          <!-- Mittellinie bleibt stabil auf Gerade g -->
+          <line x1="400" y1="200" x2="260" y2="200" stroke="#dc2626" stroke-width="3.5" stroke-dasharray="6 3"/>
+          <rect x="280" y="215" width="245" height="22" rx="11" fill="var(--card)" stroke="#dc2626" stroke-width="1.2"/>
+          <text x="402" y="230" font-family="var(--body)" font-weight="700" font-size="11.5" fill="#dc2626" text-anchor="middle">▲ Mittellinie liegt weiter fest auf g</text>
+
+          <!-- Teilstriche auf senkrechter Zeichenkante (0 bis 7 cm, je 20 px pro cm) -->
+          ${[0, 1, 2, 3, 4, 5, 6, 7].map(cm => {
+            const yt = 200 - cm * 20;
+            const is6 = cm === 6;
+            return `
+              <line x1="260" y1="${yt}" x2="${is6 ? 245 : 252}" y2="${yt}" stroke="${is6 ? '#dc2626' : '#0284c7'}" stroke-width="${is6 || cm === 0 ? '3' : '1.3'}"/>
+              <text x="240" y="${yt + 4}" font-size="${is6 ? '13' : '11'}" font-weight="${is6 ? '900' : '700'}" fill="${is6 ? '#dc2626' : '#0284c7'}" text-anchor="end">${cm} cm</text>
+            `;
+          }).join('')}
+
+          <!-- Nullmarke an Gerade g -->
+          <circle cx="260" cy="200" r="4" fill="#0284c7"/>
+
+          <!-- Punkt P bei 6 cm (y=80) -->
+          <circle cx="260" cy="80" r="6" fill="#dc2626"/>
+          <text x="275" y="78" font-family="var(--display)" font-size="20" font-weight="800" fill="#dc2626">P (bei 6 cm)</text>
+          <text x="275" y="96" font-family="var(--body)" font-size="12" font-weight="700" fill="#dc2626">← Punkt hier markieren!</text>
+
+          <!-- Abstandsbemaßung links -->
+          <line x1="170" y1="80" x2="170" y2="200" stroke="#d97706" stroke-width="2.5" marker-start="url(#dot)" marker-end="url(#dot)"/>
+          <text x="155" y="145" font-family="var(--display)" font-size="15" fill="#d97706" font-weight="700" text-anchor="end">Abstand = 6 cm</text>
+        ` : ''}
+
+        ${pStep === 3 ? `
+          <!-- Schritt 3: Geodreieck mit Mittellinie auf Hilfslinie f, Zeichenkante horizontal durch P (y=80) -->
+          <polygon points="120,80 260,220 400,80" fill="#38bdf8" fill-opacity="0.20" stroke="#0284c7" stroke-width="2.5"/>
+          <!-- Mittellinie auf f (x=260) -->
+          <line x1="260" y1="80" x2="260" y2="220" stroke="#dc2626" stroke-width="3.5" stroke-dasharray="6 3"/>
+          <text x="272" y="160" font-family="var(--body)" font-weight="700" font-size="11.5" fill="#dc2626">Mittellinie auf f</text>
+
+          <!-- Punkt P -->
+          <circle cx="260" cy="80" r="5" fill="#dc2626"/>
+          <text x="245" y="70" font-family="var(--display)" font-size="18" font-weight="700" fill="#dc2626">P</text>
+
+          <!-- Rechter Winkel bei P zwischen f und k -->
+          <path d="M 260,105 A 25,25 0 0,1 235,80" fill="none" stroke="#dc2626" stroke-width="2.2"/>
+          <circle cx="248" cy="92" r="3" fill="#dc2626"/>
+
+          <!-- Neue Parallele k gezeichnet -->
+          <line x1="60" y1="80" x2="700" y2="80" stroke="#16a34a" stroke-width="4"/>
+          <text x="715" y="86" font-family="var(--display)" font-size="22" fill="#16a34a">k</text>
+
+          <!-- Ergebnis Badge -->
+          <text x="490" y="60" font-family="var(--display)" font-size="17" fill="#16a34a" font-weight="700">k ∥ g (Abstand 6 cm)</text>
+          <text x="490" y="120" font-size="13" fill="var(--ink-soft)">Weil f ⊥ g und k ⊥ f, sind k und g parallel!</text>
+        ` : ''}
+      `;
+
+      if(pStep === 1){
+        explText = '<b>Schritt 1:</b> Für große Abstände (wie 6 cm) reichen die Parallelenlinien nicht aus. Lege zuerst das Geodreieck mit der <b>Mittellinie</b> auf Gerade g und zeichne eine <b>senkrechte Hilfslinie f</b> (f ⊥ g). Kennzeichne den rechten Winkel mit Bogen und Punkt!';
+      } else if(pStep === 2){
+        explText = '<b>Schritt 2:</b> Das Geodreieck bleibt unverändert mit der <b>Mittellinie genau auf Gerade g</b> liegen! Der Nullpunkt der Zeichenkante liegt direkt auf g. Lies an der senkrechten Zeichenkante nach oben <b>6 cm</b> ab und markiere dort den <b>Punkt P</b>.';
+      } else {
+        explText = '<b>Schritt 3:</b> Lege nun die <b>Mittellinie</b> des Geodreiecks auf die Hilfslinie f, sodass die Zeichenkante exakt durch den <b>Punkt P</b> verläuft. Ziehe die Gerade k. Da beide Geraden senkrecht zur Hilfslinie stehen, gilt: <b>k ∥ g</b>!';
+      }
+
+    } else {
+      // ==========================================
+      // FALL C: Beliebiger Punkt (Parallelverschiebung mit Lineal)
+      // ==========================================
+      svgContent = `
+        <!-- Gerade g -->
+        <line x1="50" y1="230" x2="710" y2="230" stroke="#2563eb" stroke-width="4"/>
+        <text x="715" y="236" font-family="var(--display)" font-size="22" fill="#2563eb">g</text>
+
+        <!-- Gegebener Punkt P bei (420, 130) -->
+        <circle cx="420" cy="130" r="6" fill="#dc2626"/>
+        <text x="435" y="125" font-family="var(--display)" font-size="22" font-weight="800" fill="#dc2626">P</text>
+
+        <!-- Festes langes Lineal als Führungsschiene (liegt bündig AN der Kante, x+y=430) -->
+        <polygon points="390,40 365,15 105,275 130,300" fill="#e2e8f0" stroke="#475569" stroke-width="2.5"/>
+        <!-- Teilstriche auf dem Lineal -->
+        ${[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18].map(i => {
+          const xt = 130 + i * 14.14;
+          const yt = 300 - i * 14.14;
+          const l = i % 5 === 0 ? 9 : (i % 2 === 0 ? 6 : 4);
+          const dx = l * 0.7071;
+          const dy = l * 0.7071;
+          return `<line x1="${xt.toFixed(1)}" y1="${yt.toFixed(1)}" x2="${(xt - dx).toFixed(1)}" y2="${(yt - dy).toFixed(1)}" stroke="#64748b" stroke-width="1.2"/>`;
+        }).join('')}
+        <text x="235" y="195" font-family="var(--display)" font-size="12" font-weight="700" fill="#1e293b" transform="rotate(-45 235 195)">Lineal (Führungsschiene)</text>
+
+        ${pStep === 1 ? `
+          <!-- Schritt 1: Geodreieck an g, langes Lineal bündig AN freier Kante (nicht darauf!) -->
+          <polygon points="200,230 440,230 320,110" fill="#38bdf8" fill-opacity="0.22" stroke="#0284c7" stroke-width="2.5"/>
+          <line x1="200" y1="230" x2="440" y2="230" stroke="#0284c7" stroke-width="3.5"/>
+          <text x="320" y="250" font-family="var(--body)" font-weight="700" font-size="12" fill="#0284c7" text-anchor="middle">Zeichenkante liegt exakt an Gerade g ➔</text>
+
+          <!-- Kontaktkante zwischen Geodreieck und Lineal grün hervorgehoben (bündig ANliegend) -->
+          <line x1="200" y1="230" x2="320" y2="110" stroke="#16a34a" stroke-width="3.5"/>
+
+          <!-- Grünes Hinweisschild -->
+          <rect x="50" y="315" width="320" height="26" rx="13" fill="var(--card)" stroke="#16a34a" stroke-width="1.3"/>
+          <text x="210" y="332" font-family="var(--body)" font-weight="700" font-size="12" fill="#16a34a" text-anchor="middle">✔ Lineal liegt bündig AN der Kante (nicht darauf!)</text>
+        ` : ''}
+
+        ${pStep === 2 ? `
+          <!-- Schritt 2: Geodreieck am Lineal verschoben bis P -->
+          <!-- Startposition gestrichelt als Orientierung -->
+          <polygon points="200,230 440,230 320,110" fill="none" stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="5 3"/>
+          <text x="320" y="215" font-family="var(--body)" font-size="11" fill="#64748b" text-anchor="middle">Startposition an g</text>
+
+          <!-- Verschiebungspfeil entlang der Führungsschiene -->
+          <line x1="200" y1="230" x2="292" y2="138" stroke="#dc2626" stroke-width="4" marker-end="url(#arrowRed)"/>
+          <rect x="180" y="155" width="160" height="24" rx="12" fill="var(--card)" stroke="#dc2626" stroke-width="1.2"/>
+          <text x="260" y="171" font-family="var(--display)" font-size="12" fill="#dc2626" text-anchor="middle">Verschiebung zu P ➔</text>
+
+          <!-- Verschobenes Geodreieck (Zeichenkante bei y=130 exakt durch P!) -->
+          <polygon points="300,130 540,130 420,10" fill="#38bdf8" fill-opacity="0.22" stroke="#0284c7" stroke-width="2.5"/>
+          <line x1="300" y1="130" x2="540" y2="130" stroke="#0284c7" stroke-width="3.5"/>
+
+          <!-- Andrück-Badge für das Lineal -->
+          <rect x="50" y="315" width="320" height="26" rx="13" fill="#fef08a" stroke="#ca8a04" stroke-width="1.3"/>
+          <text x="210" y="332" font-family="var(--body)" font-weight="700" font-size="12" fill="#854d0e" text-anchor="middle">✋ Lineal fest andrücken – darf nicht verrutschen!</text>
+        ` : ''}
+
+        ${pStep === 3 ? `
+          <!-- Schritt 3: Parallele g' gezogen & Pfeil markiert -->
+          <!-- Startposition gestrichelt -->
+          <polygon points="200,230 440,230 320,110" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 3"/>
+
+          <!-- Verschiebungspfeil entlang der Führungsschiene -->
+          <line x1="200" y1="230" x2="292" y2="138" stroke="#dc2626" stroke-width="4" marker-end="url(#arrowRed)"/>
+          <rect x="180" y="155" width="160" height="24" rx="12" fill="var(--card)" stroke="#dc2626" stroke-width="1.2"/>
+          <text x="260" y="171" font-family="var(--display)" font-size="12" fill="#dc2626" text-anchor="middle">Verschiebungspfeil</text>
+
+          <!-- Verschobenes Geodreieck in Zielposition -->
+          <polygon points="300,130 540,130 420,10" fill="#38bdf8" fill-opacity="0.20" stroke="#0284c7" stroke-width="2"/>
+          <line x1="300" y1="130" x2="540" y2="130" stroke="#0284c7" stroke-width="3"/>
+
+          <!-- Parallele Gerade g' gezeichnet durch P (y=130) -->
+          <line x1="50" y1="130" x2="710" y2="130" stroke="#16a34a" stroke-width="4"/>
+          <text x="715" y="136" font-family="var(--display)" font-size="22" fill="#16a34a">g'</text>
+          <text x="500" y="105" font-family="var(--display)" font-size="17" fill="#16a34a" font-weight="700" text-anchor="middle">g' ∥ g (durch Punkt P gezeichnet)</text>
+        ` : ''}
+      `;
+
+      if(pStep === 1){
+        explText = '<b>Schritt 1:</b> Gegeben sind die Gerade g und der Punkt P außerhalb. Lege das Geodreieck mit der langen <b>Zeichenkante an Gerade g</b> an. Lege das lange <b>Lineal passgenau AN die freie Kante</b> des Geodreiecks an (nicht darauf!). Das Lineal dient als feste Führungsschiene.';
+      } else if(pStep === 2){
+        explText = '<b>Schritt 2:</b> Drücke das Lineal mit der Hand fest auf das Blatt – es darf nicht verrutschen! Schiebe das Geodreieck an der Kante des langen Lineals entlang nach oben, bis die Zeichenkante genau durch den <b>Punkt P</b> geht.';
+      } else {
+        explText = '<b>Schritt 3:</b> Halte das Geodreieck fest und ziehe mit dem Bleistift die Parallele g\' durch den Punkt P. Es gilt: <b>g\' ∥ g</b>! Der rote <b>Verschiebungspfeil</b> entlang des Lineals zeigt Richtung und Weite der Parallelverschiebung.';
+      }
+    }
+
     return `
-      <div style="display:flex; justify-content:center; gap:8px; margin-bottom:16px;">
-        <button class="pill ${S.heroStep === 1 ? 'level-einfach' : ''}" aria-pressed="${S.heroStep === 1}" onclick="setHeroStep(1)">Fall A: Kleiner Abstand (mit Parallelenlinien)</button>
-        <button class="pill ${S.heroStep === 2 ? 'level-mittel' : ''}" aria-pressed="${S.heroStep === 2}" onclick="setHeroStep(2)">Fall B: Großer Abstand (senkrechte Hilfslinie)</button>
-        <button class="pill ${S.heroStep === 3 ? 'level-schwer' : ''}" aria-pressed="${S.heroStep === 3}" onclick="setHeroStep(3)">Fall C: Parallelverschiebung mit Lineal</button>
+      <!-- Fall-Auswahl (Fall A, B, C) -->
+      <div style="display:flex; justify-content:center; gap:8px; margin-bottom:10px; flex-wrap:wrap;">
+        <button class="pill ${pCase === 'A' ? 'level-einfach' : ''}" aria-pressed="${pCase === 'A'}" onclick="setParallelCase('A')">Fall A: Kleiner Abstand (Parallelenlinien)</button>
+        <button class="pill ${pCase === 'B' ? 'level-mittel' : ''}" aria-pressed="${pCase === 'B'}" onclick="setParallelCase('B')">Fall B: Großer Abstand (Hilfslinie)</button>
+        <button class="pill ${pCase === 'C' ? 'level-schwer' : ''}" aria-pressed="${pCase === 'C'}" onclick="setParallelCase('C')">Fall C: Beliebiger Punkt (Parallelverschiebung)</button>
+      </div>
+
+      <!-- Schritt-Navigation für den gewählten Fall -->
+      <div style="display:flex; justify-content:center; gap:8px; margin-bottom:16px; flex-wrap:wrap;">
+        ${pCase === 'A' ? `
+          <button class="pill ${pStep === 1 ? 'level-einfach' : ''}" aria-pressed="${pStep === 1}" onclick="setParallelStep(1)">Schritt 1: Ausgangslage (Gerade g)</button>
+          <button class="pill ${pStep === 2 ? 'level-mittel' : ''}" aria-pressed="${pStep === 2}" onclick="setParallelStep(2)">Schritt 2: 2-cm-Linie anlegen</button>
+          <button class="pill ${pStep === 3 ? 'level-schwer' : ''}" aria-pressed="${pStep === 3}" onclick="setParallelStep(3)">Schritt 3: Parallele h ziehen (h ∥ g)</button>
+        ` : pCase === 'B' ? `
+          <button class="pill ${pStep === 1 ? 'level-einfach' : ''}" aria-pressed="${pStep === 1}" onclick="setParallelStep(1)">Schritt 1: Senkrechte Hilfslinie f</button>
+          <button class="pill ${pStep === 2 ? 'level-mittel' : ''}" aria-pressed="${pStep === 2}" onclick="setParallelStep(2)">Schritt 2: 6 cm abmessen (Punkt P)</button>
+          <button class="pill ${pStep === 3 ? 'level-schwer' : ''}" aria-pressed="${pStep === 3}" onclick="setParallelStep(3)">Schritt 3: 2. Senkrechte k ziehen (k ∥ g)</button>
+        ` : `
+          <button class="pill ${pStep === 1 ? 'level-einfach' : ''}" aria-pressed="${pStep === 1}" onclick="setParallelStep(1)">Schritt 1: Geodreieck &amp; Lineal anlegen</button>
+          <button class="pill ${pStep === 2 ? 'level-mittel' : ''}" aria-pressed="${pStep === 2}" onclick="setParallelStep(2)">Schritt 2: Am Lineal verschieben bis P</button>
+          <button class="pill ${pStep === 3 ? 'level-schwer' : ''}" aria-pressed="${pStep === 3}" onclick="setParallelStep(3)">Schritt 3: Parallele g' ziehen (g' ∥ g)</button>
+        `}
       </div>
 
       <div class="svg-scroll-wrap">
-        <svg viewBox="0 0 760 280" style="max-width:100%; height:auto; background:var(--card-2); border-radius:var(--radius-md); border:2px solid var(--line);">
-          ${S.heroStep === 1 ? `
-            <!-- Fall A: Parallelenlinien nutzen -->
-            <line x1="60" y1="190" x2="700" y2="190" stroke="#2563eb" stroke-width="4"/>
-            <text x="715" y="195" font-family="var(--display)" font-size="20" fill="#2563eb">g</text>
+        <svg viewBox="0 0 760 360" style="max-width:100%; height:auto; background:var(--card-2); border-radius:var(--radius-md); border:2px solid var(--line);">
+          <defs>
+            <marker id="arrowRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#dc2626"/>
+            </marker>
+            <marker id="arrowGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#16a34a"/>
+            </marker>
+            <marker id="dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4">
+              <circle cx="5" cy="5" r="4" fill="#d97706"/>
+            </marker>
+          </defs>
 
-            <!-- Geodreieck mit 2cm Parallelenlinie auf g -->
-            <polygon points="120,100 400,-180 680,100" fill="#38bdf8" fill-opacity="0.2" stroke="#0284c7" stroke-width="2"/>
-            <line x1="210" y1="190" x2="590" y2="190" stroke="#dc2626" stroke-width="3" stroke-dasharray="6 3"/>
-            <text x="400" y="175" font-weight="700" font-size="14" fill="#dc2626" text-anchor="middle">2-cm-Parallelenlinie liegt auf Gerade g</text>
-
-            <!-- Parallele Gerade h an Zeichenkante gezeichnet -->
-            <line x1="60" y1="100" x2="700" y2="100" stroke="#16a34a" stroke-width="4"/>
-            <text x="715" y="105" font-family="var(--display)" font-size="20" fill="#16a34a">h</text>
-
-            <!-- Abstandspfeil 2 cm -->
-            <line x1="120" y1="100" x2="120" y2="190" stroke="#d97706" stroke-width="2" marker-start="url(#dot)" marker-end="url(#dot)"/>
-            <text x="135" y="150" font-family="var(--display)" font-size="16" fill="#d97706">Abstand = 2 cm (h ∥ g)</text>
-          ` : S.heroStep === 2 ? `
-            <!-- Fall B: Senkrechte Hilfslinie für große Abstände (z. B. 6 cm) -->
-            <line x1="60" y1="210" x2="700" y2="210" stroke="#2563eb" stroke-width="4"/>
-            <text x="715" y="215" font-family="var(--display)" font-size="20" fill="#2563eb">g</text>
-
-            <!-- Senkrechte Hilfslinie h -->
-            <line x1="250" y1="40" x2="250" y2="240" stroke="#9333ea" stroke-width="2.5" stroke-dasharray="6 4"/>
-            <text x="260" y="70" font-weight="700" font-size="14" fill="#9333ea">senkrechte Hilfslinie</text>
-
-            <!-- Punkt P im Abstand 6 cm -->
-            <circle cx="250" cy="70" r="5" fill="#dc2626"/>
-            <text x="230" y="75" font-family="var(--display)" font-size="18" fill="#dc2626">P</text>
-            <text x="150" y="145" font-weight="700" font-size="15" fill="#d97706">Abstand 6 cm</text>
-
-            <!-- Neue Parallele durch P -->
-            <line x1="60" y1="70" x2="700" y2="70" stroke="#16a34a" stroke-width="4"/>
-            <text x="715" y="75" font-family="var(--display)" font-size="20" fill="#16a34a">k</text>
-            <text x="450" y="55" font-family="var(--display)" font-size="16" fill="#16a34a">k ∥ g (Abstand 6 cm)</text>
-          ` : `
-            <!-- Fall C: Parallelverschiebung mit Lineal -->
-            <line x1="60" y1="200" x2="600" y2="200" stroke="#2563eb" stroke-width="4"/>
-            <text x="615" y="205" font-family="var(--display)" font-size="20" fill="#2563eb">g</text>
-
-            <!-- Festes Lineal links -->
-            <rect x="140" y="30" width="40" height="230" fill="#cbd5e1" stroke="#475569" stroke-width="2"/>
-            <text x="160" y="150" font-weight="700" font-size="13" fill="#475569" transform="rotate(-90 160 150)" text-anchor="middle">Lineal festhalten</text>
-
-            <!-- Verschiebungspfeil -->
-            <line x1="320" y1="200" x2="320" y2="80" stroke="#dc2626" stroke-width="3" marker-end="url(#arrowRed)"/>
-            <text x="335" y="140" font-family="var(--display)" font-size="15" fill="#dc2626">Verschiebungspfeil</text>
-
-            <!-- Verschobene Gerade -->
-            <line x1="60" y1="80" x2="600" y2="80" stroke="#16a34a" stroke-width="4"/>
-            <text x="615" y="85" font-family="var(--display)" font-size="20" fill="#16a34a">g'</text>
-            <circle cx="450" cy="80" r="5" fill="#dc2626"/>
-            <text x="460" y="75" font-family="var(--display)" font-size="16" fill="#dc2626">P</text>
-          `}
+          ${svgContent}
         </svg>
       </div>
 
       <div class="hero-explainer">
         <div class="hero-explainer-text" id="para-expl-text">
-          ${S.heroStep === 1 ? '<b>Fall A (Kleiner Abstand bis ca. 3 cm):</b> Lege eine der waagerechten <b>Parallelenlinien</b> des Geodreiecks genau auf Gerade g. Entlang der Zeichenkante ziehst du die Parallele h. Sie haben überall denselben Abstand (z. B. 2 cm).' :
-            S.heroStep === 2 ? '<b>Fall B (Großer Abstand, z. B. 6 cm):</b> Schulbuch 2.1 Beispiel 2b! Zeichne zuerst eine senkrechte Hilfslinie zu g. Markiere darauf den Punkt P im Abstand 6 cm. Zeichne durch P eine zweite Senkrechte k. Es gilt: k ∥ g!' :
-            '<b>Fall C (Parallelverschiebung):</b> Lege das Geodreieck an Gerade g. Drücke ein Lineal fest an die andere Kante. Schiebe das Geodreieck am Lineal entlang bis zum Punkt P. Zeichne die Parallele und markiere den Verschiebungspfeil!'}
+          ${explText}
         </div>
         <button class="speak-btn" onclick="speakGerman(document.getElementById('para-expl-text').textContent)">🔊 Vorlesen</button>
       </div>
