@@ -1,0 +1,440 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><script type="text/javascript" nonce="03ba3aa1e9424614901f1e9bbd6" src="//local.adguard.org?ts=1792958049800&amp;type=content-script&amp;dmn=4b2019b0-aa5f-4683-9e5a-63aa64ca774a.frame.claudeusercontent.com&amp;url=https%3A%2F%2F4b2019b0-aa5f-4683-9e5a-63aa64ca774a.frame.claudeusercontent.com%2F_f%2F1792959692-2c5e%2F_src%2Findex.html%3F__frame_t%3DFXGqXXXtNKvMus9yl98vP8Tz.2eaa3837-21b3-4758-8540-eb4be1ecf709.6ba0b738-6c57-44d5-bfa8-86e36f6e886a.1792963623&amp;app=comet.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;st-dnt"></script><script type="text/javascript" nonce="03ba3aa1e9424614901f1e9bbd6" src="//local.adguard.org?ts=1792958049800&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;type=user-script"></script></head><body>
+<title>Magnetismus Testtraining</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,750&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: one reading column, Laborheft-Stil; Nord = rot, Süd = grün wie im Physiksaal */
+:root{
+  --bg:#f4f6f3; --panel:#ffffff; --ink:#1b2320; --muted:#5c6964; --line:#d7ddd9;
+  --nord:#c8382d; --sued:#25814f; --accent:#2a5b87; --ok:#25814f; --bad:#c8382d; --soft:#e8eeea;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"Atkinson Hyperlegible",ui-sans-serif,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111715; --panel:#18201d; --ink:#e4ebe7; --muted:#9aa8a2; --line:#2b3632;
+  --nord:#ff6a5c; --sued:#4cc285; --accent:#82b5e3; --ok:#4cc285; --bad:#ff6a5c; --soft:#1f2925; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111715; --panel:#18201d; --ink:#e4ebe7; --muted:#9aa8a2; --line:#2b3632;
+  --nord:#ff6a5c; --sued:#4cc285; --accent:#82b5e3; --ok:#4cc285; --bad:#ff6a5c; --soft:#1f2925; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:17px/1.55 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 64px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(2rem,6vw,2.9rem);font-weight:750;letter-spacing:-.01em}
+h2{font-size:1.6rem;font-weight:750}
+h3{font-size:1.1rem;font-weight:500}
+p{margin:0}
+.eyebrow{font:500 .78rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.hero{display:flex;flex-direction:column;gap:14px}
+.polebar{display:flex;height:14px;width:180px;border-radius:3px;overflow:hidden}
+.polebar span{flex:1;font:500 .65rem/14px var(--mono);color:#fff;padding-left:6px}
+.polebar .s{background:var(--sued)} .polebar .n{background:var(--nord);text-align:right;padding-right:6px}
+.note{color:var(--muted);font-size:.95rem;max-width:62ch}
+nav{display:flex;flex-wrap:wrap;gap:8px}
+nav a{font:500 .85rem var(--mono);color:var(--ink);text-decoration:none;border:1px solid var(--line);padding:6px 10px;border-radius:6px;background:var(--panel);display:flex;gap:8px;align-items:center}
+nav a:hover,nav a:focus-visible{border-color:var(--accent)}
+nav a b{color:var(--accent);font-weight:500}
+section{display:flex;flex-direction:column;gap:18px;scroll-margin-top:16px}
+.sechead{display:flex;flex-direction:column;gap:6px;border-top:2px solid var(--ink);padding-top:14px}
+.score{font:500 .85rem var(--mono);color:var(--muted);display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.lab{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.lab .tag{font:500 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.q{display:flex;flex-direction:column;gap:10px;padding:14px 0;border-bottom:1px solid var(--line)}
+.q:last-child{border-bottom:0}
+.q .op{font:500 .72rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.opts{display:grid;gap:8px}
+button{font:inherit;color:inherit;cursor:pointer}
+.opt{text-align:left;background:var(--soft);border:1.5px solid transparent;border-radius:8px;padding:10px 12px;font-size:.98rem}
+.opt:hover:not(:disabled){border-color:var(--line)}
+.opt:focus-visible,.btn:focus-visible,.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.opt.sel{border-color:var(--accent)}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,var(--panel))}
+.opt.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 12%,var(--panel))}
+.opt:disabled{cursor:default}
+.expl{font-size:.95rem;color:var(--muted);border-left:3px solid var(--accent);padding-left:10px}
+.btn{background:var(--ink);color:var(--bg);border:0;border-radius:7px;padding:8px 14px;font-weight:700;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{border:1px solid var(--line);background:var(--panel);border-radius:6px;padding:6px 10px;font-size:.88rem}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.fig{overflow-x:auto}
+svg{display:block;width:100%;height:auto;max-width:100%}
+.fb{font-weight:700;min-height:1.5em}
+.fb.ok{color:var(--ok)} .fb.no{color:var(--bad)}
+.meter{height:10px;background:var(--soft);border-radius:5px;overflow:hidden;flex:1;min-width:120px}
+.meter i{display:block;height:100%;background:var(--accent);transition:width .4s}
+textarea{width:100%;min-height:110px;font:inherit;font-size:.98rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px;resize:vertical}
+.model{background:var(--soft);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:8px;font-size:.96rem}
+.model label{display:flex;gap:8px;align-items:flex-start}
+.mono{font-family:var(--mono);font-size:.85rem}
+.big{font-size:2rem;line-height:1}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="polebar" aria-hidden="true"><span class="s">S</span><span class="n">N</span></div>
+    <p class="eyebrow">Physik · Klasse 9d / 9e · Test 1</p>
+    <h1>Magnetismus Testtraining</h1>
+    <p class="note">Übe jede Zeile der Checkliste. Bei „nennen“ und „bestimmen“ prüft die Seite sofort. Bei „erklären“ und „begründen“ schreibst du selbst und vergleichst dann mit der Musterlösung. Achte dabei auf ganze Sätze: 10 % der Punkte gibt es für sprachliche Richtigkeit.</p>
+    <div class="score"><span>Gesamt: <b id="total">0 / 0</b> richtig beim ersten Versuch</span><div class="meter"><i id="totalbar" style="width:0"></i></div></div>
+    <nav>
+      <a href="#t1"><b>1</b>Dauermagnete &amp; Erde</a>
+      <a href="#t2"><b>2</b>Feldlinien</a>
+      <a href="#t3"><b>3</b>Elementarmagnete</a>
+      <a href="#t4"><b>4</b>Oersted &amp; Spule</a>
+    </nav>
+  </header>
+
+  <section id="t1">
+    <div class="sechead"><p class="eyebrow">Themenbereich 1</p><h2>Dauermagnetismus &amp; Erdmagnetfeld</h2>
+      <div class="score" data-score="q1"></div></div>
+    <div class="lab"><span class="tag">Quiz · nennen, beschreiben</span><div id="q1"></div></div>
+    <div class="lab" data-explain="e1"></div>
+    <div class="lab" data-explain="e2"></div>
+  </section>
+
+  <section id="t2">
+    <div class="sechead"><p class="eyebrow">Themenbereich 2</p><h2>Magnetfeldlinien</h2>
+      <div class="score" data-score="q2"></div></div>
+    <div class="lab">
+      <span class="tag">Labor · bestimmen</span>
+      <h3>Wie richten sich die Kompassnadeln aus?</h3>
+      <p class="note">Tippe auf eine Kompassnadel, um sie um 45° zu drehen. Die <b style="color:var(--nord)">rote Spitze</b> ist ihr Nordpol. Prüfe danach, und schalte die Feldlinien zum Vergleich ein.</p>
+      <div class="seg" id="scene" role="group" aria-label="Anordnung">
+        <button data-s="stab" aria-pressed="true">Stabmagnet</button>
+        <button data-s="anz" aria-pressed="false">N gegenüber S (Anziehung)</button>
+        <button data-s="abst" aria-pressed="false">N gegenüber N (Abstoßung)</button>
+      </div>
+      <div class="fig"><svg id="field" viewBox="0 0 600 360" role="img" aria-label="Magnetfeld mit Kompassnadeln"></svg></div>
+      <div class="row">
+        <button class="btn" id="fcheck">Prüfen</button>
+        <button class="btn ghost" id="flines">Feldlinien zeigen</button>
+        <button class="btn ghost" id="fnew">Neue Kompasse</button>
+      </div>
+      <p class="fb" id="ffb" aria-live="polite"></p>
+      <p class="note">Tipp zum Zeichnen: Skizziere jede Anordnung zuerst auf Papier, inklusive Pfeilrichtung. Blende dann die Feldlinien ein und vergleiche.</p>
+    </div>
+    <div class="lab"><span class="tag">Quiz · nennen, beschreiben, skizzieren</span><div id="q2"></div></div>
+  </section>
+
+  <section id="t3">
+    <div class="sechead"><p class="eyebrow">Themenbereich 3</p><h2>Elementarmagnete &amp; Ferromagnetismus</h2>
+      <div class="score" data-score="q3"></div></div>
+    <div class="lab">
+      <span class="tag">Modell · Eisenstab von innen</span>
+      <h3>Magnetisieren und Entmagnetisieren</h3>
+      <p class="note">Jeder kleine Pfeil ist ein Elementarmagnet (rot = Nordpol). Streiche den Eisenstab mehrmals mit dem Dauermagneten, dann erhitze oder erschüttere ihn.</p>
+      <div class="fig"><svg id="dom" viewBox="0 0 600 220" role="img" aria-label="Elementarmagnete in einem Eisenstab"></svg></div>
+      <div class="row">
+        <button class="btn" id="stroke">Streichen →</button>
+        <button class="btn ghost" id="shake">Erschüttern</button>
+        <button class="btn ghost" id="heat">Erhitzen</button>
+        <button class="btn ghost" id="fresh">Neues Eisenstück</button>
+      </div>
+      <div class="score"><span>Ordnung (Magnetisierung): <b id="mval">0 %</b></span><div class="meter"><i id="mbar" style="width:0"></i></div></div>
+      <p class="note" id="mtext" aria-live="polite"></p>
+    </div>
+    <div class="lab"><span class="tag">Quiz · benennen, beschreiben</span><div id="q3"></div></div>
+    <div class="lab" data-explain="e3"></div>
+    <div class="lab" data-explain="e4"></div>
+  </section>
+
+  <section id="t4">
+    <div class="sechead"><p class="eyebrow">Themenbereich 4</p><h2>Oersted-Effekt &amp; Handregeln</h2>
+      <div class="score" data-score="q4"></div></div>
+    <div class="lab">
+      <span class="tag">Trainer · Rechte-Faust-Regel anwenden</span>
+      <h3>Leiter im Querschnitt</h3>
+      <p class="note"><span class="mono">⊙</span> Strom kommt heraus (Pfeilspitze). <span class="mono">⊗</span> Strom fließt hinein (Gefieder). Daumen = technische Stromrichtung (+ → −), gekrümmte Finger = Feldlinien.</p>
+      <div class="fig" style="max-width:300px;align-self:center;width:100%"><svg id="fist" viewBox="0 0 240 240" role="img" aria-label="Leiter im Querschnitt"></svg></div>
+      <p id="fq" style="font-weight:700"></p>
+      <div class="opts" id="fopts" style="grid-template-columns:repeat(auto-fit,minmax(120px,1fr))"></div>
+      <p class="fb" id="ffb2" aria-live="polite"></p>
+      <div class="row"><button class="btn" id="fnext">Nächste Aufgabe</button><span class="mono" id="streak">Serie: 0</span></div>
+    </div>
+    <div class="lab"><span class="tag">Quiz · beschreiben, formulieren, nennen</span><div id="q4"></div></div>
+    <div class="lab" data-explain="e5"></div>
+  </section>
+
+  <p class="note">Deine Antworten und Texte bleiben nur in diesem Browser gespeichert. <button class="btn ghost" id="resetall">Alles zurücksetzen</button></p>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const store={get(k,d){try{const v=localStorage.getItem('mag9:'+k);return v?JSON.parse(v):d}catch(e){return d}},
+  set(k,v){try{localStorage.setItem('mag9:'+k,JSON.stringify(v))}catch(e){}}};
+const NS='http://www.w3.org/2000/svg';
+function el(tag,attrs={},parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+
+/* ---------- Quizdaten ---------- */
+const QUIZ={
+q1:[
+ {op:'nennen',q:'Welche Pole besitzt jeder Magnet?',o:['Einen Nordpol und einen Südpol','Einen Plus- und einen Minuspol','Entweder einen Nordpol oder einen Südpol','Je nach Material ein bis drei Pole'],a:0,e:'Jeder Magnet hat immer einen Nordpol und einen Südpol. Plus und Minus gehören zur Elektrizität.'},
+ {op:'nennen',q:'Zwei Südpole werden einander genähert. Was passiert?',o:['Sie ziehen sich an.','Sie stoßen sich ab.','Es passiert nichts.'],a:1,e:'Gleichnamige Pole stoßen sich ab, ungleichnamige Pole ziehen sich an.'},
+ {op:'nennen',q:'Ein Nordpol wird einem Südpol genähert. Was passiert?',o:['Sie ziehen sich an.','Sie stoßen sich ab.','Es passiert nichts.'],a:0,e:'Ungleichnamige Pole ziehen sich an.'},
+ {op:'beschreiben',q:'Wie richtet sich eine frei drehbare Kompassnadel aus, wenn kein anderer Magnet in der Nähe ist?',o:['In Ost-West-Richtung','In Nord-Süd-Richtung; ihr Nordpol zeigt nach Norden','Sie zeigt immer senkrecht nach unten','Sie dreht sich ständig weiter'],a:1,e:'Die Nadel richtet sich im Erdmagnetfeld in Nord-Süd-Richtung aus. Ihr Nordpol zeigt nach (geografisch) Norden.'},
+ {op:'erklären',q:'Welcher magnetische Pol liegt in der Nähe des geografischen Nordpols?',o:['Ein magnetischer Nordpol','Ein magnetischer Südpol','Gar kein Pol'],a:1,e:'Der Nordpol der Kompassnadel wird dorthin gezogen. Anziehung gibt es nur zwischen ungleichnamigen Polen. Also liegt dort ein magnetischer Südpol.'},
+ {op:'begründen',q:'Ein Stabmagnet wird in der Mitte durchgebrochen. Was erhältst du?',o:['Ein Stück mit nur einem Nordpol und ein Stück mit nur einem Südpol','Zwei vollständige Magnete mit je einem Nord- und einem Südpol','Zwei unmagnetische Stücke'],a:1,e:'Jedes Bruchstück ist wieder ein Dipol. Auch beim weiteren Teilen entstehen nie einzelne Pole (Monopole).'}
+],
+q2:[
+ {op:'nennen',q:'Welche Aussagen über Magnetfeldlinien sind richtig? (Mehrere Antworten)',o:['Außerhalb des Magneten verlaufen sie vom Nordpol zum Südpol.','Sie sind geschlossene Linien.','Sie schneiden sich nie.','Sie beginnen und enden irgendwo im Raum.','Sie verlaufen außerhalb des Magneten vom Südpol zum Nordpol.'],a:[0,1,2],e:'Die drei zentralen Eigenschaften: außen von N nach S, geschlossen (innen von S nach N), schneiden sich nie.'},
+ {op:'beschreiben',q:'Was sagt eine hohe Feldliniendichte aus?',o:['Das Magnetfeld ist dort stark.','Das Magnetfeld ist dort schwach.','Dort ist gar kein Magnetfeld.'],a:0,e:'Je dichter die Feldlinien, desto stärker ist das Magnetfeld.'},
+ {op:'beschreiben',q:'Wo ist das Magnetfeld eines Stabmagneten am stärksten?',o:['In der Mitte an der Seite','An den Polen','Weit entfernt vom Magneten'],a:1,e:'An den Polen liegen die Feldlinien am dichtesten.'},
+ {op:'zeichnen',q:'Wie verlaufen die Feldlinien zwischen den Schenkeln eines Hufeisenmagneten?',o:['Nahezu parallel und in gleichem Abstand, vom N-Schenkel zum S-Schenkel','Kreisförmig um jeden Schenkel','Vom S-Schenkel zum N-Schenkel'],a:0,e:'Zwischen den Schenkeln ist das Feld nahezu homogen: parallele Linien mit gleichem Abstand, Richtung N → S.'},
+ {op:'skizzieren',q:'Zwei Nordpole stehen sich gegenüber. Wie verhalten sich die Feldlinien dazwischen?',o:['Sie verbinden beide Pole direkt.','Sie weichen einander aus und biegen zur Seite ab; in der Mitte ist das Feld sehr schwach.','Sie kreuzen sich in der Mitte.'],a:1,e:'Feldlinien schneiden sich nie. Bei Abstoßung weichen sie seitlich aus. In der Mitte liegt ein nahezu feldfreier Bereich.'},
+ {op:'skizzieren',q:'Ein Nordpol steht einem Südpol gegenüber. Wie verlaufen die Feldlinien dazwischen?',o:['Sie verlaufen vom Nordpol direkt zum Südpol und verbinden beide Magnete.','Sie weichen einander aus.','Zwischen den Polen gibt es keine Feldlinien.'],a:0,e:'Bei Anziehung verbinden die Feldlinien die beiden ungleichnamigen Pole.'}
+],
+q3:[
+ {op:'benennen',q:'Welche Metalle sind ferromagnetisch? (Mehrere Antworten)',o:['Eisen','Kupfer','Nickel','Aluminium','Cobalt','Neodym','Gold'],a:[0,2,4,5],e:'Ferromagnetisch sind Eisen, Nickel, Cobalt und Neodym (bzw. ihre Legierungen). Kupfer, Aluminium und Gold nicht.'},
+ {op:'beschreiben',q:'Wie sind die Elementarmagnete in einem unmagnetisierten Eisenstück angeordnet?',o:['Alle zeigen in dieselbe Richtung.','Sie sind ungeordnet; ihre Wirkungen heben sich auf.','Es gibt keine Elementarmagnete.'],a:1,e:'Ungeordnete Elementarmagnete heben sich in ihrer Wirkung nach außen gegenseitig auf.'},
+ {op:'beschreiben',q:'Wie sind die Elementarmagnete in einem magnetisierten Eisenstück angeordnet?',o:['Größtenteils gleich ausgerichtet','Völlig ungeordnet','Abwechselnd entgegengesetzt'],a:0,e:'Sind die Elementarmagnete gleich ausgerichtet, addieren sich ihre Wirkungen. Das Eisenstück ist ein Magnet.'},
+ {op:'erklären',q:'Worauf muss man beim Magnetisieren durch Streichen achten?',o:['Immer in dieselbe Richtung mit demselben Pol streichen','Hin und her streichen','Abwechselnd mit Nord- und Südpol streichen'],a:0,e:'Nur Streichen in eine Richtung mit demselben Pol richtet die Elementarmagnete immer gleich aus. Hin und her würde die Ordnung wieder zerstören.'},
+ {op:'erklären',q:'Warum verliert ein Magnet beim starken Erhitzen seine Magnetisierung?',o:['Die Elementarmagnete schmelzen.','Die stärkere Wärmebewegung bringt die Elementarmagnete wieder in Unordnung.','Die Pole tauschen ihre Plätze.'],a:1,e:'Wärme (und Erschütterung) bewegt die Teilchen stärker. Die Elementarmagnete verlieren ihre gemeinsame Ausrichtung.'}
+],
+q4:[
+ {op:'beschreiben',q:'Was entdeckte Hans Christian Oersted 1820?',o:['Ein stromdurchflossener Leiter lenkt eine Kompassnadel ab.','Magnete erzeugen elektrischen Strom in Ruhe.','Kupfer ist ferromagnetisch.'],a:0,e:'Oersted zeigte: Fließender elektrischer Strom erzeugt ein Magnetfeld.'},
+ {op:'formulieren',q:'Welche Form hat das Magnetfeld um einen geraden, stromdurchflossenen Leiter?',o:['Konzentrische Kreise um den Leiter (Wirbelfeld)','Gerade Linien parallel zum Leiter','Wie bei einem Stabmagneten'],a:0,e:'Die Feldlinien sind konzentrische Kreise mit dem Leiter als Mittelpunkt.'},
+ {op:'anwenden',q:'Was bedeutet das Symbol ⊗?',o:['Strom fließt aus der Zeichenebene heraus (Pfeilspitze).','Strom fließt in die Zeichenebene hinein (Gefieder).','Es fließt kein Strom.'],a:1,e:'⊗ = Blick auf das Gefieder eines wegfliegenden Pfeils: Der Strom fließt hinein. ⊙ = Pfeilspitze: heraus.'},
+ {op:'anwenden',q:'Wohin zeigt bei der Rechte-Faust-Regel der Daumen?',o:['In die technische Stromrichtung (+ → −)','In die Elektronenflussrichtung (− → +)','In die Feldlinienrichtung'],a:0,e:'Daumen = technische Stromrichtung. Die gekrümmten Finger zeigen die Richtung der Feldlinien.'},
+ {op:'erklären',q:'Wie sieht das Magnetfeld im Inneren einer langen Zylinderspule aus?',o:['Nahezu homogen: parallele Feldlinien mit gleichem Abstand','Kreise um jede Windung, ohne gemeinsame Richtung','Es gibt im Inneren kein Feld.'],a:0,e:'Die Felder der einzelnen Windungen überlagern sich. Innen entsteht ein starkes, nahezu homogenes Feld; außen ähnelt es dem Feld eines Stabmagneten.'},
+ {op:'erklären',q:'Die Stromrichtung in einer Spule wird umgekehrt. Was passiert?',o:['Nord- und Südpol der Spule tauschen.','Die Spule verliert ihr Magnetfeld.','Nichts ändert sich.'],a:0,e:'Die Feldrichtung hängt von der Stromrichtung ab. Daher vertauschen sich die Pole.'},
+ {op:'nennen',q:'Mit welchen Maßnahmen verstärkst du einen Elektromagneten? (Mehrere Antworten)',o:['Stromstärke I erhöhen','Windungszahl N erhöhen','Eisenkern einsetzen','Kern aus Aluminium einsetzen','Stromrichtung umkehren','Windungszahl verringern'],a:[0,1,2],e:'Die drei Maßnahmen: größere Stromstärke I, mehr Windungen N, ein Eisenkern.'}
+]};
+
+/* ---------- Erklär-Aufgaben ---------- */
+const EXPLAIN={
+e1:{op:'erklären',t:'Erkläre, warum die Kompassnadel nach Norden zeigt und weshalb am geografischen Nordpol ein magnetischer Südpol liegt.',
+ m:'Die Erde verhält sich wie ein riesiger Stabmagnet. Die Kompassnadel ist selbst ein kleiner Magnet und richtet sich im Erdmagnetfeld aus. Ihr Nordpol zeigt nach Norden, weil er dort angezogen wird. Anziehung gibt es nur zwischen ungleichnamigen Polen. Deshalb muss in der Nähe des geografischen Nordpols ein magnetischer Südpol liegen.',
+ k:['Erde als (Stab-)Magnet beschrieben','Nadel ist selbst ein Magnet','Regel: ungleichnamige Pole ziehen sich an','Schluss: magnetischer Südpol im Norden','Ganze Sätze, Fachbegriffe richtig geschrieben']},
+e2:{op:'begründen',t:'Begründe, warum es keine magnetischen Monopole gibt.',
+ m:'Teilt man einen Stabmagneten, erhält man nicht einen einzelnen Nord- und einen einzelnen Südpol. Jedes Bruchstück hat wieder einen Nord- und einen Südpol. Das bleibt so, egal wie oft man teilt. Nach dem Modell besteht ein Magnet aus vielen Elementarmagneten, die selbst schon Dipole sind. Deshalb gibt es keine magnetischen Monopole.',
+ k:['Versuch: Magnet teilen','Ergebnis: jedes Teil hat N und S','Begriff Dipol verwendet','Begründung mit Elementarmagneten','Ganze Sätze, logische Verknüpfung (deshalb, weil)']},
+e3:{op:'erklären',t:'Erkläre mit dem Modell der Elementarmagnete, wie man ein Eisenstück durch Streichen magnetisiert.',
+ m:'Im unmagnetisierten Eisen sind die Elementarmagnete ungeordnet. Ihre Wirkungen heben sich auf. Streicht man mehrmals mit demselben Pol eines Dauermagneten in dieselbe Richtung über das Eisen, werden die Elementarmagnete nach und nach gleich ausgerichtet. Ihre Wirkungen addieren sich. Das Eisenstück ist nun selbst ein Magnet.',
+ k:['Ausgangszustand: ungeordnet, Wirkungen heben sich auf','Streichen: gleicher Pol, gleiche Richtung, mehrmals','Elementarmagnete richten sich aus','Wirkungen addieren sich','Ganze Sätze, Fachbegriffe richtig']},
+e4:{op:'erklären',t:'Erkläre, warum ein Magnet durch starke Erschütterung oder Erhitzen seine Magnetisierung verliert.',
+ m:'In einem Magneten sind die Elementarmagnete gleich ausgerichtet. Durch Erschütterung oder Erhitzen bewegen sich die Teilchen stärker. Dabei drehen sich die Elementarmagnete in zufällige Richtungen. Die Ordnung geht verloren, und ihre Wirkungen heben sich wieder gegenseitig auf.',
+ k:['Ausgangszustand: geordnet','Ursache: stärkere Bewegung durch Wärme/Stoß','Folge: Unordnung','Wirkungen heben sich auf','Ganze Sätze, Fachbegriffe richtig']},
+e5:{op:'erklären',t:'Erkläre, wie das Magnetfeld einer Zylinderspule entsteht und warum sie als schaltbarer Stabmagnet wirkt.',
+ m:'Um jede stromdurchflossene Windung entsteht ein kreisförmiges Magnetfeld. In der Spule überlagern sich die Felder aller Windungen. Innen entsteht ein starkes, nahezu homogenes Feld, außen ähnelt das Feld dem eines Stabmagneten mit Nord- und Südpol. Schaltet man den Strom aus, verschwindet das Feld. Kehrt man die Stromrichtung um, tauschen die Pole. Deshalb wirkt die Spule wie ein schaltbarer Stabmagnet.',
+ k:['Feld um jede Windung','Überlagerung der Felder','Innen homogen, außen wie Stabmagnet','Ein/aus über Strom, Pole über Stromrichtung','Ganze Sätze, Fachbegriffe richtig']}
+};
+
+/* ---------- Quiz-Logik ---------- */
+let scores=store.get('scores',{});
+function saveScores(){store.set('scores',scores);updateScores()}
+function updateScores(){
+  let tot=0,n=0;
+  for(const k in QUIZ){
+    const s=scores[k]||{};const got=Object.values(s).filter(v=>v===true).length;const len=QUIZ[k].length;
+    tot+=got;n+=len;
+    const box=document.querySelector(`[data-score="${k}"]`);
+    if(box){box.innerHTML=`<span>Quiz: <b>${got} / ${len}</b></span><div class="meter"><i style="width:${got/len*100}%"></i></div>`}
+  }
+  $('#total').textContent=`${tot} / ${n}`;$('#totalbar').style.width=(tot/n*100)+'%';
+}
+function renderQuiz(key){
+  const box=document.getElementById(key);box.innerHTML='';
+  const s=scores[key]||(scores[key]={});
+  QUIZ[key].forEach((item,i)=>{
+    const multi=Array.isArray(item.a);
+    const q=document.createElement('div');q.className='q';
+    q.innerHTML=`<span class="op">${item.op}</span><p><b>${item.q}</b></p>`;
+    const opts=document.createElement('div');opts.className='opts';q.appendChild(opts);
+    const expl=document.createElement('p');expl.className='expl';expl.hidden=true;expl.textContent=item.e;
+    const btns=item.o.map((t,j)=>{const b=document.createElement('button');b.className='opt';b.textContent=t;b.type='button';opts.appendChild(b);return b});
+    const finish=(chosen,correct)=>{
+      btns.forEach((b,j)=>{b.disabled=true;
+        const isA=multi?item.a.includes(j):item.a===j;
+        if(isA)b.classList.add('right');else if(chosen.includes(j))b.classList.add('wrong')});
+      expl.hidden=false;
+      if(!(i in s)){s[i]=correct;saveScores()}
+    };
+    if(multi){
+      const sel=new Set();
+      btns.forEach((b,j)=>b.onclick=()=>{sel.has(j)?sel.delete(j):sel.add(j);b.classList.toggle('sel');b.setAttribute('aria-pressed',sel.has(j))});
+      const c=document.createElement('button');c.className='btn';c.textContent='Prüfen';c.type='button';c.style.justifySelf='start';
+      c.onclick=()=>{const ch=[...sel];const ok=ch.length===item.a.length&&item.a.every(x=>sel.has(x));btns.forEach(b=>b.classList.remove('sel'));c.hidden=true;finish(ch,ok)};
+      q.appendChild(c);
+    }else{
+      btns.forEach((b,j)=>b.onclick=()=>finish([j],j===item.a));
+    }
+    const again=document.createElement('button');again.className='btn ghost';again.textContent='Nochmal';again.type='button';again.style.alignSelf='flex-start';again.hidden=true;
+    q.appendChild(expl);box.appendChild(q);
+  });
+}
+function renderExplain(){
+  document.querySelectorAll('[data-explain]').forEach(box=>{
+    const id=box.dataset.explain,x=EXPLAIN[id];
+    box.innerHTML=`<span class="tag">Schreibaufgabe · ${x.op}</span><h3>${x.t}</h3>
+      <label class="mono" for="ta-${id}">Deine Antwort</label>
+      <textarea id="ta-${id}" placeholder="Schreibe in ganzen Sätzen …"></textarea>
+      <div class="row"><button class="btn ghost" type="button">Musterlösung zeigen</button></div>
+      <div class="model" hidden><p>${x.m}</p><p class="mono">Hast du an alles gedacht?</p>
+      ${x.k.map((c,i)=>`<label><input type="checkbox" id="ck-${id}-${i}"> ${c}</label>`).join('')}</div>`;
+    const ta=box.querySelector('textarea');ta.value=store.get('ta-'+id,'');
+    ta.oninput=()=>store.set('ta-'+id,ta.value);
+    const m=box.querySelector('.model'),b=box.querySelector('.row button');
+    b.onclick=()=>{m.hidden=!m.hidden;b.textContent=m.hidden?'Musterlösung zeigen':'Musterlösung verbergen'};
+  });
+}
+
+/* ---------- Feldlinien-Labor ---------- */
+const SCENES={
+  stab:[{cx:300,nRight:true,len:160}],
+  anz:[{cx:165,nRight:true,len:130},{cx:435,nRight:true,len:130}],
+  abst:[{cx:165,nRight:true,len:130},{cx:435,nRight:false,len:130}]
+};
+let scene='stab',charges=[],bodies=[],compasses=[],showLines=false,checked=false;
+function setupScene(){
+  bodies=SCENES[scene];charges=[];
+  bodies.forEach(b=>{const h=b.len/2-10;charges.push({x:b.cx+(b.nRight?h:-h),y:180,q:1});charges.push({x:b.cx+(b.nRight?-h:h),y:180,q:-1})});
+  newCompasses();
+}
+function B(x,y){let bx=0,by=0;for(const c of charges){const dx=x-c.x,dy=y-c.y,r2=dx*dx+dy*dy,r3=Math.pow(r2,1.5);bx+=c.q*dx/r3;by+=c.q*dy/r3}return[bx,by]}
+function inBody(x,y,pad){return bodies.some(b=>Math.abs(x-b.cx)<b.len/2+pad&&Math.abs(y-180)<22+pad)}
+function newCompasses(){
+  compasses=[];let tries=0;
+  while(compasses.length<5&&tries<500){tries++;
+    const x=40+Math.random()*520,y=30+Math.random()*300;
+    if(inBody(x,y,26))continue;
+    if(compasses.some(c=>Math.hypot(c.x-x,c.y-y)<70))continue;
+    compasses.push({x,y,ang:Math.floor(Math.random()*8)*45,res:null});
+  }
+  checked=false;$('#ffb').textContent='';$('#ffb').className='fb';drawField();
+}
+function trace(){
+  const paths=[];
+  charges.filter(c=>c.q>0).forEach(c=>{
+    for(let k=0;k<16;k++){
+      const a=k/16*2*Math.PI+0.1;let x=c.x+10*Math.cos(a),y=c.y+10*Math.sin(a);const pts=[[x,y]];
+      for(let s=0;s<900;s++){const[bx,by]=B(x,y),m=Math.hypot(bx,by);if(!m)break;x+=3*bx/m;y+=3*by/m;pts.push([x,y]);
+        if(x<-20||x>620||y<-20||y>380)break;
+        if(charges.some(d=>d.q<0&&Math.hypot(d.x-x,d.y-y)<6))break;}
+      paths.push(pts);
+    }
+  });
+  return paths;
+}
+function drawNeedle(g,ang,ghost){
+  const n=el('g',{transform:`rotate(${ang})`},g);
+  el('polygon',{points:'0,-4 15,0 0,4',fill:'var(--nord)',opacity:ghost?.45:1},n);
+  el('polygon',{points:'0,-4 -15,0 0,4',fill:'var(--sued)',opacity:ghost?.45:1},n);
+}
+function drawField(){
+  const svg=$('#field');svg.innerHTML='';
+  el('rect',{x:0,y:0,width:600,height:360,fill:'var(--soft)',rx:8},svg);
+  if(showLines){
+    trace().forEach(p=>{
+      if(p.length<4)return;
+      el('path',{d:'M'+p.map(q=>q[0].toFixed(1)+' '+q[1].toFixed(1)).join('L'),fill:'none',stroke:'var(--accent)','stroke-width':1.3,opacity:.75},svg);
+      const vis=p.filter(q=>!inBody(q[0],q[1],2));if(vis.length<12)return;
+      const i=Math.floor(vis.length/2),q0=vis[i-1],q1=vis[i];const ang=Math.atan2(q1[1]-q0[1],q1[0]-q0[0])*180/Math.PI;
+      el('polygon',{points:'5,0 -4,-4 -4,4',fill:'var(--accent)',transform:`translate(${q1[0]},${q1[1]}) rotate(${ang})`},svg);
+    });
+  }
+  bodies.forEach(b=>{
+    const x0=b.cx-b.len/2,h=b.len/2;
+    const left=b.nRight?'var(--sued)':'var(--nord)',right=b.nRight?'var(--nord)':'var(--sued)';
+    el('rect',{x:x0,y:158,width:h,height:44,fill:left},svg);el('rect',{x:x0+h,y:158,width:h,height:44,fill:right},svg);
+    const tl=el('text',{x:x0+14,y:187,fill:'#fff','font-family':'var(--display)','font-size':20,'font-weight':750},svg);tl.textContent=b.nRight?'S':'N';
+    const tr=el('text',{x:x0+b.len-28,y:187,fill:'#fff','font-family':'var(--display)','font-size':20,'font-weight':750},svg);tr.textContent=b.nRight?'N':'S';
+  });
+  compasses.forEach((c,i)=>{
+    const g=el('g',{transform:`translate(${c.x},${c.y})`,tabindex:0,role:'button','aria-label':`Kompass ${i+1} drehen`,style:'cursor:pointer'},svg);
+    const ring=c.res===null?'var(--muted)':c.res?'var(--ok)':'var(--bad)';
+    el('circle',{r:20,fill:'var(--panel)',stroke:ring,'stroke-width':c.res===null?1.5:3},g);
+    if(checked&&!c.res){const[bx,by]=B(c.x,c.y);drawNeedle(g,Math.atan2(by,bx)*180/Math.PI,true)}
+    drawNeedle(g,c.ang,false);el('circle',{r:2.2,fill:'var(--ink)'},g);
+    const turn=()=>{c.ang=(c.ang+45)%360;c.res=null;checked=false;drawField()};
+    g.addEventListener('click',turn);g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();turn()}});
+  });
+}
+$('#fcheck').onclick=()=>{
+  let ok=0;compasses.forEach(c=>{const[bx,by]=B(c.x,c.y);const t=Math.atan2(by,bx)*180/Math.PI;let d=Math.abs(((c.ang-t)%360+540)%360-180);c.res=d<=25;if(c.res)ok++});
+  checked=true;drawField();const f=$('#ffb');
+  f.textContent=ok===compasses.length?`Alle ${ok} Nadeln richtig ausgerichtet!`:`${ok} von ${compasses.length} richtig. Die blassen Nadeln zeigen die richtige Richtung.`;
+  f.className='fb '+(ok===compasses.length?'ok':'no');
+};
+$('#flines').onclick=()=>{showLines=!showLines;$('#flines').textContent=showLines?'Feldlinien ausblenden':'Feldlinien zeigen';drawField()};
+$('#fnew').onclick=newCompasses;
+document.querySelectorAll('#scene button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#scene button').forEach(x=>x.setAttribute('aria-pressed',x===b));scene=b.dataset.s;setupScene()});
+
+/* ---------- Elementarmagnete ---------- */
+const COLS=16,ROWS=5;let doms=[];
+const wrap=a=>((a+180)%360+360)%360-180;
+function freshIron(){doms=Array.from({length:COLS*ROWS},()=>Math.random()*360-180);drawDom()}
+function magnetization(){return Math.max(0,doms.reduce((s,a)=>s+Math.cos(a*Math.PI/180),0)/doms.length)}
+function drawDom(){
+  const svg=$('#dom');svg.innerHTML='';
+  const x0=40,y0=30,w=520,h=160,dx=w/COLS,dy=h/ROWS;
+  el('rect',{x:x0,y:y0,width:w,height:h,rx:6,fill:'var(--soft)',stroke:'var(--muted)','stroke-width':1.2},svg);
+  doms.forEach((a,i)=>{const cx=x0+dx*(i%COLS+.5),cy=y0+dy*(Math.floor(i/COLS)+.5);
+    const g=el('g',{transform:`translate(${cx},${cy}) rotate(${a})`},svg);
+    el('rect',{x:-11,y:-4,width:11,height:8,fill:'var(--sued)'},g);el('rect',{x:0,y:-4,width:11,height:8,fill:'var(--nord)'},g)});
+  const m=magnetization();
+  $('#mval').textContent=Math.round(m*100)+' %';$('#mbar').style.width=(m*100)+'%';
+  if(m>0.8){const l=el('text',{x:16,y:116,fill:'var(--sued)','font-family':'var(--display)','font-size':22,'font-weight':750},svg);l.textContent='S';
+    const r=el('text',{x:568,y:116,fill:'var(--nord)','font-family':'var(--display)','font-size':22,'font-weight':750},svg);r.textContent='N'}
+  $('#mtext').textContent=m>0.8?'Die Elementarmagnete sind gleich ausgerichtet. Ihre Wirkungen addieren sich: Das Eisen ist jetzt ein Magnet.':
+    m>0.35?'Teilweise geordnet. Streiche weiter in dieselbe Richtung.':'Ungeordnet: Die Wirkungen der Elementarmagnete heben sich gegenseitig auf. Das Eisen ist nicht magnetisch.';
+}
+$('#stroke').onclick=()=>{doms=doms.map(a=>wrap(a*0.5+(Math.random()-.5)*16));drawDom()};
+$('#shake').onclick=()=>{doms=doms.map(a=>wrap(a+(Math.random()-.5)*150));drawDom()};
+$('#heat').onclick=()=>{doms=doms.map(a=>wrap(a+(Math.random()-.5)*300));drawDom()};
+$('#fresh').onclick=freshIron;
+
+/* ---------- Rechte-Faust-Trainer ---------- */
+const POS={oben:[0,-75],rechts:[75,0],unten:[0,75],links:[-75,0]};
+const DIRS={'→':[1,0],'↓':[0,1],'←':[-1,0],'↑':[0,-1]};
+let task,streak=0;
+function newTask(){
+  const inward=Math.random()<.5,kind=Math.random()<.65?'needle':'sense';
+  const pk=Object.keys(POS)[Math.floor(Math.random()*4)];
+  task={inward,kind,pk,done:false};drawFist(false);
+  $('#fq').textContent=kind==='needle'?`Der Kompass steht ${pk==='oben'?'oberhalb':pk==='unten'?'unterhalb':pk==='links'?'links':'rechts'} des Leiters. Wohin zeigt der Nordpol der Nadel?`
+    :'In welchem Umlaufsinn verlaufen die Feldlinien (so wie du auf das Bild schaust)?';
+  const opts=kind==='needle'?Object.keys(DIRS):['im Uhrzeigersinn','gegen den Uhrzeigersinn'];
+  const box=$('#fopts');box.innerHTML='';$('#ffb2').textContent='';$('#ffb2').className='fb';
+  opts.forEach(o=>{const b=document.createElement('button');b.className='opt';b.type='button';b.textContent=o;b.style.textAlign='center';if(kind==='needle')b.classList.add('big');b.onclick=()=>answer(o,b);box.appendChild(b)});
+}
+function tangent(){const[x,y]=POS[task.pk];const t=task.inward?[-y,x]:[y,-x];const m=Math.hypot(...t);return[t[0]/m,t[1]/m]}
+function answer(o,b){
+  if(task.done)return;task.done=true;
+  let ok,right;
+  if(task.kind==='needle'){const t=tangent();right=Object.keys(DIRS).find(k=>DIRS[k][0]===Math.round(t[0])&&DIRS[k][1]===Math.round(t[1]));ok=o===right}
+  else{right=task.inward?'im Uhrzeigersinn':'gegen den Uhrzeigersinn';ok=o===right}
+  document.querySelectorAll('#fopts .opt').forEach(x=>{x.disabled=true;if(x.textContent===right)x.classList.add('right');else if(x===b)x.classList.add('wrong')});
+  streak=ok?streak+1:0;$('#streak').textContent='Serie: '+streak;
+  const f=$('#ffb2');f.className='fb '+(ok?'ok':'no');
+  f.textContent=(ok?'Richtig. ':'Leider falsch. ')+(task.inward?'⊗: Daumen zeigt in die Ebene hinein, die Finger krümmen sich im Uhrzeigersinn.':'⊙: Daumen zeigt aus der Ebene heraus, die Finger krümmen sich gegen den Uhrzeigersinn.');
+  drawFist(true);
+}
+function drawFist(reveal){
+  const svg=$('#fist');svg.innerHTML='';const g=el('g',{transform:'translate(120,120)'},svg);
+  el('circle',{r:75,fill:'none',stroke:reveal?'var(--accent)':'var(--line)','stroke-width':1.5,'stroke-dasharray':reveal?'':'5 5'},g);
+  if(reveal){[45,135,225,315].forEach(d=>{const r=d*Math.PI/180,x=75*Math.cos(r),y=75*Math.sin(r);const tx=task.inward?-y:y,ty=task.inward?x:-x;
+    el('polygon',{points:'6,0 -5,-5 -5,5',fill:'var(--accent)',transform:`translate(${x},${y}) rotate(${Math.atan2(ty,tx)*180/Math.PI})`},g)})}
+  el('circle',{r:20,fill:'var(--panel)',stroke:'var(--ink)','stroke-width':2.5},g);
+  if(task.inward){el('line',{x1:-11,y1:-11,x2:11,y2:11,stroke:'var(--ink)','stroke-width':2.5},g);el('line',{x1:11,y1:-11,x2:-11,y2:11,stroke:'var(--ink)','stroke-width':2.5},g)}
+  else el('circle',{r:5,fill:'var(--ink)'},g);
+  if(task.kind==='needle'){const[x,y]=POS[task.pk];const c=el('g',{transform:`translate(${x},${y})`},g);
+    el('circle',{r:17,fill:'var(--panel)',stroke:'var(--muted)','stroke-width':1.5},c);
+    if(reveal){const t=tangent();drawNeedle(c,Math.atan2(t[1],t[0])*180/Math.PI,false)}
+    else{const q=el('text',{'text-anchor':'middle',y:6,'font-family':'var(--display)','font-size':17,fill:'var(--muted)'},c);q.textContent='?'}}
+}
+$('#fnext').onclick=newTask;
+
+/* ---------- Start ---------- */
+$('#resetall').onclick=()=>{scores={};store.set('scores',{});Object.keys(EXPLAIN).forEach(k=>store.set('ta-'+k,''));init()};
+function init(){Object.keys(QUIZ).forEach(renderQuiz);renderExplain();updateScores()}
+init();setupScene();freshIron();newTask();
+</script>
+
+</body></html>
