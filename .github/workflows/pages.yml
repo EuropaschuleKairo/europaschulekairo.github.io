@@ -29,6 +29,29 @@ jobs:
         with:
           source: ./
           destination: ./_site
+      # The Jekyll action runs in Docker and leaves _site owned by root.
+      - name: Take ownership of _site
+        run: sudo chown -R "$(id -u):$(id -g)" _site
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Encrypt HTML in private/
+        env:
+          STATICRYPT_PASSWORD: ${{ secrets.STATICRYPT_PASSWORD }}
+        run: |
+          test -n "$STATICRYPT_PASSWORD" || { echo "Secret STATICRYPT_PASSWORD is not set"; exit 1; }
+          test -d _site/private || { echo "_site/private not found"; exit 1; }
+          # --short: without it a short password triggers a y/N prompt that, with no
+          # terminal, aborts with exit code 0 and leaves the files unencrypted.
+          npx --yes staticrypt@3.5.4 _site/private/* -r -d _site/private --short < /dev/null
+      - name: Refuse to publish unencrypted HTML in private/
+        run: |
+          plain=$(find _site/private -name '*.html' -exec grep -L 'staticrypt-form' {} +) || true
+          if [ -n "$plain" ]; then
+            echo "Unencrypted HTML found, aborting deploy:"
+            echo "$plain"
+            exit 1
+          fi
       - uses: actions/upload-pages-artifact@v3
 
   deploy:
