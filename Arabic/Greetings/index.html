@@ -1,0 +1,2818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Egyptian Arabic Greetings • التَحيَات • Interactive Practice</title>
+  <meta name="description" content="Practice Egyptian Arabic greetings with three interactive activities: sorting conversations, drag-and-drop gap filling, and typing practice in Arabic script or Franco.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f8fafc;
+      --paper: #ffffff;
+      --paper-subtle: #f1f5f9;
+      --ink: #0f172a;
+      --ink-soft: #475569;
+      --ink-muted: #64748b;
+      --border: #e2e8f0;
+      --border-strong: #cbd5e1;
+
+      /* Egyptian Warm Palette */
+      --teal: #0f766e;
+      --teal-hover: #115e59;
+      --teal-light: #f0fdfa;
+      --teal-border: #99f6e4;
+
+      --amber: #d97706;
+      --amber-hover: #b45309;
+      --amber-light: #fffbeb;
+      --amber-border: #fde68a;
+
+      --emerald: #059669;
+      --emerald-light: #ecfdf5;
+      --emerald-border: #a7f3d0;
+
+      --rose: #e11d48;
+      --rose-light: #fff1f2;
+      --rose-border: #fecdd3;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 6px 18px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 16px 32px rgba(15, 118, 110, 0.12);
+
+      --font-display: 'Outfit', system-ui, sans-serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+      /* Crystal-clear textbook Arabic font (Arial / Noto Naskh Arabic) identical to the Word document */
+      --font-arabic: 'Arial', 'Segoe UI', 'Tahoma', 'Noto Naskh Arabic', sans-serif;
+      --font-franco: 'JetBrains Mono', 'Plus Jakarta Sans', monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(#cbd5e1 1.2px, transparent 1.2px),
+        linear-gradient(180deg, #f0fdfa 0%, #f8fafc 320px);
+      background-size: 24px 24px, 100% 320px;
+      background-repeat: repeat, no-repeat;
+      color: var(--ink);
+      line-height: 1.5;
+      padding: 24px 16px 90px;
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    /* Top Bar */
+    .top-nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--teal);
+      text-decoration: none;
+      background: #ffffff;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      border: 1.5px solid var(--teal-border);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+
+    .back-btn:hover {
+      background: var(--teal-light);
+      transform: translateX(-2px);
+    }
+
+    /* Mode Switcher Banner (Franco vs Arabic) */
+    .script-toggle-banner {
+      background: #ffffff;
+      border: 2px solid var(--teal-border);
+      border-radius: 20px;
+      padding: 16px 20px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .script-toggle-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .script-toggle-info p {
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+      margin-top: 2px;
+    }
+
+    .script-toggle-group {
+      display: inline-flex;
+      background: #f1f5f9;
+      padding: 4px;
+      border-radius: 9999px;
+      border: 1.5px solid var(--border);
+    }
+
+    .script-btn {
+      border: none;
+      background: transparent;
+      padding: 9px 18px;
+      border-radius: 9999px;
+      font-family: var(--font-display);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--ink-soft);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .script-btn.active {
+      background: var(--teal);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(15, 118, 110, 0.3);
+    }
+
+    /* Page Header */
+    .page-head {
+      margin-bottom: 28px;
+    }
+
+    .badge-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .pill-egypt {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: var(--amber-light);
+      color: #b45309;
+      border: 1px solid var(--amber-border);
+    }
+
+    .pill-source {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--ink-muted);
+      background: #ffffff;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+    }
+
+    h1.page-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .arabic-title {
+      font-family: var(--font-arabic) !important;
+      color: var(--teal);
+      direction: rtl;
+      font-weight: 700;
+      font-size: 0.95em;
+      letter-spacing: 0;
+      display: inline-block;
+      margin-left: 10px;
+    }
+
+    .pill-egypt .ar-badge-txt,
+    .pill-source .ar-badge-txt {
+      font-family: var(--font-arabic) !important;
+      direction: rtl;
+      font-weight: 700;
+      display: inline-block;
+    }
+
+    .page-desc {
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      color: var(--ink-soft);
+      max-width: 820px;
+    }
+
+    /* Franco Tip Callout */
+    .franco-tip {
+      background: #f8fafc;
+      border-left: 4px solid var(--teal);
+      padding: 10px 14px;
+      border-radius: 0 10px 10px 0;
+      margin-top: 14px;
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .franco-tip code {
+      font-family: var(--font-franco);
+      background: #e2e8f0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #0f172a;
+      font-size: 0.85rem;
+    }
+
+    /* Dialogue Selector Tabs */
+    .dialogue-select-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .dialogue-tabs {
+      display: inline-flex;
+      gap: 8px;
+      background: #e2e8f0;
+      padding: 4px;
+      border-radius: 14px;
+    }
+
+    .dia-btn {
+      border: none;
+      background: transparent;
+      padding: 9px 18px;
+      border-radius: 10px;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink-soft);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .dia-btn.active {
+      background: #ffffff;
+      color: var(--ink);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+    }
+
+    /* Activity Nav Tabs */
+    .activity-nav {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .act-tab-btn {
+      background: #ffffff;
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 16px 14px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .act-tab-btn:hover {
+      border-color: var(--teal);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .act-tab-btn.active {
+      border-color: var(--teal);
+      background: var(--teal-light);
+      box-shadow: 0 4px 14px rgba(15, 118, 110, 0.15);
+    }
+
+    .act-badge {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--teal);
+    }
+
+    .act-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .act-desc {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+    }
+
+    /* Container for Activities */
+    .activity-panel {
+      background: #ffffff;
+      border: 2px solid var(--border);
+      border-radius: 24px;
+      padding: 28px 24px;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 40px;
+    }
+
+    .panel-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 22px;
+      padding-bottom: 14px;
+      border-bottom: 1.5px solid var(--border);
+    }
+
+    .panel-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .panel-instruction {
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+    }
+
+    /* Audio button helper */
+    .speech-btn {
+      background: var(--teal-light);
+      border: 1.5px solid var(--teal-border);
+      color: var(--teal);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      flex-shrink: 0;
+      transition: all 0.15s ease;
+    }
+
+    .speech-btn:hover {
+      background: var(--teal);
+      color: #ffffff;
+      transform: scale(1.08);
+      box-shadow: 0 3px 8px rgba(15, 118, 110, 0.3);
+    }
+
+    /* ==========================================================================
+       ACTIVITY 1: SORT CONVERSATION
+       ========================================================================== */
+    .sort-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .sort-item {
+      background: #ffffff;
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: all 0.2s ease;
+      touch-action: none;
+    }
+
+    .sort-item.speaker-a {
+      border-left: 6px solid var(--teal);
+    }
+
+    .sort-item.speaker-b {
+      border-left: 6px solid var(--amber);
+    }
+
+    .sort-item.correct-pos {
+      border-color: var(--emerald) !important;
+      background: var(--emerald-light) !important;
+    }
+
+    .sort-item.wrong-pos {
+      border-color: var(--rose) !important;
+      background: var(--rose-light) !important;
+    }
+
+    .drag-handle {
+      cursor: grab;
+      touch-action: none;
+      -webkit-user-select: none;
+      user-select: none;
+      color: var(--ink-muted);
+      font-size: 1.35rem;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+    }
+
+    .drag-handle:active,
+    .drag-handle.dragging {
+      cursor: grabbing;
+      color: var(--teal);
+    }
+
+    .order-num {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--ink-muted);
+      background: var(--paper-subtle);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .speaker-avatar {
+      font-size: 1.4rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .sort-content {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .sort-text-primary {
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    /* Standard clear Arial/Naskh typography for Arabic */
+    .sort-text-primary.script-ar {
+      font-family: var(--font-arabic);
+      font-size: 1.65rem;
+      line-height: 1.45;
+      direction: rtl;
+      text-align: right;
+      letter-spacing: 0;
+    }
+
+    .sort-text-primary.script-fr {
+      font-family: var(--font-franco);
+      font-size: 1.22rem;
+      direction: ltr;
+      letter-spacing: -0.01em;
+    }
+
+    /* English translations in sorting: completely hidden by default to avoid giving away order */
+    .sort-text-invisible {
+      display: none !important;
+    }
+
+    .sort-peek-btn {
+      border: 1px dashed var(--border);
+      background: transparent;
+      color: var(--ink-muted);
+      font-size: 0.78rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 4px;
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .sort-peek-btn:hover {
+      color: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .sort-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .sort-move-btn {
+      background: var(--paper-subtle);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      width: 28px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.75rem;
+      color: var(--ink-soft);
+      transition: all 0.15s ease;
+    }
+
+    .sort-move-btn:hover {
+      background: var(--teal-light);
+      color: var(--teal);
+    }
+
+    /* ==========================================================================
+       ACTIVITY 2: DRAG & DROP GAP FILL
+       ========================================================================== */
+    .gap-dialogue {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .gap-line {
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .gap-line.speaker-a {
+      border-left: 5px solid var(--teal);
+    }
+
+    .gap-line.speaker-b {
+      border-left: 5px solid var(--amber);
+    }
+
+    .gap-line-content {
+      flex-grow: 1;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 12px;
+      font-weight: 700;
+    }
+
+    .gap-line-content.script-ar {
+      font-family: var(--font-arabic);
+      font-size: 1.7rem;
+      line-height: 1.5;
+      direction: rtl;
+    }
+
+    .gap-line-content.script-fr {
+      font-family: var(--font-franco);
+      font-size: 1.25rem;
+      direction: ltr;
+    }
+
+    .drop-slot {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 140px;
+      min-height: 48px;
+      padding: 4px 14px;
+      border: 2px dashed var(--teal);
+      border-radius: 12px;
+      background: #ffffff;
+      color: var(--teal);
+      font-weight: 800;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .drop-slot.drag-over {
+      background: var(--teal-light);
+      border-color: var(--teal-hover);
+      transform: scale(1.04);
+    }
+
+    .drop-slot.filled {
+      border-style: solid;
+      background: var(--teal-light);
+      border-color: var(--teal-border);
+    }
+
+    .drop-slot.correct {
+      background: var(--emerald-light) !important;
+      border-color: var(--emerald) !important;
+      color: #065f46 !important;
+      border-style: solid;
+    }
+
+    .drop-slot.wrong {
+      background: var(--rose-light) !important;
+      border-color: var(--rose) !important;
+      color: #9f1239 !important;
+      border-style: solid;
+    }
+
+    /* Word Bank */
+    .word-bank-container {
+      background: var(--paper-subtle);
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 24px;
+    }
+
+    .word-bank-title {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .chips-bank {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      min-height: 52px;
+      align-items: center;
+    }
+
+    .word-chip {
+      background: #ffffff;
+      border: 2px solid var(--teal-border);
+      border-radius: 12px;
+      padding: 8px 18px;
+      font-weight: 800;
+      color: var(--teal);
+      cursor: grab;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+      touch-action: none;
+      -webkit-user-select: none;
+      user-select: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .word-chip.script-ar {
+      font-family: var(--font-arabic);
+      font-size: 1.55rem;
+      direction: rtl;
+    }
+
+    .word-chip.script-fr {
+      font-family: var(--font-franco);
+      font-size: 1.15rem;
+      direction: ltr;
+    }
+
+    .word-chip:hover {
+      border-color: var(--teal);
+      background: var(--teal-light);
+      transform: translateY(-2px);
+    }
+
+    .word-chip.selected {
+      border-color: var(--amber);
+      background: var(--amber-light);
+      box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.3);
+    }
+
+    .word-chip.used {
+      opacity: 0.35;
+      pointer-events: none;
+      border-color: var(--border);
+    }
+
+    /* ==========================================================================
+       ACTIVITY 3: TYPE THE ANSWER IN
+       ========================================================================== */
+    .typing-card {
+      background: #f8fafc;
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .typing-prompt-box {
+      margin-bottom: 20px;
+      padding: 16px 20px;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .typing-prompt-left {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .prompt-speaker {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--teal);
+    }
+
+    .prompt-text-main {
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    /* Exactly matches Activity 1 (.sort-text-primary.script-ar) and Activity 2 */
+    .prompt-text-main.script-ar {
+      font-family: var(--font-arabic) !important;
+      font-size: 1.65rem;
+      line-height: 1.45;
+      direction: rtl;
+      text-align: right;
+      letter-spacing: 0;
+      font-weight: 700;
+    }
+
+    .prompt-text-main.script-fr {
+      font-family: var(--font-franco);
+      font-size: 1.25rem;
+      line-height: 1.4;
+      direction: ltr;
+    }
+
+    .prompt-text-en {
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+    }
+
+    .typing-input-area {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .input-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--ink-soft);
+    }
+
+    .user-text-input {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 14px;
+      border: 2px solid var(--border);
+      font-size: 1.4rem;
+      font-weight: 700;
+      background: #ffffff;
+      color: var(--ink);
+      transition: all 0.2s ease;
+    }
+
+    .user-text-input:focus {
+      outline: none;
+      border-color: var(--teal);
+      box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.15);
+    }
+
+    .user-text-input.script-ar {
+      font-family: var(--font-arabic) !important;
+      font-size: 1.65rem;
+      line-height: 1.45;
+      direction: rtl;
+      text-align: right;
+      font-weight: 600;
+      letter-spacing: 0;
+    }
+
+    .user-text-input.script-ar::placeholder {
+      font-family: var(--font-arabic) !important;
+      font-size: 1.35rem;
+      direction: rtl;
+      text-align: right;
+      opacity: 0.6;
+    }
+
+    .user-text-input.script-fr {
+      font-family: var(--font-franco);
+      font-size: 1.25rem;
+      direction: ltr;
+      text-align: left;
+    }
+
+    .user-text-input.is-correct {
+      border-color: var(--emerald) !important;
+      background: var(--emerald-light) !important;
+      color: #065f46 !important;
+    }
+
+    .user-text-input.is-wrong {
+      border-color: var(--rose) !important;
+      background: var(--rose-light) !important;
+      color: #9f1239 !important;
+    }
+
+    /* On-screen Arabic quick-key helper */
+    .ar-quick-keys {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      direction: rtl;
+      justify-content: center;
+    }
+
+    .ar-key-btn {
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--font-arabic) !important;
+      font-size: 1.45rem;
+      font-weight: 600;
+      line-height: 1.3;
+      padding: 6px 12px;
+      cursor: pointer;
+      color: var(--ink);
+      transition: all 0.15s ease;
+    }
+
+    .ar-key-btn:hover {
+      background: var(--teal-light);
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+
+    .typing-feedback-msg {
+      min-height: 32px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* Character / Diff styling for partly correct typing feedback */
+    .diff-container {
+      margin-top: 10px;
+      padding: 14px 18px;
+      background: #ffffff;
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .diff-header {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .diff-letters-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      align-items: center;
+      padding: 6px 0;
+    }
+
+    .diff-letters-row.script-ar {
+      font-family: var(--font-arabic) !important;
+      direction: rtl;
+      text-align: right;
+      font-size: 1.65rem;
+      line-height: 1.45;
+      letter-spacing: 0;
+    }
+
+    .diff-letters-row.script-fr {
+      font-family: var(--font-franco);
+      direction: ltr;
+      font-size: 1.35rem;
+    }
+
+    .char-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 700;
+      line-height: 1.3;
+      font-family: var(--font-arabic) !important;
+      font-size: 1.55rem;
+    }
+
+    .char-badge.char-green {
+      background: #dcfce7;
+      color: #15803d;
+      border: 1.5px solid #86efac;
+    }
+
+    .char-badge.char-red {
+      background: #fee2e2;
+      color: #b91c1c;
+      border: 1.5px solid #fca5a5;
+    }
+
+    .char-badge.char-space {
+      background: transparent;
+      border: none;
+      width: 8px;
+    }
+
+    .diff-legend {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--ink-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .hint-card-off {
+      margin-top: 10px;
+      padding: 14px 18px;
+      background: #fffbeb;
+      border: 1.5px solid var(--amber-border);
+      border-left: 5px solid var(--amber);
+      border-radius: 14px;
+      font-size: 0.95rem;
+      color: #92400e;
+      line-height: 1.5;
+    }
+
+    .hint-card-off.script-ar {
+      font-family: var(--font-arabic) !important;
+      direction: rtl;
+      text-align: right;
+      font-size: 1.15rem;
+      line-height: 1.6;
+    }
+
+    .ar-inline-text {
+      font-family: var(--font-arabic) !important;
+      font-weight: 700;
+      direction: rtl;
+      display: inline-block;
+      font-size: 1.15rem;
+    }
+
+    /* Real-Time Live Typing Feedback (Feedback While Freely Typing) */
+    .live-feedback-box {
+      display: none;
+      background: #f0fdfa;
+      border: 1.5px solid var(--teal-border);
+      border-radius: 14px;
+      padding: 12px 16px;
+      margin-top: 8px;
+      box-shadow: 0 2px 8px rgba(15, 118, 110, 0.08);
+      flex-direction: column;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .live-feedback-box.is-active {
+      display: flex;
+    }
+
+    .live-feedback-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--teal);
+    }
+
+    .live-match-badge {
+      background: #ffffff;
+      border: 1px solid var(--teal-border);
+      padding: 2px 8px;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    .live-tokens-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .live-tokens-row.script-ar {
+      font-family: var(--font-arabic) !important;
+      direction: rtl;
+      text-align: right;
+      font-size: 1.65rem;
+      line-height: 1.45;
+      letter-spacing: 0;
+    }
+
+    .live-tokens-row.script-fr {
+      font-family: var(--font-franco);
+      direction: ltr;
+      font-size: 1.2rem;
+    }
+
+    .token-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      line-height: 1.3;
+      font-family: var(--font-arabic) !important;
+      font-size: 1.4rem;
+    }
+
+    .token-chip.token-correct {
+      background: #dcfce7;
+      color: #15803d;
+      border: 1.5px solid #86efac;
+    }
+
+    .token-chip.token-typing {
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1.5px solid #7dd3fc;
+    }
+
+    .token-chip.token-wrong {
+      background: #fee2e2;
+      color: #b91c1c;
+      border: 1.5px solid #fca5a5;
+    }
+
+    .live-hint-text {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+      line-height: 1.4;
+    }
+
+    /* Action Buttons Bar */
+    .action-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1.5px solid var(--border);
+    }
+
+    .primary-btn {
+      background: var(--teal);
+      color: #ffffff;
+      border: none;
+      padding: 12px 26px;
+      border-radius: 9999px;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(15, 118, 110, 0.25);
+      transition: all 0.15s ease;
+    }
+
+    .primary-btn:hover {
+      background: var(--teal-hover);
+      transform: translateY(-2px);
+    }
+
+    .secondary-btn {
+      background: #ffffff;
+      color: var(--ink-soft);
+      border: 1.5px solid var(--border);
+      padding: 10px 20px;
+      border-radius: 9999px;
+      font-family: var(--font-display);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .secondary-btn:hover {
+      background: var(--paper-subtle);
+      border-color: var(--border-strong);
+      color: var(--ink);
+    }
+
+    .score-feedback-pill {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--teal);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* Footer */
+    footer.app-footer {
+      text-align: center;
+      color: var(--ink-muted);
+      font-size: 0.9rem;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+      <a href="../index.html" class="back-btn">
+        <span>←</span> Back to Arabic Hub
+      </a>
+      <span class="pill-source">Primary Source: Amira Book • Page 14</span>
+    </nav>
+
+    <!-- Main Switcher: Arabic Alphabet vs Franco -->
+    <section class="script-toggle-banner" aria-label="Script Choice Switcher">
+      <div class="script-toggle-info">
+        <h3>
+          <span>🔄</span> Practice Mode: 
+          <span id="activeModeLabel" style="color: var(--teal);">Arabic Alphabet (العربية)</span>
+        </h3>
+        <p id="activeModeSub">Reading &amp; practicing with clear textbook Arabic script (Arial).</p>
+      </div>
+
+      <div class="script-toggle-group" role="group" aria-label="Choose script">
+        <button class="script-btn active" id="btnScriptAr" type="button">
+          <span>📜</span> Arabic Alphabet
+        </button>
+        <button class="script-btn" id="btnScriptFr" type="button">
+          <span>🔤</span> Franco (Arabizi)
+        </button>
+      </div>
+    </section>
+
+    <!-- Page Header -->
+    <header class="page-head">
+      <div class="badge-row">
+        <span class="pill-egypt">🇪🇬 Egyptian Dialect <span class="ar-badge-txt">(عامية مصرية)</span></span>
+        <span class="pill-source">Lesson 2.1: The Greetings • <span class="ar-badge-txt">التَحيَات</span></span>
+      </div>
+      <h1 class="page-title">
+        Egyptian Greetings Trainer <span class="arabic-title" lang="ar">التَحيَات</span>
+      </h1>
+      <p class="page-desc">
+        Master everyday conversational Egyptian greetings with authentic native voice recordings: morning, evening, asking names, welcoming, and goodbyes.
+      </p>
+
+      <div class="franco-tip" id="francoNotice" style="display: none;">
+        <span>💡</span>
+        <div>
+          <strong>Franco-Arabic Guide:</strong> Egyptian texting uses numbers for sounds that don't exist in English: 
+          <code>7 = ح</code> (warm breath), 
+          <code>3 = ع</code> ('Ayn throat sound), 
+          <code>5 = خ</code> (raspy kh), 
+          <code>2 = ء/أ</code> (glottal stop).
+        </div>
+      </div>
+    </header>
+
+    <!-- Dialogue Selector -->
+    <div class="dialogue-select-bar">
+      <div class="dialogue-tabs" role="tablist" aria-label="Choose dialogue">
+        <button class="dia-btn active" id="btnDiaDay" type="button">
+          <span>☀️</span> Daytime (fee el-nahar / في النهار)
+        </button>
+        <button class="dia-btn" id="btnDiaEve" type="button">
+          <span>🌙</span> Evening (baAd el-Dahr / بالليل)
+        </button>
+      </div>
+    </div>
+
+    <!-- Activity Nav Tabs -->
+    <nav class="activity-nav" aria-label="Activities">
+      <button class="act-tab-btn active" id="tabAct1" type="button">
+        <span class="act-badge">Activity 1</span>
+        <span class="act-title">🧩 Sort Conversation</span>
+        <span class="act-desc">Put shuffled lines in the right dialogue order</span>
+      </button>
+      <button class="act-tab-btn" id="tabAct2" type="button">
+        <span class="act-badge">Activity 2</span>
+        <span class="act-title">🖐️ Drag &amp; Drop Gap Fill</span>
+        <span class="act-desc">Drag missing words into the conversation gaps</span>
+      </button>
+      <button class="act-tab-btn" id="tabAct3" type="button">
+        <span class="act-badge">Activity 3</span>
+        <span class="act-title">✍️ Type The Answer</span>
+        <span class="act-desc">Type the correct reply to every greeting prompt</span>
+      </button>
+    </nav>
+
+    <!-- =========================================================================
+         ACTIVITY 1 PANEL: SORT CONVERSATION
+         ========================================================================= -->
+    <section class="activity-panel" id="panelAct1" aria-label="Activity 1: Sort Conversation">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">1. Sort the Conversation in Order</h2>
+          <p class="panel-instruction">Listen to the lines, read the script, and arrange them into the natural conversational flow from start to finish.</p>
+        </div>
+        <div class="score-feedback-pill" id="sortStatusPill">
+          <span>🎯</span> <span id="sortStatusText">Arrange the lines</span>
+        </div>
+      </div>
+
+      <div class="sort-list" id="sortListContainer">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="action-bar">
+        <button class="primary-btn" id="btnCheckSort" type="button">
+          <span>✓</span> Check Order
+        </button>
+        <div style="display: flex; gap: 8px;">
+          <button class="secondary-btn" id="btnShuffleSort" type="button">
+            <span>🔀</span> Shuffle Again
+          </button>
+          <button class="secondary-btn" id="btnSolveSort" type="button">
+            <span>💡</span> Show Solution &amp; Translations
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         ACTIVITY 2 PANEL: DRAG & DROP GAP FILL
+         ========================================================================= -->
+    <section class="activity-panel hidden" id="panelAct2" aria-label="Activity 2: Drag and Drop Fill in the Blanks">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">2. Drag Words into the Blanks</h2>
+          <p class="panel-instruction">Drag words from the Word Bank into the empty boxes, or tap a word then tap a box.</p>
+        </div>
+        <div class="score-feedback-pill" id="gapStatusPill">
+          <span>🧩</span> <span id="gapScoreText">0 / 0 completed</span>
+        </div>
+      </div>
+
+      <div class="word-bank-container">
+        <div class="word-bank-title">
+          <span>📦 Word Bank</span>
+          <span style="font-size: 0.82rem; font-weight: normal; color: var(--ink-muted);">(Click or drag into slots)</span>
+        </div>
+        <div class="chips-bank" id="chipsBankContainer">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+
+      <div class="gap-dialogue" id="gapDialogueContainer">
+        <!-- Filled by JS -->
+      </div>
+
+      <div class="action-bar">
+        <button class="primary-btn" id="btnCheckGaps" type="button">
+          <span>✓</span> Check Answers
+        </button>
+        <button class="secondary-btn" id="btnResetGaps" type="button">
+          <span>🔄</span> Reset Gaps
+        </button>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         ACTIVITY 3 PANEL: TYPE THE ANSWER
+         ========================================================================= -->
+    <section class="activity-panel hidden" id="panelAct3" aria-label="Activity 3: Type The Answer">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">3. Active Recall: Type the Reply</h2>
+          <p class="panel-instruction">Listen to the speaker's greeting and type the culturally appropriate Egyptian reply.</p>
+        </div>
+        <div class="score-feedback-pill">
+          <span>⭐ Question:</span> <span id="typingProgText">1 / 5</span>
+        </div>
+      </div>
+
+      <div class="typing-card">
+        <div class="typing-prompt-box">
+          <div class="typing-prompt-left">
+            <span class="prompt-speaker" id="typingSpeakerLabel">Speaker A says:</span>
+            <div class="prompt-text-main script-ar" id="typingPromptMain">صباح الخير.</div>
+            <div class="prompt-text-en" id="typingPromptEn">Good morning.</div>
+          </div>
+          <button class="speech-btn" id="btnTypePromptSpeech" type="button" aria-label="Play greeting audio">
+            🔊
+          </button>
+        </div>
+
+        <div class="typing-input-area">
+          <div class="input-label-row">
+            <span>Your Response:</span>
+            <span id="typingInputHint">Type in Arabic or click the letter buttons below</span>
+          </div>
+          <input type="text" class="user-text-input script-ar" id="userTypingInput" placeholder="اكتب الرد هنا..." autocomplete="off">
+
+          <!-- Real-Time Live Feedback Box (Updates on Every Keystroke) -->
+          <div class="live-feedback-box" id="liveFeedbackBox" aria-live="polite">
+            <div class="live-feedback-header">
+              <span class="live-feedback-label">Live Word Tracker (As You Type):</span>
+              <span class="live-match-badge" id="liveMatchBadge">0 / 0 words</span>
+            </div>
+            <div class="live-tokens-row" id="liveTokensRow"></div>
+            <div class="live-hint-text" id="liveHintText"></div>
+          </div>
+
+          <!-- Arabic on-screen quick keys (visible in Arabic mode) -->
+          <div class="ar-quick-keys" id="arQuickKeysBar">
+            <!-- Rendered by JS -->
+          </div>
+
+          <div class="typing-feedback-msg" id="typingFeedbackMsg"></div>
+        </div>
+      </div>
+
+      <div class="action-bar">
+        <button class="primary-btn" id="btnSubmitTyping" type="button">
+          <span>✓</span> Submit Answer
+        </button>
+        <button class="primary-btn hidden" id="btnRetryTyping" type="button" style="background: var(--amber); border-color: var(--amber);">
+          <span>🔄</span> Try Again
+        </button>
+        <button class="primary-btn hidden" id="btnNextTyping" type="button">
+          Next Prompt ➔
+        </button>
+        <button class="secondary-btn" id="btnHintTyping" type="button">
+          <span>💡</span> Quick Clue
+        </button>
+        <button class="secondary-btn hidden" id="btnRevealTyping" type="button">
+          <span>👀</span> Show Answer
+        </button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>Europaschule Kairo • Egyptian Arabic Language Learning</p>
+      <p style="margin-top: 6px;">
+        <a href="../index.html" style="color: var(--teal); font-weight: 700;">Arabic Hub</a> • 
+        <a href="../Alphabet/index.html" style="color: var(--teal); font-weight: 700;">Alphabet Trainer</a>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    /* ==========================================================================
+       CONVERSATION DATA WITH NATIVE AUDIO CLIPS
+       ========================================================================== */
+
+    // Daytime Dialogue (fee el-nahar)
+    const daytimeDialogue = [
+      {
+        id: "d1",
+        audioFile: "day_1.mp3",
+        speaker: "Sara",
+        gender: "f",
+        ar: "صَبَاح الخير",
+        fr: "sabaH el-kheer",
+        en: "Good morning.",
+        gapWordAr: "الخير",
+        gapWordFr: "el-kheer",
+        preAr: "صَبَاح ",
+        postAr: "",
+        preFr: "sabaH ",
+        postFr: ""
+      },
+      {
+        id: "d2",
+        audioFile: "day_2.mp3",
+        speaker: "Tamer",
+        gender: "m",
+        ar: "صَبَاح النور",
+        fr: "sabaH el-noor",
+        en: "Good morning (morning of light).",
+        gapWordAr: "النور",
+        gapWordFr: "el-noor",
+        preAr: "صَبَاح ",
+        postAr: "",
+        preFr: "sabaH ",
+        postFr: ""
+      },
+      {
+        id: "d3",
+        audioFile: "day_3.mp3",
+        speaker: "Sara",
+        gender: "f",
+        ar: "إنت إسمَك إيه؟",
+        fr: "enta esmak eh?",
+        en: "What is your name? (to male)",
+        gapWordAr: "إسمَك",
+        gapWordFr: "esmak",
+        preAr: "إنت ",
+        postAr: " إيه؟",
+        preFr: "enta ",
+        postFr: " eh?"
+      },
+      {
+        id: "d4",
+        audioFile: "day_4.mp3",
+        speaker: "Tamer",
+        gender: "m",
+        ar: "انا إسمي تامر.",
+        fr: "ana esmee Tamer.",
+        en: "My name is Tamer.",
+        gapWordAr: "إسمي",
+        gapWordFr: "esmee",
+        preAr: "انا ",
+        postAr: " تامر.",
+        preFr: "ana ",
+        postFr: " Tamer."
+      },
+      {
+        id: "d5",
+        audioFile: "day_5.mp3",
+        speaker: "Tamer",
+        gender: "m",
+        ar: "إنتي إسمِك إيه؟",
+        fr: "entee esmek eh?",
+        en: "What is your name? (to female)",
+        gapWordAr: "إسمِك",
+        gapWordFr: "esmek",
+        preAr: "إنتي ",
+        postAr: " إيه؟",
+        preFr: "entee ",
+        postFr: " eh?"
+      },
+      {
+        id: "d6",
+        audioFile: "day_6.mp3",
+        speaker: "Sara",
+        gender: "f",
+        ar: "انا إسمي سارة.",
+        fr: "ana esmee Sara.",
+        en: "My name is Sara.",
+        gapWordAr: "سارة",
+        gapWordFr: "Sara",
+        preAr: "انا إسمي ",
+        postAr: ".",
+        preFr: "ana esmee ",
+        postFr: "."
+      },
+      {
+        id: "d7",
+        audioFile: "day_7.mp3",
+        speaker: "Sara",
+        gender: "f",
+        ar: "أهلاً وسَهلاً.",
+        fr: "ahlan w sahlan.",
+        en: "You are welcome! / Nice to meet you!",
+        gapWordAr: "سَهلاً",
+        gapWordFr: "sahlan",
+        preAr: "أهلاً و ",
+        postAr: ".",
+        preFr: "ahlan w ",
+        postFr: "."
+      },
+      {
+        id: "d8",
+        audioFile: "day_8.mp3",
+        speaker: "Tamer",
+        gender: "m",
+        ar: "أهلاً بيكي.",
+        fr: "ahlan beeky.",
+        en: "You are welcome, too. (to female)",
+        gapWordAr: "بيكي",
+        gapWordFr: "beeky",
+        preAr: "أهلاً ",
+        postAr: ".",
+        preFr: "ahlan ",
+        postFr: "."
+      }
+    ];
+
+    // Evening Dialogue (baAd el-Dahr / billeil)
+    const eveningDialogue = [
+      {
+        id: "e1",
+        audioFile: "eve_1.mp3",
+        speaker: "Sara",
+        gender: "f",
+        ar: "مساء الخير",
+        fr: "masa‘ el-kheer",
+        en: "Good evening.",
+        gapWordAr: "الخير",
+        gapWordFr: "el-kheer",
+        preAr: "مساء ",
+        postAr: "",
+        preFr: "masa‘ ",
+        postFr: ""
+      },
+      {
+        id: "e2",
+        audioFile: "eve_2.mp3",
+        speaker: "Tamer",
+        gender: "m",
+        ar: "مساء النور",
+        fr: "masa‘ el-noor",
+        en: "Good evening (evening of light).",
+        gapWordAr: "النور",
+        gapWordFr: "el-noor",
+        preAr: "مساء ",
+        postAr: "",
+        preFr: "masa‘ ",
+        postFr: ""
+      },
+      {
+        id: "e3",
+        audioFile: "eve_3.mp3",
+        speaker: "Tamer",
+        gender: "m",
+        ar: "إزَيِك يا سارة؟",
+        fr: "Ezayek ya Sara?",
+        en: "How are you? (to female)",
+        gapWordAr: "إزَيِك",
+        gapWordFr: "Ezayek",
+        preAr: "",
+        postAr: " يا سارة؟",
+        preFr: "",
+        postFr: " ya Sara?"
+      },
+      {
+        id: "e4",
+        audioFile: "eve_4.mp3",
+        speaker: "Sara",
+        gender: "f",
+        ar: "انا كويسة، الحمد لله.",
+        fr: "ana kwayesa el-Hamdolellah.",
+        en: "I am fine, thank God. (female speaking)",
+        gapWordAr: "كويسة",
+        gapWordFr: "kwayesa",
+        preAr: "انا ",
+        postAr: "، الحمد لله.",
+        preFr: "ana ",
+        postFr: " el-Hamdolellah."
+      },
+      {
+        id: "e5",
+        audioFile: "eve_5.mp3",
+        speaker: "Sara",
+        gender: "f",
+        ar: "إزَيَك يا تامر؟",
+        fr: "Ezayak ya Tamer?",
+        en: "How are you? (to male)",
+        gapWordAr: "إزَيَك",
+        gapWordFr: "Ezayak",
+        preAr: "",
+        postAr: " يا تامر؟",
+        preFr: "",
+        postFr: " ya Tamer?"
+      },
+      {
+        id: "e6",
+        audioFile: "eve_6.mp3",
+        speaker: "Tamer",
+        gender: "m",
+        ar: "انا كويس، شُكراً.",
+        fr: "ana kuwayes shokran.",
+        en: "I am fine, thank you. (male speaking)",
+        gapWordAr: "كويس",
+        gapWordFr: "kuwayes",
+        preAr: "انا ",
+        postAr: "، شُكراً.",
+        preFr: "ana ",
+        postFr: " shokran."
+      },
+      {
+        id: "e7",
+        audioFile: "eve_7.mp3",
+        speaker: "Tamer",
+        gender: "m",
+        ar: "أهلاً وسَهلاً.",
+        fr: "ahlan w sahlan.",
+        en: "Welcome!",
+        gapWordAr: "أهلاً",
+        gapWordFr: "ahlan",
+        preAr: "",
+        postAr: " وسَهلاً.",
+        preFr: "",
+        postFr: " w sahlan."
+      },
+      {
+        id: "e8",
+        audioFile: "eve_8.mp3",
+        speaker: "Sara",
+        gender: "f",
+        ar: "أهلاً بيك.",
+        fr: "ahlan beek.",
+        en: "Welcome to you, too. (to male)",
+        gapWordAr: "بيك",
+        gapWordFr: "beek",
+        preAr: "أهلاً ",
+        postAr: ".",
+        preFr: "ahlan ",
+        postFr: "."
+      },
+      {
+        id: "e9",
+        audioFile: "eve_9.mp3",
+        speaker: "Sara",
+        gender: "f",
+        ar: "مع السلامة.",
+        fr: "maA essalama.",
+        en: "Good bye (with safety).",
+        gapWordAr: "السلامة",
+        gapWordFr: "essalama",
+        preAr: "مع ",
+        postAr: ".",
+        preFr: "maA ",
+        postFr: "."
+      },
+      {
+        id: "e10",
+        audioFile: "eve_10.mp3",
+        speaker: "Tamer",
+        gender: "m",
+        ar: "مع السلامة.",
+        fr: "maA essalama.",
+        en: "Good bye.",
+        gapWordAr: "مع",
+        gapWordFr: "maA",
+        preAr: "",
+        postAr: " السلامة.",
+        preFr: "",
+        postFr: " essalama."
+      }
+    ];
+
+    // Typing activity questions
+    const typingQuestionsDay = [
+      {
+        speakerPrompt: "Sara",
+        audioFile: "day_1.mp3",
+        promptAr: "صباح الخير.",
+        promptFr: "sabaH el-kheer",
+        promptEn: "Good morning.",
+        expectedAr: ["صباح النور", "صَبَاح النور", "صباح نور"],
+        expectedFr: ["sabah el noor", "sabaH el-noor", "sabah el-noor", "saba7 el noor", "saba7 el-noor", "sabah elnoor"],
+        hintAr: "صـ... الـ...",
+        hintFr: "sabaH el-...",
+        detailedHintAr: "الرد المصري على 'صَبَاح الخير' هو دائماً 'صَبَاح النور' (صباح من النور والضياء).",
+        detailedHintFr: "In Egyptian Arabic, the morning reply to 'sabaH el-kheer' is 'sabaH el-noor' (morning of light)."
+      },
+      {
+        speakerPrompt: "Sara asks Tamer (male):",
+        audioFile: "day_3.mp3",
+        promptAr: "إنت إسمَك إيه؟",
+        promptFr: "enta esmak eh?",
+        promptEn: "What is your name? (to male)",
+        expectedAr: ["انا اسمي تامر", "انا إسمي تامر", "إسمي تامر", "اسمي تامر"],
+        expectedFr: ["ana esmee tamer", "ana esmi tamer", "ana ismi tamer", "esmee tamer"],
+        hintAr: "انا إسمي ...",
+        hintFr: "ana esmee ...",
+        detailedHintAr: "للإجابة عن اسمك، ابدأ بـ 'انا إسمي...' متبوعاً باسم تامر.",
+        detailedHintFr: "To answer what your name is, say 'ana esmee Tamer' (My name is Tamer)."
+      },
+      {
+        speakerPrompt: "Tamer asks Sara (female):",
+        audioFile: "day_5.mp3",
+        promptAr: "إنتي إسمِك إيه؟",
+        promptFr: "entee esmek eh?",
+        promptEn: "What is your name? (to female)",
+        expectedAr: ["انا اسمي سارة", "انا إسمي سارة", "إسمي سارة", "اسمي سارة"],
+        expectedFr: ["ana esmee sara", "ana esmi sara", "ana ismi sara", "esmee sara"],
+        hintAr: "انا إسمي ...",
+        hintFr: "ana esmee ...",
+        detailedHintAr: "للإجابة عن اسم سارة، ابدأ بـ 'انا إسمي...' متبوعاً بـ سارة.",
+        detailedHintFr: "To state Sara's name, say 'ana esmee Sara' (My name is Sara)."
+      },
+      {
+        speakerPrompt: "Sara says to Tamer:",
+        audioFile: "day_7.mp3",
+        promptAr: "أهلاً وسَهلاً.",
+        promptFr: "ahlan w sahlan.",
+        promptEn: "Welcome! (to female Sara)",
+        expectedAr: ["أهلا بيكي", "أهلاً بيكي", "اهلا بيكي", "اهلاً بيكي"],
+        expectedFr: ["ahlan beeky", "ahlan biky", "ahlan beeki", "ahlan biki"],
+        hintAr: "أهلاً بـ...",
+        hintFr: "ahlan beek...",
+        detailedHintAr: "عند الرد على أنثى (سارة)، نقول: 'أهلاً بيكي' (مع إضافة ياء المخاطبة للمؤنث).",
+        detailedHintFr: "When replying to a female (Sara), welcome her back with 'ahlan beeky' (with 'y' for female)."
+      }
+    ];
+
+    const typingQuestionsEve = [
+      {
+        speakerPrompt: "Sara says:",
+        audioFile: "eve_1.mp3",
+        promptAr: "مساء الخير",
+        promptFr: "masa‘ el-kheer",
+        promptEn: "Good evening.",
+        expectedAr: ["مساء النور", "مـِسا َء النور", "مساء نور"],
+        expectedFr: ["masa el noor", "masa' el-noor", "masa‘ el-noor", "masaa el noor", "masa el-noor"],
+        hintAr: "مساء الـ...",
+        hintFr: "masa‘ el-...",
+        detailedHintAr: "الرد المصري على تحية المساء 'مساء الخير' هو 'مساء النور'.",
+        detailedHintFr: "In Egyptian Arabic, the evening reply to 'masa‘ el-kheer' is 'masa‘ el-noor' (evening of light)."
+      },
+      {
+        speakerPrompt: "Tamer asks Sara (female):",
+        audioFile: "eve_3.mp3",
+        promptAr: "إزَيِك يا سارة؟",
+        promptFr: "Ezayek ya Sara?",
+        promptEn: "How are you? (to female)",
+        expectedAr: ["انا كويسة الحمد لله", "انا كويسة", "كويسة الحمد لله", "الحمد لله"],
+        expectedFr: ["ana kwayesa el-hamdolellah", "ana kwayesa", "ana kwayesa elhamdolellah", "elhamdolellah", "kwayesa"],
+        hintAr: "انا كويسة الـ...",
+        hintFr: "ana kwayesa el-...",
+        detailedHintAr: "للأنثى: 'انا كويسة، الحمد لله' (تأكد من تاء التأنيث في كويسة).",
+        detailedHintFr: "For a female reply: 'ana kwayesa el-Hamdolellah' (I am fine, thanks God)."
+      },
+      {
+        speakerPrompt: "Sara asks Tamer (male):",
+        audioFile: "eve_5.mp3",
+        promptAr: "إزَيَك يا تامر؟",
+        promptFr: "Ezayak ya Tamer?",
+        promptEn: "How are you? (to male)",
+        expectedAr: ["انا كويس شكرا", "انا كويس شُكراً", "انا كويس", "كويس شكرا"],
+        expectedFr: ["ana kuwayes shokran", "ana kwayes shokran", "ana kowayes shokran", "ana kuwayes"],
+        hintAr: "انا كويس شـ...",
+        hintFr: "ana kuwayes sh...",
+        detailedHintAr: "للذكر: 'انا كويس، شُكراً' (بالمذكر بدون تاء تأنيث).",
+        detailedHintFr: "For a male reply: 'ana kuwayes shokran' (I am fine, thank you)."
+      },
+      {
+        speakerPrompt: "Tamer says to Sara:",
+        audioFile: "eve_7.mp3",
+        promptAr: "أهلاً وسَهلاً.",
+        promptFr: "ahlan w sahlan.",
+        promptEn: "Welcome!",
+        expectedAr: ["أهلا بيك", "أهلاً بيك", "اهلا بيك", "اهلاً بيك"],
+        expectedFr: ["ahlan beek", "ahlan bik", "ahlan bek"],
+        hintAr: "أهلاً بـ...",
+        hintFr: "ahlan beek",
+        detailedHintAr: "عند الرد على مذكر (تامر)، نقول: 'أهلاً بيك' (بدون ياء).",
+        detailedHintFr: "When replying to a male (Tamer), welcome him back with 'ahlan beek' (without 'y')."
+      },
+      {
+        speakerPrompt: "Sara says goodbye:",
+        audioFile: "eve_9.mp3",
+        promptAr: "مع السلامة.",
+        promptFr: "maA essalama.",
+        promptEn: "Good bye.",
+        expectedAr: ["مع السلامة", "مع السلامه", "مع السلامة."],
+        expectedFr: ["maa essalama", "maA essalama", "ma3 essalama", "maa el salama", "ma3 el salama"],
+        hintAr: "مع الـ...",
+        hintFr: "maA es...",
+        detailedHintAr: "في توديع الشخص الآخر في مصر، نرد بالمثل: 'مع السلامة'.",
+        detailedHintFr: "When parting ways in Egypt, reply with the same phrase: 'maA essalama' (with safety / goodbye)."
+      }
+    ];
+
+    /* ==========================================================================
+       APP STATE
+       ========================================================================== */
+    let currentScript = "ar"; // "ar" (Arabic alphabet) or "fr" (Franco)
+    let currentDialogueKey = "day"; // "day" or "eve"
+    let currentActivity = 1; // 1, 2, or 3
+    let sortRevealedSolution = false;
+
+    // State for Activity 1 (Sort)
+    let currentSortOrder = [];
+
+    // State for Activity 2 (Gap Fill)
+    let currentGapAnswers = {}; // { slotIndex: wordText }
+    let selectedChip = null;
+
+    // State for Activity 3 (Typing)
+    let currentTypingIndex = 0;
+    let typingScore = 0;
+
+    /* ==========================================================================
+       AUDIO PLAYBACK: Dedicated Studio Audio with Web Speech Fallback
+       ========================================================================== */
+    let activeAudio = null;
+
+    function playLineAudio(fileName, fallbackArabicText) {
+      if (activeAudio) {
+        activeAudio.pause();
+        activeAudio.currentTime = 0;
+      }
+
+      if (fileName) {
+        activeAudio = new Audio(`audio/${fileName}`);
+        activeAudio.play().catch(e => {
+          speakFallback(fallbackArabicText);
+        });
+      } else {
+        speakFallback(fallbackArabicText);
+      }
+    }
+
+    function speakFallback(text) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = "ar-EG";
+      utter.rate = 0.88;
+      const voices = window.speechSynthesis.getVoices();
+      const egVoice = voices.find(v => v.lang.startsWith("ar"));
+      if (egVoice) utter.voice = egVoice;
+      window.speechSynthesis.speak(utter);
+    }
+
+    /* Helper: Current dialogue dataset */
+    function getActiveDialogueData() {
+      return currentDialogueKey === "day" ? daytimeDialogue : eveningDialogue;
+    }
+
+    function getActiveTypingData() {
+      return currentDialogueKey === "day" ? typingQuestionsDay : typingQuestionsEve;
+    }
+
+    /* ==========================================================================
+       SCRIPT TOGGLE (Arabic vs Franco)
+       ========================================================================== */
+    const btnScriptAr = document.getElementById("btnScriptAr");
+    const btnScriptFr = document.getElementById("btnScriptFr");
+    const activeModeLabel = document.getElementById("activeModeLabel");
+    const activeModeSub = document.getElementById("activeModeSub");
+    const francoNotice = document.getElementById("francoNotice");
+
+    function setScript(script) {
+      currentScript = script;
+      if (script === "ar") {
+        btnScriptAr.classList.add("active");
+        btnScriptFr.classList.remove("active");
+        activeModeLabel.textContent = "Arabic Alphabet (العربية)";
+        activeModeSub.textContent = "Reading & practicing with clear textbook Arabic script (Arial).";
+        francoNotice.style.display = "none";
+      } else {
+        btnScriptFr.classList.add("active");
+        btnScriptAr.classList.remove("active");
+        activeModeLabel.textContent = "Franco-Arabic (Arabizi)";
+        activeModeSub.textContent = "Practicing using Latin letters & numbers (e.g. 7 = ح, 3 = ع) as in modern Egyptian texting.";
+        francoNotice.style.display = "flex";
+      }
+
+      renderActiveActivity();
+    }
+
+    btnScriptAr.addEventListener("click", () => setScript("ar"));
+    btnScriptFr.addEventListener("click", () => setScript("fr"));
+
+    /* ==========================================================================
+       DIALOGUE TOGGLE (Daytime vs Evening)
+       ========================================================================== */
+    const btnDiaDay = document.getElementById("btnDiaDay");
+    const btnDiaEve = document.getElementById("btnDiaEve");
+
+    function setDialogue(dia) {
+      currentDialogueKey = dia;
+      if (dia === "day") {
+        btnDiaDay.classList.add("active");
+        btnDiaEve.classList.remove("active");
+      } else {
+        btnDiaEve.classList.add("active");
+        btnDiaDay.classList.remove("active");
+      }
+      resetAllActivitiesState();
+      renderActiveActivity();
+    }
+
+    btnDiaDay.addEventListener("click", () => setDialogue("day"));
+    btnDiaEve.addEventListener("click", () => setDialogue("eve"));
+
+    /* ==========================================================================
+       ACTIVITY TABS (Activity 1, 2, 3)
+       ========================================================================== */
+    const tabAct1 = document.getElementById("tabAct1");
+    const tabAct2 = document.getElementById("tabAct2");
+    const tabAct3 = document.getElementById("tabAct3");
+    const panelAct1 = document.getElementById("panelAct1");
+    const panelAct2 = document.getElementById("panelAct2");
+    const panelAct3 = document.getElementById("panelAct3");
+
+    function setActivity(actNum) {
+      currentActivity = actNum;
+      [tabAct1, tabAct2, tabAct3].forEach((t, i) => {
+        if (i + 1 === actNum) t.classList.add("active");
+        else t.classList.remove("active");
+      });
+      [panelAct1, panelAct2, panelAct3].forEach((p, i) => {
+        if (i + 1 === actNum) p.classList.remove("hidden");
+        else p.classList.add("hidden");
+      });
+      renderActiveActivity();
+    }
+
+    tabAct1.addEventListener("click", () => setActivity(1));
+    tabAct2.addEventListener("click", () => setActivity(2));
+    tabAct3.addEventListener("click", () => setActivity(3));
+
+    function resetAllActivitiesState() {
+      // Reset sort
+      const data = getActiveDialogueData();
+      currentSortOrder = [...data].sort(() => Math.random() - 0.5);
+      sortRevealedSolution = false;
+      // Reset gaps
+      currentGapAnswers = {};
+      selectedChip = null;
+      // Reset typing
+      currentTypingIndex = 0;
+      typingScore = 0;
+    }
+
+    function renderActiveActivity() {
+      if (currentActivity === 1) renderSortActivity();
+      else if (currentActivity === 2) renderGapActivity();
+      else if (currentActivity === 3) renderTypingActivity();
+    }
+
+    /* ==========================================================================
+       ACTIVITY 1: SORT CONVERSATION LOGIC
+       ========================================================================== */
+    const sortListContainer = document.getElementById("sortListContainer");
+    const btnCheckSort = document.getElementById("btnCheckSort");
+    const btnShuffleSort = document.getElementById("btnShuffleSort");
+    const btnSolveSort = document.getElementById("btnSolveSort");
+    const sortStatusText = document.getElementById("sortStatusText");
+
+    let draggedItemIdx = null;
+
+    function renderSortActivity() {
+      sortListContainer.innerHTML = "";
+      if (!sortRevealedSolution) {
+        sortStatusText.textContent = "Arrange the conversation";
+      }
+
+      currentSortOrder.forEach((item, index) => {
+        const row = document.createElement("div");
+        row.className = `sort-item speaker-${item.speaker === "Sara" ? "a" : "b"}`;
+        row.setAttribute("data-index", index);
+
+        const primaryText = currentScript === "ar" ? item.ar : item.fr;
+        const fontClass = currentScript === "ar" ? "script-ar" : "script-fr";
+        const speakerAvatar = item.gender === "m" ? "👨 Tamer" : "👩 Sara";
+
+        // In sorting activity: English translations are strictly hidden to prevent cheating
+        const showEnText = sortRevealedSolution;
+
+        row.innerHTML = `
+          <div class="drag-handle" title="Drag to reorder" aria-label="Drag handle">☰</div>
+          <div class="order-num">${index + 1}</div>
+          <div class="speaker-avatar" title="${speakerAvatar}">${item.gender === 'm' ? '👨' : '👩'}</div>
+          <div class="sort-content">
+            <div class="sort-text-primary ${fontClass}">${primaryText}</div>
+            <div class="sort-trans-wrapper ${showEnText ? '' : 'sort-text-invisible'}" style="font-size:0.88rem; color:#64748b; margin-top:2px;">
+              ${item.en}
+            </div>
+            ${!showEnText ? `<button class="sort-peek-btn" type="button" aria-label="Peek English hint"><span>👁️</span> Peek English</button>` : ""}
+          </div>
+          <button class="speech-btn" type="button" aria-label="Listen native Egyptian audio">🔊</button>
+          <div class="sort-actions">
+            <button class="sort-move-btn btn-up" type="button" title="Move Up" ${index === 0 ? "disabled style='opacity:0.3;'" : ""}>▲</button>
+            <button class="sort-move-btn btn-down" type="button" title="Move Down" ${index === currentSortOrder.length - 1 ? "disabled style='opacity:0.3;'" : ""}>▼</button>
+          </div>
+        `;
+
+        // Native studio audio playback
+        row.querySelector(".speech-btn").addEventListener("click", () => {
+          playLineAudio(item.audioFile, item.ar);
+        });
+
+        // Peek English translation on demand
+        const peekBtn = row.querySelector(".sort-peek-btn");
+        if (peekBtn) {
+          peekBtn.addEventListener("click", () => {
+            const transEl = row.querySelector(".sort-trans-wrapper");
+            transEl.classList.toggle("sort-text-invisible");
+            peekBtn.textContent = transEl.classList.contains("sort-text-invisible") ? "👁️ Peek English" : "✕ Hide English";
+          });
+        }
+
+        // Up / Down buttons
+        const upBtn = row.querySelector(".btn-up");
+        const downBtn = row.querySelector(".btn-down");
+        upBtn.addEventListener("click", () => moveSortItem(index, index - 1));
+        downBtn.addEventListener("click", () => moveSortItem(index, index + 1));
+
+        // Native HTML5 Drag and Drop
+        row.draggable = true;
+        row.addEventListener("dragstart", (e) => {
+          draggedItemIdx = index;
+          e.dataTransfer.effectAllowed = "move";
+          row.style.opacity = "0.5";
+        });
+        row.addEventListener("dragend", () => {
+          row.style.opacity = "1";
+        });
+        row.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          e.dataTransfer.dropEffect = "move";
+        });
+        row.addEventListener("drop", (e) => {
+          e.preventDefault();
+          if (draggedItemIdx !== null && draggedItemIdx !== index) {
+            const itemToMove = currentSortOrder.splice(draggedItemIdx, 1)[0];
+            currentSortOrder.splice(index, 0, itemToMove);
+            renderSortActivity();
+          }
+        });
+
+        sortListContainer.appendChild(row);
+      });
+    }
+
+    function moveSortItem(from, to) {
+      if (to < 0 || to >= currentSortOrder.length) return;
+      const item = currentSortOrder.splice(from, 1)[0];
+      currentSortOrder.splice(to, 0, item);
+      renderSortActivity();
+    }
+
+    btnShuffleSort.addEventListener("click", () => {
+      currentSortOrder.sort(() => Math.random() - 0.5);
+      sortRevealedSolution = false;
+      renderSortActivity();
+    });
+
+    btnSolveSort.addEventListener("click", () => {
+      currentSortOrder = [...getActiveDialogueData()];
+      sortRevealedSolution = true;
+      renderSortActivity();
+      sortStatusText.textContent = "Solution shown! Translations revealed.";
+      playChime(true);
+    });
+
+    btnCheckSort.addEventListener("click", () => {
+      const correctData = getActiveDialogueData();
+      let allCorrect = true;
+      const rows = sortListContainer.querySelectorAll(".sort-item");
+
+      currentSortOrder.forEach((item, index) => {
+        const row = rows[index];
+        row.classList.remove("correct-pos", "wrong-pos");
+        if (item.id === correctData[index].id) {
+          row.classList.add("correct-pos");
+        } else {
+          row.classList.add("wrong-pos");
+          allCorrect = false;
+        }
+      });
+
+      if (allCorrect) {
+        sortStatusText.innerHTML = "🎉 Excellent! 100% Correct Order!";
+        sortStatusText.style.color = "#059669";
+        sortRevealedSolution = true;
+        renderSortActivity();
+        playChime(true);
+      } else {
+        sortStatusText.innerHTML = "⚠️ Some lines are in the wrong spot. Check the green/red borders!";
+        sortStatusText.style.color = "#e11d48";
+        playChime(false);
+      }
+    });
+
+    /* ==========================================================================
+       ACTIVITY 2: DRAG & DROP GAP FILL LOGIC
+       ========================================================================== */
+    const chipsBankContainer = document.getElementById("chipsBankContainer");
+    const gapDialogueContainer = document.getElementById("gapDialogueContainer");
+    const btnCheckGaps = document.getElementById("btnCheckGaps");
+    const btnResetGaps = document.getElementById("btnResetGaps");
+    const gapScoreText = document.getElementById("gapScoreText");
+
+    function renderGapActivity() {
+      const data = getActiveDialogueData();
+      chipsBankContainer.innerHTML = "";
+      gapDialogueContainer.innerHTML = "";
+
+      // Create pool of gap words
+      const wordsPool = data.map((d, index) => ({
+        index: index,
+        word: currentScript === "ar" ? d.gapWordAr : d.gapWordFr,
+        arWord: d.gapWordAr,
+        id: d.id
+      }));
+
+      // Render Word Bank Chips
+      wordsPool.forEach(item => {
+        const isUsed = Object.values(currentGapAnswers).includes(item.word);
+        const chip = document.createElement("div");
+        chip.className = `word-chip ${currentScript === 'ar' ? 'script-ar' : 'script-fr'}` + (isUsed ? " used" : "");
+        chip.setAttribute("draggable", !isUsed);
+        chip.textContent = item.word;
+
+        // Selection for tap-to-place
+        chip.addEventListener("click", () => {
+          if (isUsed) return;
+          chipsBankContainer.querySelectorAll(".word-chip").forEach(c => c.classList.remove("selected"));
+          if (selectedChip === item.word) {
+            selectedChip = null;
+          } else {
+            selectedChip = item.word;
+            chip.classList.add("selected");
+          }
+        });
+
+        // HTML5 drag
+        chip.addEventListener("dragstart", (e) => {
+          e.dataTransfer.setData("text/plain", item.word);
+        });
+
+        chipsBankContainer.appendChild(chip);
+      });
+
+      // Render Dialogue Lines with Drop Slots
+      data.forEach((item, index) => {
+        const line = document.createElement("div");
+        line.className = `gap-line speaker-${item.speaker === "Sara" ? "a" : "b"}`;
+
+        const pre = currentScript === "ar" ? item.preAr : item.preFr;
+        const post = currentScript === "ar" ? item.postAr : item.postFr;
+        const filledWord = currentGapAnswers[index] || "";
+        const fontClass = currentScript === "ar" ? "script-ar" : "script-fr";
+
+        line.innerHTML = `
+          <div class="speaker-avatar" title="${item.speaker}">${item.gender === 'm' ? '👨' : '👩'}</div>
+          <div style="flex-grow: 1;">
+            <div class="gap-line-content ${fontClass}">
+              <span>${pre}</span>
+              <div class="drop-slot ${filledWord ? 'filled' : ''}" data-slot-index="${index}">
+                ${filledWord ? filledWord : '<span style="color:#94a3b8; font-size:0.85rem;">[ Drop Here ]</span>'}
+              </div>
+              <span>${post}</span>
+            </div>
+            <div style="font-size:0.88rem; color:#64748b; margin-top:4px;">${item.en}</div>
+          </div>
+          <button class="speech-btn" type="button" aria-label="Listen native line">🔊</button>
+        `;
+
+        // Native audio speech
+        line.querySelector(".speech-btn").addEventListener("click", () => {
+          playLineAudio(item.audioFile, item.ar);
+        });
+
+        // Drop Slot Handlers
+        const slot = line.querySelector(".drop-slot");
+
+        // Click slot to place selected chip, or click to remove filled word
+        slot.addEventListener("click", () => {
+          if (currentGapAnswers[index]) {
+            delete currentGapAnswers[index];
+            renderGapActivity();
+          } else if (selectedChip) {
+            currentGapAnswers[index] = selectedChip;
+            selectedChip = null;
+            renderGapActivity();
+          }
+        });
+
+        // Dragover & Drop
+        slot.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          slot.classList.add("drag-over");
+        });
+        slot.addEventListener("dragleave", () => {
+          slot.classList.remove("drag-over");
+        });
+        slot.addEventListener("drop", (e) => {
+          e.preventDefault();
+          slot.classList.remove("drag-over");
+          const word = e.dataTransfer.getData("text/plain");
+          if (word) {
+            currentGapAnswers[index] = word;
+            renderGapActivity();
+          }
+        });
+
+        gapDialogueContainer.appendChild(line);
+      });
+
+      // Update completion counter
+      const filledCount = Object.keys(currentGapAnswers).length;
+      gapScoreText.textContent = `${filledCount} / ${data.length} completed`;
+    }
+
+    btnResetGaps.addEventListener("click", () => {
+      currentGapAnswers = {};
+      selectedChip = null;
+      renderGapActivity();
+    });
+
+    btnCheckGaps.addEventListener("click", () => {
+      const data = getActiveDialogueData();
+      let correctCount = 0;
+      const slots = gapDialogueContainer.querySelectorAll(".drop-slot");
+
+      data.forEach((item, index) => {
+        const slot = slots[index];
+        slot.classList.remove("correct", "wrong");
+        const correctWord = currentScript === "ar" ? item.gapWordAr : item.gapWordFr;
+        const studentWord = currentGapAnswers[index];
+
+        if (studentWord === correctWord) {
+          slot.classList.add("correct");
+          correctCount++;
+        } else {
+          slot.classList.add("wrong");
+        }
+      });
+
+      if (correctCount === data.length) {
+        gapScoreText.innerHTML = `🎉 Perfect! ${correctCount}/${data.length} Correct!`;
+        gapScoreText.style.color = "#059669";
+        playChime(true);
+      } else {
+        gapScoreText.innerHTML = `⭐ ${correctCount}/${data.length} correct. Keep going!`;
+        gapScoreText.style.color = "#d97706";
+        playChime(false);
+      }
+    });
+
+    /* ==========================================================================
+       ACTIVITY 3: TYPE THE ANSWER LOGIC
+       ========================================================================== */
+    const typingProgText = document.getElementById("typingProgText");
+    const typingSpeakerLabel = document.getElementById("typingSpeakerLabel");
+    const typingPromptMain = document.getElementById("typingPromptMain");
+    const typingPromptEn = document.getElementById("typingPromptEn");
+    const btnTypePromptSpeech = document.getElementById("btnTypePromptSpeech");
+    const userTypingInput = document.getElementById("userTypingInput");
+    const liveFeedbackBox = document.getElementById("liveFeedbackBox");
+    const liveMatchBadge = document.getElementById("liveMatchBadge");
+    const liveTokensRow = document.getElementById("liveTokensRow");
+    const liveHintText = document.getElementById("liveHintText");
+    const arQuickKeysBar = document.getElementById("arQuickKeysBar");
+    const typingFeedbackMsg = document.getElementById("typingFeedbackMsg");
+    const btnSubmitTyping = document.getElementById("btnSubmitTyping");
+    const btnRetryTyping = document.getElementById("btnRetryTyping");
+    const btnNextTyping = document.getElementById("btnNextTyping");
+    const btnHintTyping = document.getElementById("btnHintTyping");
+    const btnRevealTyping = document.getElementById("btnRevealTyping");
+    const typingInputHint = document.getElementById("typingInputHint");
+
+    // Arabic keyboard keys helper
+    const arabicKeys = [
+      "ا", "أ", "إ", "ب", "ت", "ة", "ث", "ج", "ح", "خ", "د", "ذ", "ر", "ز",
+      "س", "ش", "ص", "ض", "ط", "ظ", "ع", "غ", "ف", "ق", "ك", "ل", "م", "ن", "ه", "و", "ي", "ى", "؟", " "
+    ];
+
+    function setupArabicKeyboard() {
+      arQuickKeysBar.innerHTML = "";
+      if (currentScript !== "ar") {
+        arQuickKeysBar.classList.add("hidden");
+        return;
+      }
+      arQuickKeysBar.classList.remove("hidden");
+
+      arabicKeys.forEach(char => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "ar-key-btn";
+        btn.textContent = char === " " ? "Space ␣" : char;
+        btn.addEventListener("click", () => {
+          userTypingInput.value += char;
+          userTypingInput.focus();
+          handleLiveTypingFeedback();
+        });
+        arQuickKeysBar.appendChild(btn);
+      });
+
+      // Backspace key
+      const backspaceBtn = document.createElement("button");
+      backspaceBtn.type = "button";
+      backspaceBtn.className = "ar-key-btn";
+      backspaceBtn.textContent = "⌫ Del";
+      backspaceBtn.style.color = "#e11d48";
+      backspaceBtn.addEventListener("click", () => {
+        userTypingInput.value = userTypingInput.value.slice(0, -1);
+        userTypingInput.focus();
+        handleLiveTypingFeedback();
+      });
+      arQuickKeysBar.appendChild(backspaceBtn);
+    }
+
+    // Real-time live feedback handler while freely typing
+    function handleLiveTypingFeedback() {
+      const questions = getActiveTypingData();
+      const q = questions[currentTypingIndex];
+      const val = userTypingInput.value;
+      const trimmed = val.trim();
+
+      if (!trimmed) {
+        liveFeedbackBox.classList.remove("is-active");
+        liveTokensRow.innerHTML = "";
+        liveHintText.innerHTML = "";
+        return;
+      }
+
+      liveFeedbackBox.classList.add("is-active");
+      const isAr = currentScript === "ar";
+      liveTokensRow.className = `live-tokens-row ${isAr ? "script-ar" : "script-fr"}`;
+
+      const targetList = isAr ? q.expectedAr : q.expectedFr;
+
+      // Find best-matching target variant for live guidance
+      let bestTarget = targetList[0];
+      let bestTargetWords = (isAr ? cleanInput(bestTarget) : cleanFranco(bestTarget)).split(/\s+/).filter(Boolean);
+      let highestMatch = -1;
+
+      const userClean = isAr ? cleanInput(val) : cleanFranco(val);
+      const userWords = userClean.split(/\s+/).filter(Boolean);
+
+      targetList.forEach(t => {
+        const tWords = (isAr ? cleanInput(t) : cleanFranco(t)).split(/\s+/).filter(Boolean);
+        let matchCount = 0;
+        userWords.forEach((uw, idx) => {
+          if (idx < tWords.length && (tWords[idx] === uw || tWords[idx].startsWith(uw))) {
+            matchCount++;
+          }
+        });
+        if (matchCount > highestMatch) {
+          highestMatch = matchCount;
+          bestTarget = t;
+          bestTargetWords = tWords;
+        }
+      });
+
+      const rawUserWords = val.trim().split(/\s+/).filter(Boolean);
+      let correctWordsCount = 0;
+      let firstWrongIdx = -1;
+      liveTokensRow.innerHTML = "";
+
+      rawUserWords.forEach((rawWord, idx) => {
+        const chip = document.createElement("span");
+        const cleanWord = isAr ? cleanInput(rawWord) : cleanFranco(rawWord);
+        const expectedWord = bestTargetWords[idx] || "";
+
+        if (expectedWord && cleanWord === expectedWord) {
+          chip.className = "token-chip token-correct";
+          chip.innerHTML = `✓ ${rawWord}`;
+          correctWordsCount++;
+        } else if (expectedWord && expectedWord.startsWith(cleanWord) && idx === rawUserWords.length - 1 && !val.endsWith(" ")) {
+          chip.className = "token-chip token-typing";
+          chip.innerHTML = `✎ ${rawWord}...`;
+          correctWordsCount += 0.5;
+        } else {
+          chip.className = "token-chip token-wrong";
+          chip.innerHTML = `⚠️ ${rawWord}`;
+          if (firstWrongIdx === -1) firstWrongIdx = idx;
+        }
+        liveTokensRow.appendChild(chip);
+      });
+
+      const totalWords = bestTargetWords.length;
+      liveMatchBadge.textContent = `${Math.floor(correctWordsCount)} / ${totalWords} words correct`;
+
+      if (firstWrongIdx === -1) {
+        if (correctWordsCount >= totalWords && !val.endsWith(" ")) {
+          liveHintText.innerHTML = `<span style="color: #059669;">🎉 <strong>All words correct!</strong> Press <strong>Enter</strong> or click <strong>Submit Answer</strong>.</span>`;
+        } else {
+          const matchedWordsText = rawUserWords.slice(0, Math.floor(correctWordsCount)).join(" ");
+          const displayMatched = isAr ? `<span class="ar-inline-text">${matchedWordsText || rawUserWords[0]}</span>` : `"${matchedWordsText || rawUserWords[0]}"`;
+          liveHintText.innerHTML = `<span style="color: #059669;">🟢 <strong>Looking great!</strong> ${displayMatched} is correct so far. Keep typing!</span>`;
+        }
+      } else {
+        const wrongWord = rawUserWords[firstWrongIdx];
+        const correctPrefix = rawUserWords.slice(0, firstWrongIdx).join(" ");
+        const displayWrong = isAr ? `<span class="ar-inline-text">${wrongWord}</span>` : `"${wrongWord}"`;
+        const displayPrefix = isAr ? `<span class="ar-inline-text">${correctPrefix}</span>` : `"${correctPrefix}"`;
+        if (firstWrongIdx === 0) {
+          liveHintText.innerHTML = `<span style="color: #b45309;">⚠️ Look again at ${displayWrong}: this greeting reply starts with a different phrase.</span>`;
+        } else {
+          liveHintText.innerHTML = `<span style="color: #15803d;">✓ ${displayPrefix} is already correct!</span> <span style="color: #b45309;">⚠️ Look again at ${displayWrong} to fix it.</span>`;
+        }
+      }
+    }
+
+    userTypingInput.addEventListener("input", handleLiveTypingFeedback);
+
+    function renderTypingActivity() {
+      const questions = getActiveTypingData();
+      if (currentTypingIndex >= questions.length) {
+        currentTypingIndex = 0;
+      }
+      const q = questions[currentTypingIndex];
+
+      typingProgText.textContent = `${currentTypingIndex + 1} / ${questions.length}`;
+      typingSpeakerLabel.textContent = `${q.speakerPrompt} says:`;
+
+      if (currentScript === "ar") {
+        typingPromptMain.textContent = q.promptAr;
+        typingPromptMain.className = "prompt-text-main script-ar";
+        userTypingInput.className = "user-text-input script-ar";
+        userTypingInput.placeholder = "اكتب الرد هنا...";
+        typingInputHint.textContent = "Type in Arabic or tap the on-screen letters below";
+      } else {
+        typingPromptMain.textContent = q.promptFr;
+        typingPromptMain.className = "prompt-text-main script-fr";
+        userTypingInput.className = "user-text-input script-fr";
+        userTypingInput.placeholder = "Type in Franco (e.g. sabaH el-noor)...";
+        typingInputHint.textContent = "Type using your English keyboard (e.g., sabaH el-noor, ahlan beek)";
+      }
+
+      typingPromptEn.textContent = q.promptEn;
+      userTypingInput.value = "";
+      userTypingInput.disabled = false;
+      userTypingInput.classList.remove("is-correct", "is-wrong");
+      typingFeedbackMsg.innerHTML = "";
+      liveFeedbackBox.classList.remove("is-active");
+      liveTokensRow.innerHTML = "";
+      liveHintText.innerHTML = "";
+      btnSubmitTyping.classList.remove("hidden");
+      btnRetryTyping.classList.add("hidden");
+      btnRevealTyping.classList.add("hidden");
+      btnNextTyping.classList.add("hidden");
+
+      setupArabicKeyboard();
+    }
+
+    btnTypePromptSpeech.addEventListener("click", () => {
+      const q = getActiveTypingData()[currentTypingIndex];
+      playLineAudio(q.audioFile, q.promptAr);
+    });
+
+    btnHintTyping.addEventListener("click", () => {
+      const q = getActiveTypingData()[currentTypingIndex];
+      const hint = currentScript === "ar" ? q.hintAr : q.hintFr;
+      const hintDisplay = currentScript === "ar" ? `<span class="ar-inline-text" style="font-size:1.35rem;">${hint}</span>` : `<strong>${hint}</strong>`;
+      typingFeedbackMsg.innerHTML = `<div style="color: #d97706; font-size:1.05rem;">💡 Clue: Starts with: ${hintDisplay}</div>`;
+    });
+
+    // Clean / normalize input strings for tolerant matching
+    function cleanInput(str) {
+      return str
+        .toLowerCase()
+        .replace(/[،,.\-?!'’‘"`]/g, "")
+        .replace(/\s+/g, " ")
+        .replace(/[إأآا]/g, "ا")
+        .replace(/[ةه]/g, "ه")
+        .replace(/[ىي]/g, "ي")
+        .trim();
+    }
+
+    function cleanFranco(str) {
+      return str
+        .toLowerCase()
+        .replace(/[,\-?!'’‘"`]/g, "")
+        .replace(/\s+/g, " ")
+        .replace(/7/g, "h")
+        .replace(/3/g, "a")
+        .replace(/2/g, "a")
+        .trim();
+    }
+
+    // Longest Common Subsequence for character diff
+    function computeLCS(s1, s2) {
+      const m = s1.length, n = s2.length;
+      const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
+      for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+          if (s1[i - 1] === s2[j - 1]) {
+            dp[i][j] = dp[i - 1][j - 1] + 1;
+          } else {
+            dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+          }
+        }
+      }
+      return dp;
+    }
+
+    function evaluateTyping(userStr, targetList, isArabic) {
+      let bestTarget = targetList[0];
+      let bestRatio = -1;
+      let bestMatches = null;
+      let bestWordMatches = 0;
+
+      targetList.forEach(target => {
+        const s1 = isArabic ? cleanInput(userStr) : cleanFranco(userStr);
+        const s2 = isArabic ? cleanInput(target) : cleanFranco(target);
+
+        const dp = computeLCS(s1, s2);
+        let i = s1.length, j = s2.length;
+        const matches = new Array(s1.length).fill(false);
+
+        while (i > 0 && j > 0) {
+          if (s1[i - 1] === s2[j - 1]) {
+            matches[i - 1] = true;
+            i--; j--;
+          } else if (dp[i - 1][j] >= dp[i][j - 1]) {
+            i--;
+          } else {
+            j--;
+          }
+        }
+
+        const matchCount = dp[s1.length][s2.length];
+        const maxLen = Math.max(s1.length, s2.length);
+        const ratio = maxLen > 0 ? matchCount / maxLen : 0;
+
+        const uWords = s1.split(" ").filter(Boolean);
+        const tWords = s2.split(" ").filter(Boolean);
+        const wordMatchCount = uWords.filter(w => tWords.includes(w)).length;
+
+        if (ratio > bestRatio) {
+          bestRatio = ratio;
+          bestTarget = target;
+          bestMatches = matches;
+          bestWordMatches = wordMatchCount;
+        }
+      });
+
+      // Build green / red letter badges from user's actual input
+      let letterBadgesHTML = "";
+      const cleaned = isArabic ? cleanInput(userStr) : cleanFranco(userStr);
+      let s1Idx = 0;
+
+      for (let k = 0; k < userStr.length; k++) {
+        const rawChar = userStr[k];
+        if (rawChar === " ") {
+          letterBadgesHTML += '<span class="char-badge char-space">&nbsp;</span>';
+          if (cleaned[s1Idx] === " ") s1Idx++;
+          continue;
+        }
+
+        const isGreen = bestMatches && bestMatches[s1Idx];
+        s1Idx++;
+        const badgeClass = isGreen ? "char-badge char-green" : "char-badge char-red";
+        letterBadgesHTML += `<span class="${badgeClass}">${rawChar}</span>`;
+      }
+
+      // Check whether it is partly correct vs completely off
+      const isPartlyCorrect = (bestRatio >= 0.35) || (bestWordMatches > 0);
+
+      return {
+        bestTarget,
+        ratio: bestRatio,
+        isPartlyCorrect,
+        letterBadgesHTML
+      };
+    }
+
+    btnSubmitTyping.addEventListener("click", handleTypingSubmit);
+    userTypingInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        if (!btnRetryTyping.classList.contains("hidden")) {
+          // If retry button is active, pressing Enter acts as try again
+          btnRetryTyping.click();
+        } else {
+          handleTypingSubmit();
+        }
+      }
+    });
+
+    function handleTypingSubmit() {
+      const questions = getActiveTypingData();
+      const q = questions[currentTypingIndex];
+      const val = userTypingInput.value.trim();
+
+      if (!val) {
+        typingFeedbackMsg.innerHTML = '<span style="color:#d97706;">Please type an answer first!</span>';
+        return;
+      }
+
+      let isMatch = false;
+      const targetList = currentScript === "ar" ? q.expectedAr : q.expectedFr;
+
+      if (currentScript === "ar") {
+        const cleanedVal = cleanInput(val);
+        isMatch = q.expectedAr.some(expected => cleanInput(expected) === cleanedVal);
+      } else {
+        const cleanedVal = cleanFranco(val);
+        isMatch = q.expectedFr.some(expected => cleanFranco(expected) === cleanedVal);
+      }
+
+      if (isMatch) {
+        // 100% CORRECT
+        userTypingInput.disabled = true;
+        userTypingInput.classList.remove("is-wrong");
+        userTypingInput.classList.add("is-correct");
+        typingFeedbackMsg.innerHTML = '<span style="color: #059669; font-size: 1.05rem;">🎉 Mumtāz! (Excellent!) Correct Egyptian response!</span>';
+        btnSubmitTyping.classList.add("hidden");
+        btnRetryTyping.classList.add("hidden");
+        btnRevealTyping.classList.add("hidden");
+        btnNextTyping.classList.remove("hidden");
+        typingScore++;
+        playChime(true);
+      } else {
+        // NOT EXACT MATCH: evaluate if partly correct vs completely off
+        userTypingInput.classList.add("is-wrong");
+        const evaluation = evaluateTyping(val, targetList, currentScript === "ar");
+
+        btnSubmitTyping.classList.add("hidden");
+        btnRetryTyping.classList.remove("hidden");
+        btnRevealTyping.classList.remove("hidden");
+
+        if (evaluation.isPartlyCorrect) {
+          // PARTLY CORRECT: show green and red letters diff box
+          typingFeedbackMsg.innerHTML = `
+            <div class="diff-container">
+              <div class="diff-header">Your Answer Breakdown:</div>
+              <div class="diff-letters-row ${currentScript === 'ar' ? 'script-ar' : 'script-fr'}">
+                ${evaluation.letterBadgesHTML}
+              </div>
+              <div class="diff-legend">
+                <span style="color:#15803d;">● Green = Correct letters</span>
+                <span style="color:#b91c1c;">● Red = Needs fixing</span>
+              </div>
+            </div>
+            <div style="color: #b45309; font-size: 0.95rem; margin-top: 4px;">
+              ⚠️ You're close! Check the green and red letters above, then click <strong>Try Again</strong> to adjust your answer.
+            </div>
+          `;
+          playChime(false);
+        } else {
+          // COMPLETELY OFF: give detailed contextual hint
+          const detailedHint = currentScript === "ar" ? q.detailedHintAr : q.detailedHintFr;
+          const hintCardClass = currentScript === "ar" ? "hint-card-off script-ar" : "hint-card-off script-fr";
+          typingFeedbackMsg.innerHTML = `
+            <div style="color: #e11d48; font-size: 0.98rem; font-weight:800;">
+              ❌ That answer is completely off. Don't worry!
+            </div>
+            <div class="${hintCardClass}">
+              💡 <strong>Hint:</strong> ${detailedHint}
+            </div>
+            <div style="color: #64748b; font-size: 0.9rem; margin-top: 4px;">
+              Click <strong>Try Again</strong> to re-type with this hint!
+            </div>
+          `;
+          playChime(false);
+        }
+      }
+    }
+
+    // Try Again button handler: re-enables input and focuses it
+    btnRetryTyping.addEventListener("click", () => {
+      userTypingInput.disabled = false;
+      userTypingInput.classList.remove("is-wrong", "is-correct");
+      btnRetryTyping.classList.add("hidden");
+      btnRevealTyping.classList.add("hidden");
+      btnSubmitTyping.classList.remove("hidden");
+      userTypingInput.focus();
+      // Keep cursor at end of input
+      const len = userTypingInput.value.length;
+      userTypingInput.setSelectionRange(len, len);
+      typingFeedbackMsg.innerHTML = '<span style="color: var(--teal);">✍️ Edit your answer and submit again!</span>';
+      handleLiveTypingFeedback();
+    });
+
+    // Reveal answer button handler
+    btnRevealTyping.addEventListener("click", () => {
+      const questions = getActiveTypingData();
+      const q = questions[currentTypingIndex];
+      const answerDisplay = currentScript === "ar" ? q.expectedAr[0] : q.expectedFr[0];
+      userTypingInput.value = answerDisplay;
+      userTypingInput.disabled = true;
+      userTypingInput.classList.remove("is-wrong");
+      userTypingInput.classList.add("is-correct");
+      liveFeedbackBox.classList.remove("is-active");
+      const answerFormatted = currentScript === "ar" ? `<span class="ar-inline-text" style="font-size:1.45rem; color:#0f766e;">${answerDisplay}</span>` : `<strong>${answerDisplay}</strong>`;
+      typingFeedbackMsg.innerHTML = `<div style="color: #0f766e; font-size:1.05rem;">💡 Expected reply: ${answerFormatted}</div>`;
+      btnRetryTyping.classList.add("hidden");
+      btnRevealTyping.classList.add("hidden");
+      btnSubmitTyping.classList.add("hidden");
+      btnNextTyping.classList.remove("hidden");
+      playLineAudio(q.audioFile, q.promptAr);
+    });
+
+    btnNextTyping.addEventListener("click", () => {
+      const questions = getActiveTypingData();
+      currentTypingIndex++;
+      if (currentTypingIndex >= questions.length) {
+        typingProgText.textContent = `Completed!`;
+        typingFeedbackMsg.innerHTML = `🏆 Finished all prompts! Score: ${typingScore} / ${questions.length}`;
+        typingFeedbackMsg.style.color = "#0f766e";
+        currentTypingIndex = 0;
+        typingScore = 0;
+      }
+      renderTypingActivity();
+    });
+
+    /* ==========================================================================
+       SIMPLE WEB AUDIO CHIME GENERATOR
+       ========================================================================== */
+    function playChime(isSuccess) {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        const now = ctx.currentTime;
+        if (isSuccess) {
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(523.25, now); // C5
+          osc.frequency.exponentialRampToValueAtTime(659.25, now + 0.12); // E5
+          osc.frequency.exponentialRampToValueAtTime(783.99, now + 0.24); // G5
+          gain.gain.setValueAtTime(0.18, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+          osc.start(now);
+          osc.stop(now + 0.5);
+        } else {
+          osc.type = "triangle";
+          osc.frequency.setValueAtTime(320, now);
+          osc.frequency.setValueAtTime(280, now + 0.1);
+          gain.gain.setValueAtTime(0.15, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+          osc.start(now);
+          osc.stop(now + 0.3);
+        }
+      } catch (e) {
+        // AudioContext not allowed or unsupported
+      }
+    }
+
+    // Initialize state
+    resetAllActivitiesState();
+    renderActiveActivity();
+  </script>
+</body>
+</html>

@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Arabic Learning Hub • Digital Activities for English Speakers</title>
+  <meta name="description" content="Interactive Arabic digital activities designed specifically for English-speaking learners. Master the alphabet, letter forms, pronunciation, and vocabulary.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f8fafc;
+      --paper: #ffffff;
+      --ink: #0f172a;
+      --ink-soft: #475569;
+      --ink-muted: #64748b;
+      --border: #e2e8f0;
+      --border-strong: #cbd5e1;
+
+      /* Arabic Warm Ochre & Teal Palette */
+      --teal-primary: #0f766e;
+      --teal-hover: #115e59;
+      --teal-light: #f0fdfa;
+      --teal-border: #99f6e4;
+
+      --amber-accent: #d97706;
+      --amber-light: #fffbeb;
+      --amber-border: #fde68a;
+
+      --emerald-accent: #059669;
+      --emerald-light: #ecfdf5;
+      --emerald-border: #a7f3d0;
+
+      --purple-accent: #7c3aed;
+      --purple-light: #f5f3ff;
+      --purple-border: #ddd6fe;
+
+      --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 6px 18px rgba(15, 23, 42, 0.07);
+      --shadow-lg: 0 16px 36px rgba(15, 118, 110, 0.12);
+
+      --font-display: 'Outfit', system-ui, sans-serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-arabic: 'Arial', 'Segoe UI', 'Tahoma', 'Noto Naskh Arabic', sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(#cbd5e1 1.2px, transparent 1.2px),
+        linear-gradient(180deg, #f0fdfa 0%, #f8fafc 320px);
+      background-size: 24px 24px, 100% 320px;
+      background-repeat: repeat, no-repeat;
+      color: var(--ink);
+      line-height: 1.5;
+      padding: 36px 20px 80px;
+    }
+
+    .wrap {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    /* Top Breadcrumb & Tag */
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .school-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--teal-primary);
+      text-decoration: none;
+      background: var(--teal-light);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      border: 1px solid var(--teal-border);
+    }
+
+    .meta-badge {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+      background: #ffffff;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+    }
+
+    /* Hero Section */
+    .hero {
+      margin-bottom: 40px;
+    }
+
+    .hero-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .pill-highlight {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: var(--amber-light);
+      color: #b45309;
+      border: 1px solid var(--amber-border);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.18;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .arabic-title-span {
+      font-family: var(--font-arabic);
+      color: var(--teal-primary);
+      margin-left: 6px;
+      display: inline-block;
+      direction: rtl;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      color: var(--ink-soft);
+      max-width: 760px;
+      margin-bottom: 24px;
+    }
+
+    /* Key pedagogical principles bar */
+    .principles-banner {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 36px;
+    }
+
+    .principle-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .principle-icon {
+      font-size: 1.4rem;
+      line-height: 1;
+      padding: 8px;
+      background: var(--teal-light);
+      border-radius: 10px;
+    }
+
+    .principle-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+
+    .principle-desc {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      line-height: 1.4;
+    }
+
+    /* Grid Section */
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-heading::after {
+      content: "";
+      flex-grow: 1;
+      height: 2px;
+      background: var(--border);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    /* Card Component conforming to modern-web-guidance */
+    .card {
+      container-type: inline-size;
+      background: var(--paper);
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      padding: 26px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+    }
+
+    .card:has(a.card-link) {
+      position: relative;
+    }
+
+    .card a.card-link::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      z-index: 0;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--teal-primary);
+    }
+
+    /* Keep independent interactive buttons/links above overlay */
+    .card a:not(.card-link),
+    .card button {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-featured {
+      border-color: var(--teal-border);
+      background: linear-gradient(180deg, #ffffff 0%, #f0fdfa 100%);
+    }
+
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      width: fit-content;
+    }
+
+    .badge-active {
+      background: var(--emerald-light);
+      color: var(--emerald-accent);
+      border: 1px solid var(--emerald-border);
+    }
+
+    .badge-upcoming {
+      background: var(--amber-light);
+      color: #b45309;
+      border: 1px solid var(--amber-border);
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.25;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .card-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .card-title a:hover {
+      color: var(--teal-primary);
+    }
+
+    .arabic-label {
+      font-family: var(--font-arabic) !important;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      color: var(--teal-primary);
+      direction: rtl;
+    }
+
+    .card-desc {
+      font-size: 0.98rem;
+      color: var(--ink-soft);
+      line-height: 1.55;
+    }
+
+    .features-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+      margin: 4px 0 10px;
+    }
+
+    .features-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .features-list li::before {
+      content: "✓";
+      color: var(--emerald-accent);
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    .card-footer {
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .action-text {
+      color: var(--teal-primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-display);
+    }
+
+    .action-text-muted {
+      color: var(--ink-muted);
+      font-style: italic;
+      font-size: 0.88rem;
+    }
+
+    /* Quick Sound Explorer Widget */
+    .quick-explorer {
+      background: #ffffff;
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      margin-bottom: 48px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .explorer-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .explorer-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+
+    .explorer-tip {
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+    }
+
+    .letter-pill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(78px, 1fr));
+      gap: 10px;
+      direction: rtl;
+    }
+
+    .letter-pill-btn {
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .letter-pill-btn:hover {
+      background: var(--teal-light);
+      border-color: var(--teal-primary);
+      transform: translateY(-2px);
+    }
+
+    .letter-pill-btn.active {
+      background: var(--teal-primary);
+      border-color: var(--teal-primary);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25);
+    }
+
+    .pill-char {
+      font-family: var(--font-arabic);
+      font-size: 1.8rem;
+      line-height: 1.1;
+    }
+
+    .pill-name {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--ink-muted);
+      direction: ltr;
+    }
+
+    .letter-pill-btn.active .pill-name {
+      color: #ccfbf1;
+    }
+
+    /* Sound Preview Box */
+    .preview-box {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 14px;
+      background: var(--teal-light);
+      border: 1.5px solid var(--teal-border);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .preview-details {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .preview-char-big {
+      font-family: var(--font-arabic);
+      font-size: 3.2rem;
+      line-height: 1;
+      color: var(--teal-primary);
+    }
+
+    .preview-meta h4 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .preview-meta p {
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+    }
+
+    .audio-btn {
+      background: var(--teal-primary);
+      color: #ffffff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 9999px;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(15, 118, 110, 0.2);
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .audio-btn:hover {
+      background: var(--teal-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Footer */
+    footer.site-footer {
+      text-align: center;
+      color: var(--ink-muted);
+      font-size: 0.9rem;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+
+    footer.site-footer a {
+      color: var(--teal-primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Top Bar -->
+    <nav class="top-bar" aria-label="Main navigation">
+      <a href="../" class="school-tag">
+        <span>🏫</span> Europaschule Kairo
+      </a>
+      <span class="meta-badge">Arabic as a Foreign Language (AFL) • English-Speaker Friendly</span>
+    </nav>
+
+    <!-- Hero Header -->
+    <header class="hero">
+      <div class="hero-badge-row">
+        <span class="pill-highlight">✨ New Section</span>
+        <span class="meta-badge">Modern Standard Arabic</span>
+      </div>
+      <h1 class="hero-title">
+        Arabic Learning Hub <span class="arabic-title-span" lang="ar">العربية</span>
+      </h1>
+      <p class="hero-subtitle">
+        Interactive digital activities, audio-supported exercises, and systematic step-by-step guidance tailored for English-speaking language learners.
+      </p>
+    </header>
+
+    <!-- Key Principles -->
+    <section class="principles-banner" aria-label="Pedagogical focus">
+      <div class="principle-item">
+        <div class="principle-icon">🔤</div>
+        <div>
+          <div class="principle-title">Position-Aware Letters</div>
+          <div class="principle-desc">Clear isolation of initial, medial, final, and isolated forms.</div>
+        </div>
+      </div>
+      <div class="principle-item">
+        <div class="principle-icon">🔊</div>
+        <div>
+          <div class="principle-title">Audio &amp; Phonics First</div>
+          <div class="principle-desc">Native audio synthesis &amp; intuitive phonetic hints for throat sounds.</div>
+        </div>
+      </div>
+      <div class="principle-item">
+        <div class="principle-icon">💡</div>
+        <div>
+          <div class="principle-title">English Explanations</div>
+          <div class="principle-desc">Zero ambiguity: full transliteration and grammar analogies.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Sound & Letter Explorer Widget -->
+    <section class="quick-explorer" aria-label="Letter Explorer Preview">
+      <div class="explorer-header">
+        <h2 class="explorer-title">🎧 Quick Sound &amp; Script Explorer</h2>
+        <span class="explorer-tip">Click any letter to preview its sound and English phonetic guide</span>
+      </div>
+
+      <div class="letter-pill-grid" id="letterPillGrid" role="group" aria-label="Letter sample buttons">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="preview-box" id="previewBox" aria-live="polite">
+        <div class="preview-details">
+          <div class="preview-char-big" id="prevChar" lang="ar">ب</div>
+          <div class="preview-meta">
+            <h4 id="prevName">Bāʾ (Baa) • ب</h4>
+            <p id="prevDesc">Clean 'b' sound like in English "book". Full connector from both sides.</p>
+          </div>
+        </div>
+        <button class="audio-btn" id="playAudioBtn" type="button" aria-label="Play letter sound">
+          <span>🔊</span> Listen Sound
+        </button>
+      </div>
+    </section>
+
+    <!-- Activity Modules Grid -->
+    <h2 class="section-heading">📚 Digital Learning Activities</h2>
+    <div class="grid">
+      <!-- Card 1: Arabic Alphabet & Connecting Forms -->
+      <article class="card card-featured">
+        <header>
+          <span class="card-badge badge-active">🌟 Interactive App Ready</span>
+          <h3 class="card-title">
+            <a href="Alphabet/index.html" class="card-link">The Arabic Alphabet</a>
+            <span class="arabic-label" lang="ar">الحروف الهجائية</span>
+          </h3>
+        </header>
+        <p class="card-desc">
+          Master the complete 28-letter alphabet from Alif to Yāʾ. Explore the 4 connecting shapes (isolated, initial, medial, final), identify non-connectors, and practice with instant audio and self-quizzing.
+        </p>
+        <ul class="features-list">
+          <li>Complete 28 letters with English transliterations</li>
+          <li>4 positional shapes table for every single letter</li>
+          <li>Emphatic &amp; throat sound guides for English speakers</li>
+          <li>Self-check Quiz Mode with score counter &amp; audio</li>
+        </ul>
+        <footer class="card-footer">
+          <span class="action-text">Launch Alphabet Trainer ➔</span>
+        </footer>
+      </article>
+
+      <!-- Card 2: Short Vowels & Harakat -->
+      <article class="card">
+        <header>
+          <span class="card-badge badge-upcoming">Module 2 • In Development</span>
+          <h3 class="card-title">
+            <span>Short Vowels &amp; Harakat</span>
+            <span class="arabic-label" lang="ar">الحركات والأصوات</span>
+          </h3>
+        </header>
+        <p class="card-desc">
+          Decode the vital vowel markers that give Arabic words life: Fatḥah (ـَ a), Ḍammah (ـُ u), Kasrah (ـِ i), Sukūn (ـْ silence), and Shaddah (ـّ double consonant).
+        </p>
+        <ul class="features-list">
+          <li>Long vowels vs. short vowels comparison</li>
+          <li>Visual markers &amp; audio sound pairs</li>
+          <li>Interactive syllable blending tool</li>
+        </ul>
+        <footer class="card-footer">
+          <span class="action-text-muted">Coming Soon</span>
+        </footer>
+      </article>
+
+      <!-- Card 3: Everyday Vocabulary & Greetings -->
+      <article class="card card-featured">
+        <header>
+          <span class="card-badge badge-active">🌟 Interactive App Ready</span>
+          <h3 class="card-title">
+            <a href="Greetings/index.html" class="card-link">Egyptian Greetings</a>
+            <span class="arabic-label" lang="ar">التَحيَات</span>
+          </h3>
+        </header>
+        <p class="card-desc">
+          Practice authentic Egyptian Arabic greetings (morning, evening, names, welcome, and goodbyes). Switch between Arabic script and Franco, with three interactive activities based on the Amira textbook.
+        </p>
+        <ul class="features-list">
+          <li>Daytime &amp; Evening dialogues from Amira Book (p. 14)</li>
+          <li>Dual Mode: Arabic Script ⇄ Franco-Arabic (Arabizi)</li>
+          <li>Activity 1: Sort shuffled conversations into correct order</li>
+          <li>Activity 2: Drag &amp; drop word chips into conversation gaps</li>
+          <li>Activity 3: Active recall typing challenge with audio</li>
+        </ul>
+        <footer class="card-footer">
+          <span class="action-text">Launch Greetings Trainer ➔</span>
+        </footer>
+      </article>
+
+      <!-- Card 4: Basic Sentence Structure -->
+      <article class="card">
+        <header>
+          <span class="card-badge badge-upcoming">Module 4 • In Development</span>
+          <h3 class="card-title">
+            <span>Sentence Builder</span>
+            <span class="arabic-label" lang="ar">الجملة المفيدة</span>
+          </h3>
+        </header>
+        <p class="card-desc">
+          Understand how Arabic sentences work without the verb "to be" in present tense. Learn nominal sentences (Al-Jumla Al-Ismiyya), gender (mudhakkar &amp; mu'annath), and demonstrative pronouns (hādha / hādhihi).
+        </p>
+        <ul class="features-list">
+          <li>Drag-and-drop word order puzzles</li>
+          <li>Masculine vs. Feminine markers (Tāʾ marbūṭah)</li>
+          <li>Instant grammar feedback and tips</li>
+        </ul>
+        <footer class="card-footer">
+          <span class="action-text-muted">Coming Soon</span>
+        </footer>
+      </article>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p>Europaschule Kairo • Digital Learning Resources</p>
+      <p style="margin-top: 6px;">
+        <a href="../Deutsch/index.html">Deutsch</a> • 
+        <a href="../Mathe/index.html">Mathematik</a> • 
+        <a href="../Franzoesisch/index.html">Français</a> • 
+        <a href="../English/Globalization/index.html">English</a>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    // Quick preview letters dataset
+    const sampleLetters = [
+      { char: "أ", name: "Alif (أ)", trans: "ʾ / ā", desc: "Open glottal sound or long vowel 'aa'. Non-connector (joins only from the right).", audioWord: "أَلِف" },
+      { char: "ب", name: "Bāʾ (ب)", trans: "b", desc: "Standard 'b' sound as in English 'book'. Connects from both sides.", audioWord: "بَاء" },
+      { char: "ت", name: "Tāʾ (ت)", trans: "t", desc: "Crisp 't' sound with tongue tip on front teeth, like 'tea'.", audioWord: "تَاء" },
+      { char: "ث", name: "Thāʾ (ث)", trans: "th", desc: "Soft 'th' sound as in English 'think' or 'three'.", audioWord: "ثَاء" },
+      { char: "ج", name: "Jīm (ج)", trans: "j / g", desc: "Like 'j' in 'jump' (Standard Arabic) or 'g' in 'game' (Egyptian Arabic).", audioWord: "جِيم" },
+      { char: "ح", name: "Ḥāʾ (ح)", trans: "ḥ", desc: "Throat-whisper sound: exhale warm breath from deep middle pharynx.", audioWord: "حَاء" },
+      { char: "خ", name: "Khāʾ (خ)", trans: "kh", desc: "Raspy throat sound like Scottish 'loch' or German 'Bach'.", audioWord: "خَاء" },
+      { char: "د", name: "Dāl (د)", trans: "d", desc: "Plain 'd' sound as in 'door'. Non-connector letter.", audioWord: "دَال" },
+      { char: "ر", name: "Rāʾ (ر)", trans: "r", desc: "Lightly rolled 'r' sound with tongue tip tap. Non-connector.", audioWord: "رَاء" },
+      { char: "س", name: "Sīn (س)", trans: "s", desc: "Clear whistling 's' sound as in 'sun' and 'summer'.", audioWord: "سِين" },
+      { char: "ع", name: "ʿAyn (ع)", trans: "ʿ", desc: "Signature deep pharyngeal sound produced by tightening the deep throat muscles.", audioWord: "عَيْن" },
+      { char: "م", name: "Mīm (م)", trans: "m", desc: "Gentle 'm' sound as in 'moon'. Connects easily from both sides.", audioWord: "مِيم" }
+    ];
+
+    let currentLetter = sampleLetters[1]; // default Bāʾ
+
+    const gridEl = document.getElementById("letterPillGrid");
+    const prevChar = document.getElementById("prevChar");
+    const prevName = document.getElementById("prevName");
+    const prevDesc = document.getElementById("prevDesc");
+    const playBtn = document.getElementById("playAudioBtn");
+
+    function renderQuickPills() {
+      gridEl.innerHTML = "";
+      sampleLetters.forEach((item, index) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "letter-pill-btn" + (item.char === currentLetter.char ? " active" : "");
+        btn.innerHTML = `
+          <span class="pill-char" lang="ar">${item.char}</span>
+          <span class="pill-name">${item.trans}</span>
+        `;
+        btn.addEventListener("click", () => {
+          currentLetter = item;
+          updatePreview();
+          renderQuickPills();
+          speakArabic(item.audioWord);
+        });
+        gridEl.appendChild(btn);
+      });
+    }
+
+    function updatePreview() {
+      prevChar.textContent = currentLetter.char;
+      prevName.textContent = `${currentLetter.name} [${currentLetter.trans}]`;
+      prevDesc.textContent = currentLetter.desc;
+    }
+
+    function speakArabic(text) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = "ar-SA";
+      utter.rate = 0.85;
+
+      // Try finding Arabic voice
+      const voices = window.speechSynthesis.getVoices();
+      const arVoice = voices.find(v => v.lang.startsWith("ar"));
+      if (arVoice) {
+        utter.voice = arVoice;
+      }
+      window.speechSynthesis.speak(utter);
+    }
+
+    playBtn.addEventListener("click", () => {
+      speakArabic(currentLetter.audioWord);
+    });
+
+    // Populate voices when loaded
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = () => {};
+    }
+
+    renderQuickPills();
+    updatePreview();
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Arabic Alphabet &amp; Letter Connector • Interactive Trainer</title>
+  <meta name="description" content="Interactive Arabic alphabet trainer for English speakers. Master isolated, initial, medial, and final letter shapes, pronunciation, and quiz yourself.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f8fafc;
+      --paper: #ffffff;
+      --paper-subtle: #f1f5f9;
+      --ink: #0f172a;
+      --ink-soft: #475569;
+      --ink-muted: #64748b;
+      --border: #e2e8f0;
+      --border-strong: #cbd5e1;
+
+      /* Arabic Hub Theme Palette */
+      --teal: #0f766e;
+      --teal-hover: #115e59;
+      --teal-light: #f0fdfa;
+      --teal-border: #99f6e4;
+
+      --amber: #d97706;
+      --amber-light: #fffbeb;
+      --amber-border: #fde68a;
+
+      --emerald: #059669;
+      --emerald-light: #ecfdf5;
+      --emerald-border: #a7f3d0;
+
+      --rose: #e11d48;
+      --rose-light: #fff1f2;
+      --rose-border: #fecdd3;
+
+      --indigo: #4f46e5;
+      --indigo-light: #eef2ff;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 6px 18px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 16px 32px rgba(15, 118, 110, 0.12);
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+
+      --font-display: 'Outfit', system-ui, sans-serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-arabic: 'Arial', 'Segoe UI', 'Tahoma', 'Noto Naskh Arabic', sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(#cbd5e1 1.2px, transparent 1.2px),
+        linear-gradient(180deg, #f0fdfa 0%, #f8fafc 300px);
+      background-size: 24px 24px, 100% 300px;
+      background-repeat: repeat, no-repeat;
+      color: var(--ink);
+      line-height: 1.5;
+      padding: 24px 16px 80px;
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Navigation header */
+    .nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--teal);
+      text-decoration: none;
+      background: #ffffff;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      border: 1.5px solid var(--teal-border);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+
+    .back-btn:hover {
+      background: var(--teal-light);
+      transform: translateX(-2px);
+    }
+
+    .meta-tag {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--ink-muted);
+      background: #ffffff;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+    }
+
+    /* Page Header */
+    .app-head {
+      margin-bottom: 28px;
+    }
+
+    .badge-pill {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: var(--teal-light);
+      color: var(--teal);
+      border: 1px solid var(--teal-border);
+      margin-bottom: 10px;
+    }
+
+    h1.app-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .app-title span.arabic {
+      font-family: var(--font-arabic);
+      color: var(--teal);
+      margin-left: 8px;
+      direction: rtl;
+    }
+
+    p.app-lead {
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      color: var(--ink-soft);
+      max-width: 820px;
+    }
+
+    /* View Mode Tabs */
+    .mode-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: #ffffff;
+      padding: 12px 18px;
+      border-radius: 16px;
+      border: 1.5px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 24px;
+    }
+
+    .tabs-group {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+    }
+
+    .mode-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      border: 1.5px solid transparent;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink-soft);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .mode-tab:hover {
+      background: var(--paper-subtle);
+      color: var(--ink);
+    }
+
+    .mode-tab.active {
+      background: var(--teal-primary, #0f766e);
+      color: #ffffff;
+      border-color: var(--teal-primary, #0f766e);
+      box-shadow: 0 2px 8px rgba(15, 118, 110, 0.25);
+    }
+
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .filter-chip {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: 6px 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .filter-chip:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+
+    .filter-chip.active {
+      background: var(--teal-light);
+      border-color: var(--teal);
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    /* Non-connector notice banner */
+    .rule-callout {
+      background: var(--amber-light);
+      border: 1.5px solid var(--amber-border);
+      border-radius: 14px;
+      padding: 14px 18px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.92rem;
+      color: #78350f;
+    }
+
+    .rule-callout-icon {
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+
+    .rule-callout strong {
+      color: #92400e;
+    }
+
+    /* GRID VIEW */
+    .letters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 20px;
+    }
+
+    .letter-card {
+      background: var(--paper);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      position: relative;
+    }
+
+    .letter-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--teal);
+    }
+
+    .letter-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .letter-order-badge {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--ink-muted);
+      background: var(--paper-subtle);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    .letter-type-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 9999px;
+    }
+
+    .type-nonconnect {
+      background: var(--amber-light);
+      color: #b45309;
+      border: 1px solid var(--amber-border);
+    }
+
+    .type-emphatic {
+      background: var(--rose-light);
+      color: var(--rose);
+      border: 1px solid var(--rose-border);
+    }
+
+    .type-standard {
+      background: var(--teal-light);
+      color: var(--teal);
+      border: 1px solid var(--teal-border);
+    }
+
+    .letter-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 6px 0;
+    }
+
+    .letter-glyph-large {
+      font-family: var(--font-arabic);
+      font-size: 3.6rem;
+      line-height: 1;
+      color: var(--teal);
+      direction: rtl;
+    }
+
+    .letter-id-block {
+      text-align: right;
+    }
+
+    .letter-name-en {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .letter-translit {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--teal);
+    }
+
+    /* 4-Shapes Table inside card */
+    .shapes-matrix {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      text-align: center;
+      direction: rtl;
+    }
+
+    .shape-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .shape-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      direction: ltr;
+    }
+
+    .shape-glyph {
+      font-family: var(--font-arabic);
+      font-size: 1.6rem;
+      line-height: 1.1;
+      color: var(--ink);
+      background: #ffffff;
+      width: 100%;
+      padding: 4px 0;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .letter-phonetics {
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+      line-height: 1.4;
+      background: var(--paper-subtle);
+      padding: 8px 12px;
+      border-radius: 10px;
+    }
+
+    .letter-phonetics strong {
+      color: var(--ink);
+    }
+
+    .letter-footer-btns {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding-top: 8px;
+    }
+
+    .listen-btn {
+      background: var(--teal-light);
+      border: 1px solid var(--teal-border);
+      color: var(--teal);
+      padding: 7px 14px;
+      border-radius: 9999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .listen-btn:hover {
+      background: var(--teal);
+      color: #ffffff;
+    }
+
+    .sun-moon-indicator {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--ink-muted);
+    }
+
+    /* TABLE VIEW */
+    .table-container {
+      background: #ffffff;
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      overflow-x: auto;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .shapes-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .shapes-table th,
+    .shapes-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .shapes-table th {
+      background: var(--paper-subtle);
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .shapes-table td.arabic-cell {
+      font-family: var(--font-arabic);
+      font-size: 1.7rem;
+      direction: rtl;
+      color: var(--teal);
+    }
+
+    /* QUIZ VIEW */
+    .quiz-container {
+      background: #ffffff;
+      border: 2px solid var(--teal-border);
+      border-radius: 24px;
+      padding: 32px 24px;
+      max-width: 680px;
+      margin: 0 auto;
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+    }
+
+    .quiz-score-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1.5px solid var(--border);
+    }
+
+    .score-item {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink-soft);
+    }
+
+    .score-value {
+      color: var(--teal);
+      font-size: 1.25rem;
+      font-family: var(--font-display);
+    }
+
+    .quiz-card {
+      padding: 24px 0;
+    }
+
+    .quiz-prompt {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--ink-soft);
+      margin-bottom: 14px;
+    }
+
+    .quiz-letter-display {
+      font-family: var(--font-arabic);
+      font-size: 6rem;
+      line-height: 1.1;
+      color: var(--teal);
+      margin-bottom: 20px;
+    }
+
+    .quiz-options-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .quiz-opt-btn {
+      background: #f8fafc;
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 12px;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .quiz-opt-btn:hover:not(:disabled) {
+      border-color: var(--teal);
+      background: var(--teal-light);
+      transform: translateY(-2px);
+    }
+
+    .quiz-opt-btn.correct {
+      background: var(--emerald-light) !important;
+      border-color: var(--emerald) !important;
+      color: #065f46 !important;
+    }
+
+    .quiz-opt-btn.wrong {
+      background: var(--rose-light) !important;
+      border-color: var(--rose) !important;
+      color: #9f1239 !important;
+    }
+
+    .quiz-feedback {
+      min-height: 48px;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .quiz-next-btn {
+      background: var(--teal);
+      color: #ffffff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 9999px;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25);
+    }
+
+    .quiz-next-btn:hover {
+      background: var(--teal-hover);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* Footer */
+    footer.app-footer {
+      text-align: center;
+      color: var(--ink-muted);
+      font-size: 0.9rem;
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Nav bar -->
+    <nav class="nav-bar">
+      <a href="../index.html" class="back-btn">
+        <span>←</span> Back to Arabic Hub
+      </a>
+      <span class="meta-tag">Section: Arabic for English Speakers • Module 1</span>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="app-head">
+      <span class="badge-pill">🔤 Foundational Activity</span>
+      <h1 class="app-title">The Arabic Alphabet <span class="arabic" lang="ar">الحروف الهجائية</span></h1>
+      <p class="app-lead">
+        Arabic is written from right to left in a cursive script. Almost every letter connects to its neighbors, changing its shape based on whether it appears in isolation, at the beginning, middle, or end of a word.
+      </p>
+    </header>
+
+    <!-- Mode & Filter Bar -->
+    <div class="mode-bar">
+      <div class="tabs-group" role="tablist" aria-label="View Modes">
+        <button class="mode-tab active" id="tabGrid" type="button" role="tab" aria-selected="true">
+          <span>🗂️</span> Cards Explorer
+        </button>
+        <button class="mode-tab" id="tabTable" type="button" role="tab" aria-selected="false">
+          <span>📊</span> Connecting Matrix
+        </button>
+        <button class="mode-tab" id="tabQuiz" type="button" role="tab" aria-selected="false">
+          <span>🎯</span> Practice Quiz
+        </button>
+      </div>
+
+      <div class="filter-group" id="filterControls">
+        <button class="filter-chip active" data-filter="all" type="button">All 28 Letters</button>
+        <button class="filter-chip" data-filter="nonconnect" type="button">Non-Connectors (6)</button>
+        <button class="filter-chip" data-filter="throat" type="button">Throat &amp; Emphatic (9)</button>
+        <button class="filter-chip" data-filter="sun" type="button">☀️ Sun</button>
+        <button class="filter-chip" data-filter="moon" type="button">🌙 Moon</button>
+      </div>
+    </div>
+
+    <!-- Rule Callout -->
+    <aside class="rule-callout" id="ruleCallout">
+      <div class="rule-callout-icon">💡</div>
+      <div>
+        <strong>Key Rule for English Speakers:</strong> Arabic letters have up to 4 shapes (Isolated, Initial, Medial, Final). Six special letters (<strong>أ, د, ذ, ر, ز, و</strong>) are <em>non-connectors</em>: they never connect to the letter after them, leaving a tiny visual gap.
+      </div>
+    </aside>
+
+    <!-- MAIN VIEW 1: Cards Explorer -->
+    <section id="viewGrid" class="letters-grid" aria-label="Arabic letters grid">
+      <!-- Generated dynamically by JS -->
+    </section>
+
+    <!-- MAIN VIEW 2: Connecting Shapes Table -->
+    <section id="viewTable" class="table-container hidden" aria-label="Arabic connecting shapes table">
+      <table class="shapes-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name (Translit)</th>
+            <th>Isolated (منفصل)</th>
+            <th>Initial (أول)</th>
+            <th>Medial (وسط)</th>
+            <th>Final (آخر)</th>
+            <th>Connector Rule</th>
+            <th>Sound Tip</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <!-- Filled by JS -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- MAIN VIEW 3: Interactive Practice Quiz -->
+    <section id="viewQuiz" class="quiz-container hidden" aria-label="Arabic alphabet practice quiz">
+      <div class="quiz-score-bar">
+        <div class="score-item">
+          Streak: <span class="score-value" id="quizStreak">0</span> 🔥
+        </div>
+        <div class="score-item">
+          Score: <span class="score-value" id="quizScore">0</span> / <span id="quizTotal">0</span>
+        </div>
+      </div>
+
+      <div class="quiz-card">
+        <div class="quiz-prompt" id="quizPrompt">Identify the letter name:</div>
+        <div class="quiz-letter-display" id="quizChar" lang="ar">ب</div>
+        <button class="listen-btn" id="quizAudioBtn" type="button" style="margin-bottom: 20px;">
+          <span>🔊</span> Play Sound
+        </button>
+
+        <div class="quiz-options-grid" id="quizOptions">
+          <!-- Populated by JS -->
+        </div>
+
+        <div class="quiz-feedback" id="quizFeedback"></div>
+        <button class="quiz-next-btn hidden" id="quizNextBtn" type="button">
+          Next Letter ➔
+        </button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>Europaschule Kairo • Arabic Department &amp; Digital Activities</p>
+      <p style="margin-top: 6px;"><a href="../index.html" style="color: var(--teal); font-weight: 700;">Arabic Learning Hub Overview</a></p>
+    </footer>
+  </div>
+
+  <script>
+    // Complete 28 Arabic letters dataset with transliteration, forms, and English phonetic analogies
+    const alphabetData = [
+      {
+        order: 1, char: "أ", name: "Alif", arabicName: "أَلِف", translit: "ʾ / ā",
+        forms: { iso: "ا", init: "ا", med: "ـا", fin: "ـا" },
+        connector: false, sun: false, throat: false,
+        soundTip: "Glottal stop like the catch in 'uh-oh', or long vowel 'aa' as in 'father'."
+      },
+      {
+        order: 2, char: "ب", name: "Bāʾ", arabicName: "بَاء", translit: "b",
+        forms: { iso: "ب", init: "بـ", med: "ـبـ", fin: "ـب" },
+        connector: true, sun: false, throat: false,
+        soundTip: "Regular 'b' sound like in English 'book'. Full dual connector."
+      },
+      {
+        order: 3, char: "ت", name: "Tāʾ", arabicName: "تَاء", translit: "t",
+        forms: { iso: "ت", init: "تـ", med: "ـتـ", fin: "ـت" },
+        connector: true, sun: true, throat: false,
+        soundTip: "Clear, crisp 't' sound with tongue touching upper teeth, like 'tea'."
+      },
+      {
+        order: 4, char: "ث", name: "Thāʾ", arabicName: "ثَاء", translit: "th",
+        forms: { iso: "ث", init: "ثـ", med: "ـثـ", fin: "ـث" },
+        connector: true, sun: true, throat: false,
+        soundTip: "Soft voiceless 'th' sound as in English 'think' or 'three'."
+      },
+      {
+        order: 5, char: "ج", name: "Jīm", arabicName: "جِيم", translit: "j / ǧ",
+        forms: { iso: "ج", init: "جـ", med: "ـجـ", fin: "ـج" },
+        connector: true, sun: false, throat: false,
+        soundTip: "Like 'j' in 'jump' in Standard Arabic, or 'g' in 'gift' in Egyptian."
+      },
+      {
+        order: 6, char: "ح", name: "Ḥāʾ", arabicName: "حَاء", translit: "ḥ",
+        forms: { iso: "ح", init: "حـ", med: "ـحـ", fin: "ـح" },
+        connector: true, sun: false, throat: true,
+        soundTip: "Deep voiceless pharyngeal 'h'. Like exhaling warm breath on cold glass."
+      },
+      {
+        order: 7, char: "خ", name: "Khāʾ", arabicName: "خَاء", translit: "kh",
+        forms: { iso: "خ", init: "خـ", med: "ـخـ", fin: "ـخ" },
+        connector: true, sun: false, throat: true,
+        soundTip: "Raspy throat sound like Scottish 'loch' or German 'Bach'."
+      },
+      {
+        order: 8, char: "د", name: "Dāl", arabicName: "دَال", translit: "d",
+        forms: { iso: "د", init: "د", med: "ـد", fin: "ـد" },
+        connector: false, sun: true, throat: false,
+        soundTip: "Standard 'd' sound as in 'door'. Non-connector letter."
+      },
+      {
+        order: 9, char: "ذ", name: "Dhāl", arabicName: "ذَال", translit: "dh",
+        forms: { iso: "ذ", init: "ذ", med: "ـذ", fin: "ـذ" },
+        connector: false, sun: true, throat: false,
+        soundTip: "Voiced 'th' sound as in English 'this', 'that', or 'the'. Non-connector."
+      },
+      {
+        order: 10, char: "ر", name: "Rāʾ", arabicName: "رَاء", translit: "r",
+        forms: { iso: "ر", init: "ر", med: "ـر", fin: "ـر" },
+        connector: false, sun: true, throat: false,
+        soundTip: "Lightly rolled or tapped 'r' sound with tongue tip. Non-connector."
+      },
+      {
+        order: 11, char: "ز", name: "Zāy", arabicName: "زَاي", translit: "z",
+        forms: { iso: "ز", init: "ز", med: "ـز", fin: "ـز" },
+        connector: false, sun: true, throat: false,
+        soundTip: "Buzzing 'z' sound as in 'zebra' or 'zone'. Non-connector."
+      },
+      {
+        order: 12, char: "س", name: "Sīn", arabicName: "سِين", translit: "s",
+        forms: { iso: "س", init: "سـ", med: "ـسـ", fin: "ـس" },
+        connector: true, sun: true, throat: false,
+        soundTip: "Light, whistling 's' sound as in 'sun' or 'smile'."
+      },
+      {
+        order: 13, char: "ش", name: "Shīn", arabicName: "شِين", translit: "sh",
+        forms: { iso: "ش", init: "شـ", med: "ـشـ", fin: "ـش" },
+        connector: true, sun: true, throat: false,
+        soundTip: "Soft 'sh' sound as in 'shine', 'shoe', or 'shadow'."
+      },
+      {
+        order: 14, char: "ص", name: "Ṣād", arabicName: "صَاد", translit: "ṣ",
+        forms: { iso: "ص", init: "صـ", med: "ـصـ", fin: "ـص" },
+        connector: true, sun: true, throat: true,
+        soundTip: "Heavy emphatic 'S'. Produced with throat hollowed and tongue lowered in back."
+      },
+      {
+        order: 15, char: "ض", name: "Ḍād", arabicName: "ضَاد", translit: "ḍ",
+        forms: { iso: "ض", init: "ضـ", med: "ـضـ", fin: "ـض" },
+        connector: true, sun: true, throat: true,
+        soundTip: "Heavy emphatic 'D'. Sides of tongue press firmly against upper molars."
+      },
+      {
+        order: 16, char: "ط", name: "Ṭāʾ", arabicName: "طَاء", translit: "ṭ",
+        forms: { iso: "ط", init: "طـ", med: "ـطـ", fin: "ـط" },
+        connector: true, sun: true, throat: true,
+        soundTip: "Heavy emphatic 'T'. Deep resonant tap, distinctly deeper than plain ت."
+      },
+      {
+        order: 17, char: "ظ", name: "Ẓāʾ", arabicName: "ظَاء", translit: "ẓ",
+        forms: { iso: "ظ", init: "ظـ", med: "ـظـ", fin: "ـظ" },
+        connector: true, sun: true, throat: true,
+        soundTip: "Heavy emphatic voiced 'th' (like 'this' made with hollowed throat)."
+      },
+      {
+        order: 18, char: "ع", name: "ʿAyn", arabicName: "عَيْن", translit: "ʿ",
+        forms: { iso: "ع", init: "عـ", med: "ـعـ", fin: "ـع" },
+        connector: true, sun: false, throat: true,
+        soundTip: "Signature Arabic voiced pharyngeal sound: constrict deep throat muscles."
+      },
+      {
+        order: 19, char: "غ", name: "Ghayn", arabicName: "غَيْن", translit: "gh",
+        forms: { iso: "غ", init: "غـ", med: "ـغـ", fin: "ـغ" },
+        connector: true, sun: false, throat: true,
+        soundTip: "Gargling velar sound like French 'r' in Paris or gentle gargling water."
+      },
+      {
+        order: 20, char: "ف", name: "Fāʾ", arabicName: "فَاء", translit: "f",
+        forms: { iso: "ف", init: "فـ", med: "ـفـ", fin: "ـف" },
+        connector: true, sun: false, throat: false,
+        soundTip: "Regular 'f' sound as in 'fast' and 'friend'."
+      },
+      {
+        order: 21, char: "ق", name: "Qāf", arabicName: "قَاف", translit: "q",
+        forms: { iso: "ق", init: "قـ", med: "ـقـ", fin: "ـق" },
+        connector: true, sun: false, throat: true,
+        soundTip: "Deep guttural 'k' made far back at the uvula, like clicking back of throat."
+      },
+      {
+        order: 22, char: "ك", name: "Kāf", arabicName: "كَاف", translit: "k",
+        forms: { iso: "ك", init: "كـ", med: "ـكـ", fin: "ـك" },
+        connector: true, sun: false, throat: false,
+        soundTip: "Regular English 'k' sound as in 'kite' or 'keep'."
+      },
+      {
+        order: 23, char: "ل", name: "Lām", arabicName: "لاَم", translit: "l",
+        forms: { iso: "ل", init: "لـ", med: "ـلـ", fin: "ـل" },
+        connector: true, sun: true, throat: false,
+        soundTip: "Bright, clear 'l' sound like 'light' or 'lemon'."
+      },
+      {
+        order: 24, char: "م", name: "Mīm", arabicName: "مِيم", translit: "m",
+        forms: { iso: "م", init: "مـ", med: "ـمـ", fin: "ـم" },
+        connector: true, sun: false, throat: false,
+        soundTip: "Gentle 'm' sound as in 'moon' or 'mother'."
+      },
+      {
+        order: 25, char: "ن", name: "Nūn", arabicName: "نُون", translit: "n",
+        forms: { iso: "ن", init: "نـ", med: "ـنـ", fin: "ـن" },
+        connector: true, sun: true, throat: false,
+        soundTip: "Standard 'n' sound as in 'net' or 'name'."
+      },
+      {
+        order: 26, char: "هـ", name: "Hāʾ", arabicName: "هَاء", translit: "h",
+        forms: { iso: "ه", init: "هـ", med: "ـهـ", fin: "ـه" },
+        connector: true, sun: false, throat: false,
+        soundTip: "Soft, gentle English 'h' sound as in 'heart' or 'hello'."
+      },
+      {
+        order: 27, char: "و", name: "Wāw", arabicName: "وَاو", translit: "w / ū",
+        forms: { iso: "و", init: "و", med: "ـو", fin: "ـو" },
+        connector: false, sun: false, throat: false,
+        soundTip: "Consonant 'w' as in 'water', or long vowel 'oo' like 'food'. Non-connector."
+      },
+      {
+        order: 28, char: "ي", name: "Yāʾ", arabicName: "يَاء", translit: "y / ī",
+        forms: { iso: "ي", init: "يـ", med: "ـيـ", fin: "ـي" },
+        connector: true, sun: false, throat: false,
+        soundTip: "Consonant 'y' as in 'yes', or long vowel 'ee' like 'feel'."
+      }
+    ];
+
+    let currentFilter = "all";
+    const viewGrid = document.getElementById("viewGrid");
+    const viewTable = document.getElementById("viewTable");
+    const viewQuiz = document.getElementById("viewQuiz");
+    const tableBody = document.getElementById("tableBody");
+
+    // Audio Speech Synthesis
+    function speakLetter(arabicText) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(arabicText);
+      utter.lang = "ar-SA";
+      utter.rate = 0.8;
+      const voices = window.speechSynthesis.getVoices();
+      const arVoice = voices.find(v => v.lang.startsWith("ar"));
+      if (arVoice) utter.voice = arVoice;
+      window.speechSynthesis.speak(utter);
+    }
+
+    // Filter helper
+    function getFilteredList() {
+      if (currentFilter === "all") return alphabetData;
+      if (currentFilter === "nonconnect") return alphabetData.filter(d => !d.connector);
+      if (currentFilter === "throat") return alphabetData.filter(d => d.throat);
+      if (currentFilter === "sun") return alphabetData.filter(d => d.sun);
+      if (currentFilter === "moon") return alphabetData.filter(d => !d.sun);
+      return alphabetData;
+    }
+
+    // Render Grid View
+    function renderCards() {
+      viewGrid.innerHTML = "";
+      const list = getFilteredList();
+
+      list.forEach(item => {
+        const card = document.createElement("article");
+        card.className = "letter-card";
+
+        let typeBadge = item.connector ? 
+          (item.throat ? '<span class="letter-type-tag type-emphatic">Throat / Emphatic</span>' : '<span class="letter-type-tag type-standard">Dual Connector</span>') :
+          '<span class="letter-type-tag type-nonconnect">Non-Connector ⚠️</span>';
+
+        card.innerHTML = `
+          <div class="letter-top-row">
+            <span class="letter-order-badge">#${item.order}</span>
+            ${typeBadge}
+          </div>
+
+          <div class="letter-main">
+            <div class="letter-glyph-large" lang="ar">${item.char}</div>
+            <div class="letter-id-block">
+              <div class="letter-name-en">${item.name}</div>
+              <div class="letter-translit">${item.translit}</div>
+            </div>
+          </div>
+
+          <div class="shapes-matrix" aria-label="Connecting shapes">
+            <div class="shape-col">
+              <span class="shape-label">Isolated</span>
+              <span class="shape-glyph" lang="ar">${item.forms.iso}</span>
+            </div>
+            <div class="shape-col">
+              <span class="shape-label">Initial</span>
+              <span class="shape-glyph" lang="ar">${item.forms.init}</span>
+            </div>
+            <div class="shape-col">
+              <span class="shape-label">Medial</span>
+              <span class="shape-glyph" lang="ar">${item.forms.med}</span>
+            </div>
+            <div class="shape-col">
+              <span class="shape-label">Final</span>
+              <span class="shape-glyph" lang="ar">${item.forms.fin}</span>
+            </div>
+          </div>
+
+          <div class="letter-phonetics">
+            <strong>Sound Tip:</strong> ${item.soundTip}
+          </div>
+
+          <div class="letter-footer-btns">
+            <button class="listen-btn" type="button" aria-label="Listen ${item.name}">
+              <span>🔊</span> Listen
+            </button>
+            <span class="sun-moon-indicator">${item.sun ? '☀️ Sun Letter' : '🌙 Moon Letter'}</span>
+          </div>
+        `;
+
+        const btn = card.querySelector(".listen-btn");
+        btn.addEventListener("click", () => speakLetter(item.arabicName));
+
+        viewGrid.appendChild(card);
+      });
+    }
+
+    // Render Table View
+    function renderTable() {
+      tableBody.innerHTML = "";
+      const list = getFilteredList();
+
+      list.forEach(item => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td><strong>${item.order}</strong></td>
+          <td><strong>${item.name}</strong> (${item.translit})</td>
+          <td class="arabic-cell">${item.forms.iso}</td>
+          <td class="arabic-cell">${item.forms.init}</td>
+          <td class="arabic-cell">${item.forms.med}</td>
+          <td class="arabic-cell">${item.forms.fin}</td>
+          <td>${item.connector ? 'Dual Connector' : '<span style="color:#b45309; font-weight:700;">Non-Connector</span>'}</td>
+          <td style="font-size: 0.85rem; text-align: left;">${item.soundTip}</td>
+        `;
+        tableBody.appendChild(tr);
+      });
+    }
+
+    // Tab Switching
+    const tabGrid = document.getElementById("tabGrid");
+    const tabTable = document.getElementById("tabTable");
+    const tabQuiz = document.getElementById("tabQuiz");
+    const filterControls = document.getElementById("filterControls");
+    const ruleCallout = document.getElementById("ruleCallout");
+
+    function switchMode(mode) {
+      [tabGrid, tabTable, tabQuiz].forEach(t => t.classList.remove("active"));
+      [viewGrid, viewTable, viewQuiz].forEach(v => v.classList.add("hidden"));
+
+      if (mode === "grid") {
+        tabGrid.classList.add("active");
+        viewGrid.classList.remove("hidden");
+        filterControls.classList.remove("hidden");
+        ruleCallout.classList.remove("hidden");
+        renderCards();
+      } else if (mode === "table") {
+        tabTable.classList.add("active");
+        viewTable.classList.remove("hidden");
+        filterControls.classList.remove("hidden");
+        ruleCallout.classList.remove("hidden");
+        renderTable();
+      } else if (mode === "quiz") {
+        tabQuiz.classList.add("active");
+        viewQuiz.classList.remove("hidden");
+        filterControls.classList.add("hidden");
+        ruleCallout.classList.add("hidden");
+        initQuiz();
+      }
+    }
+
+    tabGrid.addEventListener("click", () => switchMode("grid"));
+    tabTable.addEventListener("click", () => switchMode("table"));
+    tabQuiz.addEventListener("click", () => switchMode("quiz"));
+
+    // Filter chip clicks
+    document.querySelectorAll(".filter-chip").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        document.querySelectorAll(".filter-chip").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentFilter = btn.dataset.filter;
+        renderCards();
+        renderTable();
+      });
+    });
+
+    // QUIZ LOGIC
+    let quizQuestionCount = 0;
+    let quizCorrectCount = 0;
+    let quizStreakCount = 0;
+    let currentQuizItem = null;
+
+    const quizStreakEl = document.getElementById("quizStreak");
+    const quizScoreEl = document.getElementById("quizScore");
+    const quizTotalEl = document.getElementById("quizTotal");
+    const quizCharEl = document.getElementById("quizChar");
+    const quizOptionsEl = document.getElementById("quizOptions");
+    const quizFeedbackEl = document.getElementById("quizFeedback");
+    const quizNextBtn = document.getElementById("quizNextBtn");
+    const quizAudioBtn = document.getElementById("quizAudioBtn");
+
+    function initQuiz() {
+      quizQuestionCount = 0;
+      quizCorrectCount = 0;
+      quizStreakCount = 0;
+      quizScoreEl.textContent = "0";
+      quizTotalEl.textContent = "0";
+      quizStreakEl.textContent = "0";
+      loadNextQuestion();
+    }
+
+    function loadNextQuestion() {
+      quizFeedbackEl.textContent = "";
+      quizFeedbackEl.className = "quiz-feedback";
+      quizNextBtn.classList.add("hidden");
+
+      // Pick random letter
+      const randomIndex = Math.floor(Math.random() * alphabetData.length);
+      currentQuizItem = alphabetData[randomIndex];
+      quizCharEl.textContent = currentQuizItem.char;
+
+      // Prepare 4 options (1 correct, 3 distractors)
+      const distractors = alphabetData.filter(d => d.order !== currentQuizItem.order);
+      distractors.sort(() => Math.random() - 0.5);
+      const options = [currentQuizItem, distractors[0], distractors[1], distractors[2]];
+      options.sort(() => Math.random() - 0.5);
+
+      quizOptionsEl.innerHTML = "";
+      options.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "quiz-opt-btn";
+        btn.textContent = `${opt.name} (${opt.translit})`;
+        btn.addEventListener("click", () => handleQuizAnswer(opt, btn));
+        quizOptionsEl.appendChild(btn);
+      });
+
+      speakLetter(currentQuizItem.arabicName);
+    }
+
+    quizAudioBtn.addEventListener("click", () => {
+      if (currentQuizItem) speakLetter(currentQuizItem.arabicName);
+    });
+
+    function handleQuizAnswer(selected, chosenBtn) {
+      const allBtns = quizOptionsEl.querySelectorAll("button");
+      allBtns.forEach(b => b.disabled = true);
+
+      quizQuestionCount++;
+      quizTotalEl.textContent = quizQuestionCount;
+
+      if (selected.order === currentQuizItem.order) {
+        chosenBtn.classList.add("correct");
+        quizCorrectCount++;
+        quizStreakCount++;
+        quizFeedbackEl.innerHTML = `🎉 Correct! <strong>${currentQuizItem.name}</strong> (${currentQuizItem.translit})`;
+        quizFeedbackEl.style.color = "#059669";
+      } else {
+        chosenBtn.classList.add("wrong");
+        quizStreakCount = 0;
+        allBtns.forEach(b => {
+          if (b.textContent.startsWith(currentQuizItem.name)) {
+            b.classList.add("correct");
+          }
+        });
+        quizFeedbackEl.innerHTML = `❌ It was <strong>${currentQuizItem.name}</strong> (${currentQuizItem.translit}). Sound tip: ${currentQuizItem.soundTip}`;
+        quizFeedbackEl.style.color = "#e11d48";
+      }
+
+      quizScoreEl.textContent = quizCorrectCount;
+      quizStreakEl.textContent = quizStreakCount;
+      quizNextBtn.classList.remove("hidden");
+    }
+
+    quizNextBtn.addEventListener("click", loadNextQuestion);
+
+    // Initial load
+    renderCards();
+    renderTable();
+  </script>
+</body>
+</html>
+
