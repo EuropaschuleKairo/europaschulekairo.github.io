@@ -1,0 +1,2797 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Lese Haus • Buchstabe T t • Leseblatt 4</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #ffffff;
+      --ink: #1f2937;
+      --ink-muted: #596a82;
+      --border-pencil: #cbd5e1;
+      
+      --accent-tiger: #ea580c;
+      --accent-tiger-light: #ffedd5;
+      --accent-red: #e11d48;
+      --accent-blue: #2563eb;
+      --accent-yellow: #f59e0b;
+      --accent-green: #10b981;
+      --accent-purple: #8b5cf6;
+      
+      --syl-blue: #1d4ed8;
+      --syl-red: #dc2626;
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-pill: 999px;
+      
+      --font-body: "Atkinson Hyperlegible", "Andika", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-heading: "Atkinson Hyperlegible", "Andika", sans-serif;
+      --font-reading: "Atkinson Hyperlegible", "Andika", sans-serif;
+      --font-display: "Fredoka", "Atkinson Hyperlegible", sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #fffbf5;
+      background-image: 
+        radial-gradient(#fed7aa 1.2px, transparent 1.2px);
+      background-size: 24px 24px;
+      font-family: var(--font-body);
+      color: var(--ink);
+      font-size: 19px;
+      line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* Top Utility Bar */
+    .top-toolbar {
+      background: #ffffff;
+      border-bottom: 2px solid #fed7aa;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .toolbar-left, .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .toolbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--accent-tiger);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .tool-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: 2px solid #fed7aa;
+      background: #ffffff;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      touch-action: manipulation;
+    }
+
+    .tool-btn:hover {
+      background: #fff7ed;
+      border-color: #fb923c;
+      transform: translateY(-1px);
+    }
+
+    .tool-btn.active {
+      background: #ffedd5;
+      border-color: var(--accent-tiger);
+      color: var(--accent-tiger);
+    }
+
+    /* Main Container (App Viewport) */
+    .app-viewport {
+      max-width: 1080px;
+      margin: 24px auto 80px;
+      padding: 0 16px;
+    }
+
+    /* View Toggling with smooth fade-in */
+    .app-view {
+      display: none;
+      animation: viewPopIn 0.22s ease-out forwards;
+    }
+
+    .app-view.active-view {
+      display: block;
+    }
+
+    @keyframes viewPopIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.99);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* ==========================================================================
+       LANDING PAGE (HUB MIT 3 KACHELN)
+       ========================================================================== */
+    .hub-hero {
+      background: linear-gradient(135deg, #ffffff 0%, #fff7ed 100%);
+      border: 3px solid #fdba74;
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      margin-bottom: 28px;
+      box-shadow: 0 6px 20px rgba(234, 88, 12, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hub-hero-inner {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .hub-anlaut-avatar {
+      flex-shrink: 0;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: #ffedd5;
+      border: 3px solid #fb923c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 16px rgba(234, 88, 12, 0.15);
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .hub-anlaut-avatar:hover {
+      transform: scale(1.1) rotate(4deg);
+    }
+
+    .hub-anlaut-avatar img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+    }
+
+    .hub-hero-text {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .hub-badge-level {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fed7aa;
+      color: #9a3412;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 8px;
+    }
+
+    .hub-hero-title {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      color: #7c2d12;
+      margin: 0 0 6px 0;
+      line-height: 1.2;
+    }
+
+    .hub-hero-sub {
+      color: #475569;
+      font-size: 1.1rem;
+      margin: 0;
+      max-width: 650px;
+    }
+
+    /* Star Reward Banner in Hub */
+    .hub-star-banner {
+      background: linear-gradient(135deg, #fef9c3 0%, #fef08a 100%);
+      border: 3px solid #eab308;
+      border-radius: var(--radius-lg);
+      padding: 18px 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 24px rgba(234, 179, 8, 0.25);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      animation: pulseStar 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseStar {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.015); }
+    }
+
+    .star-badge-icon {
+      font-size: 3rem;
+      animation: spinBounce 3s infinite ease-in-out;
+    }
+
+    @keyframes spinBounce {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-5px) rotate(10deg); }
+    }
+
+    .star-badge-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: #854d0e;
+      margin-bottom: 4px;
+    }
+
+    .star-badge-desc {
+      font-size: 1rem;
+      color: #713f12;
+    }
+
+    /* 3 Station Cards Grid */
+    .hub-tiles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 22px;
+      margin-bottom: 32px;
+    }
+
+    .hub-tile {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 3px solid #fed7aa;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+      transition: all 0.22s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .hub-tile:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+    }
+
+    /* Kachel 1: Silbenflugzeug 1 (Himmelblau) */
+    .hub-tile.tile-flugzeug1 {
+      border-color: #93c5fd;
+    }
+    .hub-tile.tile-flugzeug1:hover {
+      border-color: #3b82f6;
+      box-shadow: 0 12px 28px rgba(59, 130, 246, 0.16);
+    }
+
+    /* Kachel 2: Sätze & Wortschatz (Himbeerrot & Bernstein) */
+    .hub-tile.tile-saetze {
+      border-color: #fbcfe8;
+    }
+    .hub-tile.tile-saetze:hover {
+      border-color: #ec4899;
+      box-shadow: 0 12px 28px rgba(236, 72, 153, 0.16);
+    }
+
+    /* Kachel 3: Silbenflugzeug 2 (Smaragdgrün) */
+    .hub-tile.tile-flugzeug2 {
+      border-color: #a7f3d0;
+    }
+    .hub-tile.tile-flugzeug2:hover {
+      border-color: #10b981;
+      box-shadow: 0 12px 28px rgba(16, 185, 129, 0.16);
+    }
+
+    .tile-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .tile-badge {
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tile-flugzeug1 .tile-badge { background: #dbeafe; color: #1e40af; }
+    .tile-saetze .tile-badge { background: #fce7f3; color: #be185d; }
+    .tile-flugzeug2 .tile-badge { background: #d1fae5; color: #065f46; }
+
+    .tile-title {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      margin: 0;
+      color: #0f172a;
+    }
+
+    .tile-desc {
+      font-size: 1rem;
+      color: var(--ink-muted);
+      line-height: 1.45;
+      margin: 0 0 18px 0;
+      flex: 1;
+    }
+
+    .tile-action-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .tile-flugzeug1 .tile-action-btn { background: #2563eb; color: #ffffff; }
+    .tile-flugzeug1:hover .tile-action-btn { background: #1d4ed8; }
+
+    .tile-saetze .tile-action-btn { background: #e11d48; color: #ffffff; }
+    .tile-saetze:hover .tile-action-btn { background: #be123c; }
+
+    .tile-flugzeug2 .tile-action-btn { background: #059669; color: #ffffff; }
+    .tile-flugzeug2:hover .tile-action-btn { background: #047857; }
+
+
+
+    /* ==========================================================================
+       STATION COMMON NAVIGATION BAR
+       ========================================================================== */
+    .station-nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffffff;
+      border: 2px solid #fed7aa;
+      border-radius: var(--radius-lg);
+      padding: 12px 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-back-hub {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: #fff7ed;
+      border: 2px solid #fdba74;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      color: #9a3412;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-back-hub:hover {
+      background: #ffedd5;
+      transform: translateX(-2px);
+    }
+
+    .station-title-badge {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: #7c2d12;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .station-quick-switchers {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .quick-switch-btn {
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 0.88rem;
+      font-weight: 600;
+      background: #ffffff;
+      border: 1.5px solid #cbd5e1;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .quick-switch-btn:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+    }
+
+    /* Station Card Wrap */
+    .station-card {
+      background: #ffffff;
+      border: 2.5px solid #fed7aa;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+      margin-bottom: 24px;
+    }
+
+    /* ==========================================================================
+       STATION 1 & 3: SILBENFLUGZEUG I & II
+       ========================================================================== */
+    .carpet-section {
+      position: relative;
+    }
+
+    .carpet-banner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #eff6ff;
+      border: 2px solid #bfdbfe;
+      border-radius: var(--radius-md);
+      padding: 14px 20px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .carpet-banner-green {
+      background: #ecfdf5;
+      border-color: #a7f3d0;
+    }
+
+    .carpet-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .airplane-icon {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      cursor: pointer;
+      transition: transform 0.25s ease;
+    }
+
+    .airplane-icon:hover {
+      transform: scale(1.15) rotate(-5deg);
+    }
+
+    .carpet-instruction {
+      margin: 0;
+      font-size: 1.05rem;
+      color: #1e3a8a;
+      line-height: 1.35;
+    }
+
+    .carpet-banner-green .carpet-instruction {
+      color: #064e3b;
+    }
+
+    .carpet-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .flight-counter-badge {
+      background: #ffffff;
+      border: 2px solid #93c5fd;
+      color: #1d4ed8;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.95rem;
+    }
+
+    .carpet-banner-green .flight-counter-badge {
+      border-color: #6ee7b7;
+      color: #047857;
+    }
+
+    .btn-next-flight {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 9px 20px;
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.28);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-next-flight:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+    }
+
+    .btn-next-flight-green {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.28);
+    }
+
+    .btn-next-flight-green:hover {
+      box-shadow: 0 6px 16px rgba(5, 150, 105, 0.35);
+    }
+
+    /* Grid Wrap for the Carpet Table with Smooth Flying Plane */
+    .carpet-grid-wrap {
+      position: relative;
+      overflow-x: auto;
+      border: 3px solid #cbd5e1;
+      border-radius: var(--radius-md);
+      background: #ffffff;
+      padding: 8px;
+      margin-bottom: 24px;
+    }
+
+    .carpet-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 6px;
+      table-layout: fixed;
+    }
+
+    .carpet-cell {
+      height: 60px;
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: var(--radius-sm);
+      text-align: center;
+      vertical-align: middle;
+      font-family: var(--font-reading);
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #1e293b;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+    }
+
+    .carpet-cell:hover {
+      background: #eff6ff;
+      border-color: #60a5fa;
+      transform: scale(1.08);
+      z-index: 2;
+    }
+
+    .carpet-cell.landed-target {
+      background: #fef08a !important;
+      border-color: #ca8a04 !important;
+      color: #854d0e !important;
+      transform: scale(1.12);
+      box-shadow: 0 6px 16px rgba(202, 138, 4, 0.35);
+      z-index: 5;
+      animation: landedGlow 1.6s infinite alternate ease-in-out;
+    }
+
+    @keyframes landedGlow {
+      from { box-shadow: 0 0 8px rgba(234, 179, 8, 0.4); }
+      to { box-shadow: 0 0 20px rgba(234, 179, 8, 0.85); }
+    }
+
+    .carpet-cell.visited-cell {
+      background: #f0fdf4;
+      border-color: #86efac;
+      color: #15803d;
+    }
+
+    /* Flying Airplane in Grid */
+    .flying-airplane {
+      position: absolute;
+      width: 58px;
+      height: 58px;
+      pointer-events: none;
+      z-index: 20;
+      transition: top 0.65s cubic-bezier(0.25, 1, 0.5, 1), left 0.65s cubic-bezier(0.25, 1, 0.5, 1), transform 0.65s ease;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.22));
+    }
+
+    .flying-airplane-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Flight Deck (Control bar for landed syllable) */
+    .flight-deck {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 2.5px solid #cbd5e1;
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      animation: deckSlideUp 0.25s ease-out;
+    }
+
+    @keyframes deckSlideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .flight-deck-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .flight-big-syl {
+      font-family: var(--font-reading);
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: #1d4ed8;
+      background: #ffffff;
+      border: 2px solid #93c5fd;
+      padding: 2px 18px;
+      border-radius: var(--radius-md);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .rec-btn-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .action-btn-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      font-size: 0.95rem;
+      font-weight: 700;
+      border: 2px solid #cbd5e1;
+      background: #ffffff;
+      color: #1e293b;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      touch-action: manipulation;
+    }
+
+    .action-btn-pill:hover {
+      background: #f8fafc;
+      transform: translateY(-1px);
+    }
+
+    .action-btn-pill.btn-rec.recording {
+      background: #ffe4e6;
+      border-color: #f43f5e;
+      color: #be123c;
+      animation: recPulse 1s infinite alternate;
+    }
+
+    @keyframes recPulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.04); }
+    }
+
+    .rec-dot {
+      color: #e11d48;
+      font-size: 1.1rem;
+    }
+
+    /* ==========================================================================
+       STATION 2: SÄTZE & WORTSCHATZ-BOX
+       ========================================================================== */
+    .sheet-middle-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 860px) {
+      .sheet-middle-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .word-list-box, .vocab-box {
+      background: #ffffff;
+      border: 2.5px solid #fed7aa;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+
+    .vocab-box {
+      border-color: #fde68a;
+      background: #fffdf5;
+    }
+
+    .column-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      margin: 0 0 6px 0;
+      color: #7c2d12;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .vocab-box .column-title {
+      color: #92400e;
+    }
+
+    /* Sentence Rows */
+    .word-item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fdfefe;
+      border: 2px solid #e2e8f0;
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      transition: all 0.2s ease;
+      gap: 12px;
+    }
+
+    .word-item-row:hover {
+      border-color: #fdba74;
+      background: #fffbf5;
+    }
+
+    .sentence-pack {
+      display: inline-flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-family: var(--font-reading);
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #1e293b;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .syl-part.syl-1 {
+      color: var(--syl-blue);
+    }
+
+    .syl-part.syl-2 {
+      color: var(--syl-red);
+    }
+
+    .sentence-word {
+      color: #1e293b;
+    }
+
+    .sentence-connector {
+      color: #334155;
+    }
+
+    .sentence-dot {
+      color: #1e293b;
+      margin-left: -3px;
+    }
+
+    /* Sight-Word Badges (dashed border) */
+    .sight-word {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      padding: 2px 10px;
+      margin: 0 2px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      cursor: pointer;
+      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+      user-select: none;
+      vertical-align: middle;
+    }
+
+    .sight-word-ist {
+      background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+      border: 2.5px dashed #475569;
+    }
+
+    .sight-word-ist:hover {
+      transform: scale(1.12);
+      border-color: #2563eb;
+      background: #eff6ff;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.22);
+    }
+
+    .sight-word-und {
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+      border: 2.5px dashed #d97706;
+    }
+
+    .sight-word-und:hover {
+      transform: scale(1.12);
+      border-color: #b45309;
+      background: #fde68a;
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25);
+    }
+
+    .sight-word .sight-letter {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      font-weight: 900;
+      line-height: 1;
+      color: #ffffff;
+      -webkit-text-stroke: 2.2px #0f172a;
+      text-stroke: 2.2px #0f172a;
+      letter-spacing: 1.5px;
+      display: inline-block;
+      transition: all 0.2s ease;
+    }
+
+    .sight-word-und:hover .sight-letter {
+      -webkit-text-stroke-color: #b45309;
+      text-stroke-color: #b45309;
+    }
+
+    .sight-word-ist:hover .sight-letter {
+      -webkit-text-stroke-color: #1d4ed8;
+      text-stroke-color: #1d4ed8;
+    }
+
+    /* PENCIL SKETCH BUTTONS (Baum, Haus) */
+    .sketch-btn {
+      background: #ffffff;
+      border: 2px solid #cbd5e1;
+      border-radius: 14px;
+      padding: 3px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      touch-action: manipulation;
+    }
+
+    .sketch-btn:hover {
+      transform: scale(1.12);
+      border-color: #fdba74;
+      background: #fff7ed;
+    }
+
+    .sketch-btn:active {
+      transform: scale(0.94);
+    }
+
+    .sketch-svg {
+      width: 54px;
+      height: 54px;
+      display: block;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
+      transition: all 0.35s ease;
+    }
+
+    /* Uncolored Sketch Line */
+    .sketch-svg path,
+    .sketch-svg circle,
+    .sketch-svg rect,
+    .sketch-svg polygon,
+    .sketch-svg ellipse {
+      stroke: #334155;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: #ffffff;
+      transition: fill 0.35s ease, stroke 0.35s ease;
+    }
+
+    .sketch-svg .pencil-line {
+      fill: none !important;
+      stroke: #64748b !important;
+      stroke-width: 1.4 !important;
+      stroke-dasharray: 2 1.5;
+    }
+
+    /* Colored State */
+    .sketch-btn.colored {
+      border-color: #ea580c;
+      background: #fff7ed;
+    }
+
+    .sketch-btn.colored .sketch-svg {
+      filter: drop-shadow(0 4px 10px rgba(234, 88, 12, 0.25));
+      animation: colorPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes colorPop {
+      0% { transform: scale(0.88); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    /* Baum Coloring */
+    .sketch-btn.colored .tree-crown { fill: #22c55e; stroke: #15803d; }
+    .sketch-btn.colored .tree-trunk { fill: #78350f; stroke: #451a03; }
+
+    /* Haus Coloring */
+    .sketch-btn.colored .house-roof { fill: #e11d48; stroke: #be123c; }
+    .sketch-btn.colored .house-wall { fill: #fef08a; stroke: #ca8a04; }
+    .sketch-btn.colored .house-door { fill: #b45309; stroke: #78350f; }
+    .sketch-btn.colored .house-window { fill: #bae6fd; stroke: #0284c7; }
+    .sketch-btn.colored .house-chimney { fill: #94a3b8; stroke: #475569; }
+    .sketch-btn.colored .house-bush { fill: #22c55e; stroke: #15803d; }
+
+    /* Heart Button (Bedeutung: lieben) */
+    .sentence-heart-btn {
+      background: #ffffff;
+      border: 2px solid #cbd5e1;
+      padding: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.15s ease;
+      touch-action: manipulation;
+    }
+
+    .sentence-heart-btn:hover {
+      transform: scale(1.2);
+      border-color: #fbcfe8;
+      background: #fff1f2;
+    }
+
+    .sentence-heart-btn .heart-svg {
+      width: 32px;
+      height: 32px;
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      fill: none;
+      stroke: #e11d48;
+      stroke-width: 2.2;
+    }
+
+    .sentence-heart-btn.active {
+      border-color: #f43f5e;
+      background: #fff1f2;
+      animation: colorPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .sentence-heart-btn.active .heart-svg {
+      fill: #e11d48;
+      stroke: #be123c;
+      filter: drop-shadow(0 4px 10px rgba(225, 29, 72, 0.45));
+    }
+
+    /* Star check button for sentences 4, 5, 6 */
+    .sentence-check-btn {
+      background: #ffffff;
+      border: 2px solid #cbd5e1;
+      border-radius: var(--radius-pill);
+      font-size: 1.25rem;
+      padding: 4px 10px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+      filter: grayscale(1);
+      opacity: 0.65;
+    }
+
+    .sentence-check-btn:hover {
+      transform: scale(1.15);
+      opacity: 1;
+    }
+
+    .sentence-check-btn.checked {
+      filter: grayscale(0);
+      opacity: 1;
+      background: #fef08a;
+      border-color: #f59e0b;
+      transform: scale(1.1);
+      box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+    }
+
+    /* Sentence Audio Tools */
+    .row-audio-tools {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .icon-action-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1.5px solid #cbd5e1;
+      font-size: 1.05rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .icon-action-btn:hover:not(:disabled) {
+      background: #f8fafc;
+      border-color: #94a3b8;
+      transform: scale(1.08);
+    }
+
+    .icon-action-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .icon-action-btn.btn-row-rec.recording {
+      background: #ffe4e6;
+      border-color: #f43f5e;
+      animation: recPulse 1s infinite alternate;
+    }
+
+    /* ==========================================================================
+       BOX MIT DEM WORTSCHATZ (RECHTE SPALTE)
+       ========================================================================== */
+    .vocab-counter-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .vocab-counter-badge {
+      background: #fef3c7;
+      border: 1.5px solid #fde68a;
+      color: #92400e;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 0.88rem;
+    }
+
+    .vocab-card {
+      background: #ffffff;
+      border: 2px solid #fed7aa;
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      user-select: none;
+    }
+
+    .vocab-card:hover {
+      transform: translateY(-2px);
+      border-color: #f97316;
+      box-shadow: 0 6px 14px rgba(249, 115, 22, 0.12);
+    }
+
+    .vocab-card.word-completed {
+      background: #f0fdf4;
+      border-color: #22c55e;
+      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.18);
+    }
+
+    .vocab-text-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .vocab-text {
+      font-family: var(--font-reading);
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #1e293b;
+    }
+
+    .vocab-card.word-completed .vocab-text {
+      color: #15803d;
+    }
+
+    .vocab-check-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2.5px solid #cbd5e1;
+      background: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      color: #94a3b8;
+      transition: all 0.22s ease;
+    }
+
+    .vocab-card.word-completed .vocab-check-circle {
+      background: #22c55e;
+      border-color: #16a34a;
+      color: #ffffff;
+      transform: scale(1.08);
+    }
+
+    /* Modal for Star Reward */
+    .reward-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: modalFadeIn 0.25s ease-out;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .reward-modal-card {
+      background: #ffffff;
+      border: 4px solid #f59e0b;
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      animation: modalPopUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes modalPopUp {
+      from { transform: scale(0.85); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .reward-modal-star {
+      font-size: 4.5rem;
+      animation: spinBounce 2.5s infinite ease-in-out;
+    }
+
+    .reward-modal-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: #854d0e;
+      margin: 12px 0 6px 0;
+    }
+
+    .reward-modal-desc {
+      font-size: 1.15rem;
+      color: #475569;
+      line-height: 1.5;
+      margin: 0 0 24px 0;
+    }
+
+    .btn-modal-close {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 12px 28px;
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+      transition: all 0.15s ease;
+    }
+
+    .btn-modal-close:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(245, 158, 11, 0.45);
+    }
+
+    /* Fireworks Canvas Overlay */
+    #fireworks-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 900;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fullscreen Fireworks Canvas -->
+  <canvas id="fireworks-canvas"></canvas>
+
+  <!-- Top Sticky Toolbar -->
+  <header class="top-toolbar">
+    <div class="toolbar-left">
+      <a class="toolbar-brand" onclick="switchView('hub')">
+        <span>🐯</span> <span>Lese-Haus • T t</span>
+      </a>
+      <button class="tool-btn active" id="nav-btn-hub" onclick="switchView('hub')">
+        <span>🏠</span> Übersicht
+      </button>
+      <button class="tool-btn" id="nav-btn-flugzeug1" onclick="switchView('flugzeug1')">
+        <span>✈️</span> Flugzeug I
+      </button>
+      <button class="tool-btn" id="nav-btn-saetze" onclick="switchView('saetze')">
+        <span>📖</span> Sätze &amp; Wortschatz
+      </button>
+      <button class="tool-btn" id="nav-btn-flugzeug2" onclick="switchView('flugzeug2')">
+        <span>✈️</span> Flugzeug II
+      </button>
+    </div>
+    <div class="toolbar-right">
+      <span id="nav-golden-star" style="display:none; font-size:1.4rem; cursor:pointer;" onclick="awardGoldenStar()" title="Lese-Meister Stern!">⭐</span>
+      <button class="tool-btn" id="btn-sound-toggle" onclick="toggleSound()">
+        <span id="sound-icon">🔊</span> Ton: An
+      </button>
+      <button class="tool-btn" id="btn-tempo-toggle" onclick="toggleTempo()">
+        <span>⚡</span> <span id="tempo-label">Tempo: Normal</span>
+      </button>
+      <a href="../index.html" class="tool-btn" style="text-decoration:none; color:inherit;">
+        <span>🏠</span> Alle Häuser
+      </a>
+    </div>
+  </header>
+
+  <!-- App Viewport -->
+  <main class="app-viewport">
+
+    <!-- =====================================================================
+         VIEW 0: HUB / ÜBERSICHT
+         ===================================================================== -->
+    <div class="app-view active-view" id="view-hub">
+
+      <!-- Hero Header -->
+      <section class="hub-hero">
+        <div class="hub-hero-inner">
+          <div class="hub-anlaut-avatar" onclick="speakTiger()" title="Tiger aus der Anlauttabelle! Tippe mich!">
+            <img src="assets/tiger.png" alt="Tiger aus Haus 1">
+          </div>
+          <div class="hub-hero-text">
+            <span class="hub-badge-level">Einsterns Schwester • Leseblatt 4 (S. 5)</span>
+            <h1 class="hub-hero-title">Buchstabe T t</h1>
+            <p class="hub-hero-sub">
+              Willkommen bei der Leseübung für <b>T t</b> wie <b>Tiger</b>! Fliege mit den beiden Silbenflugzeugen und lies die Sätze mit dem Wortschatz.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Golden Star Banner (appears on full completion) -->
+      <section class="hub-star-banner" id="hub-star-banner" style="display: none;">
+        <div class="star-badge-icon">⭐</div>
+        <div>
+          <div class="star-badge-title">Du bist ein T t Lese-Meister!</div>
+          <div class="star-badge-desc">Du hast heute alle Übungen gemeistert: Beide Silbenflugzeuge und alle Sätze mit Wortschatz!</div>
+        </div>
+      </section>
+
+      <!-- 3 Station Tiles -->
+      <section class="hub-tiles-grid">
+
+        <!-- Kachel 1: Silbenflugzeug I -->
+        <article class="hub-tile tile-flugzeug1" onclick="switchView('flugzeug1')">
+          <div>
+            <div class="tile-header">
+              <span class="tile-badge">Station 1</span>
+            </div>
+            <h2 class="tile-title">✈️ Silbenflugzeug I</h2>
+            <p class="tile-desc">
+              Fliege über den ersten Silbenteppich mit <b>Ta, To, Ti, Sa, So, Si, mi, ma...</b>! Wo landet das Flugzeug?
+            </p>
+          </div>
+          <button class="tile-action-btn">
+            <span>🛫</span> Jetzt fliegen
+          </button>
+        </article>
+
+        <!-- Kachel 2: Sätze & Wortschatz -->
+        <article class="hub-tile tile-saetze" onclick="switchView('saetze')">
+          <div>
+            <div class="tile-header">
+              <span class="tile-badge">Station 2 • Sätze &amp; Wortschatz</span>
+            </div>
+            <h2 class="tile-title">📖 Sätze mit Bild &amp; Herz</h2>
+            <p class="tile-desc">
+              7 Sätze mit Wortbildern (<b>und</b> &amp; <b>ist</b>), bunten Bildern (<b>Baum</b>, <b>Haus</b>, <b>Herz</b>) und der <b>Wortschatz-Kiste</b>!
+            </p>
+          </div>
+          <button class="tile-action-btn">
+            <span>❤️</span> Sätze lesen
+          </button>
+        </article>
+
+        <!-- Kachel 3: Silbenflugzeug II -->
+        <article class="hub-tile tile-flugzeug2" onclick="switchView('flugzeug2')">
+          <div>
+            <div class="tile-header">
+              <span class="tile-badge">Station 3</span>
+            </div>
+            <h2 class="tile-title">✈️ Silbenflugzeug II</h2>
+            <p class="tile-desc">
+              Fliege über den zweiten Teppich mit Silben und Wörtern wie <b>al, so, alt, mos, ist, lat, Ast, Tim...</b>!
+            </p>
+          </div>
+          <button class="tile-action-btn">
+            <span>🛫</span> Jetzt fliegen
+          </button>
+        </article>
+
+      </section>
+
+
+
+    </div>
+
+    <!-- =====================================================================
+         VIEW 1: SILBENFLUGZEUG I (OBEN AUF LESEBATT 4)
+         ===================================================================== -->
+    <div class="app-view" id="view-flugzeug1">
+      
+      <nav class="station-nav-bar">
+        <button class="btn-back-hub" onclick="switchView('hub')">
+          <span>🏠</span> Zur Übersicht
+        </button>
+        <div class="station-title-badge">
+          <span>✈️</span> Station 1: Silbenflugzeug I
+        </div>
+        <div class="station-quick-switchers">
+          <button class="quick-switch-btn" onclick="resetFlights(1)">🔄 Flüge neu starten</button>
+          <button class="quick-switch-btn" onclick="switchView('saetze')">📖 Weiter zu Sätze</button>
+          <button class="quick-switch-btn" onclick="switchView('flugzeug2')">✈️ Flugzeug II</button>
+        </div>
+      </nav>
+
+      <div class="station-card">
+        <section class="carpet-section">
+          
+          <div class="carpet-banner">
+            <div class="carpet-left">
+              <img src="assets/flugzeug_sketch.png" alt="Flugzeug" class="airplane-icon" onclick="triggerNextFlight(1)" title="Nächster Flug!">
+              <div>
+                <p class="carpet-instruction">
+                  Klicke auf <b>„Nächster Flug“</b> oder tippe direkt auf eine Silbe. Das Flugzeug landet und du liest laut vor!
+                </p>
+              </div>
+            </div>
+            <div class="carpet-controls">
+              <span class="flight-counter-badge" id="flight-counter-1">
+                ✈️ Flug <b id="flight-num-1">0</b> / 10
+              </span>
+              <button class="btn-next-flight" onclick="triggerNextFlight(1)">
+                <span>🛫</span> Nächster Flug
+              </button>
+            </div>
+          </div>
+
+          <!-- 2 x 12 Grid for Airplane 1 -->
+          <div class="carpet-grid-wrap" id="carpet-grid-wrap-1">
+            <div id="flying-airplane-1" class="flying-airplane" style="display: none;">
+              <img src="assets/flugzeug_sketch.png" alt="Flugzeug" class="flying-airplane-img">
+            </div>
+            <table class="carpet-table" id="carpet-table-1">
+              <tbody>
+                <!-- Row 0: Ta To Ti Sa So Si mi ma mo li la lo -->
+                <tr>
+                  <td class="carpet-cell" data-plane="1" data-val="Ta" onclick="onCellDirectClick(1, this)">Ta</td>
+                  <td class="carpet-cell" data-plane="1" data-val="To" onclick="onCellDirectClick(1, this)">To</td>
+                  <td class="carpet-cell" data-plane="1" data-val="Ti" onclick="onCellDirectClick(1, this)">Ti</td>
+                  <td class="carpet-cell" data-plane="1" data-val="Sa" onclick="onCellDirectClick(1, this)">Sa</td>
+                  <td class="carpet-cell" data-plane="1" data-val="So" onclick="onCellDirectClick(1, this)">So</td>
+                  <td class="carpet-cell" data-plane="1" data-val="Si" onclick="onCellDirectClick(1, this)">Si</td>
+                  <td class="carpet-cell" data-plane="1" data-val="mi" onclick="onCellDirectClick(1, this)">mi</td>
+                  <td class="carpet-cell" data-plane="1" data-val="ma" onclick="onCellDirectClick(1, this)">ma</td>
+                  <td class="carpet-cell" data-plane="1" data-val="mo" onclick="onCellDirectClick(1, this)">mo</td>
+                  <td class="carpet-cell" data-plane="1" data-val="li" onclick="onCellDirectClick(1, this)">li</td>
+                  <td class="carpet-cell" data-plane="1" data-val="la" onclick="onCellDirectClick(1, this)">la</td>
+                  <td class="carpet-cell" data-plane="1" data-val="lo" onclick="onCellDirectClick(1, this)">lo</td>
+                </tr>
+                <!-- Row 1: Mo Ma Mi La Lo Li ti to ta so si sa -->
+                <tr>
+                  <td class="carpet-cell" data-plane="1" data-val="Mo" onclick="onCellDirectClick(1, this)">Mo</td>
+                  <td class="carpet-cell" data-plane="1" data-val="Ma" onclick="onCellDirectClick(1, this)">Ma</td>
+                  <td class="carpet-cell" data-plane="1" data-val="Mi" onclick="onCellDirectClick(1, this)">Mi</td>
+                  <td class="carpet-cell" data-plane="1" data-val="La" onclick="onCellDirectClick(1, this)">La</td>
+                  <td class="carpet-cell" data-plane="1" data-val="Lo" onclick="onCellDirectClick(1, this)">Lo</td>
+                  <td class="carpet-cell" data-plane="1" data-val="Li" onclick="onCellDirectClick(1, this)">Li</td>
+                  <td class="carpet-cell" data-plane="1" data-val="ti" onclick="onCellDirectClick(1, this)">ti</td>
+                  <td class="carpet-cell" data-plane="1" data-val="to" onclick="onCellDirectClick(1, this)">to</td>
+                  <td class="carpet-cell" data-plane="1" data-val="ta" onclick="onCellDirectClick(1, this)">ta</td>
+                  <td class="carpet-cell" data-plane="1" data-val="so" onclick="onCellDirectClick(1, this)">so</td>
+                  <td class="carpet-cell" data-plane="1" data-val="si" onclick="onCellDirectClick(1, this)">si</td>
+                  <td class="carpet-cell" data-plane="1" data-val="sa" onclick="onCellDirectClick(1, this)">sa</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Focused Flight Deck 1 -->
+          <div class="flight-deck" id="flight-deck-1" style="display: none;">
+            <div class="flight-deck-left">
+              <span style="font-size:0.95rem; font-weight:600; color:#475569;">Gelandet auf:</span>
+              <span class="flight-big-syl" id="flight-deck-syl-1">Ta</span>
+            </div>
+            <div class="rec-btn-bar">
+              <button class="action-btn-pill" onclick="speakCurrentFlight(1)">
+                <span>🔊</span> Vorlesen
+              </button>
+              <button class="action-btn-pill btn-rec" id="btn-rec-flight-1" onclick="toggleFlightRecord(1)">
+                <span class="rec-dot">●</span> <span id="rec-label-1">Aufnehmen</span>
+              </button>
+              <button class="action-btn-pill" id="btn-play-flight-1" onclick="playFlightRecording(1)" disabled>
+                <span>▶️</span> Eigene Stimme
+              </button>
+              <button class="action-btn-pill" onclick="finishCurrentFlight(1)" style="background:#10b981; color:#fff; border-color:#059669;">
+                <span>⭐</span> Geschafft!
+              </button>
+            </div>
+          </div>
+
+        </section>
+      </div>
+
+    </div>
+
+    <!-- =====================================================================
+         VIEW 2: SÄTZE & WORTSCHATZ-BOX (MITTE AUF LESEBATT 4)
+         ===================================================================== -->
+    <div class="app-view" id="view-saetze">
+      
+      <nav class="station-nav-bar">
+        <button class="btn-back-hub" onclick="switchView('hub')">
+          <span>🏠</span> Zur Übersicht
+        </button>
+        <div class="station-title-badge">
+          <span>📖</span> Station 2: Sätze &amp; Wortschatz-Box
+        </div>
+        <div class="station-quick-switchers">
+          <span class="flight-counter-badge" id="station-sentence-badge">🎨 0 / 7 Sätze</span>
+          <span class="flight-counter-badge" id="station-vocab-badge" style="border-color:#f59e0b; color:#b45309;">📦 0 / 6 Wörter</span>
+          <button class="quick-switch-btn" onclick="resetStation2()">🔄 Neu starten</button>
+          <button class="quick-switch-btn" onclick="switchView('flugzeug1')">✈️ Flugzeug I</button>
+          <button class="quick-switch-btn" onclick="switchView('flugzeug2')">✈️ Flugzeug II</button>
+        </div>
+      </nav>
+
+      <div class="station-card">
+        <div class="sheet-middle-grid">
+
+          <!-- Left Column: Sätze mit Bild & Herz -->
+          <div class="word-list-box">
+            <h2 class="column-title">
+              <span>❤️</span> Sätze mit Bild &amp; Herz
+            </h2>
+            <p style="font-size:0.95rem; color:#475569; margin:-4px 0 16px 0; line-height:1.4;">
+              Lies die Sätze! Bei <b>und</b> siehst du das Wortbild. Tippe auf <b>Baum</b>, <b>Haus</b> und <b>Herz</b> (<i>bedeutet „lieben“</i>), um sie bunt einzufärben! Bei den anderen Sätzen tippe auf den Stern ⭐!
+            </p>
+
+            <div class="sentences-container" id="sentences-container">
+            <!-- Satz 0: Tim ist mit Omi am Baum. -->
+            <div class="word-item-row" data-sentence-id="s0">
+              <div class="sentence-pack" onclick="speakSentence(0)">
+                <span class="sentence-word">Tim</span>
+                <span class="sentence-word">ist</span>
+                <span class="sentence-word">mit</span>
+                <span class="sentence-name">
+                  <span class="syl-part syl-1">O</span><span class="syl-part syl-2">mi</span>
+                </span>
+                <span class="sentence-connector">am</span>
+                <button class="sketch-btn" id="sketch-baum" onclick="event.stopPropagation(); toggleSentenceSketch('baum', 0)" title="Baum bunt ausmalen!">
+                  <svg class="sketch-svg" viewBox="0 0 64 64" aria-label="Baum">
+                    <path class="tree-trunk" d="M28 36 L26 58 L38 58 L36 36 Z" />
+                    <path class="tree-crown" d="M32 10 C24 10 18 16 18 24 C14 26 12 32 16 36 C18 40 26 42 32 40 C38 42 46 40 48 36 C52 32 50 26 46 24 C46 16 40 10 32 10 Z" />
+                    <path class="pencil-line" d="M24 22 C28 20 32 22 34 20" />
+                    <path class="pencil-line" d="M30 50 L34 50" />
+                  </svg>
+                </button>
+                <span class="sentence-dot">.</span>
+              </div>
+              <div class="row-audio-tools">
+                <button class="icon-action-btn" onclick="speakSentence(0)" title="Ganzen Satz vorlesen">🔊</button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-s0" onclick="toggleSentenceRecord('s0')" title="Satz aufnehmen">🎤</button>
+                <button class="icon-action-btn" id="play-btn-s0" onclick="playSentenceRecording('s0')" title="Aufnahme abhören" disabled>▶️</button>
+              </div>
+            </div>
+
+            <!-- Satz 1: Lisa ist mit Mama im Haus. -->
+            <div class="word-item-row" data-sentence-id="s1">
+              <div class="sentence-pack" onclick="speakSentence(1)">
+                <span class="sentence-name">
+                  <span class="syl-part syl-1">Li</span><span class="syl-part syl-2">sa</span>
+                </span>
+                <span class="sentence-word">ist</span>
+                <span class="sentence-word">mit</span>
+                <span class="sentence-name">
+                  <span class="syl-part syl-1">Ma</span><span class="syl-part syl-2">ma</span>
+                </span>
+                <span class="sentence-connector">im</span>
+                <button class="sketch-btn" id="sketch-haus" onclick="event.stopPropagation(); toggleSentenceSketch('haus', 1)" title="Haus bunt ausmalen!">
+                  <svg class="sketch-svg" viewBox="0 0 64 64" aria-label="Haus">
+                    <rect class="house-chimney" x="22" y="10" width="6" height="12" rx="1" />
+                    <path class="house-smoke pencil-line" d="M25 8 C22 4 28 2 24 0" />
+                    <polygon class="house-roof" points="32,12 8,30 56,30" />
+                    <rect class="house-wall" x="14" y="30" width="36" height="26" rx="2" />
+                    <rect class="house-window" x="18" y="34" width="9" height="9" rx="1" />
+                    <line class="pencil-line" x1="22.5" y1="34" x2="22.5" y2="43" />
+                    <line class="pencil-line" x1="18" y1="38.5" x2="27" y2="38.5" />
+                    <rect class="house-window" x="37" y="34" width="9" height="9" rx="1" />
+                    <line class="pencil-line" x1="41.5" y1="34" x2="41.5" y2="43" />
+                    <line class="pencil-line" x1="37" y1="38.5" x2="46" y2="38.5" />
+                    <rect class="house-door" x="27" y="44" width="10" height="12" rx="1" />
+                    <circle class="pencil-line" cx="35" cy="50" r="0.8" />
+                    <ellipse class="house-bush" cx="12" cy="53" rx="5" ry="3.5" />
+                    <ellipse class="house-bush" cx="52" cy="53" rx="5" ry="3.5" />
+                  </svg>
+                </button>
+                <span class="sentence-dot">.</span>
+              </div>
+              <div class="row-audio-tools">
+                <button class="icon-action-btn" onclick="speakSentence(1)" title="Ganzen Satz vorlesen">🔊</button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-s1" onclick="toggleSentenceRecord('s1')" title="Satz aufnehmen">🎤</button>
+                <button class="icon-action-btn" id="play-btn-s1" onclick="playSentenceRecording('s1')" title="Aufnahme abhören" disabled>▶️</button>
+              </div>
+            </div>
+
+            <!-- Satz 2: Tim und Mami liebt Salat. -->
+            <div class="word-item-row" data-sentence-id="s2">
+              <div class="sentence-pack" onclick="speakSentence(2)">
+                <span class="sentence-word">Tim</span>
+                <span class="sight-word sight-word-und" onclick="event.stopPropagation(); playSightWord('und')" title="Wortbild: und (tippen zum Hören)">
+                  <span class="sight-letter">u</span><span class="sight-letter">n</span><span class="sight-letter">d</span>
+                </span>
+                <span class="sentence-name">
+                  <span class="syl-part syl-1">Ma</span><span class="syl-part syl-2">mi</span>
+                </span>
+                <button class="sentence-heart-btn" id="heart-btn-2" onclick="event.stopPropagation(); toggleSentenceHeart(2)" title="Herz = liebt (antippen zum Erledigen)" aria-label="Herz antippen">
+                  <svg class="heart-svg" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </button>
+                <span class="sentence-name">
+                  <span class="syl-part syl-1">Sa</span><span class="syl-part syl-2">lat</span>
+                </span>
+                <span class="sentence-dot">.</span>
+              </div>
+              <div class="row-audio-tools">
+                <button class="icon-action-btn" onclick="speakSentence(2)" title="Ganzen Satz vorlesen">🔊</button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-s2" onclick="toggleSentenceRecord('s2')" title="Satz aufnehmen">🎤</button>
+                <button class="icon-action-btn" id="play-btn-s2" onclick="playSentenceRecording('s2')" title="Aufnahme abhören" disabled>▶️</button>
+              </div>
+            </div>
+
+            <!-- Satz 3: Oma ist alt. -->
+            <div class="word-item-row" data-sentence-id="s3">
+              <div class="sentence-pack" onclick="speakSentence(3)">
+                <span class="sentence-name">
+                  <span class="syl-part syl-1">O</span><span class="syl-part syl-2">ma</span>
+                </span>
+                <span class="sentence-word">ist</span>
+                <span class="sentence-word">alt</span>
+                <span class="sentence-dot">.</span>
+                <button class="sentence-check-btn" id="check-btn-3" onclick="event.stopPropagation(); toggleSentenceStar(3)" title="Gelesen? Antippen zum Stern-Sammeln!">⭐</button>
+              </div>
+              <div class="row-audio-tools">
+                <button class="icon-action-btn" onclick="speakSentence(3)" title="Ganzen Satz vorlesen">🔊</button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-s3" onclick="toggleSentenceRecord('s3')" title="Satz aufnehmen">🎤</button>
+                <button class="icon-action-btn" id="play-btn-s3" onclick="playSentenceRecording('s3')" title="Aufnahme abhören" disabled>▶️</button>
+              </div>
+            </div>
+
+            <!-- Satz 4: Ami ist am Ast. -->
+            <div class="word-item-row" data-sentence-id="s4">
+              <div class="sentence-pack" onclick="speakSentence(4)">
+                <span class="sentence-name">
+                  <span class="syl-part syl-1">A</span><span class="syl-part syl-2">mi</span>
+                </span>
+                <span class="sentence-word">ist</span>
+                <span class="sentence-connector">am</span>
+                <span class="sentence-word">Ast</span>
+                <span class="sentence-dot">.</span>
+                <button class="sentence-check-btn" id="check-btn-4" onclick="event.stopPropagation(); toggleSentenceStar(4)" title="Gelesen? Antippen zum Stern-Sammeln!">⭐</button>
+              </div>
+              <div class="row-audio-tools">
+                <button class="icon-action-btn" onclick="speakSentence(4)" title="Ganzen Satz vorlesen">🔊</button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-s4" onclick="toggleSentenceRecord('s4')" title="Satz aufnehmen">🎤</button>
+                <button class="icon-action-btn" id="play-btn-s4" onclick="playSentenceRecording('s4')" title="Aufnahme abhören" disabled>▶️</button>
+              </div>
+            </div>
+
+            <!-- Satz 5: Lola ist mit Tim im Tal. -->
+            <div class="word-item-row" data-sentence-id="s5">
+              <div class="sentence-pack" onclick="speakSentence(5)">
+                <span class="sentence-name">
+                  <span class="syl-part syl-1">Lo</span><span class="syl-part syl-2">la</span>
+                </span>
+                <span class="sentence-word">ist</span>
+                <span class="sentence-word">mit</span>
+                <span class="sentence-word">Tim</span>
+                <span class="sentence-connector">im</span>
+                <span class="sentence-word">Tal</span>
+                <span class="sentence-dot">.</span>
+                <button class="sentence-check-btn" id="check-btn-5" onclick="event.stopPropagation(); toggleSentenceStar(5)" title="Gelesen? Antippen zum Stern-Sammeln!">⭐</button>
+              </div>
+              <div class="row-audio-tools">
+                <button class="icon-action-btn" onclick="speakSentence(5)" title="Ganzen Satz vorlesen">🔊</button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-s5" onclick="toggleSentenceRecord('s5')" title="Satz aufnehmen">🎤</button>
+                <button class="icon-action-btn" id="play-btn-s5" onclick="playSentenceRecording('s5')" title="Aufnahme abhören" disabled>▶️</button>
+              </div>
+            </div>
+
+            <!-- Satz 6: Lamas liebt Salat. -->
+            <div class="word-item-row" data-sentence-id="s6">
+              <div class="sentence-pack" onclick="speakSentence(6)">
+                <span class="sentence-name">
+                  <span class="syl-part syl-1">La</span><span class="syl-part syl-2">mas</span>
+                </span>
+                <button class="sentence-heart-btn" id="heart-btn-6" onclick="event.stopPropagation(); toggleSentenceHeart(6)" title="Herz = liebt (antippen zum Erledigen)" aria-label="Herz antippen">
+                  <svg class="heart-svg" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </button>
+                <span class="sentence-name">
+                  <span class="syl-part syl-1">Sa</span><span class="syl-part syl-2">lat</span>
+                </span>
+                <span class="sentence-dot">.</span>
+              </div>
+              <div class="row-audio-tools">
+                <button class="icon-action-btn" onclick="speakSentence(6)" title="Ganzen Satz vorlesen">🔊</button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-s6" onclick="toggleSentenceRecord('s6')" title="Satz aufnehmen">🎤</button>
+                <button class="icon-action-btn" id="play-btn-s6" onclick="playSentenceRecording('s6')" title="Aufnahme abhören" disabled>▶️</button>
+              </div>
+            </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Die Box mit dem Wortschatz -->
+          <div class="vocab-box">
+            <h2 class="column-title">
+              <span>📦</span> Box mit dem Wortschatz
+            </h2>
+            <div class="vocab-counter-wrap">
+              <span style="font-size:0.92rem; color:#78350f;">Lies die Wörter laut vor und tippe sie an:</span>
+            </div>
+
+            <!-- 6 Wortschatz Cards from Leseblatt 4 -->
+            <!-- 0: ist -->
+            <div class="vocab-card" id="vocab-card-0" onclick="toggleVocabWord(0)">
+              <div class="vocab-text-wrap">
+                <span class="vocab-text">ist</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); playVocabWord(0)" title="Wort vorlesen">🔊</button>
+                <div class="vocab-check-circle" id="vocab-check-0">✓</div>
+              </div>
+            </div>
+
+            <!-- 1: alt -->
+            <div class="vocab-card" id="vocab-card-1" onclick="toggleVocabWord(1)">
+              <div class="vocab-text-wrap">
+                <span class="vocab-text">alt</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); playVocabWord(1)" title="Wort vorlesen">🔊</button>
+                <div class="vocab-check-circle" id="vocab-check-1">✓</div>
+              </div>
+            </div>
+
+            <!-- 2: mit -->
+            <div class="vocab-card" id="vocab-card-2" onclick="toggleVocabWord(2)">
+              <div class="vocab-text-wrap">
+                <span class="vocab-text">mit</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); playVocabWord(2)" title="Wort vorlesen">🔊</button>
+                <div class="vocab-check-circle" id="vocab-check-2">✓</div>
+              </div>
+            </div>
+
+            <!-- 3: Tal -->
+            <div class="vocab-card" id="vocab-card-3" onclick="toggleVocabWord(3)">
+              <div class="vocab-text-wrap">
+                <span class="vocab-text">Tal</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); playVocabWord(3)" title="Wort vorlesen">🔊</button>
+                <div class="vocab-check-circle" id="vocab-check-3">✓</div>
+              </div>
+            </div>
+
+            <!-- 4: Ast -->
+            <div class="vocab-card" id="vocab-card-4" onclick="toggleVocabWord(4)">
+              <div class="vocab-text-wrap">
+                <span class="vocab-text">Ast</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); playVocabWord(4)" title="Wort vorlesen">🔊</button>
+                <div class="vocab-check-circle" id="vocab-check-4">✓</div>
+              </div>
+            </div>
+
+            <!-- 5: Sa lat -->
+            <div class="vocab-card" id="vocab-card-5" onclick="toggleVocabWord(5)">
+              <div class="vocab-text-wrap">
+                <span class="vocab-text">
+                  <span class="syl-part syl-1">Sa</span><span class="syl-part syl-2">lat</span>
+                </span>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); playVocabWord(5)" title="Wort vorlesen">🔊</button>
+                <div class="vocab-check-circle" id="vocab-check-5">✓</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =====================================================================
+         VIEW 3: SILBENFLUGZEUG II (UNTEN AUF LESEBATT 4)
+         ===================================================================== -->
+    <div class="app-view" id="view-flugzeug2">
+      
+      <nav class="station-nav-bar">
+        <button class="btn-back-hub" onclick="switchView('hub')">
+          <span>🏠</span> Zur Übersicht
+        </button>
+        <div class="station-title-badge">
+          <span>✈️</span> Station 3: Silbenflugzeug II
+        </div>
+        <div class="station-quick-switchers">
+          <button class="quick-switch-btn" onclick="resetFlights(2)">🔄 Flüge neu starten</button>
+          <button class="quick-switch-btn" onclick="switchView('saetze')">📖 Zurück zu Sätze</button>
+          <button class="quick-switch-btn" onclick="switchView('flugzeug1')">✈️ Flugzeug I</button>
+        </div>
+      </nav>
+
+      <div class="station-card">
+        <section class="carpet-section">
+          
+          <div class="carpet-banner carpet-banner-green">
+            <div class="carpet-left">
+              <img src="assets/flugzeug_sketch.png" alt="Flugzeug" class="airplane-icon" onclick="triggerNextFlight(2)" title="Nächster Flug!">
+              <div>
+                <p class="carpet-instruction">
+                  Hier landen wir auf Silben und kurzen Wörtern! Klicke auf <b>„Nächster Flug“</b> oder tippe direkt auf ein Feld.
+                </p>
+              </div>
+            </div>
+            <div class="carpet-controls">
+              <span class="flight-counter-badge" id="flight-counter-2">
+                ✈️ Flug <b id="flight-num-2">0</b> / 10
+              </span>
+              <button class="btn-next-flight btn-next-flight-green" onclick="triggerNextFlight(2)">
+                <span>🛫</span> Nächster Flug
+              </button>
+            </div>
+          </div>
+
+          <!-- 2 x 12 Grid for Airplane 2 -->
+          <div class="carpet-grid-wrap" id="carpet-grid-wrap-2">
+            <div id="flying-airplane-2" class="flying-airplane" style="display: none;">
+              <img src="assets/flugzeug_sketch.png" alt="Flugzeug" class="flying-airplane-img">
+            </div>
+            <table class="carpet-table" id="carpet-table-2">
+              <tbody>
+                <!-- Row 0: al so mi am to si As Ot Mo Im Li Sa -->
+                <tr>
+                  <td class="carpet-cell" data-plane="2" data-val="al" onclick="onCellDirectClick(2, this)">al</td>
+                  <td class="carpet-cell" data-plane="2" data-val="so" onclick="onCellDirectClick(2, this)">so</td>
+                  <td class="carpet-cell" data-plane="2" data-val="mi" onclick="onCellDirectClick(2, this)">mi</td>
+                  <td class="carpet-cell" data-plane="2" data-val="am" onclick="onCellDirectClick(2, this)">am</td>
+                  <td class="carpet-cell" data-plane="2" data-val="to" onclick="onCellDirectClick(2, this)">to</td>
+                  <td class="carpet-cell" data-plane="2" data-val="si" onclick="onCellDirectClick(2, this)">si</td>
+                  <td class="carpet-cell" data-plane="2" data-val="As" onclick="onCellDirectClick(2, this)">As</td>
+                  <td class="carpet-cell" data-plane="2" data-val="Ot" onclick="onCellDirectClick(2, this)">Ot</td>
+                  <td class="carpet-cell" data-plane="2" data-val="Mo" onclick="onCellDirectClick(2, this)">Mo</td>
+                  <td class="carpet-cell" data-plane="2" data-val="Im" onclick="onCellDirectClick(2, this)">Im</td>
+                  <td class="carpet-cell" data-plane="2" data-val="Li" onclick="onCellDirectClick(2, this)">Li</td>
+                  <td class="carpet-cell" data-plane="2" data-val="Sa" onclick="onCellDirectClick(2, this)">Sa</td>
+                </tr>
+                <!-- Row 1: alt mos ist lat Ast Tim als los lam mol som til -->
+                <tr>
+                  <td class="carpet-cell" data-plane="2" data-val="alt" onclick="onCellDirectClick(2, this)">alt</td>
+                  <td class="carpet-cell" data-plane="2" data-val="mos" onclick="onCellDirectClick(2, this)">mos</td>
+                  <td class="carpet-cell" data-plane="2" data-val="ist" onclick="onCellDirectClick(2, this)">ist</td>
+                  <td class="carpet-cell" data-plane="2" data-val="lat" onclick="onCellDirectClick(2, this)">lat</td>
+                  <td class="carpet-cell" data-plane="2" data-val="Ast" onclick="onCellDirectClick(2, this)">Ast</td>
+                  <td class="carpet-cell" data-plane="2" data-val="Tim" onclick="onCellDirectClick(2, this)">Tim</td>
+                  <td class="carpet-cell" data-plane="2" data-val="als" onclick="onCellDirectClick(2, this)">als</td>
+                  <td class="carpet-cell" data-plane="2" data-val="los" onclick="onCellDirectClick(2, this)">los</td>
+                  <td class="carpet-cell" data-plane="2" data-val="lam" onclick="onCellDirectClick(2, this)">lam</td>
+                  <td class="carpet-cell" data-plane="2" data-val="mol" onclick="onCellDirectClick(2, this)">mol</td>
+                  <td class="carpet-cell" data-plane="2" data-val="som" onclick="onCellDirectClick(2, this)">som</td>
+                  <td class="carpet-cell" data-plane="2" data-val="til" onclick="onCellDirectClick(2, this)">til</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Focused Flight Deck 2 -->
+          <div class="flight-deck" id="flight-deck-2" style="display: none;">
+            <div class="flight-deck-left">
+              <span style="font-size:0.95rem; font-weight:600; color:#475569;">Gelandet auf:</span>
+              <span class="flight-big-syl" id="flight-deck-syl-2" style="color:#059669; border-color:#86efac;">al</span>
+            </div>
+            <div class="rec-btn-bar">
+              <button class="action-btn-pill" onclick="speakCurrentFlight(2)">
+                <span>🔊</span> Vorlesen
+              </button>
+              <button class="action-btn-pill btn-rec" id="btn-rec-flight-2" onclick="toggleFlightRecord(2)">
+                <span class="rec-dot">●</span> <span id="rec-label-2">Aufnehmen</span>
+              </button>
+              <button class="action-btn-pill" id="btn-play-flight-2" onclick="playFlightRecording(2)" disabled>
+                <span>▶️</span> Eigene Stimme
+              </button>
+              <button class="action-btn-pill" onclick="finishCurrentFlight(2)" style="background:#10b981; color:#fff; border-color:#059669;">
+                <span>⭐</span> Geschafft!
+              </button>
+            </div>
+          </div>
+
+        </section>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Golden Star Reward Modal -->
+  <div class="reward-modal-backdrop" id="star-reward-modal" style="display: none;">
+    <div class="reward-modal-card">
+      <div class="reward-modal-star">⭐</div>
+      <h2 class="reward-modal-title">Fantastisch gemacht!</h2>
+      <p class="reward-modal-desc">
+        Du hast heute alle Übungen für den Buchstaben <b>T t</b> erfolgreich abgeschlossen!<br>
+        Hier ist dein goldener <b>Lese-Meister-Stern</b>!
+      </p>
+      <button class="btn-modal-close" onclick="closeStarRewardModal()">
+        <span>🎉</span> Weiter zur Übersicht
+      </button>
+    </div>
+  </div>
+
+  <!-- JavaScript Engine -->
+  <script>
+    /* ==========================================================================
+       APP STATE & CONFIGURATION
+       ========================================================================== */
+    const STORAGE_KEY = 'leseblatt_Tt_state_v1';
+
+    const SENTENCES_DATA = [
+      { text: "Tim ist mit Omi am Baum.", meaning: "Baum" },
+      { text: "Lisa ist mit Mama im Haus.", meaning: "Haus" },
+      { text: "Tim und Mami lieben Salat.", meaning: "lieben" },
+      { text: "Oma ist alt.", meaning: "" },
+      { text: "Ami ist am Ast.", meaning: "" },
+      { text: "Lola ist mit Tim im Tal.", meaning: "" },
+      { text: "Lamas lieben Salat.", meaning: "lieben" }
+    ];
+
+    const VOCAB_DATA = [
+      "ist",
+      "alt",
+      "mit",
+      "Tal",
+      "Ast",
+      "Salat"
+    ];
+
+    let appState = {
+      soundEnabled: true,
+      slowTempo: false,
+      flightCount1: 0,
+      flightCount2: 0,
+      completedSketches: {}, // 'baum': true, 'haus': true
+      completedHearts: {},   // 2: true, 6: true
+      completedStars: {},    // 3: true, 4: true, 5: true
+      completedVocab: {},    // 0..5: true
+      goldenStarAwarded: false,
+      station2Celebrated: false
+    };
+
+    // Recording storage
+    const audioRecordings = {};
+    let activeMediaRecorder = null;
+    let recordedChunks = [];
+    let currentRecordingKey = null;
+
+    // Flight variables
+    let currentTargetCell1 = null;
+    let currentTargetCell2 = null;
+    let isAirplaneFlying1 = false;
+    let isAirplaneFlying2 = false;
+
+    // Web Audio Context
+    let audioCtx = null;
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContextClass();
+      }
+      return audioCtx;
+    }
+
+    // iOS Audio Unlock
+    function unlockAudioForIOS() {
+      const ctx = getAudioContext();
+      if (ctx && ctx.state === 'suspended') {
+        ctx.resume();
+      }
+    }
+    ['touchstart', 'touchend', 'click'].forEach(evt => {
+      document.addEventListener(evt, unlockAudioForIOS, { once: true, passive: true });
+    });
+
+    /* ==========================================================================
+       INITIALIZATION
+       ========================================================================== */
+    window.addEventListener('DOMContentLoaded', () => {
+      initFreshState();
+      shuffleSentences();
+      initSpeech();
+      updateHubBadges();
+
+      // Check URL hash for direct view navigation
+      const hash = window.location.hash.replace('#', '');
+      if (['hub', 'flugzeug1', 'saetze', 'flugzeug2'].includes(hash)) {
+        switchView(hash);
+      }
+    });
+
+    function saveState() {
+      // Absichtlich kein Persistieren im localStorage:
+      // Beim Neuladen der Seite soll immer alles wieder auf 0 gesetzt werden!
+    }
+
+    function initFreshState() {
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+      } catch (e) {}
+
+      appState = {
+        soundEnabled: true,
+        slowTempo: false,
+        flightCount1: 0,
+        flightCount2: 0,
+        completedSketches: {},
+        completedHearts: {},
+        completedStars: {},
+        completedVocab: {},
+        goldenStarAwarded: false,
+        station2Celebrated: false
+      };
+
+      const f1 = document.getElementById('flight-num-1');
+      if (f1) f1.textContent = '0';
+      const f2 = document.getElementById('flight-num-2');
+      if (f2) f2.textContent = '0';
+
+      document.querySelectorAll('.sketch-btn').forEach(b => b.classList.remove('colored'));
+      document.querySelectorAll('.sentence-heart-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.sentence-check-btn').forEach(b => b.classList.remove('checked'));
+      document.querySelectorAll('.vocab-card').forEach(b => b.classList.remove('word-completed'));
+      document.querySelectorAll('.carpet-cell').forEach(c => c.classList.remove('visited-cell', 'landed-target'));
+
+      const hubBanner = document.getElementById('hub-star-banner');
+      if (hubBanner) hubBanner.style.display = 'none';
+      const navStar = document.getElementById('nav-golden-star');
+      if (navStar) navStar.style.display = 'none';
+
+      updateStation2Counters();
+    }
+
+    function shuffleSentences() {
+      const container = document.getElementById('sentences-container');
+      if (!container) return;
+      const rows = Array.from(container.children);
+      // Fisher-Yates Shuffle
+      for (let i = rows.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [rows[i], rows[j]] = [rows[j], rows[i]];
+      }
+      rows.forEach(row => container.appendChild(row));
+    }
+
+    /* ==========================================================================
+       VIEW TOGGLING
+       ========================================================================== */
+    function switchView(viewId) {
+      playPop();
+      const validViews = ['hub', 'flugzeug1', 'saetze', 'flugzeug2'];
+      if (!validViews.includes(viewId)) viewId = 'hub';
+
+      validViews.forEach(v => {
+        const el = document.getElementById('view-' + v);
+        const btn = document.getElementById('nav-btn-' + v);
+        if (el) el.classList.remove('active-view');
+        if (btn) btn.classList.remove('active');
+      });
+
+      const targetEl = document.getElementById('view-' + viewId);
+      const targetBtn = document.getElementById('nav-btn-' + viewId);
+      if (targetEl) targetEl.classList.add('active-view');
+      if (targetBtn) targetBtn.classList.add('active');
+
+      window.location.hash = viewId;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // If opening an airplane station without a landed flight, land on first random cell
+      if (viewId === 'flugzeug1' && !currentTargetCell1 && appState.flightCount1 === 0) {
+        setTimeout(() => triggerNextFlight(1), 300);
+      } else if (viewId === 'flugzeug2' && !currentTargetCell2 && appState.flightCount2 === 0) {
+        setTimeout(() => triggerNextFlight(2), 300);
+      }
+    }
+
+    /* ==========================================================================
+       SYNTHESIZED SOUND EFFECTS (Web Audio API)
+       ========================================================================== */
+    function playPop() {
+      if (!appState.soundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(320, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(740, ctx.currentTime + 0.08);
+        gain.gain.setValueAtTime(0.25, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.08);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.08);
+      } catch (e) {}
+    }
+
+    function playDing() {
+      if (!appState.soundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
+        osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.08); // E5
+        osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.16); // G5
+        gain.gain.setValueAtTime(0.28, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.55);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.55);
+      } catch (e) {}
+    }
+
+    function playFlightWhoosh() {
+      if (!appState.soundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(260, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(520, ctx.currentTime + 0.28);
+        osc.frequency.exponentialRampToValueAtTime(320, ctx.currentTime + 0.65);
+        gain.gain.setValueAtTime(0.01, ctx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.2, ctx.currentTime + 0.2);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.65);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.65);
+      } catch (e) {}
+    }
+
+    /* ==========================================================================
+       SPEECH SYNTHESIS ENGINE (German Voice)
+       ========================================================================== */
+    let germanVoice = null;
+
+    function initSpeech() {
+      if (!('speechSynthesis' in window)) return;
+      const setVoice = () => {
+        const voices = window.speechSynthesis.getVoices();
+        germanVoice = voices.find(v => v.lang.startsWith('de') && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Hedda') || v.name.includes('Katja')))
+                   || voices.find(v => v.lang.startsWith('de'));
+      };
+      setVoice();
+      if (window.speechSynthesis.onvoiceschanged !== undefined) {
+        window.speechSynthesis.onvoiceschanged = setVoice;
+      }
+    }
+
+    function speakText(text, rateMultiplier = 1) {
+      if (!appState.soundEnabled) return;
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'de-DE';
+      if (germanVoice) utter.voice = germanVoice;
+      
+      const baseRate = appState.slowTempo ? 0.72 : 0.88;
+      utter.rate = baseRate * rateMultiplier;
+      utter.pitch = 1.05;
+      window.speechSynthesis.speak(utter);
+    }
+
+    function toggleSound() {
+      appState.soundEnabled = !appState.soundEnabled;
+      const icon = document.getElementById('sound-icon');
+      const btn = document.getElementById('btn-sound-toggle');
+      if (icon && btn) {
+        icon.textContent = appState.soundEnabled ? '🔊' : '🔇';
+        btn.innerHTML = `<span id="sound-icon">${appState.soundEnabled ? '🔊' : '🔇'}</span> Ton: ${appState.soundEnabled ? 'An' : 'Aus'}`;
+      }
+      playPop();
+      saveState();
+    }
+
+    function toggleTempo() {
+      appState.slowTempo = !appState.slowTempo;
+      const label = document.getElementById('tempo-label');
+      if (label) {
+        label.textContent = `Tempo: ${appState.slowTempo ? 'Gemächlich' : 'Normal'}`;
+      }
+      playPop();
+      speakText(appState.slowTempo ? "Tempo ist jetzt gemächlich." : "Tempo ist jetzt normal.");
+      saveState();
+    }
+
+    function speakTiger() {
+      playPop();
+      speakText("T t wie Tiger! Schön, dass du da bist!");
+      launchMiniConfetti(document.querySelector('.hub-anlaut-avatar'));
+    }
+
+    /* ==========================================================================
+       STATION 1 & 3: SILBENFLUGZEUG CONTROLLER
+       ========================================================================== */
+    function triggerNextFlight(planeNum) {
+      const isP1 = planeNum === 1;
+      if (isP1 && isAirplaneFlying1) return;
+      if (!isP1 && isAirplaneFlying2) return;
+
+      playFlightWhoosh();
+      if (isP1) isAirplaneFlying1 = true;
+      else isAirplaneFlying2 = true;
+
+      const tableId = isP1 ? 'carpet-table-1' : 'carpet-table-2';
+      const cells = document.querySelectorAll(`#${tableId} .carpet-cell`);
+      if (cells.length === 0) return;
+
+      // Unhighlight previous
+      const currentTarget = isP1 ? currentTargetCell1 : currentTargetCell2;
+      if (currentTarget) {
+        currentTarget.classList.remove('landed-target');
+        currentTarget.classList.add('visited-cell');
+      }
+
+      // Pick next random cell (prefer unvisited)
+      const unvisited = Array.from(cells).filter(c => !c.classList.contains('visited-cell'));
+      const pool = unvisited.length > 0 ? unvisited : cells;
+      const targetCell = pool[Math.floor(Math.random() * pool.length)];
+
+      if (isP1) currentTargetCell1 = targetCell;
+      else currentTargetCell2 = targetCell;
+
+      flyPlaneToCell(planeNum, targetCell);
+    }
+
+    function onCellDirectClick(planeNum, cell) {
+      const isP1 = planeNum === 1;
+      if (isP1 && isAirplaneFlying1) return;
+      if (!isP1 && isAirplaneFlying2) return;
+
+      playFlightWhoosh();
+      const currentTarget = isP1 ? currentTargetCell1 : currentTargetCell2;
+      if (currentTarget) {
+        currentTarget.classList.remove('landed-target');
+        currentTarget.classList.add('visited-cell');
+      }
+
+      if (isP1) currentTargetCell1 = cell;
+      else currentTargetCell2 = cell;
+
+      flyPlaneToCell(planeNum, cell);
+    }
+
+    function flyPlaneToCell(planeNum, cell) {
+      const isP1 = planeNum === 1;
+      const wrap = document.getElementById(isP1 ? 'carpet-grid-wrap-1' : 'carpet-grid-wrap-2');
+      const plane = document.getElementById(isP1 ? 'flying-airplane-1' : 'flying-airplane-2');
+      if (!wrap || !plane || !cell) return;
+
+      plane.style.display = 'block';
+
+      const wrapRect = wrap.getBoundingClientRect();
+      const cellRect = cell.getBoundingClientRect();
+
+      const targetX = (cellRect.left - wrapRect.left) + (cellRect.width / 2) - 29;
+      const targetY = (cellRect.top - wrapRect.top) + (cellRect.height / 2) - 29;
+
+      // Slight flight tilt
+      plane.style.left = targetX + 'px';
+      plane.style.top = targetY + 'px';
+      plane.style.transform = 'scale(1.2) rotate(-8deg)';
+
+      setTimeout(() => {
+        plane.style.transform = 'scale(1) rotate(0deg)';
+        cell.classList.add('landed-target');
+        if (isP1) isAirplaneFlying1 = false;
+        else isAirplaneFlying2 = false;
+
+        // Show flight deck
+        const syl = cell.getAttribute('data-val') || cell.textContent.trim();
+        const deck = document.getElementById(isP1 ? 'flight-deck-1' : 'flight-deck-2');
+        const sylLabel = document.getElementById(isP1 ? 'flight-deck-syl-1' : 'flight-deck-syl-2');
+        if (deck) deck.style.display = 'flex';
+        if (sylLabel) sylLabel.textContent = syl;
+
+        // Silent landing: Das Kind liest laut vor!
+        // Zum Anhören/Überprüfen kann auf 'Vorlesen' (🔊) geklickt werden.
+      }, 650);
+    }
+
+    function speakCurrentFlight(planeNum) {
+      playPop();
+      const isP1 = planeNum === 1;
+      const targetCell = isP1 ? currentTargetCell1 : currentTargetCell2;
+      if (!targetCell) return;
+      const syl = targetCell.getAttribute('data-val') || targetCell.textContent.trim();
+      speakText(syl, 0.85);
+    }
+
+    function finishCurrentFlight(planeNum) {
+      playDing();
+      const isP1 = planeNum === 1;
+      if (isP1) {
+        appState.flightCount1++;
+        const el = document.getElementById('flight-num-1');
+        if (el) el.textContent = appState.flightCount1;
+      } else {
+        appState.flightCount2++;
+        const el = document.getElementById('flight-num-2');
+        if (el) el.textContent = appState.flightCount2;
+      }
+
+      const targetCell = isP1 ? currentTargetCell1 : currentTargetCell2;
+      if (targetCell) {
+        launchMiniConfetti(targetCell);
+        targetCell.classList.add('visited-cell');
+      }
+
+      saveState();
+      checkAllFlightsDone(planeNum);
+      updateHubBadges();
+      checkGrandMasterCompletion();
+    }
+
+    function checkAllFlightsDone(planeNum) {
+      const isP1 = planeNum === 1;
+      const count = isP1 ? appState.flightCount1 : appState.flightCount2;
+      if (count === 10) {
+        launchBigFireworks();
+        speakText(isP1 ? "Großartig! Du hast Silbenflugzeug eins gemeistert!" : "Klasse! Du hast Silbenflugzeug zwei gemeistert!");
+      }
+    }
+
+    function resetFlights(planeNum) {
+      playPop();
+      const isP1 = planeNum === 1;
+      if (isP1) {
+        appState.flightCount1 = 0;
+        const el = document.getElementById('flight-num-1');
+        if (el) el.textContent = '0';
+        document.querySelectorAll('#carpet-table-1 .carpet-cell').forEach(c => c.classList.remove('visited-cell', 'landed-target'));
+        const p = document.getElementById('flying-airplane-1');
+        if (p) p.style.display = 'none';
+        const deck = document.getElementById('flight-deck-1');
+        if (deck) deck.style.display = 'none';
+        currentTargetCell1 = null;
+      } else {
+        appState.flightCount2 = 0;
+        const el = document.getElementById('flight-num-2');
+        if (el) el.textContent = '0';
+        document.querySelectorAll('#carpet-table-2 .carpet-cell').forEach(c => c.classList.remove('visited-cell', 'landed-target'));
+        const p = document.getElementById('flying-airplane-2');
+        if (p) p.style.display = 'none';
+        const deck = document.getElementById('flight-deck-2');
+        if (deck) deck.style.display = 'none';
+        currentTargetCell2 = null;
+      }
+      saveState();
+      updateHubBadges();
+    }
+
+    /* ==========================================================================
+       STATION 2: SÄTZE & WORTSCHATZ CONTROLLER
+       ========================================================================= */
+    function speakSentence(idx) {
+      playPop();
+      const data = SENTENCES_DATA[idx];
+      if (data) {
+        speakText(data.text);
+      }
+    }
+
+    function playSightWord(word) {
+      playPop();
+      speakText(word, 0.85);
+    }
+
+    // Toggle Sketch Drawing (Baum, Haus)
+    function toggleSentenceSketch(type, sentenceIdx) {
+      const id = type === 'baum' ? 'sketch-baum' : 'sketch-haus';
+      const btn = document.getElementById(id);
+      if (!btn) return;
+
+      btn.classList.toggle('colored');
+      const isColored = btn.classList.contains('colored');
+      appState.completedSketches[type] = isColored;
+
+      if (isColored) {
+        playDing();
+        launchMiniConfetti(btn);
+        speakText(type === 'baum' ? "Baum" : "Haus");
+      } else {
+        playPop();
+      }
+
+      updateStation2Counters();
+      checkStation2Completion();
+      saveState();
+    }
+
+    // Toggle Heart (Bedeutung: lieben)
+    function toggleSentenceHeart(sentenceIdx) {
+      const btn = document.getElementById('heart-btn-' + sentenceIdx);
+      if (!btn) return;
+
+      btn.classList.toggle('active');
+      const isActive = btn.classList.contains('active');
+      appState.completedHearts[sentenceIdx] = isActive;
+
+      if (isActive) {
+        playDing();
+        launchMiniConfetti(btn);
+        speakText("lieben");
+      } else {
+        playPop();
+      }
+
+      updateStation2Counters();
+      checkStation2Completion();
+      saveState();
+    }
+
+    // Toggle Star check for sentences 3, 4, 5
+    function toggleSentenceStar(sentenceIdx) {
+      const btn = document.getElementById('check-btn-' + sentenceIdx);
+      if (!btn) return;
+
+      btn.classList.toggle('checked');
+      const isChecked = btn.classList.contains('checked');
+      appState.completedStars[sentenceIdx] = isChecked;
+
+      if (isChecked) {
+        playDing();
+        launchMiniConfetti(btn);
+      } else {
+        playPop();
+      }
+
+      updateStation2Counters();
+      checkStation2Completion();
+      saveState();
+    }
+
+    // Box mit dem Wortschatz
+    function playVocabWord(idx) {
+      playPop();
+      const word = VOCAB_DATA[idx];
+      if (word) {
+        speakText(word);
+      }
+    }
+
+    function toggleVocabWord(idx) {
+      const card = document.getElementById('vocab-card-' + idx);
+      if (!card) return;
+
+      card.classList.toggle('word-completed');
+      const isDone = card.classList.contains('word-completed');
+      appState.completedVocab[idx] = isDone;
+
+      if (isDone) {
+        playDing();
+        launchMiniConfetti(card);
+        playVocabWord(idx);
+      } else {
+        playPop();
+      }
+
+      updateStation2Counters();
+      checkStation2Completion();
+      saveState();
+    }
+
+    function updateStation2Counters() {
+      // Sentences: Baum (1) + Haus (1) + Hearts (2, 6) + Stars (3, 4, 5) = 7 total
+      let sentCount = 0;
+      if (appState.completedSketches['baum']) sentCount++;
+      if (appState.completedSketches['haus']) sentCount++;
+      if (appState.completedHearts[2]) sentCount++;
+      if (appState.completedHearts[6]) sentCount++;
+      if (appState.completedStars[3]) sentCount++;
+      if (appState.completedStars[4]) sentCount++;
+      if (appState.completedStars[5]) sentCount++;
+
+      // Vocab: 6 words
+      let vocabCount = 0;
+      for (let i = 0; i < VOCAB_DATA.length; i++) {
+        if (appState.completedVocab[i]) vocabCount++;
+      }
+
+      const sBadge = document.getElementById('station-sentence-badge');
+      if (sBadge) sBadge.textContent = `🎨 ${sentCount} / 7 Sätze`;
+
+      const vBadge = document.getElementById('station-vocab-badge');
+      if (vBadge) vBadge.textContent = `📦 ${vocabCount} / 6 Wörter`;
+    }
+
+    function checkStation2Completion() {
+      let sentCount = 0;
+      if (appState.completedSketches['baum']) sentCount++;
+      if (appState.completedSketches['haus']) sentCount++;
+      if (appState.completedHearts[2]) sentCount++;
+      if (appState.completedHearts[6]) sentCount++;
+      if (appState.completedStars[3]) sentCount++;
+      if (appState.completedStars[4]) sentCount++;
+      if (appState.completedStars[5]) sentCount++;
+
+      let vocabCount = 0;
+      for (let i = 0; i < VOCAB_DATA.length; i++) {
+        if (appState.completedVocab[i]) vocabCount++;
+      }
+
+      const allSentencesDone = sentCount === 7;
+      const allVocabDone = vocabCount === 6;
+
+      // "so dass das Feuerwerk erst beginnt, wenn alles erledigt ist."
+      if (allSentencesDone && allVocabDone && !appState.station2Celebrated) {
+        appState.station2Celebrated = true;
+        launchBigFireworks();
+        speakText("Großartig! Du hast alle Sätze gelesen und alle Wörter im Wortschatz gemeistert!");
+      }
+
+      updateHubBadges();
+      checkGrandMasterCompletion();
+    }
+
+    function resetStation2() {
+      playPop();
+      appState.completedSketches = {};
+      appState.completedHearts = {};
+      appState.completedStars = {};
+      appState.completedVocab = {};
+      appState.station2Celebrated = false;
+
+      // Remove classes
+      document.querySelectorAll('.sketch-btn').forEach(b => b.classList.remove('colored'));
+      document.querySelectorAll('.sentence-heart-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.sentence-check-btn').forEach(b => b.classList.remove('checked'));
+      document.querySelectorAll('.vocab-card').forEach(b => b.classList.remove('word-completed'));
+
+      shuffleSentences();
+      updateStation2Counters();
+      updateHubBadges();
+      saveState();
+    }
+
+
+
+    /* ==========================================================================
+       GRAND MASTER CELEBRATION (Golden Star)
+       ========================================================================== */
+    function checkGrandMasterCompletion() {
+      const p1Done = appState.flightCount1 >= 10;
+      const p2Done = appState.flightCount2 >= 10;
+
+      let sentCount = 0;
+      if (appState.completedSketches['baum']) sentCount++;
+      if (appState.completedSketches['haus']) sentCount++;
+      if (appState.completedHearts[2]) sentCount++;
+      if (appState.completedHearts[6]) sentCount++;
+      if (appState.completedStars[3]) sentCount++;
+      if (appState.completedStars[4]) sentCount++;
+      if (appState.completedStars[5]) sentCount++;
+
+      let vocabCount = 0;
+      for (let i = 0; i < VOCAB_DATA.length; i++) {
+        if (appState.completedVocab[i]) vocabCount++;
+      }
+
+      const allSentencesDone = sentCount === 7;
+      const allVocabDone = vocabCount === 6;
+
+      if (p1Done && p2Done && allSentencesDone && allVocabDone && !appState.goldenStarAwarded) {
+        awardGoldenStar();
+      }
+    }
+
+    function awardGoldenStar() {
+      appState.goldenStarAwarded = true;
+
+      const hubBanner = document.getElementById('hub-star-banner');
+      if (hubBanner) hubBanner.style.display = 'flex';
+      const navStar = document.getElementById('nav-golden-star');
+      if (navStar) navStar.style.display = 'inline-block';
+
+      const modal = document.getElementById('star-reward-modal');
+      if (modal) modal.style.display = 'flex';
+
+      launchBigFireworks();
+      speakText("Hurra! Du bist heute ein echter Lese-Meister für T t! Hier ist dein verdienter goldener Stern!");
+      saveState();
+    }
+
+    function closeStarRewardModal() {
+      playPop();
+      const modal = document.getElementById('star-reward-modal');
+      if (modal) modal.style.display = 'none';
+      switchView('hub');
+    }
+
+    function updateHubBadges() {
+      // Update any status summaries in the hub if needed
+    }
+
+    /* ==========================================================================
+       VOICE RECORDING (MediaRecorder)
+       ========================================================================== */
+    async function toggleSentenceRecord(sentenceId) {
+      const recBtn = document.getElementById('rec-btn-' + sentenceId);
+      const playBtn = document.getElementById('play-btn-' + sentenceId);
+
+      if (currentRecordingKey === sentenceId && activeMediaRecorder && activeMediaRecorder.state === 'recording') {
+        // Stop recording
+        activeMediaRecorder.stop();
+        if (recBtn) recBtn.classList.remove('recording');
+        currentRecordingKey = null;
+        return;
+      }
+
+      // Start recording
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        recordedChunks = [];
+        activeMediaRecorder = new MediaRecorder(stream);
+
+        activeMediaRecorder.ondataavailable = (e) => {
+          if (e.data.size > 0) recordedChunks.push(e.data);
+        };
+
+        activeMediaRecorder.onstop = () => {
+          const blob = new Blob(recordedChunks, { type: 'audio/webm' });
+          audioRecordings[sentenceId] = URL.createObjectURL(blob);
+          if (playBtn) playBtn.disabled = false;
+          playDing();
+        };
+
+        activeMediaRecorder.start();
+        currentRecordingKey = sentenceId;
+        if (recBtn) recBtn.classList.add('recording');
+      } catch (err) {
+        alert("Mikrofon-Zugriff nicht verfügbar oder nicht erlaubt.");
+      }
+    }
+
+    function playSentenceRecording(sentenceId) {
+      const url = audioRecordings[sentenceId];
+      if (!url) return;
+      playPop();
+      const a = new Audio(url);
+      a.play();
+    }
+
+    async function toggleFlightRecord(planeNum) {
+      const key = 'flight_' + planeNum;
+      const recBtn = document.getElementById('btn-rec-flight-' + planeNum);
+      const label = document.getElementById('rec-label-' + planeNum);
+      const playBtn = document.getElementById('btn-play-flight-' + planeNum);
+
+      if (currentRecordingKey === key && activeMediaRecorder && activeMediaRecorder.state === 'recording') {
+        activeMediaRecorder.stop();
+        if (recBtn) recBtn.classList.remove('recording');
+        if (label) label.textContent = 'Aufnehmen';
+        currentRecordingKey = null;
+        return;
+      }
+
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        recordedChunks = [];
+        activeMediaRecorder = new MediaRecorder(stream);
+
+        activeMediaRecorder.ondataavailable = (e) => {
+          if (e.data.size > 0) recordedChunks.push(e.data);
+        };
+
+        activeMediaRecorder.onstop = () => {
+          const blob = new Blob(recordedChunks, { type: 'audio/webm' });
+          audioRecordings[key] = URL.createObjectURL(blob);
+          if (playBtn) playBtn.disabled = false;
+          playDing();
+        };
+
+        activeMediaRecorder.start();
+        currentRecordingKey = key;
+        if (recBtn) recBtn.classList.add('recording');
+        if (label) label.textContent = 'Stoppen';
+      } catch (err) {
+        alert("Mikrofon-Zugriff nicht verfügbar.");
+      }
+    }
+
+    function playFlightRecording(planeNum) {
+      const key = 'flight_' + planeNum;
+      const url = audioRecordings[key];
+      if (!url) return;
+      playPop();
+      const a = new Audio(url);
+      a.play();
+    }
+
+    /* ==========================================================================
+       CONFETTI & FIREWORKS ENGINE
+       ========================================================================== */
+    function launchMiniConfetti(element) {
+      if (!element) return;
+      const rect = element.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      createSparks(cx, cy, 25);
+    }
+
+    function launchBigFireworks() {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      for (let i = 0; i < 5; i++) {
+        setTimeout(() => {
+          const rx = w * 0.2 + Math.random() * (w * 0.6);
+          const ry = h * 0.2 + Math.random() * (h * 0.4);
+          createSparks(rx, ry, 70);
+        }, i * 350);
+      }
+    }
+
+    const canvas = document.getElementById('fireworks-canvas');
+    const ctx = canvas ? canvas.getContext('2d') : null;
+    let particles = [];
+    let animationId = null;
+
+    function resizeCanvas() {
+      if (!canvas) return;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function createSparks(x, y, count) {
+      if (!canvas || !ctx) return;
+      const colors = ['#ea580c', '#f59e0b', '#ef4444', '#10b981', '#3b82f6', '#8b5cf6', '#ec4899', '#fde047'];
+      for (let i = 0; i < count; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = 2 + Math.random() * 6;
+        particles.push({
+          x: x,
+          y: y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          radius: 2 + Math.random() * 3.5,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          alpha: 1,
+          decay: 0.015 + Math.random() * 0.02
+        });
+      }
+      if (!animationId) {
+        renderFireworks();
+      }
+    }
+
+    function renderFireworks() {
+      if (!ctx || !canvas) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.08; // gravity
+        p.alpha -= p.decay;
+
+        if (p.alpha <= 0) {
+          particles.splice(i, 1);
+          continue;
+        }
+
+        ctx.save();
+        ctx.globalAlpha = p.alpha;
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      if (particles.length > 0) {
+        animationId = requestAnimationFrame(renderFireworks);
+      } else {
+        animationId = null;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+  </script>
+</body>
+</html>
+
