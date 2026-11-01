@@ -1,0 +1,2557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Demonstrative Pronouns & People • أسماء الإشارة والناس • Egyptian Arabic</title>
+  <meta name="description" content="Learn and master Egyptian Arabic demonstrative pronouns (da, di, dool) and people vocabulary with interactive activities, drag & drop, audio, and active recall typing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f8fafc;
+      --paper: #ffffff;
+      --paper-subtle: #f1f5f9;
+      --ink: #0f172a;
+      --ink-soft: #475569;
+      --ink-muted: #64748b;
+      --border: #e2e8f0;
+      --border-strong: #cbd5e1;
+
+      /* Egyptian Warm Palette */
+      --teal: #0f766e;
+      --teal-hover: #115e59;
+      --teal-light: #f0fdfa;
+      --teal-border: #99f6e4;
+
+      --amber: #d97706;
+      --amber-hover: #b45309;
+      --amber-light: #fffbeb;
+      --amber-border: #fde68a;
+
+      --emerald: #059669;
+      --emerald-light: #ecfdf5;
+      --emerald-border: #a7f3d0;
+
+      --rose: #e11d48;
+      --rose-light: #fff1f2;
+      --rose-border: #fecdd3;
+
+      --indigo: #4f46e5;
+      --indigo-light: #eef2ff;
+      --indigo-border: #c7d2fe;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 6px 18px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 16px 32px rgba(15, 118, 110, 0.12);
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+
+      --font-display: 'Outfit', system-ui, sans-serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+      /* Textbook Arabic font (Arial / Noto Sans Arabic) identical to the Word document */
+      --font-arabic: 'Arial', 'Segoe UI', 'Noto Sans Arabic', 'Calibri', Tahoma, sans-serif;
+      --font-franco: 'JetBrains Mono', 'Plus Jakarta Sans', monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(#cbd5e1 1.2px, transparent 1.2px),
+        linear-gradient(180deg, #f0fdfa 0%, #f8fafc 320px);
+      background-size: 24px 24px, 100% 320px;
+      color: var(--ink);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px 20px 60px;
+      width: 100%;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--teal);
+      background: var(--paper);
+      border: 1px solid var(--teal-border);
+      padding: 8px 16px;
+      border-radius: 9999px;
+      text-decoration: none;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.15s ease;
+    }
+
+    .back-btn:hover {
+      background: var(--teal-light);
+      transform: translateX(-2px);
+    }
+
+    .badge-pill {
+      font-size: 0.84rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: var(--amber-light);
+      color: #b45309;
+      border: 1px solid var(--amber-border);
+    }
+
+    .pill-source {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      color: var(--ink-soft);
+      font-size: 0.84rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 9999px;
+    }
+
+    .ar-badge-txt {
+      font-family: var(--font-arabic) !important;
+      direction: rtl;
+      display: inline-block;
+      font-weight: 700;
+    }
+
+    .ar-inline-txt {
+      font-family: var(--font-arabic) !important;
+      direction: rtl;
+      display: inline-block;
+      font-weight: 700;
+    }
+
+    /* Mode Switcher Banner (Franco vs Arabic) */
+    .script-switcher-box {
+      background: #ffffff;
+      border: 2px solid var(--teal-border);
+      border-radius: 18px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .script-toggle-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .script-toggle-icon {
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    .script-toggle-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.25;
+    }
+
+    .script-toggle-info p {
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+    }
+
+    .script-toggle-group {
+      display: inline-flex;
+      background: var(--paper-subtle);
+      padding: 4px;
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+      gap: 4px;
+    }
+
+    .script-btn {
+      border: none;
+      background: transparent;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--ink-soft);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .script-btn.active {
+      background: var(--teal);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(15, 118, 110, 0.3);
+    }
+
+    /* Page Header */
+    .page-head {
+      margin-bottom: 24px;
+    }
+
+    .page-title-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    h1.page-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.8vw, 2.5rem);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .arabic-title {
+      font-family: var(--font-arabic) !important;
+      font-size: clamp(1.8rem, 3.8vw, 2.5rem);
+      color: var(--teal);
+      direction: rtl;
+    }
+
+    .page-desc {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      max-width: 860px;
+    }
+
+    /* Franco Tip Callout */
+    .franco-tip {
+      background: var(--amber-light);
+      border: 1.5px solid var(--amber-border);
+      border-radius: 12px;
+      padding: 12px 18px;
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.92rem;
+      color: #92400e;
+    }
+
+    .franco-tip code {
+      font-family: var(--font-franco);
+      font-weight: 700;
+      background: #ffffff;
+      padding: 2px 7px;
+      border-radius: 6px;
+      border: 1px solid var(--amber-border);
+      color: #b45309;
+    }
+
+    /* Activity Nav Tabs */
+    .activity-nav {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    @media (max-width: 820px) {
+      .activity-nav {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .activity-nav {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .act-tab-btn {
+      background: #ffffff;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .act-tab-btn:hover {
+      border-color: var(--teal-border);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .act-tab-btn.active {
+      background: #ffffff;
+      border-color: var(--teal);
+      box-shadow: 0 4px 14px rgba(15, 118, 110, 0.15);
+      position: relative;
+    }
+
+    .act-tab-btn.active::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 14px;
+      right: 14px;
+      height: 3px;
+      background: var(--teal);
+      border-radius: 2px;
+    }
+
+    .act-badge {
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ink-muted);
+    }
+
+    .act-tab-btn.active .act-badge {
+      color: var(--teal);
+    }
+
+    .act-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .act-desc {
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      line-height: 1.35;
+    }
+
+    /* Container for Activities */
+    .activity-panel {
+      background: #ffffff;
+      border: 2px solid var(--border);
+      border-radius: 22px;
+      padding: 30px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 30px;
+    }
+
+    .activity-panel.hidden {
+      display: none;
+    }
+
+    .panel-header {
+      margin-bottom: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      padding-bottom: 16px;
+      border-bottom: 1.5px solid var(--border);
+    }
+
+    .panel-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .panel-instruction {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      margin-top: 4px;
+    }
+
+    .panel-action-pills {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Sound button helper */
+    .audio-play-btn {
+      background: var(--teal-light);
+      border: 1px solid var(--teal-border);
+      color: var(--teal);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.15s ease;
+      flex-shrink: 0;
+    }
+
+    .audio-play-btn:hover {
+      background: var(--teal);
+      color: #ffffff;
+      transform: scale(1.08);
+    }
+
+    /* ==========================================================================
+       TAB 0: REFERENCE & PEOPLE CARDS
+       ========================================================================== */
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 768px) {
+      .rules-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .rule-card {
+      background: #f8fafc;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .rule-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+
+    .rule-card.masc::before { background: var(--teal); }
+    .rule-card.fem::before { background: var(--rose); }
+    .rule-card.plur::before { background: var(--amber); }
+
+    .rule-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .rule-pronoun-ar {
+      font-family: var(--font-arabic) !important;
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1;
+      direction: rtl;
+    }
+
+    .rule-card.masc .rule-pronoun-ar { color: var(--teal); }
+    .rule-card.fem .rule-pronoun-ar { color: var(--rose); }
+    .rule-card.plur .rule-pronoun-ar { color: var(--amber); }
+
+    .rule-pronoun-fr {
+      font-family: var(--font-franco);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--ink-soft);
+      background: #ffffff;
+      padding: 2px 10px;
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+    }
+
+    .rule-target-tag {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 3px 10px;
+      border-radius: 9999px;
+    }
+
+    .rule-card.masc .rule-target-tag { background: var(--teal-light); color: var(--teal); }
+    .rule-card.fem .rule-target-tag { background: var(--rose-light); color: var(--rose); }
+    .rule-card.plur .rule-target-tag { background: var(--amber-light); color: #b45309; }
+
+    .rule-card-body p {
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+      line-height: 1.45;
+      margin-bottom: 8px;
+    }
+
+    .rule-example-chip {
+      background: #ffffff;
+      border: 1px dashed var(--border-strong);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .rule-example-ar {
+      font-family: var(--font-arabic) !important;
+      direction: rtl;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    /* People Cards Grid */
+    .section-subhead {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .people-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .person-card {
+      background: #ffffff;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+      transition: all 0.18s ease;
+      position: relative;
+    }
+
+    .person-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--teal);
+    }
+
+    .person-icon {
+      font-size: 2.4rem;
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+
+    .person-word-ar {
+      font-family: var(--font-arabic) !important;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--ink);
+      direction: rtl;
+      line-height: 1.1;
+    }
+
+    .person-word-fr {
+      font-family: var(--font-franco);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--teal);
+    }
+
+    .person-word-en {
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+      font-weight: 600;
+    }
+
+    .person-pronoun-badge {
+      margin-top: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      background: var(--paper-subtle);
+      border: 1px solid var(--border);
+      color: var(--ink-muted);
+    }
+
+    .person-pronoun-badge span.ar {
+      font-family: var(--font-arabic) !important;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .person-audio-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: #f8fafc;
+      color: var(--ink-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all 0.15s ease;
+    }
+
+    .person-audio-btn:hover {
+      background: var(--teal);
+      color: #ffffff;
+      border-color: var(--teal);
+    }
+
+    /* Textbook Sentences Showcase */
+    .sentences-showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .sentences-showcase-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .sentence-showcase-card {
+      background: var(--paper-subtle);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      transition: all 0.15s ease;
+    }
+
+    .sentence-showcase-card:hover {
+      border-color: var(--teal-border);
+      background: #ffffff;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sentence-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .sentence-text-primary {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .sentence-text-primary.script-ar {
+      font-family: var(--font-arabic) !important;
+      direction: rtl;
+      text-align: right;
+    }
+
+    .sentence-text-primary.script-fr {
+      font-family: var(--font-franco);
+      color: var(--teal);
+    }
+
+    .sentence-text-sec {
+      font-size: 0.92rem;
+      color: var(--ink-muted);
+    }
+
+    .sentence-text-en {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       TAB 1: ACTIVITY 1 - PRONOUN SORT & SENTENCE BUILDER
+       ========================================================================== */
+    .subtask-toggle-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    .subtask-btn {
+      background: var(--paper-subtle);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--ink-soft);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .subtask-btn.active {
+      background: var(--teal);
+      color: #ffffff;
+      border-color: var(--teal);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* 1A: Categorize Buckets */
+    .buckets-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .buckets-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .pronoun-drop-bucket {
+      background: #f8fafc;
+      border: 2px dashed var(--border-strong);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: all 0.2s ease;
+    }
+
+    .pronoun-drop-bucket.drag-over {
+      background: var(--teal-light);
+      border-color: var(--teal);
+      border-style: solid;
+    }
+
+    .bucket-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 8px;
+      border-bottom: 1.5px solid var(--border);
+    }
+
+    .bucket-pronoun-label {
+      font-size: 1.5rem;
+      font-weight: 800;
+    }
+
+    .bucket-pronoun-label.script-ar {
+      font-family: var(--font-arabic) !important;
+      direction: rtl;
+    }
+
+    .bucket-pronoun-label.script-fr {
+      font-family: var(--font-franco);
+    }
+
+    .bucket-desc {
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+
+    .bucket-chips-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex-grow: 1;
+    }
+
+    .bucket-empty-hint {
+      margin: auto;
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* Word Bank Pool */
+    .word-bank-box {
+      background: var(--paper-subtle);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 24px;
+    }
+
+    .word-bank-header {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .chips-pool {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      min-height: 48px;
+    }
+
+    .draggable-word-chip {
+      background: #ffffff;
+      border: 2px solid var(--border-strong);
+      border-radius: 12px;
+      padding: 8px 16px;
+      font-weight: 700;
+      color: var(--ink);
+      cursor: grab;
+      user-select: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 4px rgba(15, 23, 42, 0.05);
+      transition: all 0.15s ease;
+    }
+
+    .draggable-word-chip:hover {
+      border-color: var(--teal);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .draggable-word-chip:active {
+      cursor: grabbing;
+      opacity: 0.7;
+    }
+
+    .draggable-word-chip.script-ar {
+      font-family: var(--font-arabic) !important;
+      direction: rtl;
+      font-size: 1.25rem;
+    }
+
+    .draggable-word-chip.script-fr {
+      font-family: var(--font-franco);
+      font-size: 0.95rem;
+    }
+
+    .draggable-word-chip.correct {
+      background: var(--emerald-light) !important;
+      border-color: var(--emerald) !important;
+      color: var(--emerald) !important;
+    }
+
+    .draggable-word-chip.wrong {
+      background: var(--rose-light) !important;
+      border-color: var(--rose) !important;
+      color: var(--rose) !important;
+    }
+
+    /* 1B: Sentence Unscramble Builder */
+    .unscramble-card {
+      background: #f8fafc;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .unscramble-prompt {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .target-slot-row {
+      background: #ffffff;
+      border: 2px dashed var(--teal-border);
+      border-radius: 14px;
+      padding: 14px;
+      min-height: 60px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .target-slot-row.script-ar {
+      direction: rtl;
+    }
+
+    .scrambled-pool-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      padding: 4px 0;
+    }
+
+    .scrambled-pool-row.script-ar {
+      direction: rtl;
+    }
+
+    .puzzle-token-btn {
+      background: #ffffff;
+      border: 2px solid var(--border-strong);
+      border-radius: 10px;
+      padding: 8px 16px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+      transition: all 0.15s ease;
+      color: var(--ink);
+    }
+
+    .puzzle-token-btn:hover {
+      border-color: var(--teal);
+      transform: translateY(-2px);
+    }
+
+    .puzzle-token-btn.script-ar {
+      font-family: var(--font-arabic) !important;
+      font-size: 1.3rem;
+    }
+
+    .puzzle-token-btn.script-fr {
+      font-family: var(--font-franco);
+      font-size: 0.95rem;
+    }
+
+    .puzzle-token-btn.used {
+      opacity: 0.25;
+      pointer-events: none;
+      border-style: dashed;
+    }
+
+    /* ==========================================================================
+       TAB 2: ACTIVITY 2 - DRAG & DROP GAP FILL
+       ========================================================================== */
+    .gap-sentences-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .gap-sentence-card {
+      background: #f8fafc;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: all 0.15s ease;
+    }
+
+    .gap-sentence-card.is-correct {
+      border-color: var(--emerald);
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.08);
+    }
+
+    .gap-sentence-card.is-wrong {
+      border-color: var(--rose);
+      background: #ffffff;
+    }
+
+    .gap-line-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .gap-line-content {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .gap-line-content.script-ar {
+      font-family: var(--font-arabic) !important;
+      direction: rtl;
+    }
+
+    .gap-line-content.script-fr {
+      font-family: var(--font-franco);
+    }
+
+    .drop-slot {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 90px;
+      height: 42px;
+      padding: 4px 12px;
+      background: #ffffff;
+      border: 2px dashed var(--teal-border);
+      border-radius: 10px;
+      color: var(--teal);
+      font-weight: 700;
+      cursor: pointer;
+      vertical-align: middle;
+      transition: all 0.15s ease;
+    }
+
+    .drop-slot.drag-over {
+      background: var(--teal-light);
+      border-color: var(--teal);
+      border-style: solid;
+      transform: scale(1.04);
+    }
+
+    .drop-slot.filled {
+      border-style: solid;
+      border-color: var(--teal);
+      background: var(--teal-light);
+    }
+
+    .drop-slot.correct {
+      border-color: var(--emerald) !important;
+      background: var(--emerald-light) !important;
+      color: #065f46 !important;
+    }
+
+    .drop-slot.wrong {
+      border-color: var(--rose) !important;
+      background: var(--rose-light) !important;
+      color: #9f1239 !important;
+    }
+
+    .gap-trans-en {
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+      font-weight: 600;
+      margin-left: 2px;
+    }
+
+    /* ==========================================================================
+       TAB 3: ACTIVITY 3 - ACTIVE RECALL TYPING
+       ========================================================================== */
+    .typing-challenge-container {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .typing-card {
+      background: #f8fafc;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      text-align: center;
+      position: relative;
+    }
+
+    .typing-prompt-en {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .typing-prompt-hint {
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+      margin-bottom: 20px;
+    }
+
+    .user-typing-input {
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 14px;
+      border: 2.5px solid var(--border-strong);
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-align: center;
+      color: var(--ink);
+      background: #ffffff;
+      transition: all 0.15s ease;
+      outline: none;
+      margin-bottom: 12px;
+    }
+
+    .user-typing-input.script-ar {
+      font-family: var(--font-arabic) !important;
+      direction: rtl;
+    }
+
+    .user-typing-input.script-fr {
+      font-family: var(--font-franco);
+    }
+
+    .user-typing-input:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.12);
+    }
+
+    .user-typing-input.correct {
+      border-color: var(--emerald) !important;
+      background: var(--emerald-light) !important;
+      color: #065f46 !important;
+    }
+
+    .user-typing-input.wrong {
+      border-color: var(--rose) !important;
+      background: var(--rose-light) !important;
+      color: #9f1239 !important;
+    }
+
+    /* Virtual Arabic Keyboard */
+    .ar-keyboard-wrapper {
+      background: var(--paper-subtle);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+      margin-top: 10px;
+    }
+
+    .ar-keyboard-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--ink-muted);
+      margin-bottom: 8px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .ar-keys-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      direction: rtl;
+    }
+
+    .ar-key-btn {
+      font-family: var(--font-arabic) !important;
+      font-size: 1.3rem;
+      min-width: 38px;
+      height: 38px;
+      background: #ffffff;
+      border: 1.5px solid var(--border-strong);
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink);
+      transition: all 0.12s ease;
+    }
+
+    .ar-key-btn:hover {
+      background: var(--teal-light);
+      border-color: var(--teal);
+      transform: translateY(-2px);
+    }
+
+    .ar-key-special {
+      font-family: var(--font-display) !important;
+      font-size: 0.85rem !important;
+      font-weight: 700;
+      padding: 0 12px;
+      background: #f1f5f9;
+    }
+
+    /* Diff character feedback */
+    .char-diff-row {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      margin: 12px 0;
+      min-height: 32px;
+      direction: rtl;
+    }
+
+    .char-diff-row.script-fr {
+      direction: ltr;
+    }
+
+    .diff-char {
+      font-family: var(--font-arabic) !important;
+      font-size: 1.25rem;
+      font-weight: 700;
+      width: 28px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+    }
+
+    .char-diff-row.script-fr .diff-char {
+      font-family: var(--font-franco) !important;
+      font-size: 1rem;
+    }
+
+    .diff-char.match {
+      background: var(--emerald-light);
+      color: #065f46;
+      border: 1px solid var(--emerald-border);
+    }
+
+    .diff-char.mismatch {
+      background: var(--rose-light);
+      color: #9f1239;
+      border: 1px solid var(--rose-border);
+    }
+
+    /* Action Buttons Bar */
+    .action-buttons-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1.5px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .btn-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .primary-btn {
+      background: var(--teal);
+      color: #ffffff;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 9999px;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(15, 118, 110, 0.25);
+      transition: all 0.15s ease;
+    }
+
+    .primary-btn:hover {
+      background: var(--teal-hover);
+      transform: translateY(-1px);
+    }
+
+    .secondary-btn {
+      background: #ffffff;
+      border: 1.5px solid var(--border-strong);
+      color: var(--ink-soft);
+      padding: 10px 20px;
+      border-radius: 9999px;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.15s ease;
+    }
+
+    .secondary-btn:hover {
+      background: var(--paper-subtle);
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+
+    .score-feedback-pill {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      background: var(--paper-subtle);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }
+
+    /* Footer */
+    footer.page-footer {
+      text-align: center;
+      color: var(--ink-muted);
+      font-size: 0.9rem;
+      margin-top: auto;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    footer.page-footer a {
+      color: var(--teal);
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Top Bar -->
+    <nav class="top-bar" aria-label="Main navigation">
+      <div class="nav-left">
+        <a href="../index.html" class="back-btn">
+          <span>➔</span> Back to Arabic Hub
+        </a>
+        <span class="badge-pill">Egyptian Colloquial • عامية مصرية</span>
+        <span class="pill-source">Lesson 2.2: Demonstratives • <span class="ar-badge-txt">دا • دي • دول</span></span>
+      </div>
+    </nav>
+
+    <!-- Script Switcher Banner (Franco vs Arabic) -->
+    <aside class="script-switcher-box" aria-label="Script toggle">
+      <div class="script-toggle-info">
+        <div class="script-toggle-icon">🔤</div>
+        <div>
+          <h3 id="activeModeLabel">Arabic Alphabet (العربية)</h3>
+          <p id="activeModeSub">Learn with clear textbook Arabic script (Arial / Aptos style)</p>
+        </div>
+      </div>
+      <div class="script-toggle-group" role="group" aria-label="Toggle script style">
+        <button class="script-btn active" id="btnScriptAr" type="button">Arabic Script (عربي)</button>
+        <button class="script-btn" id="btnScriptFr" type="button">Franco-Arabic (Arabizi)</button>
+      </div>
+    </aside>
+
+    <!-- Page Header -->
+    <header class="page-head">
+      <div class="page-title-row">
+        <h1 class="page-title">Demonstrative Pronouns &amp; People</h1>
+        <span class="arabic-title" lang="ar">أسماء الإشارة والناس</span>
+      </div>
+      <p class="page-desc">
+        Master the three essential Egyptian demonstratives: <strong>دا</strong> (da - this/that is for masculine), <strong>دي</strong> (di - this/that is for feminine), and <strong>دول</strong> (dool - these/those are for plural people), combined with the 10 words for people from the Level 1 Book (pages 15–16).
+      </p>
+
+      <div class="franco-tip" id="francoNotice" style="display: none;">
+        <span>💡</span>
+        <div>
+          <strong>Franco-Arabic Guide:</strong> Numbers are used for unique Arabic sounds: 
+          <code>7 = <span class="ar-inline-txt" lang="ar">ح</span></code> (warm breath), 
+          <code>3 = <span class="ar-inline-txt" lang="ar">ع</span></code> ('Ayn throat sound), 
+          <code>5 = <span class="ar-inline-txt" lang="ar">خ</span></code> (raspy kh), 
+          <code>2 = <span class="ar-inline-txt" lang="ar">ء/أ</span></code> (glottal stop),
+          <code>T = <span class="ar-inline-txt" lang="ar">ط</span></code> (deep T).
+        </div>
+      </div>
+    </header>
+
+    <!-- Activity Nav Tabs -->
+    <nav class="activity-nav" aria-label="Activities">
+      <button class="act-tab-btn active" id="tabAct0" type="button">
+        <span class="act-badge">Reference</span>
+        <span class="act-title">📖 Rules &amp; People</span>
+        <span class="act-desc">Explore the 3 pronouns, 10 people words, &amp; audio</span>
+      </button>
+      <button class="act-tab-btn" id="tabAct1" type="button">
+        <span class="act-badge">Activity 1</span>
+        <span class="act-title">🧩 Sort &amp; Build</span>
+        <span class="act-desc">Match pronouns &amp; build scrambled sentences</span>
+      </button>
+      <button class="act-tab-btn" id="tabAct2" type="button">
+        <span class="act-badge">Activity 2</span>
+        <span class="act-title">🖐️ Drag &amp; Drop Gaps</span>
+        <span class="act-desc">Fill the missing pronouns in sentence blanks</span>
+      </button>
+      <button class="act-tab-btn" id="tabAct3" type="button">
+        <span class="act-badge">Activity 3</span>
+        <span class="act-title">✍️ Active Recall</span>
+        <span class="act-desc">Type the answer with on-screen Arabic keyboard</span>
+      </button>
+    </nav>
+
+    <!-- =====================================================================
+         PANEL 0: REFERENCE & PEOPLE CARDS
+         ===================================================================== -->
+    <section class="activity-panel" id="panelAct0" aria-label="Reference and vocabulary">
+      <header class="panel-header">
+        <div>
+          <h2 class="panel-title">📚 Egyptian Demonstrative Rules (p. 15)</h2>
+          <p class="panel-instruction">Egyptian Arabic uses three simple words for "this is / that is / these are":</p>
+        </div>
+      </header>
+
+      <!-- 3 Core Pronoun Rule Cards -->
+      <div class="rules-grid">
+        <div class="rule-card masc">
+          <div class="rule-card-top">
+            <span class="rule-pronoun-ar" lang="ar">دا</span>
+            <span class="rule-pronoun-fr">da</span>
+            <span class="rule-target-tag">Masculine</span>
+            <button class="audio-play-btn" type="button" aria-label="Listen to da" onclick="playEgyptianAudio('pronoun_da.mp3', 'دا')">🔊</button>
+          </div>
+          <div class="rule-card-body">
+            <p><strong>This is / That is</strong> for singular male words &amp; masculine nouns.</p>
+            <div class="rule-example-chip">
+              <span class="rule-example-ar" lang="ar">دا راجل عجوز.</span>
+              <span class="rule-example-fr" style="font-family: var(--font-franco); font-size: 0.85rem; color: var(--teal);">da ragel Agooz.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rule-card fem">
+          <div class="rule-card-top">
+            <span class="rule-pronoun-ar" lang="ar">دي</span>
+            <span class="rule-pronoun-fr">di / dee</span>
+            <span class="rule-target-tag">Feminine</span>
+            <button class="audio-play-btn" type="button" aria-label="Listen to di" onclick="playEgyptianAudio('pronoun_di.mp3', 'دي')">🔊</button>
+          </div>
+          <div class="rule-card-body">
+            <p><strong>This is / That is</strong> for singular female words &amp; words ending with ة (teh marboota).</p>
+            <div class="rule-example-chip">
+              <span class="rule-example-ar" lang="ar">دي بنت جميلة.</span>
+              <span class="rule-example-fr" style="font-family: var(--font-franco); font-size: 0.85rem; color: var(--rose);">di bent gameela.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rule-card plur">
+          <div class="rule-card-top">
+            <span class="rule-pronoun-ar" lang="ar">دول</span>
+            <span class="rule-pronoun-fr">duul / dool</span>
+            <span class="rule-target-tag">Plural People</span>
+            <button class="audio-play-btn" type="button" aria-label="Listen to dool" onclick="playEgyptianAudio('pronoun_duul.mp3', 'دول')">🔊</button>
+          </div>
+          <div class="rule-card-body">
+            <p><strong>These are / Those are</strong> specifically for groups of human beings.</p>
+            <div class="rule-example-chip">
+              <span class="rule-example-ar" lang="ar">دول ناس كتير.</span>
+              <span class="rule-example-fr" style="font-family: var(--font-franco); font-size: 0.85rem; color: #b45309;">dool nas kateer.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- People Vocabulary Grid (10 Words from p. 15) -->
+      <h3 class="section-subhead"><span>👥</span> People Vocabulary • <span class="ar-inline-txt" lang="ar">نَاس</span> (naas)</h3>
+      <div class="people-cards-grid" id="peopleCardsContainer">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Textbook Example Sentences Showcase (p. 16) -->
+      <h3 class="section-subhead"><span>💬</span> Textbook Example Sentences (p. 16)</h3>
+      <div class="sentences-showcase-grid" id="sentencesShowcaseContainer">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         PANEL 1: ACTIVITY 1 - PRONOUN SORT & SENTENCE BUILDER
+         ===================================================================== -->
+    <section class="activity-panel hidden" id="panelAct1" aria-label="Sort and build activity">
+      <header class="panel-header">
+        <div>
+          <h2 class="panel-title">🧩 Categorize &amp; Build Sentences</h2>
+          <p class="panel-instruction" id="act1Instruction">Choose whether to categorize people into their pronoun buckets or unscramble the sentence blocks.</p>
+        </div>
+        <div class="panel-action-pills">
+          <div class="subtask-toggle-bar" style="margin-bottom: 0; border-bottom: none; padding-bottom: 0;">
+            <button class="subtask-btn active" id="btnSubtaskSort" type="button">Bucket Sort (da/di/dool)</button>
+            <button class="subtask-btn" id="btnSubtaskPuzzle" type="button">Sentence Unscramble</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Subtask 1A: Bucket Sort -->
+      <div id="subtaskSortContainer">
+        <div class="word-bank-box">
+          <div class="word-bank-header">
+            <span>Word Bank (Click or drag a person to the correct pronoun bucket):</span>
+            <span id="sortRemainingBadge" class="score-feedback-pill">10 left</span>
+          </div>
+          <div class="chips-pool" id="sortChipsPool">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <div class="buckets-grid">
+          <div class="pronoun-drop-bucket" id="bucketDa" data-pronoun="da">
+            <div class="bucket-head">
+              <span class="bucket-pronoun-label script-ar" lang="ar">دا</span>
+              <span class="bucket-desc">Masculine (da)</span>
+            </div>
+            <div class="bucket-chips-list" id="bucketListDa">
+              <div class="bucket-empty-hint">Drop masculine people here</div>
+            </div>
+          </div>
+
+          <div class="pronoun-drop-bucket" id="bucketDi" data-pronoun="di">
+            <div class="bucket-head">
+              <span class="bucket-pronoun-label script-ar" lang="ar">دي</span>
+              <span class="bucket-desc">Feminine (di)</span>
+            </div>
+            <div class="bucket-chips-list" id="bucketListDi">
+              <div class="bucket-empty-hint">Drop feminine people here</div>
+            </div>
+          </div>
+
+          <div class="pronoun-drop-bucket" id="bucketDuul" data-pronoun="duul">
+            <div class="bucket-head">
+              <span class="bucket-pronoun-label script-ar" lang="ar">دول</span>
+              <span class="bucket-desc">Plural (dool)</span>
+            </div>
+            <div class="bucket-chips-list" id="bucketListDuul">
+              <div class="bucket-empty-hint">Drop plural people here</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subtask 1B: Sentence Unscramble -->
+      <div id="subtaskPuzzleContainer" style="display: none;">
+        <div id="puzzlesList">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <footer class="action-buttons-bar">
+        <div class="btn-group">
+          <button class="secondary-btn" id="btnResetAct1" type="button">🔄 Reset Activity</button>
+        </div>
+        <span class="score-feedback-pill" id="act1ScorePill">Sort Score: 0 / 10</span>
+      </footer>
+    </section>
+
+    <!-- =====================================================================
+         PANEL 2: ACTIVITY 2 - DRAG & DROP GAP FILL
+         ===================================================================== -->
+    <section class="activity-panel hidden" id="panelAct2" aria-label="Gap fill activity">
+      <header class="panel-header">
+        <div>
+          <h2 class="panel-title">🖐️ Drag &amp; Drop Gap Fill</h2>
+          <p class="panel-instruction">Drag or click the missing demonstrative pronoun or noun into the blank of each sentence.</p>
+        </div>
+        <div class="panel-action-pills">
+          <span class="score-feedback-pill" id="act2ScorePill">Progress: 0 / 6</span>
+        </div>
+      </header>
+
+      <div class="word-bank-box">
+        <div class="word-bank-header">
+          <span>Available Word Chips:</span>
+          <span style="font-size: 0.82rem; color: var(--ink-muted);">Click chip then slot, or drag</span>
+        </div>
+        <div class="chips-pool" id="gapChipsPool">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <div class="gap-sentences-list" id="gapSentencesList">
+        <!-- Rendered by JS -->
+      </div>
+
+      <footer class="action-buttons-bar">
+        <div class="btn-group">
+          <button class="secondary-btn" id="btnResetAct2" type="button">🔄 Reset All Gaps</button>
+        </div>
+      </footer>
+    </section>
+
+    <!-- =====================================================================
+         PANEL 3: ACTIVITY 3 - ACTIVE RECALL TYPING
+         ===================================================================== -->
+    <section class="activity-panel hidden" id="panelAct3" aria-label="Typing challenge">
+      <header class="panel-header">
+        <div>
+          <h2 class="panel-title">✍️ Active Recall Typing Challenge</h2>
+          <p class="panel-instruction">Read the English prompt, recall the Egyptian Arabic sentence, and type your answer. You can use your physical keyboard or the on-screen Arabic helper below.</p>
+        </div>
+        <div class="panel-action-pills">
+          <span class="score-feedback-pill" id="typingCounterPill">Question 1 of 6</span>
+        </div>
+      </header>
+
+      <div class="typing-challenge-container">
+        <div class="typing-card">
+          <div class="typing-prompt-en" id="typingPromptEn">This is an old man.</div>
+          <div class="typing-prompt-hint" id="typingPromptHint">Demonstrative pronoun for masculine (da) + old man</div>
+
+          <input type="text" class="user-typing-input script-ar" id="userTypingInput" placeholder="اكتب الجملة هنا..." autocomplete="off" spellcheck="false">
+
+          <!-- Diff feedback -->
+          <div class="char-diff-row" id="charDiffRow"></div>
+
+          <div style="display: flex; justify-content: center; gap: 10px; margin-top: 6px;">
+            <button class="primary-btn" id="btnCheckTyping" type="button">Check Answer ➔</button>
+            <button class="secondary-btn" id="btnHintTyping" type="button">💡 Reveal Hint</button>
+            <button class="audio-play-btn" id="btnTypingAudio" type="button" title="Listen to sentence">🔊</button>
+          </div>
+        </div>
+
+        <!-- Virtual Arabic Keyboard for non-Arabic desktop/mobile keyboards -->
+        <div class="ar-keyboard-wrapper" id="arKeyboardWrapper">
+          <div class="ar-keyboard-title">⌨️ On-Screen Arabic Letter Keys (Click to insert)</div>
+          <div class="ar-keys-grid" id="arKeysGrid">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <button class="secondary-btn" id="btnPrevTyping" type="button">◀ Previous</button>
+          <span class="score-feedback-pill" id="typingScorePill">Score: 0 / 6</span>
+          <button class="primary-btn" id="btnNextTyping" type="button">Next ▶</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+      <p>Europaschule Kairo • Egyptian Arabic Digital Curriculum • Level 1 (Section 2.2)</p>
+      <p style="margin-top: 6px;">
+        <a href="../Alphabet/index.html">Alphabet Trainer</a> • 
+        <a href="../Greetings/index.html">Greetings Trainer</a> • 
+        <a href="../index.html">Arabic Hub</a>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    /* ==========================================================================
+       DATASETS & TEXTBOOK SOURCE (Amira Level 1 Book, pp. 15–16)
+       ========================================================================== */
+    const peopleData = [
+      { id: "man", ar: "رَاجل", arPlain: "راجل", fr: "ragel", en: "man", gender: "m", pronoun: "da", pronounAr: "دا", icon: "👨", audioFile: "people_man.mp3" },
+      { id: "woman", ar: "سِت", arPlain: "ست", fr: "sit", en: "woman", gender: "f", pronoun: "di", pronounAr: "دي", icon: "👩", audioFile: "people_woman.mp3" },
+      { id: "boy", ar: "وَلَد", arPlain: "ولد", fr: "walad", en: "boy", gender: "m", pronoun: "da", pronounAr: "دا", icon: "👦", audioFile: "people_boy.mp3" },
+      { id: "girl", ar: "بِنت", arPlain: "بنت", fr: "bint", en: "girl", gender: "f", pronoun: "di", pronounAr: "دي", icon: "👧", audioFile: "people_girl.mp3" },
+      { id: "oldman", ar: "رَاجل عَجوز", arPlain: "راجل عجوز", fr: "ragel Aagooz", en: "old man", gender: "m", pronoun: "da", pronounAr: "دا", icon: "👴", audioFile: "people_oldman.mp3" },
+      { id: "oldwoman", ar: "سِت عَجوزة", arPlain: "ست عجوزة", fr: "sit Aagoozah", en: "old woman", gender: "f", pronoun: "di", pronounAr: "دي", icon: "👵", audioFile: "people_oldwoman.mp3" },
+      { id: "youngman", ar: "شَاب", arPlain: "شاب", fr: "shaab", en: "young man", gender: "m", pronoun: "da", pronounAr: "دا", icon: "👱‍♂️", audioFile: "people_youngman.mp3" },
+      { id: "kid", ar: "طِفل", arPlain: "طفل", fr: "Tifl", en: "kid", gender: "m", pronoun: "da", pronounAr: "دا", icon: "🧒", audioFile: "people_kid.mp3" },
+      { id: "baby", ar: "نونو", arPlain: "نونو", fr: "noonoo", en: "baby", gender: "m", pronoun: "da", pronounAr: "دا", icon: "👶", audioFile: "people_baby.mp3" },
+      { id: "people", ar: "نَاس", arPlain: "ناس", fr: "naas", en: "people", gender: "pl", pronoun: "duul", pronounAr: "دول", icon: "👥", audioFile: "people_people.mp3" }
+    ];
+
+    const textbookSentences = [
+      {
+        id: 1,
+        num: "1.",
+        ar: "دا راجل عجوز.",
+        arPlain: "دا راجل عجوز",
+        fr: "da ragel Agooz.",
+        en: "This is an old man.",
+        audioFile: "sent_1.mp3",
+        tokensAr: ["دا", "راجل", "عجوز"],
+        tokensFr: ["da", "ragel", "Agooz"],
+        gapWordAr: "دا",
+        gapWordFr: "da",
+        preAr: "",
+        postAr: " راجل عجوز.",
+        preFr: "",
+        postFr: " ragel Agooz.",
+        hint: "دا (da) because 'ragel' (man) is masculine.",
+        expectedFr: ["da ragel agooz", "da ragel aagooz", "da ragel 'agooz", "da ragel 3agooz"]
+      },
+      {
+        id: 2,
+        num: "2.",
+        ar: "دي بنت جميلة.",
+        arPlain: "دي بنت جميلة",
+        fr: "di bent gameela.",
+        en: "This is a beautiful girl.",
+        audioFile: "sent_2.mp3",
+        tokensAr: ["دي", "بنت", "جميلة"],
+        tokensFr: ["di", "bent", "gameela"],
+        gapWordAr: "دي",
+        gapWordFr: "di",
+        preAr: "",
+        postAr: " بنت جميلة.",
+        preFr: "",
+        postFr: " bent gameela.",
+        hint: "دي (di) because 'bent' (girl) is feminine.",
+        expectedFr: ["di bent gameela", "di bint gameela", "dee bent gameela", "di bint gamila"]
+      },
+      {
+        id: 3,
+        num: "3.",
+        ar: "دول ناس كتير.",
+        arPlain: "دول ناس كتير",
+        fr: "dool nas kateer.",
+        en: "These are a lot of people.",
+        audioFile: "sent_3.mp3",
+        tokensAr: ["دول", "ناس", "كتير"],
+        tokensFr: ["dool", "nas", "kateer"],
+        gapWordAr: "دول",
+        gapWordFr: "dool",
+        preAr: "",
+        postAr: " ناس كتير.",
+        preFr: "",
+        postFr: " nas kateer.",
+        hint: "دول (dool) because 'nas' (people) is plural.",
+        expectedFr: ["dool nas kateer", "duul nas kateer", "dool nas keteer", "dool naas kateer"]
+      },
+      {
+        id: 4,
+        num: "4.",
+        ar: "النونو دا بنت أو ولد.",
+        arPlain: "النونو دا بنت أو ولد",
+        fr: "el-nunu da bent aw walad.",
+        en: "This baby is a girl or a boy.",
+        audioFile: "sent_4.mp3",
+        tokensAr: ["النونو", "دا", "بنت", "أو", "ولد"],
+        tokensFr: ["el-nunu", "da", "bent", "aw", "walad"],
+        gapWordAr: "دا",
+        gapWordFr: "da",
+        preAr: "النونو ",
+        postAr: " بنت أو ولد.",
+        preFr: "el-nunu ",
+        postFr: " bent aw walad.",
+        hint: "In Egyptian Arabic, demonstrative 'da' can follow the noun 'el-nunu da'.",
+        expectedFr: ["el-nunu da bent aw walad", "el-noonoo da bent aw walad", "elnunu da bent aw walad", "el-nunu da bint aw walad"]
+      },
+      {
+        id: 5,
+        num: "5.",
+        ar: "انا ست.",
+        arPlain: "انا ست",
+        fr: "ana set.",
+        en: "I am a woman.",
+        audioFile: "sent_5.mp3",
+        tokensAr: ["انا", "ست"],
+        tokensFr: ["ana", "set"],
+        gapWordAr: "ست",
+        gapWordFr: "set",
+        preAr: "انا ",
+        postAr: ".",
+        preFr: "ana ",
+        postFr: ".",
+        hint: "Simple nominal sentence: ana (I) + set (woman).",
+        expectedFr: ["ana set", "ana sit"]
+      },
+      {
+        id: 6,
+        num: "6.",
+        ar: "انت راجل.",
+        arPlain: "انت راجل",
+        fr: "enta ragel.",
+        en: "You are a man.",
+        audioFile: "sent_6.mp3",
+        tokensAr: ["انت", "راجل"],
+        tokensFr: ["enta", "ragel"],
+        gapWordAr: "راجل",
+        gapWordFr: "ragel",
+        preAr: "انت ",
+        postAr: ".",
+        preFr: "enta ",
+        postFr: ".",
+        hint: "Nominal sentence for male: enta (you, m.) + ragel (man).",
+        expectedFr: ["enta ragel", "inta ragel"]
+      }
+    ];
+
+    /* ==========================================================================
+       APP STATE
+       ========================================================================== */
+    let currentScript = "ar"; // "ar" or "fr"
+    let currentTab = 0;
+
+    // Activity 1 State
+    let currentSubtask = "sort"; // "sort" or "puzzle"
+    let sortState = {
+      placed: {}, // itemId -> bucket ("da", "di", "duul")
+      score: 0
+    };
+    let puzzleState = {}; // sentenceId -> array of placed tokens
+
+    // Activity 2 State (Gap Fill)
+    let gapPlaced = {}; // sentenceId -> chosen word
+    let gapSelectedChip = null;
+
+    // Activity 3 State (Typing)
+    let typingIndex = 0;
+    let typingScores = [0, 0, 0, 0, 0, 0];
+
+    /* ==========================================================================
+       AUTHENTIC EGYPTIAN NATIVE AUDIO ENGINE
+       ========================================================================== */
+    let currentAudioObj = null;
+
+    // Helper map for word tokens to authentic Egyptian MP3 audio
+    const wordAudioMap = {
+      "دا": "pronoun_da.mp3",
+      "دي": "pronoun_di.mp3",
+      "دول": "pronoun_duul.mp3",
+      "da": "pronoun_da.mp3",
+      "di": "pronoun_di.mp3",
+      "dool": "pronoun_duul.mp3",
+      "راجل": "people_man.mp3",
+      "ragel": "people_man.mp3",
+      "ست": "people_woman.mp3",
+      "set": "people_woman.mp3",
+      "بنت": "people_girl.mp3",
+      "bent": "people_girl.mp3",
+      "ولد": "people_boy.mp3",
+      "walad": "people_boy.mp3",
+      "ناس": "people_people.mp3",
+      "nas": "people_people.mp3",
+      "جميلة": "word_gameela.mp3",
+      "gameela": "word_gameela.mp3",
+      "كتير": "word_kateer.mp3",
+      "kateer": "word_kateer.mp3",
+      "عجوز": "word_agooz.mp3",
+      "عجوزة": "word_agoozah.mp3",
+      "النونو": "people_baby.mp3",
+      "el-nunu": "people_baby.mp3"
+    };
+
+    function playEgyptianAudio(fileName, fallbackArabicText) {
+      if (currentAudioObj) {
+        currentAudioObj.pause();
+        currentAudioObj.currentTime = 0;
+      }
+
+      if (fileName) {
+        currentAudioObj = new Audio(`audio/${fileName}`);
+        currentAudioObj.play().catch(() => {
+          speakFallbackEgyptian(fallbackArabicText);
+        });
+      } else {
+        speakFallbackEgyptian(fallbackArabicText);
+      }
+    }
+
+    function playWordAudio(wordText) {
+      const clean = (wordText || "").replace(/[،,.\-?!]/g, "").trim();
+      const mapped = wordAudioMap[clean];
+      playEgyptianAudio(mapped, clean);
+    }
+
+    function speakFallbackEgyptian(text) {
+      if (!window.speechSynthesis) return;
+      window.speechSynthesis.cancel();
+
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = "ar-EG";
+      utter.rate = 0.85;
+
+      const voices = window.speechSynthesis.getVoices();
+      // Prioritize authentic Egyptian voices (e.g. Salma, Shakir, Hoda)
+      const egVoice = voices.find(v => v.lang === "ar-EG" || v.lang === "ar_EG" || (v.name && (v.name.includes("Egypt") || v.name.includes("Salma") || v.name.includes("Shakir") || v.name.includes("Hoda"))))
+                   || voices.find(v => v.lang.startsWith("ar"));
+      if (egVoice) utter.voice = egVoice;
+
+      window.speechSynthesis.speak(utter);
+    }
+
+    /* ==========================================================================
+       TAB SWITCHING
+       ========================================================================== */
+    const tabBtns = [
+      document.getElementById("tabAct0"),
+      document.getElementById("tabAct1"),
+      document.getElementById("tabAct2"),
+      document.getElementById("tabAct3")
+    ];
+    const panels = [
+      document.getElementById("panelAct0"),
+      document.getElementById("panelAct1"),
+      document.getElementById("panelAct2"),
+      document.getElementById("panelAct3")
+    ];
+
+    function switchTab(index) {
+      currentTab = index;
+      tabBtns.forEach((btn, i) => {
+        btn.classList.toggle("active", i === index);
+      });
+      panels.forEach((p, i) => {
+        p.classList.toggle("hidden", i !== index);
+      });
+    }
+
+    tabBtns.forEach((btn, idx) => {
+      btn.addEventListener("click", () => switchTab(idx));
+    });
+
+    /* ==========================================================================
+       SCRIPT SWITCHING (Arabic vs Franco)
+       ========================================================================== */
+    const btnScriptAr = document.getElementById("btnScriptAr");
+    const btnScriptFr = document.getElementById("btnScriptFr");
+    const activeModeLabel = document.getElementById("activeModeLabel");
+    const activeModeSub = document.getElementById("activeModeSub");
+    const francoNotice = document.getElementById("francoNotice");
+
+    function setScript(mode) {
+      currentScript = mode;
+      btnScriptAr.classList.toggle("active", mode === "ar");
+      btnScriptFr.classList.toggle("active", mode === "fr");
+
+      if (mode === "ar") {
+        activeModeLabel.textContent = "Arabic Alphabet (العربية)";
+        activeModeSub.textContent = "Learn with clear textbook Arabic script (Arial / Aptos style)";
+        francoNotice.style.display = "none";
+      } else {
+        activeModeLabel.textContent = "Franco-Arabic (Arabizi)";
+        activeModeSub.textContent = "Learn with Latin letters & numbers (7 = ح, 3 = ع, 5 = خ)";
+        francoNotice.style.display = "flex";
+      }
+
+      // Re-render components with active script
+      renderReferenceCards();
+      renderSentencesShowcase();
+      renderSortActivity();
+      renderPuzzleActivity();
+      renderGapActivity();
+      updateTypingQuestionUI();
+    }
+
+    btnScriptAr.addEventListener("click", () => setScript("ar"));
+    btnScriptFr.addEventListener("click", () => setScript("fr"));
+
+    /* ==========================================================================
+       PANEL 0: REFERENCE RENDERING
+       ========================================================================== */
+    const peopleCardsContainer = document.getElementById("peopleCardsContainer");
+    const sentencesShowcaseContainer = document.getElementById("sentencesShowcaseContainer");
+
+    function renderReferenceCards() {
+      peopleCardsContainer.innerHTML = "";
+      peopleData.forEach(p => {
+        const card = document.createElement("div");
+        card.className = "person-card";
+
+        const wordPrimary = currentScript === "ar" ? p.ar : p.fr;
+        const wordClass = currentScript === "ar" ? "person-word-ar" : "person-word-fr";
+
+        card.innerHTML = `
+          <button class="person-audio-btn" type="button" aria-label="Listen ${p.en}">🔊</button>
+          <div class="person-icon">${p.icon}</div>
+          <div class="${wordClass}">${wordPrimary}</div>
+          ${currentScript === "ar" ? `<div class="person-word-fr">${p.fr}</div>` : `<div class="person-word-ar" style="font-size: 1.25rem;">${p.ar}</div>`}
+          <div class="person-word-en">${p.en}</div>
+          <div class="person-pronoun-badge">
+            <span>Takes:</span>
+            <span class="ar">${p.pronounAr} (${p.pronoun})</span>
+          </div>
+        `;
+
+        card.querySelector(".person-audio-btn").addEventListener("click", (e) => {
+          e.stopPropagation();
+          playEgyptianAudio(p.audioFile, p.arPlain);
+        });
+        card.addEventListener("click", () => playEgyptianAudio(p.audioFile, p.arPlain));
+
+        peopleCardsContainer.appendChild(card);
+      });
+    }
+
+    function renderSentencesShowcase() {
+      sentencesShowcaseContainer.innerHTML = "";
+      textbookSentences.forEach(s => {
+        const card = document.createElement("div");
+        card.className = "sentence-showcase-card";
+
+        const textPrimary = currentScript === "ar" ? s.ar : s.fr;
+        const scriptClass = currentScript === "ar" ? "script-ar" : "script-fr";
+        const textSec = currentScript === "ar" ? s.fr : s.ar;
+
+        card.innerHTML = `
+          <div class="sentence-meta">
+            <div class="sentence-text-primary ${scriptClass}">${s.num} ${textPrimary}</div>
+            <div class="sentence-text-sec">${textSec}</div>
+            <div class="sentence-text-en">${s.en}</div>
+          </div>
+          <button class="audio-play-btn" type="button" aria-label="Play sentence ${s.num}">🔊</button>
+        `;
+
+        card.querySelector(".audio-play-btn").addEventListener("click", (e) => {
+          e.stopPropagation();
+          playEgyptianAudio(s.audioFile, s.arPlain);
+        });
+
+        sentencesShowcaseContainer.appendChild(card);
+      });
+    }
+
+    /* ==========================================================================
+       PANEL 1: ACTIVITY 1 (SORT & BUILDER)
+       ========================================================================== */
+    const btnSubtaskSort = document.getElementById("btnSubtaskSort");
+    const btnSubtaskPuzzle = document.getElementById("btnSubtaskPuzzle");
+    const subtaskSortContainer = document.getElementById("subtaskSortContainer");
+    const subtaskPuzzleContainer = document.getElementById("subtaskPuzzleContainer");
+    const sortChipsPool = document.getElementById("sortChipsPool");
+    const sortRemainingBadge = document.getElementById("sortRemainingBadge");
+    const act1ScorePill = document.getElementById("act1ScorePill");
+    const btnResetAct1 = document.getElementById("btnResetAct1");
+
+    btnSubtaskSort.addEventListener("click", () => {
+      currentSubtask = "sort";
+      btnSubtaskSort.classList.add("active");
+      btnSubtaskPuzzle.classList.remove("active");
+      subtaskSortContainer.style.display = "block";
+      subtaskPuzzleContainer.style.display = "none";
+    });
+
+    btnSubtaskPuzzle.addEventListener("click", () => {
+      currentSubtask = "puzzle";
+      btnSubtaskPuzzle.classList.add("active");
+      btnSubtaskSort.classList.remove("active");
+      subtaskSortContainer.style.display = "none";
+      subtaskPuzzleContainer.style.display = "block";
+    });
+
+    // 1A: Bucket Sorting logic
+    function renderSortActivity() {
+      sortChipsPool.innerHTML = "";
+      const bucketLists = {
+        da: document.getElementById("bucketListDa"),
+        di: document.getElementById("bucketListDi"),
+        duul: document.getElementById("bucketListDuul")
+      };
+
+      Object.values(bucketLists).forEach(el => el.innerHTML = "");
+
+      let remaining = 0;
+      let score = 0;
+
+      peopleData.forEach(p => {
+        const placedBucket = sortState.placed[p.id];
+        const chip = document.createElement("div");
+        chip.className = `draggable-word-chip ${currentScript === "ar" ? "script-ar" : "script-fr"}`;
+        chip.draggable = true;
+        chip.dataset.id = p.id;
+        chip.dataset.targetPronoun = p.pronoun;
+
+        const label = currentScript === "ar" ? p.ar : p.fr;
+        chip.innerHTML = `<span>${p.icon}</span> <span>${label}</span>`;
+
+        chip.addEventListener("dragstart", (e) => {
+          e.dataTransfer.setData("text/plain", p.id);
+        });
+
+        // Click-to-move for touch/mobile
+        chip.addEventListener("click", () => {
+          if (!placedBucket) {
+            // Prompt bucket choice or cycle
+            const target = p.pronoun;
+            sortState.placed[p.id] = target;
+            playEgyptianAudio(p.audioFile, p.arPlain);
+            renderSortActivity();
+          } else {
+            delete sortState.placed[p.id];
+            renderSortActivity();
+          }
+        });
+
+        if (!placedBucket) {
+          sortChipsPool.appendChild(chip);
+          remaining++;
+        } else {
+          chip.classList.add(placedBucket === p.pronoun ? "correct" : "wrong");
+          if (placedBucket === p.pronoun) score++;
+          bucketLists[placedBucket].appendChild(chip);
+        }
+      });
+
+      // Update empty hints
+      Object.keys(bucketLists).forEach(k => {
+        if (!bucketLists[k].children.length) {
+          const hint = document.createElement("div");
+          hint.className = "bucket-empty-hint";
+          hint.textContent = k === "da" ? "Drop masculine words (da)" : (k === "di" ? "Drop feminine words (di)" : "Drop plural words (dool)");
+          bucketLists[k].appendChild(hint);
+        }
+      });
+
+      sortRemainingBadge.textContent = `${remaining} left`;
+      act1ScorePill.textContent = `Sort Score: ${score} / 10`;
+    }
+
+    // Drag-and-drop bucket listeners
+    document.querySelectorAll(".pronoun-drop-bucket").forEach(bucket => {
+      bucket.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        bucket.classList.add("drag-over");
+      });
+      bucket.addEventListener("dragleave", () => {
+        bucket.classList.remove("drag-over");
+      });
+      bucket.addEventListener("drop", (e) => {
+        e.preventDefault();
+        bucket.classList.remove("drag-over");
+        const personId = e.dataTransfer.getData("text/plain");
+        if (personId) {
+          const targetPronoun = bucket.dataset.pronoun;
+          sortState.placed[personId] = targetPronoun;
+          const p = peopleData.find(x => x.id === personId);
+          if (p) playEgyptianAudio(p.audioFile, p.arPlain);
+          renderSortActivity();
+        }
+      });
+    });
+
+    btnResetAct1.addEventListener("click", () => {
+      sortState.placed = {};
+      puzzleState = {};
+      renderSortActivity();
+      renderPuzzleActivity();
+    });
+
+    // 1B: Sentence Unscramble Puzzle
+    const puzzlesList = document.getElementById("puzzlesList");
+
+    function renderPuzzleActivity() {
+      puzzlesList.innerHTML = "";
+      textbookSentences.forEach(s => {
+        const card = document.createElement("div");
+        card.className = "unscramble-card";
+
+        const correctTokens = currentScript === "ar" ? s.tokensAr : s.tokensFr;
+        const placedTokens = puzzleState[s.id] || [];
+
+        // Scrambled pool tokens
+        if (!s.scrambledPool) {
+          s.scrambledPool = [...correctTokens].sort(() => 0.5 - Math.random());
+        }
+
+        const promptText = `Unscramble: "${s.en}"`;
+
+        card.innerHTML = `
+          <div class="unscramble-prompt">
+            <span>${s.num} ${promptText}</span>
+            <button class="audio-play-btn" type="button" aria-label="Play audio">🔊</button>
+          </div>
+          <div class="target-slot-row ${currentScript === "ar" ? "script-ar" : "script-fr"}" id="puzzleSlot_${s.id}">
+            <!-- Placed tokens -->
+          </div>
+          <div class="scrambled-pool-row ${currentScript === "ar" ? "script-ar" : "script-fr"}" id="puzzlePool_${s.id}">
+            <!-- Token buttons -->
+          </div>
+        `;
+
+        card.querySelector(".audio-play-btn").addEventListener("click", () => playEgyptianAudio(s.audioFile, s.arPlain));
+
+        const slotRow = card.querySelector(`#puzzleSlot_${s.id}`);
+        const poolRow = card.querySelector(`#puzzlePool_${s.id}`);
+
+        // Render Placed tokens
+        if (placedTokens.length === 0) {
+          slotRow.innerHTML = `<span style="color: var(--ink-muted); font-size: 0.9rem; font-style: italic;">Click words below in correct order</span>`;
+        } else {
+          placedTokens.forEach((tok, tokIdx) => {
+            const btn = document.createElement("button");
+            btn.className = `puzzle-token-btn ${currentScript === "ar" ? "script-ar" : "script-fr"}`;
+            btn.textContent = tok;
+            btn.type = "button";
+            btn.title = "Click to remove";
+            btn.addEventListener("click", () => {
+              placedTokens.splice(tokIdx, 1);
+              puzzleState[s.id] = placedTokens;
+              renderPuzzleActivity();
+            });
+            slotRow.appendChild(btn);
+          });
+        }
+
+        // Check if correct
+        if (placedTokens.length === correctTokens.length) {
+          const isCorrect = placedTokens.every((t, i) => t === correctTokens[i]);
+          if (isCorrect) {
+            slotRow.style.borderColor = "var(--emerald)";
+            slotRow.style.background = "var(--emerald-light)";
+          } else {
+            slotRow.style.borderColor = "var(--rose)";
+          }
+        }
+
+        // Render Pool tokens
+        s.scrambledPool.forEach((tok) => {
+          // Count used
+          const placedCount = placedTokens.filter(x => x === tok).length;
+          const poolCount = s.scrambledPool.filter(x => x === tok).length;
+          const isUsed = placedCount >= poolCount;
+
+          const btn = document.createElement("button");
+          btn.className = `puzzle-token-btn ${currentScript === "ar" ? "script-ar" : "script-fr"} ${isUsed ? "used" : ""}`;
+          btn.textContent = tok;
+          btn.type = "button";
+          btn.addEventListener("click", () => {
+            if (!isUsed) {
+              placedTokens.push(tok);
+              puzzleState[s.id] = placedTokens;
+              playWordAudio(tok);
+              renderPuzzleActivity();
+            }
+          });
+          poolRow.appendChild(btn);
+        });
+
+        puzzlesList.appendChild(card);
+      });
+    }
+
+    /* ==========================================================================
+       PANEL 2: ACTIVITY 2 (GAP FILL)
+       ========================================================================== */
+    const gapChipsPool = document.getElementById("gapChipsPool");
+    const gapSentencesList = document.getElementById("gapSentencesList");
+    const act2ScorePill = document.getElementById("act2ScorePill");
+    const btnResetAct2 = document.getElementById("btnResetAct2");
+
+    function renderGapActivity() {
+      gapChipsPool.innerHTML = "";
+      gapSentencesList.innerHTML = "";
+
+      let correctCount = 0;
+
+      // Pool of all gap words
+      const wordsPool = textbookSentences.map(s => ({
+        id: s.id,
+        ar: s.gapWordAr,
+        fr: s.gapWordFr
+      }));
+
+      // Render pool chips
+      wordsPool.forEach(w => {
+        // If already placed, mark or omit
+        const isPlaced = Object.values(gapPlaced).includes(w.ar);
+        const chip = document.createElement("div");
+        chip.className = `draggable-word-chip ${currentScript === "ar" ? "script-ar" : "script-fr"} ${isPlaced ? "used" : ""}`;
+        chip.draggable = !isPlaced;
+        chip.textContent = currentScript === "ar" ? w.ar : w.fr;
+
+        if (gapSelectedChip === (currentScript === "ar" ? w.ar : w.fr)) {
+          chip.style.borderColor = "var(--teal)";
+          chip.style.background = "var(--teal-light)";
+        }
+
+        chip.addEventListener("dragstart", (e) => {
+          e.dataTransfer.setData("text/plain", currentScript === "ar" ? w.ar : w.fr);
+        });
+
+        chip.addEventListener("click", () => {
+          gapSelectedChip = currentScript === "ar" ? w.ar : w.fr;
+          renderGapActivity();
+        });
+
+        gapChipsPool.appendChild(chip);
+      });
+
+      // Render Sentence rows
+      textbookSentences.forEach(s => {
+        const card = document.createElement("div");
+        card.className = "gap-sentence-card";
+
+        const placedWord = gapPlaced[s.id];
+        const targetWord = currentScript === "ar" ? s.gapWordAr : s.gapWordFr;
+        const isFilled = !!placedWord;
+        const isCorrect = isFilled && placedWord === targetWord;
+
+        if (isCorrect) {
+          card.classList.add("is-correct");
+          correctCount++;
+        } else if (isFilled) {
+          card.classList.add("is-wrong");
+        }
+
+        const pre = currentScript === "ar" ? s.preAr : s.preFr;
+        const post = currentScript === "ar" ? s.postAr : s.postFr;
+
+        card.innerHTML = `
+          <div class="gap-line-row">
+            <button class="audio-play-btn" type="button" aria-label="Listen">🔊</button>
+            <div class="gap-line-content ${currentScript === "ar" ? "script-ar" : "script-fr"}">
+              <span>${s.num}</span>
+              ${pre ? `<span>${pre}</span>` : ""}
+              <div class="drop-slot ${isFilled ? "filled" : ""} ${isFilled ? (isCorrect ? "correct" : "wrong") : ""}" data-id="${s.id}">
+                ${placedWord || "_____"}
+              </div>
+              ${post ? `<span>${post}</span>` : ""}
+            </div>
+            <span class="gap-trans-en">(${s.en})</span>
+          </div>
+        `;
+
+        card.querySelector(".audio-play-btn").addEventListener("click", () => playEgyptianAudio(s.audioFile, s.arPlain));
+
+        const slot = card.querySelector(".drop-slot");
+
+        // Drag events on slot
+        slot.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          slot.classList.add("drag-over");
+        });
+        slot.addEventListener("dragleave", () => slot.classList.remove("drag-over"));
+        slot.addEventListener("drop", (e) => {
+          e.preventDefault();
+          slot.classList.remove("drag-over");
+          const word = e.dataTransfer.getData("text/plain");
+          if (word) {
+            gapPlaced[s.id] = word;
+            playWordAudio(word);
+            renderGapActivity();
+          }
+        });
+
+        // Click slot to place selected chip or remove
+        slot.addEventListener("click", () => {
+          if (gapSelectedChip) {
+            gapPlaced[s.id] = gapSelectedChip;
+            gapSelectedChip = null;
+            renderGapActivity();
+          } else if (gapPlaced[s.id]) {
+            delete gapPlaced[s.id];
+            renderGapActivity();
+          }
+        });
+
+        gapSentencesList.appendChild(card);
+      });
+
+      act2ScorePill.textContent = `Progress: ${correctCount} / ${textbookSentences.length}`;
+    }
+
+    btnResetAct2.addEventListener("click", () => {
+      gapPlaced = {};
+      gapSelectedChip = null;
+      renderGapActivity();
+    });
+
+    /* ==========================================================================
+       PANEL 3: ACTIVITY 3 (ACTIVE RECALL TYPING)
+       ========================================================================== */
+    const typingPromptEn = document.getElementById("typingPromptEn");
+    const typingPromptHint = document.getElementById("typingPromptHint");
+    const userTypingInput = document.getElementById("userTypingInput");
+    const charDiffRow = document.getElementById("charDiffRow");
+    const btnCheckTyping = document.getElementById("btnCheckTyping");
+    const btnHintTyping = document.getElementById("btnHintTyping");
+    const btnTypingAudio = document.getElementById("btnTypingAudio");
+    const btnPrevTyping = document.getElementById("btnPrevTyping");
+    const btnNextTyping = document.getElementById("btnNextTyping");
+    const typingCounterPill = document.getElementById("typingCounterPill");
+    const typingScorePill = document.getElementById("typingScorePill");
+    const arKeysGrid = document.getElementById("arKeysGrid");
+    const arKeyboardWrapper = document.getElementById("arKeyboardWrapper");
+
+    // Virtual keyboard letters
+    const arabicKeys = [
+      "ا", "أ", "إ", "ب", "ت", "ة", "ث", "ج", "ح", "خ", "د", "ذ", "ر", "ز",
+      "س", "ش", "ص", "ض", "ط", "ظ", "ع", "غ", "ف", "ق", "ك", "ل", "م", "ن", "ه", "و", "ي", "ى", " "
+    ];
+
+    function renderVirtualKeyboard() {
+      arKeysGrid.innerHTML = "";
+      arabicKeys.forEach(k => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = `ar-key-btn ${k === " " ? "ar-key-special" : ""}`;
+        btn.textContent = k === " " ? "Space" : k;
+        btn.addEventListener("click", () => {
+          userTypingInput.value += k;
+          userTypingInput.focus();
+        });
+        arKeysGrid.appendChild(btn);
+      });
+
+      // Backspace button
+      const bkBtn = document.createElement("button");
+      bkBtn.type = "button";
+      bkBtn.className = "ar-key-btn ar-key-special";
+      bkBtn.textContent = "⌫ Del";
+      bkBtn.addEventListener("click", () => {
+        userTypingInput.value = userTypingInput.value.slice(0, -1);
+        userTypingInput.focus();
+      });
+      arKeysGrid.appendChild(bkBtn);
+    }
+    renderVirtualKeyboard();
+
+    function normalizeText(str) {
+      return (str || "")
+        .trim()
+        .toLowerCase()
+        .replace(/[،,.\-?!'’‘"`]/g, "")
+        .replace(/[ً-ٟ]/g, "") // remove tashkeel
+        .replace(/[إأآا]/g, "ا")
+        .replace(/[ةه]/g, "ه")
+        .replace(/[ىي]/g, "ي")
+        .replace(/\s+/g, " ");
+    }
+
+    function updateTypingQuestionUI() {
+      const q = textbookSentences[typingIndex];
+      typingPromptEn.textContent = q.en;
+      typingPromptHint.textContent = `Hint: ${q.hint}`;
+      typingCounterPill.textContent = `Question ${typingIndex + 1} of ${textbookSentences.length}`;
+      userTypingInput.value = "";
+      userTypingInput.className = `user-typing-input ${currentScript === "ar" ? "script-ar" : "script-fr"}`;
+      userTypingInput.placeholder = currentScript === "ar" ? "اكتب الجملة هنا..." : "Type sentence in Franco...";
+      charDiffRow.innerHTML = "";
+
+      arKeyboardWrapper.style.display = currentScript === "ar" ? "block" : "none";
+
+      const totalScore = typingScores.reduce((a, b) => a + b, 0);
+      typingScorePill.textContent = `Score: ${totalScore} / ${textbookSentences.length}`;
+    }
+
+    function checkTypingAnswer() {
+      const q = textbookSentences[typingIndex];
+      const userVal = normalizeText(userTypingInput.value);
+
+      let isCorrect = false;
+      const targetAr = normalizeText(q.arPlain);
+      const targetFr = normalizeText(q.fr);
+
+      if (userVal === targetAr || userVal === targetFr || (q.expectedFr && q.expectedFr.map(normalizeText).includes(userVal))) {
+        isCorrect = true;
+      }
+
+      userTypingInput.classList.remove("correct", "wrong");
+      userTypingInput.classList.add(isCorrect ? "correct" : "wrong");
+
+      if (isCorrect) {
+        typingScores[typingIndex] = 1;
+        playEgyptianAudio(q.audioFile, q.arPlain);
+        charDiffRow.innerHTML = `<span style="color: #065f46; font-weight: 700;">✓ Excellent! Perfect sentence!</span>`;
+      } else {
+        typingScores[typingIndex] = 0;
+        // Render diff comparison
+        const expected = currentScript === "ar" ? q.arPlain : q.fr;
+        renderDiff(userTypingInput.value, expected);
+      }
+
+      const totalScore = typingScores.reduce((a, b) => a + b, 0);
+      typingScorePill.textContent = `Score: ${totalScore} / ${textbookSentences.length}`;
+    }
+
+    function renderDiff(userStr, targetStr) {
+      charDiffRow.innerHTML = "";
+      charDiffRow.className = `char-diff-row ${currentScript === "ar" ? "script-ar" : "script-fr"}`;
+
+      const maxLen = Math.max(userStr.length, targetStr.length);
+      for (let i = 0; i < maxLen; i++) {
+        const uChar = userStr[i] || "";
+        const tChar = targetStr[i] || "";
+        const span = document.createElement("span");
+        span.className = "diff-char";
+
+        if (uChar === tChar && uChar !== "") {
+          span.classList.add("match");
+          span.textContent = uChar;
+        } else {
+          span.classList.add("mismatch");
+          span.textContent = uChar || tChar;
+          span.title = `Expected: ${tChar || "none"}`;
+        }
+        charDiffRow.appendChild(span);
+      }
+    }
+
+    btnCheckTyping.addEventListener("click", checkTypingAnswer);
+    userTypingInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") checkTypingAnswer();
+    });
+
+    btnHintTyping.addEventListener("click", () => {
+      const q = textbookSentences[typingIndex];
+      userTypingInput.value = currentScript === "ar" ? q.arPlain : q.fr;
+      userTypingInput.focus();
+    });
+
+    btnTypingAudio.addEventListener("click", () => {
+      const q = textbookSentences[typingIndex];
+      playEgyptianAudio(q.audioFile, q.arPlain);
+    });
+
+    btnPrevTyping.addEventListener("click", () => {
+      if (typingIndex > 0) {
+        typingIndex--;
+        updateTypingQuestionUI();
+      }
+    });
+
+    btnNextTyping.addEventListener("click", () => {
+      if (typingIndex < textbookSentences.length - 1) {
+        typingIndex++;
+        updateTypingQuestionUI();
+      }
+    });
+
+    /* ==========================================================================
+       INITIAL INITIALIZATION
+       ========================================================================== */
+    renderReferenceCards();
+    renderSentencesShowcase();
+    renderSortActivity();
+    renderPuzzleActivity();
+    renderGapActivity();
+    updateTypingQuestionUI();
+  </script>
+</body>
+</html>

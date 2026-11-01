@@ -7,7 +7,7 @@
   <meta name="description" content="Interactive Arabic digital activities designed specifically for English-speaking learners. Master the alphabet, letter forms, pronunciation, and vocabulary.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: light;
@@ -43,7 +43,7 @@
 
       --font-display: 'Outfit', system-ui, sans-serif;
       --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
-      --font-arabic: 'Arial', 'Segoe UI', 'Tahoma', 'Noto Naskh Arabic', sans-serif;
+      --font-arabic: 'Arial', 'Segoe UI', 'Noto Sans Arabic', 'Calibri', Tahoma, sans-serif;
     }
 
     *, *::before, *::after {
@@ -675,25 +675,27 @@
         </footer>
       </article>
 
-      <!-- Card 4: Basic Sentence Structure -->
-      <article class="card">
+      <!-- Card 4: Demonstrative Pronouns & People -->
+      <article class="card card-featured">
         <header>
-          <span class="card-badge badge-upcoming">Module 4 • In Development</span>
+          <span class="card-badge badge-active">🌟 Interactive App Ready</span>
           <h3 class="card-title">
-            <span>Sentence Builder</span>
-            <span class="arabic-label" lang="ar">الجملة المفيدة</span>
+            <a href="Demonstratives/index.html" class="card-link">Demonstratives &amp; People</a>
+            <span class="arabic-label" lang="ar">دا • دي • دول</span>
           </h3>
         </header>
         <p class="card-desc">
-          Understand how Arabic sentences work without the verb "to be" in present tense. Learn nominal sentences (Al-Jumla Al-Ismiyya), gender (mudhakkar &amp; mu'annath), and demonstrative pronouns (hādha / hādhihi).
+          Master Egyptian demonstrative pronouns: <strong>دا</strong> (da - masculine), <strong>دي</strong> (di - feminine), and <strong>دول</strong> (duul - plural people), combined with the 10 words for people and authentic sentences from Lesson 2.2.
         </p>
         <ul class="features-list">
-          <li>Drag-and-drop word order puzzles</li>
-          <li>Masculine vs. Feminine markers (Tāʾ marbūṭah)</li>
-          <li>Instant grammar feedback and tips</li>
+          <li>Core rules &amp; examples from Amira Book (p. 15–16)</li>
+          <li>Dual Mode: Arabic Script ⇄ Franco-Arabic (Arabizi)</li>
+          <li>Activity 1: 🧩 Categorize pronouns &amp; unscramble sentences</li>
+          <li>Activity 2: 🖐️ Drag &amp; drop gap fill with audio pronunciation</li>
+          <li>Activity 3: ✍️ Active recall typing with virtual Arabic keys</li>
         </ul>
         <footer class="card-footer">
-          <span class="action-text-muted">Coming Soon</span>
+          <span class="action-text">Launch Demonstratives Trainer ➔</span>
         </footer>
       </article>
     </div>
@@ -765,14 +767,15 @@
       if (!('speechSynthesis' in window)) return;
       window.speechSynthesis.cancel();
       const utter = new SpeechSynthesisUtterance(text);
-      utter.lang = "ar-SA";
+      utter.lang = "ar-EG";
       utter.rate = 0.85;
 
-      // Try finding Arabic voice
+      // Try finding authentic Egyptian Arabic voice first
       const voices = window.speechSynthesis.getVoices();
-      const arVoice = voices.find(v => v.lang.startsWith("ar"));
-      if (arVoice) {
-        utter.voice = arVoice;
+      const egVoice = voices.find(v => v.lang === "ar-EG" || v.lang === "ar_EG" || (v.name && (v.name.includes("Egypt") || v.name.includes("Salma") || v.name.includes("Shakir") || v.name.includes("Hoda"))))
+                   || voices.find(v => v.lang.startsWith("ar"));
+      if (egVoice) {
+        utter.voice = egVoice;
       }
       window.speechSynthesis.speak(utter);
     }

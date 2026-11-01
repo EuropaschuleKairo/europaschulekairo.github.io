@@ -7,7 +7,7 @@
   <meta name="description" content="Practice Egyptian Arabic greetings with three interactive activities: sorting conversations, drag-and-drop gap filling, and typing practice in Arabic script or Franco.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: light;
@@ -45,9 +45,16 @@
 
       --font-display: 'Outfit', system-ui, sans-serif;
       --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
-      /* Crystal-clear textbook Arabic font (Arial / Noto Naskh Arabic) identical to the Word document */
-      --font-arabic: 'Arial', 'Segoe UI', 'Tahoma', 'Noto Naskh Arabic', sans-serif;
+      /* Crystal-clear textbook Arabic font (Arial / Noto Sans Arabic) identical to the Word document */
+      --font-arabic: 'Arial', 'Segoe UI', 'Noto Sans Arabic', 'Calibri', Tahoma, sans-serif;
       --font-franco: 'JetBrains Mono', 'Plus Jakarta Sans', monospace;
+    }
+
+    .ar-inline-txt {
+      font-family: var(--font-arabic) !important;
+      direction: rtl;
+      display: inline-block;
+      font-weight: 700;
     }
 
     *, *::before, *::after {
@@ -1256,10 +1263,10 @@
         <span>💡</span>
         <div>
           <strong>Franco-Arabic Guide:</strong> Egyptian texting uses numbers for sounds that don't exist in English: 
-          <code>7 = ح</code> (warm breath), 
-          <code>3 = ع</code> ('Ayn throat sound), 
-          <code>5 = خ</code> (raspy kh), 
-          <code>2 = ء/أ</code> (glottal stop).
+          <code>7 = <span class="ar-inline-txt" lang="ar">ح</span></code> (warm breath), 
+          <code>3 = <span class="ar-inline-txt" lang="ar">ع</span></code> ('Ayn throat sound), 
+          <code>5 = <span class="ar-inline-txt" lang="ar">خ</span></code> (raspy kh), 
+          <code>2 = <span class="ar-inline-txt" lang="ar">ء/أ</span></code> (glottal stop).
         </div>
       </div>
     </header>
@@ -1268,10 +1275,10 @@
     <div class="dialogue-select-bar">
       <div class="dialogue-tabs" role="tablist" aria-label="Choose dialogue">
         <button class="dia-btn active" id="btnDiaDay" type="button">
-          <span>☀️</span> Daytime (fee el-nahar / في النهار)
+          <span>☀️</span> Daytime (fee el-nahar / <span class="ar-inline-txt" lang="ar">في النهار</span>)
         </button>
         <button class="dia-btn" id="btnDiaEve" type="button">
-          <span>🌙</span> Evening (baAd el-Dahr / بالليل)
+          <span>🌙</span> Evening (baAd el-Dahr / <span class="ar-inline-txt" lang="ar">بالليل</span>)
         </button>
       </div>
     </div>
@@ -1899,9 +1906,11 @@
       window.speechSynthesis.cancel();
       const utter = new SpeechSynthesisUtterance(text);
       utter.lang = "ar-EG";
-      utter.rate = 0.88;
+      utter.rate = 0.85;
       const voices = window.speechSynthesis.getVoices();
-      const egVoice = voices.find(v => v.lang.startsWith("ar"));
+      // Prioritize authentic Egyptian voices (e.g. Salma, Shakir, Hoda)
+      const egVoice = voices.find(v => v.lang === "ar-EG" || v.lang === "ar_EG" || (v.name && (v.name.includes("Egypt") || v.name.includes("Salma") || v.name.includes("Shakir") || v.name.includes("Hoda"))))
+                   || voices.find(v => v.lang.startsWith("ar"));
       if (egVoice) utter.voice = egVoice;
       window.speechSynthesis.speak(utter);
     }

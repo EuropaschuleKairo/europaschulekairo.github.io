@@ -7,7 +7,7 @@
   <meta name="description" content="Interactive Arabic alphabet trainer for English speakers. Master isolated, initial, medial, and final letter shapes, pronunciation, and quiz yourself.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: light;
@@ -51,7 +51,22 @@
 
       --font-display: 'Outfit', system-ui, sans-serif;
       --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
-      --font-arabic: 'Arial', 'Segoe UI', 'Tahoma', 'Noto Naskh Arabic', sans-serif;
+      --font-arabic: 'Arial', 'Segoe UI', 'Noto Sans Arabic', 'Calibri', Tahoma, sans-serif;
+    }
+
+    .ar-inline {
+      font-family: var(--font-arabic) !important;
+      direction: rtl;
+      display: inline-block;
+    }
+
+    .rule-callout .nonconnectors {
+      font-family: var(--font-arabic) !important;
+      font-size: 1.18rem;
+      direction: rtl;
+      display: inline-block;
+      margin: 0 4px;
+      color: #78350f;
     }
 
     *, *::before, *::after {
@@ -670,7 +685,7 @@
     <aside class="rule-callout" id="ruleCallout">
       <div class="rule-callout-icon">💡</div>
       <div>
-        <strong>Key Rule for English Speakers:</strong> Arabic letters have up to 4 shapes (Isolated, Initial, Medial, Final). Six special letters (<strong>أ, د, ذ, ر, ز, و</strong>) are <em>non-connectors</em>: they never connect to the letter after them, leaving a tiny visual gap.
+        <strong>Key Rule for English Speakers:</strong> Arabic letters have up to 4 shapes (Isolated, Initial, Medial, Final). Six special letters (<strong class="nonconnectors" lang="ar">أ, د, ذ, ر, ز, و</strong>) are <em>non-connectors</em>: they never connect to the letter after them, leaving a tiny visual gap.
       </div>
     </aside>
 
@@ -686,10 +701,10 @@
           <tr>
             <th>#</th>
             <th>Name (Translit)</th>
-            <th>Isolated (منفصل)</th>
-            <th>Initial (أول)</th>
-            <th>Medial (وسط)</th>
-            <th>Final (آخر)</th>
+            <th>Isolated (<span class="ar-inline" lang="ar">منفصل</span>)</th>
+            <th>Initial (<span class="ar-inline" lang="ar">أول</span>)</th>
+            <th>Medial (<span class="ar-inline" lang="ar">وسط</span>)</th>
+            <th>Final (<span class="ar-inline" lang="ar">آخر</span>)</th>
             <th>Connector Rule</th>
             <th>Sound Tip</th>
           </tr>
@@ -915,16 +930,18 @@
     const viewQuiz = document.getElementById("viewQuiz");
     const tableBody = document.getElementById("tableBody");
 
-    // Audio Speech Synthesis
+    // Audio Speech Synthesis with Authentic Egyptian Pronunciation
     function speakLetter(arabicText) {
       if (!('speechSynthesis' in window)) return;
       window.speechSynthesis.cancel();
       const utter = new SpeechSynthesisUtterance(arabicText);
-      utter.lang = "ar-SA";
-      utter.rate = 0.8;
+      utter.lang = "ar-EG";
+      utter.rate = 0.82;
       const voices = window.speechSynthesis.getVoices();
-      const arVoice = voices.find(v => v.lang.startsWith("ar"));
-      if (arVoice) utter.voice = arVoice;
+      // Prioritize authentic Egyptian voices (e.g. Salma, Shakir, Hoda)
+      const egVoice = voices.find(v => v.lang === "ar-EG" || v.lang === "ar_EG" || (v.name && (v.name.includes("Egypt") || v.name.includes("Hoda") || v.name.includes("Salma") || v.name.includes("Shakir"))))
+                   || voices.find(v => v.lang.startsWith("ar"));
+      if (egVoice) utter.voice = egVoice;
       window.speechSynthesis.speak(utter);
     }
 
