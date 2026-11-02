@@ -2272,7 +2272,7 @@
       if (!('speechSynthesis' in window)) return;
       window.speechSynthesis.cancel();
 
-      const utter = new SpeechSynthesisUtterance(text);
+      const utter = new SpeechSynthesisUtterance(sanitizeForTTS(text));
       utter.lang = 'de-DE';
       if (germanVoice) utter.voice = germanVoice;
       
@@ -2305,10 +2305,22 @@
       saveState();
     }
 
+    function sanitizeForTTS(text) {
+      if (!text) return '';
+      return text
+        .replace(/\bT\s+t\b/g, 'T')
+        .replace(/\bT t\b/g, 'T');
+    }
+
     function speakTiger() {
       playPop();
-      speakText("T t wie Tiger! Schön, dass du da bist!");
-      launchMiniConfetti(document.querySelector('.hub-anlaut-avatar'));
+      const el = document.querySelector('.hub-anlaut-avatar');
+      if (el) {
+        el.style.transform = 'scale(1.22) rotate(-8deg)';
+        setTimeout(() => { el.style.transform = ''; }, 350);
+        launchMiniConfetti(el);
+      }
+      speakText("T wie Tiger! Schön, dass du da bist!");
     }
 
     /* ==========================================================================
@@ -2812,7 +2824,7 @@
       if (modal) modal.style.display = 'flex';
 
       launchBigFireworks();
-      speakText("Hurra! Du bist heute ein echter Lese-Meister für T t! Hier ist dein verdienter goldener Stern!");
+      speakText("Hurra! Du bist heute ein echter Lese-Meister für das T! Hier ist dein verdienter goldener Stern!");
       saveState();
     }
 
