@@ -633,18 +633,47 @@
     /* Flying Airplane in Grid */
     .flying-airplane {
       position: absolute;
-      width: 58px;
-      height: 58px;
+      width: 54px;
+      height: 30px;
       pointer-events: none;
-      z-index: 20;
-      transition: top 0.65s cubic-bezier(0.25, 1, 0.5, 1), left 0.65s cubic-bezier(0.25, 1, 0.5, 1), transform 0.65s ease;
-      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.22));
+      z-index: 40;
+      transform-origin: center center;
+      transform: translate(-50%, -50%);
+      will-change: left, top, transform;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
     }
 
     .flying-airplane-img {
       width: 100%;
       height: 100%;
       object-fit: contain;
+      display: block;
+      pointer-events: none;
+    }
+
+    .flying-airplane.in-flight {
+      filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.38));
+      z-index: 50;
+    }
+
+    .flying-airplane.in-flight .flying-airplane-img {
+      animation: airplanePropel 0.12s infinite alternate ease-in-out;
+    }
+
+    @keyframes airplanePropel {
+      0% { transform: translateY(-1.5px) rotate(-1deg); }
+      100% { transform: translateY(1.5px) rotate(1deg); }
+    }
+
+    .flying-airplane.landed {
+      animation: airplaneLandBounce 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes airplaneLandBounce {
+      0% { transform: translate(-50%, -50%) scale(1.35) rotate(-6deg); }
+      45% { transform: translate(-50%, -50%) scale(0.92) rotate(3deg); }
+      75% { transform: translate(-50%, -50%) scale(1.08) rotate(-1deg); }
+      100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
     }
 
     /* Flight Deck (Control bar for landed syllable) */
@@ -1244,11 +1273,12 @@
     /* Fireworks Canvas Overlay */
     #fireworks-canvas {
       position: fixed;
-      inset: 0;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
       pointer-events: none;
-      z-index: 900;
-      width: 100%;
-      height: 100%;
+      z-index: 100000;
     }
   </style>
 </head>
@@ -1315,7 +1345,7 @@
       </section>
 
       <!-- Golden Star Banner (appears on full completion) -->
-      <section class="hub-star-banner" id="hub-star-banner" style="display: none;">
+      <section class="hub-star-banner" id="hub-star-banner" style="display: none; cursor: pointer;" onclick="awardGoldenStar()" title="Lese-Meister Belohnung">
         <div class="star-badge-icon">⭐</div>
         <div>
           <div class="star-badge-title">Du bist ein T t Lese-Meister!</div>
@@ -1404,7 +1434,7 @@
           
           <div class="carpet-banner">
             <div class="carpet-left">
-              <img src="assets/flugzeug_sketch.png" alt="Flugzeug" class="airplane-icon" onclick="triggerNextFlight(1)" title="Nächster Flug!">
+              <img src="assets/flugzeug.png" alt="Flugzeug" class="airplane-icon" onclick="triggerNextFlight(1)" title="Nächster Flug!">
               <div>
                 <p class="carpet-instruction">
                   Klicke auf <b>„Nächster Flug“</b> oder tippe direkt auf eine Silbe. Das Flugzeug landet und du liest laut vor!
@@ -1424,7 +1454,7 @@
           <!-- 2 x 12 Grid for Airplane 1 -->
           <div class="carpet-grid-wrap" id="carpet-grid-wrap-1">
             <div id="flying-airplane-1" class="flying-airplane" style="display: none;">
-              <img src="assets/flugzeug_sketch.png" alt="Flugzeug" class="flying-airplane-img">
+              <img src="assets/flugzeug.png" alt="Flugzeug" class="flying-airplane-img">
             </div>
             <table class="carpet-table" id="carpet-table-1">
               <tbody>
@@ -1479,7 +1509,7 @@
                 <span>▶️</span> Eigene Stimme
               </button>
               <button class="action-btn-pill" onclick="finishCurrentFlight(1)" style="background:#10b981; color:#fff; border-color:#059669;">
-                <span>⭐</span> Geschafft!
+                <span>⭐</span> Richtig gemacht!
               </button>
             </div>
           </div>
@@ -1805,7 +1835,7 @@
           
           <div class="carpet-banner carpet-banner-green">
             <div class="carpet-left">
-              <img src="assets/flugzeug_sketch.png" alt="Flugzeug" class="airplane-icon" onclick="triggerNextFlight(2)" title="Nächster Flug!">
+              <img src="assets/flugzeug.png" alt="Flugzeug" class="airplane-icon" onclick="triggerNextFlight(2)" title="Nächster Flug!">
               <div>
                 <p class="carpet-instruction">
                   Hier landen wir auf Silben und kurzen Wörtern! Klicke auf <b>„Nächster Flug“</b> oder tippe direkt auf ein Feld.
@@ -1825,7 +1855,7 @@
           <!-- 2 x 12 Grid for Airplane 2 -->
           <div class="carpet-grid-wrap" id="carpet-grid-wrap-2">
             <div id="flying-airplane-2" class="flying-airplane" style="display: none;">
-              <img src="assets/flugzeug_sketch.png" alt="Flugzeug" class="flying-airplane-img">
+              <img src="assets/flugzeug.png" alt="Flugzeug" class="flying-airplane-img">
             </div>
             <table class="carpet-table" id="carpet-table-2">
               <tbody>
@@ -1880,7 +1910,7 @@
                 <span>▶️</span> Eigene Stimme
               </button>
               <button class="action-btn-pill" onclick="finishCurrentFlight(2)" style="background:#10b981; color:#fff; border-color:#059669;">
-                <span>⭐</span> Geschafft!
+                <span>⭐</span> Richtig gemacht!
               </button>
             </div>
           </div>
@@ -1955,6 +1985,8 @@
     // Flight variables
     let currentTargetCell1 = null;
     let currentTargetCell2 = null;
+    let planeCurrentPos1 = null;
+    let planeCurrentPos2 = null;
     let isAirplaneFlying1 = false;
     let isAirplaneFlying2 = false;
 
@@ -2018,10 +2050,32 @@
         station2Celebrated: false
       };
 
+      currentTargetCell1 = null;
+      currentTargetCell2 = null;
+      planeCurrentPos1 = null;
+      planeCurrentPos2 = null;
+      isAirplaneFlying1 = false;
+      isAirplaneFlying2 = false;
+
       const f1 = document.getElementById('flight-num-1');
       if (f1) f1.textContent = '0';
       const f2 = document.getElementById('flight-num-2');
       if (f2) f2.textContent = '0';
+
+      const c1 = document.getElementById('flight-counter-1');
+      if (c1) c1.innerHTML = '✈️ Flug <b id="flight-num-1">0</b> / 10';
+      const c2 = document.getElementById('flight-counter-2');
+      if (c2) c2.innerHTML = '✈️ Flug <b id="flight-num-2">0</b> / 10';
+
+      const d1 = document.getElementById('flight-deck-1');
+      if (d1) d1.style.display = 'none';
+      const d2 = document.getElementById('flight-deck-2');
+      if (d2) d2.style.display = 'none';
+
+      const p1 = document.getElementById('flying-airplane-1');
+      if (p1) p1.style.display = 'none';
+      const p2 = document.getElementById('flying-airplane-2');
+      if (p2) p2.style.display = 'none';
 
       document.querySelectorAll('.sketch-btn').forEach(b => b.classList.remove('colored'));
       document.querySelectorAll('.sentence-heart-btn').forEach(b => b.classList.remove('active'));
@@ -2033,6 +2087,8 @@
       if (hubBanner) hubBanner.style.display = 'none';
       const navStar = document.getElementById('nav-golden-star');
       if (navStar) navStar.style.display = 'none';
+      const modal = document.getElementById('star-reward-modal');
+      if (modal) modal.style.display = 'none';
 
       updateStation2Counters();
     }
@@ -2140,6 +2196,59 @@
       } catch (e) {}
     }
 
+    function playRocketAscent() {
+      if (!appState.soundEnabled) return;
+      try {
+        const actx = getAudioContext();
+        const osc = actx.createOscillator();
+        const gain = actx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(260, actx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(850, actx.currentTime + 0.42);
+        gain.gain.setValueAtTime(0.04, actx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, actx.currentTime + 0.42);
+        osc.connect(gain);
+        gain.connect(actx.destination);
+        osc.start();
+        osc.stop(actx.currentTime + 0.45);
+      } catch (e) {}
+    }
+
+    function playFireworkBoom() {
+      if (!appState.soundEnabled) return;
+      try {
+        const actx = getAudioContext();
+        // Dumpfer Bass-Knall
+        const osc = actx.createOscillator();
+        const gain = actx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(150, actx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(42, actx.currentTime + 0.32);
+        gain.gain.setValueAtTime(0.28, actx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, actx.currentTime + 0.32);
+        osc.connect(gain);
+        gain.connect(actx.destination);
+        osc.start();
+        osc.stop(actx.currentTime + 0.34);
+
+        // Zischen / Knistern
+        const bufferSize = Math.floor(actx.sampleRate * 0.12);
+        const buffer = actx.createBuffer(1, bufferSize, actx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (actx.sampleRate * 0.035));
+        }
+        const noise = actx.createBufferSource();
+        noise.buffer = buffer;
+        const noiseGain = actx.createGain();
+        noiseGain.gain.setValueAtTime(0.18, actx.currentTime);
+        noiseGain.gain.exponentialRampToValueAtTime(0.001, actx.currentTime + 0.12);
+        noise.connect(noiseGain);
+        noiseGain.connect(actx.destination);
+        noise.start();
+      } catch (e) {}
+    }
+
     /* ==========================================================================
        SPEECH SYNTHESIS ENGINE (German Voice)
        ========================================================================== */
@@ -2205,35 +2314,160 @@
     /* ==========================================================================
        STATION 1 & 3: SILBENFLUGZEUG CONTROLLER
        ========================================================================== */
+    function getCellCenter(cell, wrapId) {
+      const wrap = document.getElementById(wrapId);
+      if (!wrap || !cell) return { x: 0, y: 0 };
+      const wrapRect = wrap.getBoundingClientRect();
+      const cellRect = cell.getBoundingClientRect();
+      return {
+        x: cellRect.left - wrapRect.left + wrap.scrollLeft + (cellRect.width / 2),
+        // Position slightly above cell center so the syllable remains readable
+        y: cellRect.top - wrapRect.top + wrap.scrollTop + 8
+      };
+    }
+
+    function pickRandomDistantCell(planeNum, currentCell) {
+      const tableId = planeNum === 1 ? 'carpet-table-1' : 'carpet-table-2';
+      const allCells = Array.from(document.querySelectorAll(`#${tableId} .carpet-cell`));
+      if (!allCells.length) return null;
+      if (!currentCell) {
+        return allCells[Math.floor(Math.random() * allCells.length)];
+      }
+
+      // 1. Unvisited cells (other than current)
+      const unvisited = allCells.filter(c => !c.classList.contains('visited-cell') && c !== currentCell);
+      if (unvisited.length > 0) {
+        return unvisited[Math.floor(Math.random() * unvisited.length)];
+      }
+
+      // 2. Any other cell
+      const otherCells = allCells.filter(c => c !== currentCell);
+      if (otherCells.length > 0) {
+        return otherCells[Math.floor(Math.random() * otherCells.length)];
+      }
+
+      return allCells[0];
+    }
+
+    function flyPlaneToCell(planeNum, targetCell, onLanded) {
+      const isP1 = planeNum === 1;
+      const wrapId = isP1 ? 'carpet-grid-wrap-1' : 'carpet-grid-wrap-2';
+      const planeId = isP1 ? 'flying-airplane-1' : 'flying-airplane-2';
+      const wrap = document.getElementById(wrapId);
+      const plane = document.getElementById(planeId);
+      if (!wrap || !plane || !targetCell) {
+        if (onLanded) onLanded();
+        return;
+      }
+
+      if (isP1) isAirplaneFlying1 = true;
+      else isAirplaneFlying2 = true;
+
+      const targetPos = getCellCenter(targetCell, wrapId);
+      let curPos = isP1 ? planeCurrentPos1 : planeCurrentPos2;
+
+      // First flight of session: place plane near top-left of grid before taking off
+      if (!curPos) {
+        curPos = {
+          x: Math.max(10, targetPos.x - 180),
+          y: Math.max(10, targetPos.y - 70)
+        };
+        if (isP1) planeCurrentPos1 = curPos;
+        else planeCurrentPos2 = curPos;
+
+        plane.style.transition = 'none';
+        plane.style.left = curPos.x + 'px';
+        plane.style.top = curPos.y + 'px';
+        plane.style.display = 'block';
+        // Force reflow so subsequent transition animates
+        void plane.offsetWidth;
+      }
+
+      plane.classList.remove('landed');
+      plane.classList.add('in-flight');
+
+      const dx = targetPos.x - curPos.x;
+      const dy = targetPos.y - curPos.y;
+      const dist = Math.hypot(dx, dy);
+
+      // Natural flight duration based on travel distance
+      const durationSec = Math.max(0.65, Math.min(1.2, dist / 420));
+
+      // Calculate tilt & orientation:
+      // Base flugzeug.png points left. If dx >= 0 (flying right), flip horizontally with scaleX(-1).
+      let scaleX = (dx >= 0) ? -1 : 1;
+      let pitchTilt = 0;
+      if (Math.abs(dx) > 10) {
+        pitchTilt = Math.max(-25, Math.min(25, (dy / Math.abs(dx)) * 25));
+        if (dx >= 0) pitchTilt = -pitchTilt;
+      }
+
+      playFlightWhoosh();
+
+      // Smoothly scroll target cell into view if needed
+      targetCell.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+
+      // Launch flight animation
+      plane.style.transition = `left ${durationSec}s cubic-bezier(0.25, 1, 0.5, 1), top ${durationSec}s cubic-bezier(0.25, 1, 0.5, 1), transform 0.25s ease-out`;
+      plane.style.transform = `translate(-50%, -50%) scaleX(${scaleX}) rotate(${pitchTilt}deg) scale(1.18)`;
+      plane.style.left = targetPos.x + 'px';
+      plane.style.top = targetPos.y + 'px';
+
+      setTimeout(() => {
+        // Touchdown on syllable
+        plane.classList.remove('in-flight');
+        plane.classList.add('landed');
+        plane.style.transition = 'transform 0.3s ease-out';
+        plane.style.transform = `translate(-50%, -50%) scaleX(${scaleX}) rotate(0deg) scale(1)`;
+
+        if (isP1) {
+          planeCurrentPos1 = targetPos;
+          isAirplaneFlying1 = false;
+        } else {
+          planeCurrentPos2 = targetPos;
+          isAirplaneFlying2 = false;
+        }
+
+        if (onLanded) onLanded();
+      }, durationSec * 1000);
+    }
+
     function triggerNextFlight(planeNum) {
       const isP1 = planeNum === 1;
       if (isP1 && isAirplaneFlying1) return;
       if (!isP1 && isAirplaneFlying2) return;
 
-      playFlightWhoosh();
-      if (isP1) isAirplaneFlying1 = true;
-      else isAirplaneFlying2 = true;
+      const currentCell = isP1 ? currentTargetCell1 : currentTargetCell2;
+      const nextCell = pickRandomDistantCell(planeNum, currentCell);
+      if (!nextCell) return;
 
       const tableId = isP1 ? 'carpet-table-1' : 'carpet-table-2';
-      const cells = document.querySelectorAll(`#${tableId} .carpet-cell`);
-      if (cells.length === 0) return;
+      document.querySelectorAll(`#${tableId} .carpet-cell`).forEach(c => c.classList.remove('landed-target'));
 
-      // Unhighlight previous
-      const currentTarget = isP1 ? currentTargetCell1 : currentTargetCell2;
-      if (currentTarget) {
-        currentTarget.classList.remove('landed-target');
-        currentTarget.classList.add('visited-cell');
-      }
+      flyPlaneToCell(planeNum, nextCell, () => {
+        if (isP1) currentTargetCell1 = nextCell;
+        else currentTargetCell2 = nextCell;
 
-      // Pick next random cell (prefer unvisited)
-      const unvisited = Array.from(cells).filter(c => !c.classList.contains('visited-cell'));
-      const pool = unvisited.length > 0 ? unvisited : cells;
-      const targetCell = pool[Math.floor(Math.random() * pool.length)];
+        nextCell.classList.add('landed-target');
 
-      if (isP1) currentTargetCell1 = targetCell;
-      else currentTargetCell2 = targetCell;
+        // Show flight deck
+        const syl = nextCell.getAttribute('data-val') || nextCell.textContent.trim();
+        const deck = document.getElementById(isP1 ? 'flight-deck-1' : 'flight-deck-2');
+        const sylLabel = document.getElementById(isP1 ? 'flight-deck-syl-1' : 'flight-deck-syl-2');
+        if (deck) deck.style.display = 'flex';
+        if (sylLabel) sylLabel.textContent = syl;
 
-      flyPlaneToCell(planeNum, targetCell);
+        // Reset voice recording controls for this new flight
+        const recLabel = document.getElementById(`rec-label-${planeNum}`);
+        if (recLabel) recLabel.textContent = 'Aufnehmen';
+        const recBtn = document.getElementById(`btn-rec-flight-${planeNum}`);
+        if (recBtn) recBtn.classList.remove('recording');
+        const playBtn = document.getElementById(`btn-play-flight-${planeNum}`);
+        if (playBtn) playBtn.disabled = true;
+
+        // NOTE: Silent landing as requested: child reads the syllable aloud!
+        // No automatic speech playback here.
+      });
     }
 
     function onCellDirectClick(planeNum, cell) {
@@ -2241,54 +2475,28 @@
       if (isP1 && isAirplaneFlying1) return;
       if (!isP1 && isAirplaneFlying2) return;
 
-      playFlightWhoosh();
-      const currentTarget = isP1 ? currentTargetCell1 : currentTargetCell2;
-      if (currentTarget) {
-        currentTarget.classList.remove('landed-target');
-        currentTarget.classList.add('visited-cell');
-      }
+      const tableId = isP1 ? 'carpet-table-1' : 'carpet-table-2';
+      document.querySelectorAll(`#${tableId} .carpet-cell`).forEach(c => c.classList.remove('landed-target'));
 
-      if (isP1) currentTargetCell1 = cell;
-      else currentTargetCell2 = cell;
+      flyPlaneToCell(planeNum, cell, () => {
+        if (isP1) currentTargetCell1 = cell;
+        else currentTargetCell2 = cell;
 
-      flyPlaneToCell(planeNum, cell);
-    }
-
-    function flyPlaneToCell(planeNum, cell) {
-      const isP1 = planeNum === 1;
-      const wrap = document.getElementById(isP1 ? 'carpet-grid-wrap-1' : 'carpet-grid-wrap-2');
-      const plane = document.getElementById(isP1 ? 'flying-airplane-1' : 'flying-airplane-2');
-      if (!wrap || !plane || !cell) return;
-
-      plane.style.display = 'block';
-
-      const wrapRect = wrap.getBoundingClientRect();
-      const cellRect = cell.getBoundingClientRect();
-
-      const targetX = (cellRect.left - wrapRect.left) + (cellRect.width / 2) - 29;
-      const targetY = (cellRect.top - wrapRect.top) + (cellRect.height / 2) - 29;
-
-      // Slight flight tilt
-      plane.style.left = targetX + 'px';
-      plane.style.top = targetY + 'px';
-      plane.style.transform = 'scale(1.2) rotate(-8deg)';
-
-      setTimeout(() => {
-        plane.style.transform = 'scale(1) rotate(0deg)';
         cell.classList.add('landed-target');
-        if (isP1) isAirplaneFlying1 = false;
-        else isAirplaneFlying2 = false;
 
-        // Show flight deck
         const syl = cell.getAttribute('data-val') || cell.textContent.trim();
         const deck = document.getElementById(isP1 ? 'flight-deck-1' : 'flight-deck-2');
         const sylLabel = document.getElementById(isP1 ? 'flight-deck-syl-1' : 'flight-deck-syl-2');
         if (deck) deck.style.display = 'flex';
         if (sylLabel) sylLabel.textContent = syl;
 
-        // Silent landing: Das Kind liest laut vor!
-        // Zum Anhören/Überprüfen kann auf 'Vorlesen' (🔊) geklickt werden.
-      }, 650);
+        const recLabel = document.getElementById(`rec-label-${planeNum}`);
+        if (recLabel) recLabel.textContent = 'Aufnehmen';
+        const recBtn = document.getElementById(`btn-rec-flight-${planeNum}`);
+        if (recBtn) recBtn.classList.remove('recording');
+        const playBtn = document.getElementById(`btn-play-flight-${planeNum}`);
+        if (playBtn) playBtn.disabled = true;
+      });
     }
 
     function speakCurrentFlight(planeNum) {
@@ -2301,8 +2509,16 @@
     }
 
     function finishCurrentFlight(planeNum) {
-      playDing();
       const isP1 = planeNum === 1;
+      const targetCell = isP1 ? currentTargetCell1 : currentTargetCell2;
+      if (targetCell) {
+        targetCell.classList.remove('landed-target');
+        targetCell.classList.add('visited-cell');
+        launchMiniConfetti(targetCell);
+      }
+
+      playDing();
+
       if (isP1) {
         appState.flightCount1++;
         const el = document.getElementById('flight-num-1');
@@ -2313,24 +2529,24 @@
         if (el) el.textContent = appState.flightCount2;
       }
 
-      const targetCell = isP1 ? currentTargetCell1 : currentTargetCell2;
-      if (targetCell) {
-        launchMiniConfetti(targetCell);
-        targetCell.classList.add('visited-cell');
-      }
-
       saveState();
-      checkAllFlightsDone(planeNum);
       updateHubBadges();
-      checkGrandMasterCompletion();
-    }
 
-    function checkAllFlightsDone(planeNum) {
-      const isP1 = planeNum === 1;
       const count = isP1 ? appState.flightCount1 : appState.flightCount2;
-      if (count === 10) {
+      if (count < 10) {
+        // Automatically trigger next flight!
+        setTimeout(() => {
+          triggerNextFlight(planeNum);
+        }, 450);
+      } else {
+        // Station completed: 10 flights done!
         launchBigFireworks();
-        speakText(isP1 ? "Großartig! Du hast Silbenflugzeug eins gemeistert!" : "Klasse! Du hast Silbenflugzeug zwei gemeistert!");
+        speakText(isP1 ? "Großartig! Du hast alle zehn Flüge mit Silbenflugzeug eins gemeistert!" : "Klasse! Du hast alle zehn Flüge mit Silbenflugzeug zwei gemeistert!");
+        const counterBadge = document.getElementById(isP1 ? 'flight-counter-1' : 'flight-counter-2');
+        if (counterBadge) counterBadge.innerHTML = '🏆 10 Flüge geschafft!';
+        const deck = document.getElementById(isP1 ? 'flight-deck-1' : 'flight-deck-2');
+        if (deck) deck.style.display = 'none';
+        checkGrandMasterCompletion();
       }
     }
 
@@ -2341,22 +2557,28 @@
         appState.flightCount1 = 0;
         const el = document.getElementById('flight-num-1');
         if (el) el.textContent = '0';
+        const counterBadge = document.getElementById('flight-counter-1');
+        if (counterBadge) counterBadge.innerHTML = '✈️ Flug <b id="flight-num-1">0</b> / 10';
         document.querySelectorAll('#carpet-table-1 .carpet-cell').forEach(c => c.classList.remove('visited-cell', 'landed-target'));
         const p = document.getElementById('flying-airplane-1');
         if (p) p.style.display = 'none';
         const deck = document.getElementById('flight-deck-1');
         if (deck) deck.style.display = 'none';
         currentTargetCell1 = null;
+        planeCurrentPos1 = null;
       } else {
         appState.flightCount2 = 0;
         const el = document.getElementById('flight-num-2');
         if (el) el.textContent = '0';
+        const counterBadge = document.getElementById('flight-counter-2');
+        if (counterBadge) counterBadge.innerHTML = '✈️ Flug <b id="flight-num-2">0</b> / 10';
         document.querySelectorAll('#carpet-table-2 .carpet-cell').forEach(c => c.classList.remove('visited-cell', 'landed-target'));
         const p = document.getElementById('flying-airplane-2');
         if (p) p.style.display = 'none';
         const deck = document.getElementById('flight-deck-2');
         if (deck) deck.style.display = 'none';
         currentTargetCell2 = null;
+        planeCurrentPos2 = null;
       }
       saveState();
       updateHubBadges();
@@ -2702,95 +2924,335 @@
     }
 
     /* ==========================================================================
-       CONFETTI & FIREWORKS ENGINE
+       CONFETTI & FIREWORKS ENGINE (Multi-Palette Ascending Rockets & Glitter)
        ========================================================================== */
-    function launchMiniConfetti(element) {
-      if (!element) return;
-      const rect = element.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      createSparks(cx, cy, 25);
-    }
-
-    function launchBigFireworks() {
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-      for (let i = 0; i < 5; i++) {
-        setTimeout(() => {
-          const rx = w * 0.2 + Math.random() * (w * 0.6);
-          const ry = h * 0.2 + Math.random() * (h * 0.4);
-          createSparks(rx, ry, 70);
-        }, i * 350);
-      }
-    }
-
     const canvas = document.getElementById('fireworks-canvas');
     const ctx = canvas ? canvas.getContext('2d') : null;
-    let particles = [];
-    let animationId = null;
+    const rockets = [];
+    const sparks = [];
 
     function resizeCanvas() {
       if (!canvas) return;
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     }
-    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      if (currentTargetCell1 && planeCurrentPos1 && !isAirplaneFlying1) {
+        const p1 = document.getElementById('flying-airplane-1');
+        if (p1 && p1.style.display !== 'none') {
+          const pos = getCellCenter(currentTargetCell1, 'carpet-grid-wrap-1');
+          p1.style.transition = 'none';
+          p1.style.left = pos.x + 'px';
+          p1.style.top = pos.y + 'px';
+          planeCurrentPos1 = pos;
+        }
+      }
+      if (currentTargetCell2 && planeCurrentPos2 && !isAirplaneFlying2) {
+        const p2 = document.getElementById('flying-airplane-2');
+        if (p2 && p2.style.display !== 'none') {
+          const pos = getCellCenter(currentTargetCell2, 'carpet-grid-wrap-2');
+          p2.style.transition = 'none';
+          p2.style.left = pos.x + 'px';
+          p2.style.top = pos.y + 'px';
+          planeCurrentPos2 = pos;
+        }
+      }
+    });
     resizeCanvas();
 
-    function createSparks(x, y, count) {
-      if (!canvas || !ctx) return;
-      const colors = ['#ea580c', '#f59e0b', '#ef4444', '#10b981', '#3b82f6', '#8b5cf6', '#ec4899', '#fde047'];
+    // Farbpaletten für echte Feuerwerks-Bukette
+    const FIREWORK_PALETTES = [
+      { core: '#dc2626', glow: '#ef4444', trail: ['#ef4444', '#f87171', '#fef08a', '#ffffff'] }, // Rubinrot & Gold
+      { core: '#1d4ed8', glow: '#3b82f6', trail: ['#2563eb', '#60a5fa', '#38bdf8', '#ffffff'] }, // Königsblau & Saphir
+      { core: '#059669', glow: '#10b981', trail: ['#10b981', '#34d399', '#fde047', '#ffffff'] }, // Smaragd & Zitrone
+      { core: '#d97706', glow: '#f59e0b', trail: ['#f59e0b', '#fbbf24', '#fef08a', '#ea580c'] }, // Goldweide & Bernstein
+      { core: '#7c3aed', glow: '#8b5cf6', trail: ['#8b5cf6', '#c084fc', '#ec4899', '#ffffff'] }, // Purpur & Sternenstaub
+      { core: '#db2777', glow: '#ec4899', trail: ['#ec4899', '#f472b6', '#38bdf8', '#ffffff'] }  // Funkelndes Magentarot
+    ];
+
+    function launchSingleRocket(targetX, targetY, palette) {
+      if (!canvas) return;
+      playRocketAscent();
+      const startX = targetX + (Math.random() - 0.5) * 60;
+      const startY = canvas.height;
+      const dx = targetX - startX;
+      const dy = targetY - startY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const speed = Math.random() * 3 + 15;
+      const duration = dist / speed;
+
+      rockets.push({
+        x: startX,
+        y: startY,
+        targetX: targetX,
+        targetY: targetY,
+        vx: dx / duration,
+        vy: dy / duration,
+        palette: palette || FIREWORK_PALETTES[Math.floor(Math.random() * FIREWORK_PALETTES.length)],
+        trail: [],
+        life: duration
+      });
+    }
+
+    function explodeRocket(rocket) {
+      playFireworkBoom();
+      const count = 75 + Math.floor(Math.random() * 30);
+      const pal = rocket.palette;
+      const isRing = Math.random() < 0.25;
+
       for (let i = 0; i < count; i++) {
-        const angle = Math.random() * Math.PI * 2;
-        const speed = 2 + Math.random() * 6;
-        particles.push({
-          x: x,
-          y: y,
+        let angle = (i / count) * Math.PI * 2;
+        if (!isRing) angle += (Math.random() - 0.5) * 0.45;
+        const speed = isRing
+          ? (Math.random() * 1.5 + 4.5)
+          : (Math.random() * 6.5 + 1.8);
+
+        const color = pal.trail[Math.floor(Math.random() * pal.trail.length)];
+        const isStar = Math.random() < 0.35;
+
+        sparks.push({
+          x: rocket.x,
+          y: rocket.y,
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed,
-          radius: 2 + Math.random() * 3.5,
-          color: colors[Math.floor(Math.random() * colors.length)],
+          color: color,
+          coreColor: pal.core,
+          trail: [{ x: rocket.x, y: rocket.y }],
+          maxTrail: 5,
           alpha: 1,
-          decay: 0.015 + Math.random() * 0.02
+          life: 50 + Math.floor(Math.random() * 32),
+          maxLife: 82,
+          size: Math.random() * 2.5 + 2.2,
+          isStar: isStar,
+          twinkle: Math.random() > 0.35,
+          gravity: 0.08 + Math.random() * 0.03,
+          friction: 0.955
         });
       }
-      if (!animationId) {
-        renderFireworks();
+
+      // Lichtblitz im Explosionszentrum
+      sparks.push({
+        type: 'flash',
+        x: rocket.x,
+        y: rocket.y,
+        radius: 46,
+        color: pal.glow,
+        alpha: 0.7,
+        life: 6,
+        maxLife: 6
+      });
+    }
+
+    // Großes Sieger-Feuerwerk (Mehrere Raketen nacheinander am Himmel)
+    function launchBigFireworks() {
+      if (!canvas) return;
+      const totalRockets = 9;
+      for (let i = 0; i < totalRockets; i++) {
+        setTimeout(() => {
+          const minX = canvas.width * 0.15;
+          const maxX = canvas.width * 0.85;
+          const targetX = minX + Math.random() * (maxX - minX);
+          const targetY = canvas.height * (0.16 + Math.random() * 0.28);
+          const palette = FIREWORK_PALETTES[i % FIREWORK_PALETTES.length];
+          launchSingleRocket(targetX, targetY, palette);
+        }, i * 350);
       }
+    }
+
+    function launchBigConfetti() {
+      launchBigFireworks();
+    }
+
+    // Mini-Feuerwerk für Einzelerfolge (z.B. Herz, Ausmalbild, Stempel)
+    function launchMiniConfetti(targetElem) {
+      if (!targetElem || !canvas) return;
+      const rect = targetElem.getBoundingClientRect();
+      const originX = rect.left + rect.width / 2;
+      const originY = rect.top + rect.height / 2;
+      const pal = FIREWORK_PALETTES[Math.floor(Math.random() * FIREWORK_PALETTES.length)];
+
+      playRocketAscent();
+      setTimeout(() => {
+        playFireworkBoom();
+        for (let i = 0; i < 28; i++) {
+          const angle = (i / 28) * Math.PI * 2 + (Math.random() - 0.5) * 0.35;
+          const speed = Math.random() * 4.5 + 2.2;
+          const color = pal.trail[Math.floor(Math.random() * pal.trail.length)];
+          sparks.push({
+            x: originX,
+            y: originY,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed - 1.6,
+            color: color,
+            coreColor: pal.core,
+            trail: [{ x: originX, y: originY }],
+            maxTrail: 4,
+            alpha: 1,
+            life: 38 + Math.floor(Math.random() * 20),
+            maxLife: 58,
+            size: Math.random() * 2.2 + 2,
+            isStar: Math.random() < 0.4,
+            twinkle: true,
+            gravity: 0.1,
+            friction: 0.95
+          });
+        }
+      }, 70);
+    }
+
+    // Zeichnet funkelnde 4-Zack-Sterne für glitzernden Sternenstaub
+    function drawSparkleStar(cx, cy, r, color) {
+      if (!ctx) return;
+      ctx.save();
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy - r);
+      ctx.quadraticCurveTo(cx, cy, cx + r, cy);
+      ctx.quadraticCurveTo(cx, cy, cx, cy + r);
+      ctx.quadraticCurveTo(cx, cy, cx - r, cy);
+      ctx.quadraticCurveTo(cx, cy, cx, cy - r);
+      ctx.fill();
+      ctx.restore();
     }
 
     function renderFireworks() {
       if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      for (let i = particles.length - 1; i >= 0; i--) {
-        const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        p.vy += 0.08; // gravity
-        p.alpha -= p.decay;
+      // 1. Raketen aufsteigen lassen
+      for (let i = rockets.length - 1; i >= 0; i--) {
+        const r = rockets[i];
+        r.x += r.vx;
+        r.y += r.vy;
+        r.life--;
 
-        if (p.alpha <= 0) {
-          particles.splice(i, 1);
+        r.trail.push({ x: r.x, y: r.y });
+        if (r.trail.length > 7) r.trail.shift();
+
+        // Aufsteigende Feuerspur
+        if (r.trail.length >= 2) {
+          ctx.beginPath();
+          ctx.moveTo(r.trail[0].x, r.trail[0].y);
+          for (let j = 1; j < r.trail.length; j++) {
+            ctx.lineTo(r.trail[j].x, r.trail[j].y);
+          }
+          ctx.strokeStyle = '#f59e0b';
+          ctx.lineWidth = 3.5;
+          ctx.lineCap = 'round';
+          ctx.stroke();
+
+          // Weiß glühender Kern
+          ctx.beginPath();
+          ctx.moveTo(r.trail[Math.max(0, r.trail.length - 3)].x, r.trail[Math.max(0, r.trail.length - 3)].y);
+          ctx.lineTo(r.x, r.y);
+          ctx.strokeStyle = '#ffffff';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        }
+
+        // Funkenregen der aufsteigenden Rakete
+        if (Math.random() < 0.6) {
+          sparks.push({
+            x: r.x + (Math.random() - 0.5) * 4,
+            y: r.y + (Math.random() - 0.5) * 4,
+            vx: (Math.random() - 0.5) * 1.5,
+            vy: Math.random() * 2.5 + 1.2,
+            color: '#fbbf24',
+            coreColor: '#f59e0b',
+            trail: [],
+            maxTrail: 0,
+            alpha: 0.9,
+            life: 14,
+            maxLife: 14,
+            size: 1.8,
+            isStar: false,
+            twinkle: false,
+            gravity: 0.08,
+            friction: 0.97
+          });
+        }
+
+        // Explosion am Scheitelpunkt
+        if (r.life <= 0 || r.y <= r.targetY) {
+          explodeRocket(r);
+          rockets.splice(i, 1);
+        }
+      }
+
+      // 2. Funken und Sternenstaub zeichnen
+      for (let i = sparks.length - 1; i >= 0; i--) {
+        const p = sparks[i];
+
+        if (p.type === 'flash') {
+          ctx.save();
+          ctx.globalAlpha = p.alpha;
+          ctx.beginPath();
+          const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius);
+          grad.addColorStop(0, p.color);
+          grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+          ctx.fillStyle = grad;
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+          p.alpha -= 0.12;
+          p.life--;
+          if (p.life <= 0) sparks.splice(i, 1);
           continue;
         }
 
+        p.trail.push({ x: p.x, y: p.y });
+        if (p.trail.length > p.maxTrail) p.trail.shift();
+
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vx *= p.friction;
+        p.vy *= p.friction;
+        p.vy += p.gravity;
+        p.life--;
+        p.alpha = Math.max(0, p.life / p.maxLife);
+
+        let currentAlpha = p.alpha;
+        if (p.twinkle && Math.random() < 0.28) {
+          currentAlpha *= 0.35;
+        }
+
         ctx.save();
-        ctx.globalAlpha = p.alpha;
-        ctx.fillStyle = p.color;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.globalAlpha = currentAlpha;
+
+        // Leuchtstreifen / Schweif
+        if (p.trail.length >= 2) {
+          ctx.beginPath();
+          ctx.moveTo(p.trail[0].x, p.trail[0].y);
+          for (let j = 1; j < p.trail.length; j++) {
+            ctx.lineTo(p.trail[j].x, p.trail[j].y);
+          }
+          ctx.strokeStyle = p.color;
+          ctx.lineWidth = Math.max(1, p.size * (p.life / p.maxLife));
+          ctx.lineCap = 'round';
+          ctx.stroke();
+        }
+
+        // Funkelnder Stern oder Glühkopf
+        if (p.isStar && p.life > 15) {
+          drawSparkleStar(p.x, p.y, p.size * 1.5, p.color);
+        } else {
+          ctx.beginPath();
+          ctx.fillStyle = p.coreColor || p.color;
+          ctx.arc(p.x, p.y, Math.max(0.8, p.size * 0.8), 0, Math.PI * 2);
+          ctx.fill();
+        }
+
         ctx.restore();
+
+        if (p.life <= 0) {
+          sparks.splice(i, 1);
+        }
       }
 
-      if (particles.length > 0) {
-        animationId = requestAnimationFrame(renderFireworks);
-      } else {
-        animationId = null;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-      }
+      requestAnimationFrame(renderFireworks);
     }
+    renderFireworks();
   </script>
 </body>
 </html>
