@@ -1,0 +1,2701 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Lese-Haus • Buchstabe E e • Leseblatt 5</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #ffffff;
+      --ink: #1f2937;
+      --ink-muted: #596a82;
+      --border-pencil: #fecdd3;
+      
+      --accent-coral: #e11d48;
+      --accent-coral-dark: #be123c;
+      --accent-coral-light: #ffe4e6;
+      --accent-rose: #f43f5e;
+      --accent-amber: #f59e0b;
+      --accent-amber-light: #fef3c7;
+      --accent-blue: #2563eb;
+      --accent-blue-light: #eff6ff;
+      --accent-green: #10b981;
+      --accent-green-light: #ecfdf5;
+      --accent-purple: #8b5cf6;
+      --accent-purple-light: #f5f3ff;
+      
+      --syl-blue: #1d4ed8;
+      --syl-red: #dc2626;
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-pill: 999px;
+      
+      --font-body: "Atkinson Hyperlegible", "Andika", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-heading: "Atkinson Hyperlegible", "Andika", sans-serif;
+      --font-reading: "Atkinson Hyperlegible", "Andika", sans-serif;
+      --font-display: "Fredoka", "Atkinson Hyperlegible", sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #fff8f8;
+      background-image: radial-gradient(#fecdd3 1.2px, transparent 1.2px);
+      background-size: 24px 24px;
+      font-family: var(--font-body);
+      color: var(--ink);
+      font-size: 19px;
+      line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* Top Utility Bar */
+    .top-toolbar {
+      background: #ffffff;
+      border-bottom: 2px solid #fecdd3;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(225, 29, 72, 0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .toolbar-left, .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .toolbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--accent-coral);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .tool-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: 2px solid #fecdd3;
+      background: #ffffff;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      touch-action: manipulation;
+    }
+
+    .tool-btn:hover {
+      background: #fff1f2;
+      border-color: #fb7185;
+      transform: translateY(-1px);
+    }
+
+    .tool-btn.active {
+      background: var(--accent-coral-light);
+      border-color: var(--accent-coral);
+      color: var(--accent-coral-dark);
+    }
+
+    /* Main Container */
+    .app-viewport {
+      max-width: 1080px;
+      margin: 24px auto 80px;
+      padding: 0 16px;
+    }
+
+    /* View Toggling */
+    .app-view {
+      display: none;
+      animation: viewPopIn 0.22s ease-out forwards;
+    }
+
+    .app-view.active-view {
+      display: block;
+    }
+
+    @keyframes viewPopIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.99);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* ==========================================================================
+       LANDING PAGE (HUB MIT 3 KACHELN)
+       ========================================================================== */
+    .hub-hero {
+      background: linear-gradient(135deg, #ffffff 0%, #fff1f2 100%);
+      border: 3px solid #fda4af;
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      margin-bottom: 28px;
+      box-shadow: 0 6px 20px rgba(225, 29, 72, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hub-hero-inner {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .hub-anlaut-avatar {
+      flex-shrink: 0;
+      width: 115px;
+      height: 115px;
+      border-radius: 50%;
+      background: #ffe4e6;
+      border: 3px solid #f43f5e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 16px rgba(225, 29, 72, 0.15);
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .hub-anlaut-avatar:hover {
+      transform: scale(1.1) rotate(4deg);
+    }
+
+    .hub-anlaut-avatar img {
+      width: 95px;
+      height: 95px;
+      object-fit: contain;
+    }
+
+    .hub-hero-text {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .hub-badge-level {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #ffe4e6;
+      color: #9f1239;
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 8px;
+    }
+
+    .hub-hero-title {
+      font-family: var(--font-display);
+      font-size: 2.3rem;
+      color: #881337;
+      margin: 0 0 6px 0;
+      line-height: 1.2;
+    }
+
+    .hub-hero-sub {
+      color: #475569;
+      font-size: 1.1rem;
+      margin: 0;
+      max-width: 650px;
+    }
+
+    /* Star Reward Banner in Hub */
+    .hub-star-banner {
+      background: linear-gradient(135deg, #fef9c3 0%, #fef08a 100%);
+      border: 3px solid #eab308;
+      border-radius: var(--radius-lg);
+      padding: 18px 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 24px rgba(234, 179, 8, 0.25);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      animation: pulseStar 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseStar {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.015); }
+    }
+
+    .star-badge-icon {
+      font-size: 3rem;
+      animation: spinBounce 3s infinite ease-in-out;
+    }
+
+    @keyframes spinBounce {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-4px) rotate(8deg); }
+    }
+
+    .star-badge-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      color: #854d0e;
+      margin-bottom: 2px;
+    }
+
+    .star-badge-desc {
+      color: #713f12;
+      font-size: 0.98rem;
+    }
+
+    /* 3 Station Tiles Grid */
+    .hub-tiles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 22px;
+    }
+
+    .hub-tile {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 3px solid #cbd5e1;
+      padding: 24px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      position: relative;
+    }
+
+    .hub-tile:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+    }
+
+    .hub-tile.tile-flugzeug {
+      border-color: #93c5fd;
+      background: linear-gradient(180deg, #ffffff 0%, #f0f7ff 100%);
+    }
+    .hub-tile.tile-flugzeug:hover {
+      border-color: #3b82f6;
+    }
+
+    .hub-tile.tile-saetze {
+      border-color: #fda4af;
+      background: linear-gradient(180deg, #ffffff 0%, #fff1f2 100%);
+    }
+    .hub-tile.tile-saetze:hover {
+      border-color: #f43f5e;
+    }
+
+    .hub-tile.tile-quatsch {
+      border-color: #d8b4fe;
+      background: linear-gradient(180deg, #ffffff 0%, #faf5ff 100%);
+    }
+    .hub-tile.tile-quatsch:hover {
+      border-color: #a855f7;
+    }
+
+    .tile-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .tile-badge {
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: #f1f5f9;
+      color: #475569;
+    }
+
+    .tile-flugzeug .tile-badge { background: #dbeafe; color: #1e40af; }
+    .tile-saetze .tile-badge { background: #ffe4e6; color: #9f1239; }
+    .tile-quatsch .tile-badge { background: #f3e8ff; color: #6b21a8; }
+
+    .tile-title {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      margin: 0 0 8px 0;
+      color: #1e293b;
+    }
+
+    .tile-desc {
+      font-size: 1rem;
+      color: #475569;
+      margin: 0 0 20px 0;
+      line-height: 1.45;
+    }
+
+    .tile-action-btn {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      color: #ffffff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+      transition: all 0.15s ease;
+    }
+
+    .tile-flugzeug .tile-action-btn { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+    .tile-saetze .tile-action-btn { background: linear-gradient(135deg, #f43f5e, #be123c); }
+    .tile-quatsch .tile-action-btn { background: linear-gradient(135deg, #a855f7, #7e22ce); }
+
+    .tile-action-btn:hover {
+      transform: scale(1.04);
+    }
+
+    /* ==========================================================================
+       STATION 1: SILBENFLUGZEUG (DER 36-SILBEN-TEPPICH)
+       ========================================================================== */
+    .station-header-box {
+      background: #ffffff;
+      border: 3px solid #cbd5e1;
+      border-radius: var(--radius-lg);
+      padding: 18px 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .station-title-group h2 {
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      margin: 0 0 4px 0;
+      color: #1e293b;
+    }
+
+    .station-title-group p {
+      margin: 0;
+      color: #64748b;
+      font-size: 0.98rem;
+    }
+
+    .carpet-banner {
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      border: 2.5px solid #93c5fd;
+      border-radius: var(--radius-md);
+      padding: 14px 20px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .carpet-instruction-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .airplane-icon {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+      transition: transform 0.25s ease;
+    }
+
+    .airplane-icon:hover {
+      transform: scale(1.15) rotate(-5deg);
+    }
+
+    .carpet-instruction {
+      margin: 0;
+      font-size: 1.05rem;
+      color: #1e3a8a;
+      line-height: 1.35;
+    }
+
+    .carpet-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .flight-counter-badge {
+      background: #ffffff;
+      border: 2px solid #93c5fd;
+      color: #1d4ed8;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.95rem;
+    }
+
+    .btn-next-flight {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 9px 20px;
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.28);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-next-flight:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+    }
+
+    /* Grid Wrap for Carpet Table */
+    .carpet-grid-wrap {
+      position: relative;
+      overflow-x: auto;
+      border: 3px solid #cbd5e1;
+      border-radius: var(--radius-md);
+      background: #ffffff;
+      padding: 10px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+    }
+
+    .carpet-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 6px;
+      table-layout: fixed;
+      min-width: 840px;
+    }
+
+    .carpet-cell {
+      height: 62px;
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: var(--radius-sm);
+      text-align: center;
+      vertical-align: middle;
+      font-family: var(--font-reading);
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #1e293b;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+    }
+
+    .carpet-cell:hover {
+      background: #eff6ff;
+      border-color: #60a5fa;
+      transform: scale(1.08);
+      z-index: 2;
+    }
+
+    .carpet-cell.landed-target {
+      background: #fef08a !important;
+      border-color: #ca8a04 !important;
+      color: #854d0e !important;
+      transform: scale(1.12);
+      box-shadow: 0 6px 16px rgba(202, 138, 4, 0.35);
+      z-index: 5;
+      animation: landedGlow 1.6s infinite alternate ease-in-out;
+    }
+
+    @keyframes landedGlow {
+      from { box-shadow: 0 0 8px rgba(234, 179, 8, 0.4); }
+      to { box-shadow: 0 0 20px rgba(234, 179, 8, 0.85); }
+    }
+
+    .carpet-cell.visited-cell {
+      background: #f0fdf4;
+      border-color: #86efac;
+      color: #15803d;
+    }
+
+    /* Flying Airplane in Grid */
+    .flying-airplane {
+      position: absolute;
+      width: 58px;
+      height: 32px;
+      pointer-events: none;
+      z-index: 40;
+      transform-origin: center center;
+      transform: translate(-50%, -50%);
+      will-change: left, top, transform;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    }
+
+    .flying-airplane-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      pointer-events: none;
+    }
+
+    .flying-airplane.in-flight {
+      filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.38));
+      z-index: 50;
+    }
+
+    .flying-airplane.in-flight .flying-airplane-img {
+      animation: airplanePropel 0.12s infinite alternate ease-in-out;
+    }
+
+    @keyframes airplanePropel {
+      0% { transform: translateY(-1.5px) rotate(-1deg); }
+      100% { transform: translateY(1.5px) rotate(1deg); }
+    }
+
+    .flying-airplane.landed {
+      animation: airplaneLandBounce 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes airplaneLandBounce {
+      0% { transform: translate(-50%, -50%) scale(1.35) rotate(-6deg); }
+      45% { transform: translate(-50%, -50%) scale(0.92) rotate(3deg); }
+      75% { transform: translate(-50%, -50%) scale(1.08) rotate(-1deg); }
+      100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+    }
+
+    /* Flight Deck */
+    .flight-deck {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 2.5px solid #cbd5e1;
+      border-radius: var(--radius-md);
+      padding: 16px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      animation: deckSlideUp 0.25s ease-out;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    @keyframes deckSlideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .flight-deck-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .flight-deck-label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #475569;
+    }
+
+    .flight-big-syl {
+      font-family: var(--font-reading);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #1d4ed8;
+      background: #ffffff;
+      border: 2.5px solid #93c5fd;
+      padding: 2px 20px;
+      border-radius: var(--radius-md);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .flight-deck-prompt {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .flight-deck-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .action-btn-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      font-size: 0.95rem;
+      font-weight: 700;
+      border: 2px solid #cbd5e1;
+      background: #ffffff;
+      color: #1e293b;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      touch-action: manipulation;
+    }
+
+    .action-btn-pill:hover {
+      background: #f8fafc;
+      transform: translateY(-1px);
+    }
+
+    /* Selbstkontrolle Button (Distinct & Prominent) */
+    .btn-self-check {
+      background: #eff6ff;
+      border-color: #3b82f6;
+      color: #1d4ed8;
+      font-weight: 700;
+    }
+    .btn-self-check:hover {
+      background: #dbeafe;
+      border-color: #1d4ed8;
+    }
+
+    .action-btn-pill.btn-rec.recording {
+      background: #ffe4e6;
+      border-color: #f43f5e;
+      color: #be123c;
+      animation: recPulse 1s infinite alternate;
+    }
+
+    @keyframes recPulse {
+      from { transform: scale(1); box-shadow: 0 0 0 rgba(244,63,94,0); }
+      to { transform: scale(1.04); box-shadow: 0 0 10px rgba(244,63,94,0.6); }
+    }
+
+    .btn-done-pill {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #ffffff;
+      border-color: #047857;
+      box-shadow: 0 3px 8px rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-done-pill:hover {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    /* ==========================================================================
+       STATION 2: SÄTZE & WORTSCHATZ (2 SPALTEN)
+       ========================================================================== */
+    .saetze-station-layout {
+      display: grid;
+      grid-template-columns: 1.55fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (max-width: 860px) {
+      .saetze-station-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .reading-col-card {
+      background: #ffffff;
+      border: 3px solid #cbd5e1;
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+    }
+
+    .reading-col-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 2px dashed #e2e8f0;
+    }
+
+    .reading-col-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      margin: 0;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .reading-progress-pill {
+      background: #f1f5f9;
+      color: #475569;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+    }
+
+    /* Sentence Row Cards */
+    .sentence-row-card {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .sentence-row-card:hover {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transform: translateX(2px);
+    }
+
+    .sentence-row-card.active-focus {
+      background: #ffffff;
+      border-color: #f43f5e;
+      box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.15);
+    }
+
+    .sentence-row-card.is-completed {
+      background: #f0fdf4;
+      border-color: #86efac;
+    }
+
+    .sentence-text-wrap {
+      flex: 1;
+      font-family: var(--font-reading);
+      font-size: 1.55rem;
+      font-weight: 700;
+      line-height: 1.45;
+      color: #0f172a;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* Syllable Colors Mode */
+    .syllable-colored .syl-1 { color: var(--syl-blue); }
+    .syllable-colored .syl-2 { color: var(--syl-red); }
+    .syllable-colored .syl-3 { color: var(--syl-blue); }
+
+    /* Heart icon in sentence */
+    .inline-heart-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      vertical-align: middle;
+    }
+
+    .inline-heart-icon:hover {
+      transform: scale(1.25);
+    }
+
+    .inline-heart-icon img {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+    }
+
+    /* Inline Note Block */
+    .inline-block-icon {
+      width: 30px;
+      height: 36px;
+      object-fit: contain;
+      vertical-align: middle;
+    }
+
+    .sentence-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .icon-action-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #cbd5e1;
+      background: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      touch-action: manipulation;
+      color: #334155;
+    }
+
+    .icon-action-btn:hover {
+      background: #f8fafc;
+      transform: scale(1.08);
+      border-color: #94a3b8;
+    }
+
+    .icon-action-btn.btn-row-check.checked {
+      background: #22c55e;
+      border-color: #16a34a;
+      color: #ffffff;
+    }
+
+    .icon-action-btn.btn-row-selfcheck {
+      background: #eff6ff;
+      border-color: #93c5fd;
+      color: #1d4ed8;
+    }
+    .icon-action-btn.btn-row-selfcheck:hover {
+      background: #dbeafe;
+      border-color: #2563eb;
+    }
+
+    /* Vocab Box (Right Column) */
+    .vocab-card {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      user-select: none;
+    }
+
+    .vocab-card:hover {
+      transform: translateY(-2px);
+      border-color: #f43f5e;
+      box-shadow: 0 4px 12px rgba(244, 63, 94, 0.1);
+    }
+
+    .vocab-card.is-completed {
+      background: #f0fdf4;
+      border-color: #22c55e;
+    }
+
+    .vocab-text-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .vocab-word {
+      font-family: var(--font-reading);
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    .vocab-syllables-sub {
+      font-size: 0.95rem;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    .vocab-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ==========================================================================
+       STATION 3: QUATSCHSÄTZE (MONSTER-SPASS)
+       ========================================================================== */
+    .monster-hero-card {
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+      border: 3px solid #d8b4fe;
+      border-radius: var(--radius-lg);
+      padding: 22px 28px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      box-shadow: 0 4px 16px rgba(168, 85, 247, 0.08);
+      flex-wrap: wrap;
+    }
+
+    .monster-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 3px solid #c084fc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(168, 85, 247, 0.2);
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .monster-avatar:hover {
+      transform: scale(1.12) rotate(-6deg);
+    }
+
+    .monster-avatar img {
+      width: 78px;
+      height: 78px;
+      object-fit: contain;
+    }
+
+    .monster-speech-bubble {
+      flex: 1;
+      min-width: 260px;
+      background: #ffffff;
+      border: 2px solid #e9d5ff;
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      position: relative;
+    }
+
+    .monster-speech-bubble::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -10px;
+      transform: translateY(-50%);
+      border-width: 8px 10px 8px 0;
+      border-style: solid;
+      border-color: transparent #ffffff transparent transparent;
+      z-index: 2;
+    }
+
+    .monster-bubble-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: #6b21a8;
+      margin: 0 0 4px 0;
+    }
+
+    .monster-bubble-text {
+      margin: 0;
+      font-size: 1.05rem;
+      color: #475569;
+    }
+
+    .quatsch-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .quatsch-card {
+      background: #ffffff;
+      border: 3px solid #e2e8f0;
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      user-select: none;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+    }
+
+    .quatsch-card:hover {
+      border-color: #c084fc;
+      transform: translateX(3px);
+      box-shadow: 0 6px 16px rgba(168, 85, 247, 0.1);
+    }
+
+    .quatsch-card.active-focus {
+      border-color: #a855f7;
+      box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
+    }
+
+    .quatsch-card.is-completed {
+      background: #faf5ff;
+      border-color: #a855f7;
+    }
+
+    .quatsch-text {
+      flex: 1;
+      font-family: var(--font-reading);
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: #1e293b;
+      letter-spacing: 0.4px;
+    }
+
+    /* Hollow / Outline font for "Der" as on original worksheet */
+    .outline-word {
+      color: #be123c;
+      -webkit-text-stroke: 1.5px #be123c;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 0 #fff;
+    }
+
+    .quatsch-badge {
+      font-size: 0.85rem;
+      font-weight: 700;
+      background: #f3e8ff;
+      color: #7e22ce;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 4px;
+      display: inline-block;
+    }
+
+    /* Modal for Star Reward */
+    .reward-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: modalFadeIn 0.25s ease-out;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .reward-modal-card {
+      background: #ffffff;
+      border: 4px solid #f59e0b;
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      animation: modalPopUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes modalPopUp {
+      from { transform: scale(0.85); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .reward-modal-star {
+      font-size: 4.5rem;
+      animation: spinBounce 2.5s infinite ease-in-out;
+    }
+
+    .reward-modal-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: #854d0e;
+      margin: 12px 0 6px 0;
+    }
+
+    .reward-modal-desc {
+      font-size: 1.15rem;
+      color: #475569;
+      line-height: 1.5;
+      margin: 0 0 24px 0;
+    }
+
+    .btn-modal-close {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 12px 28px;
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+      transition: all 0.15s ease;
+    }
+
+    .btn-modal-close:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(245, 158, 11, 0.45);
+    }
+
+    /* Fireworks Canvas */
+    #fireworks-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 100000;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fullscreen Fireworks Canvas -->
+  <canvas id="fireworks-canvas"></canvas>
+
+  <!-- Top Sticky Toolbar -->
+  <header class="top-toolbar">
+    <div class="toolbar-left">
+      <a class="toolbar-brand" onclick="switchView('hub')">
+        <span>🫏</span> <span>Lese-Haus • E e</span>
+      </a>
+      <button class="tool-btn active" id="nav-btn-hub" onclick="switchView('hub')">
+        <span>🏠</span> Übersicht
+      </button>
+      <button class="tool-btn" id="nav-btn-flugzeug" onclick="switchView('flugzeug')">
+        <span>✈️</span> Silbenflugzeug
+      </button>
+      <button class="tool-btn" id="nav-btn-saetze" onclick="switchView('saetze')">
+        <span>📖</span> Sätze &amp; Wortschatz
+      </button>
+      <button class="tool-btn" id="nav-btn-quatsch" onclick="switchView('quatsch')">
+        <span>🤪</span> Quatschsätze
+      </button>
+    </div>
+    <div class="toolbar-right">
+      <span id="nav-golden-star" style="display:none; font-size:1.4rem; cursor:pointer;" onclick="awardGoldenStar()" title="Lese-Meister Stern!">⭐</span>
+      <button class="tool-btn" id="btn-syllables-toggle" onclick="toggleSyllableColors()">
+        <span>🎨</span> <span id="syllables-label">Silbenfarben: An</span>
+      </button>
+      <button class="tool-btn" id="btn-sound-toggle" onclick="toggleSound()">
+        <span id="sound-icon">🔊</span> Ton: An
+      </button>
+      <button class="tool-btn" id="btn-tempo-toggle" onclick="toggleTempo()">
+        <span>⚡</span> <span id="tempo-label">Tempo: Normal</span>
+      </button>
+      <a href="../index.html" class="tool-btn" style="text-decoration:none; color:inherit;">
+        <span>🏠</span> Alle Häuser
+      </a>
+    </div>
+  </header>
+
+  <!-- App Viewport -->
+  <main class="app-viewport">
+
+    <!-- =====================================================================
+         VIEW 0: HUB / ÜBERSICHT
+         ===================================================================== -->
+    <div class="app-view active-view" id="view-hub">
+
+      <!-- Hero Header -->
+      <section class="hub-hero">
+        <div class="hub-hero-inner">
+          <div class="hub-anlaut-avatar" onclick="speakEsel()" title="Esel aus der Anlauttabelle! Tippe mich!">
+            <img src="assets/esel.png" alt="Esel aus Haus 2">
+          </div>
+          <div class="hub-hero-text">
+            <span class="hub-badge-level">Einsterns Schwester • Leseblatt 5 (S. 6) • Haus 2</span>
+            <h1 class="hub-hero-title">Buchstabe E e</h1>
+            <p class="hub-hero-sub">
+              Willkommen bei der Leseübung für <b>E e</b> wie <b>Esel</b>! Fliege mit dem Silbenflugzeug, lies die Sätze mit der Wortschatz-Kiste und entdecke die lustigen Quatschsätze!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Golden Star Banner -->
+      <section class="hub-star-banner" id="hub-star-banner" style="display: none; cursor: pointer;" onclick="awardGoldenStar()" title="Lese-Meister Belohnung">
+        <div class="star-badge-icon">⭐</div>
+        <div>
+          <div class="star-badge-title">Du bist ein E e Lese-Meister!</div>
+          <div class="star-badge-desc">Du hast heute alle Übungen gemeistert: Das Silbenflugzeug, alle Sätze mit Wortschatz und die lustigen Quatschsätze!</div>
+        </div>
+      </section>
+
+      <!-- 3 Station Tiles Grid -->
+      <section class="hub-tiles-grid">
+
+        <!-- Kachel 1: Silbenflugzeug -->
+        <article class="hub-tile tile-flugzeug" onclick="switchView('flugzeug')">
+          <div>
+            <div class="tile-header">
+              <span class="tile-badge">Station 1 • 36 Silben</span>
+            </div>
+            <h2 class="tile-title">✈️ Silbenflugzeug</h2>
+            <p class="tile-desc">
+              Fliege über den großen Silbenteppich mit <b>la, lo, li, le, me, se, es, at, et, em, el, te...</b>! Wo landet das Flugzeug? Lies laut vor und prüfe mit der <b>Selbstkontrolle</b>!
+            </p>
+          </div>
+          <button class="tile-action-btn">
+            <span>🛫</span> Jetzt fliegen
+          </button>
+        </article>
+
+        <!-- Kachel 2: Sätze & Wortschatz -->
+        <article class="hub-tile tile-saetze" onclick="switchView('saetze')">
+          <div>
+            <div class="tile-header">
+              <span class="tile-badge">Station 2 • Sätze &amp; Kiste</span>
+            </div>
+            <h2 class="tile-title">📖 Sätze &amp; Wortschatz</h2>
+            <p class="tile-desc">
+              5 Sätze mit <b>Salome</b>, <b>Lotte</b>, <b>Emil am See</b>, <b>Oma</b>, <b>Leo</b> und <b>Mama liebt Listen</b> sowie 6 Wörter in der Wortschatz-Kiste!
+            </p>
+          </div>
+          <button class="tile-action-btn">
+            <span>❤️</span> Sätze lesen
+          </button>
+        </article>
+
+        <!-- Kachel 3: Quatschsätze -->
+        <article class="hub-tile tile-quatsch" onclick="switchView('quatsch')">
+          <div>
+            <div class="tile-header">
+              <span class="tile-badge">Station 3 • Monster-Spass</span>
+            </div>
+            <h2 class="tile-title">🤪 Quatschsätze</h2>
+            <p class="tile-desc">
+              4 lustige Quatschsätze vom Einstern-Monster: <i>„Im Tee ist Salami“</i>, <i>„Mattis sammelt alte Omas“</i> und mehr zum Schmunzeln und Selbstkontrollieren!
+            </p>
+          </div>
+          <button class="tile-action-btn">
+            <span>⭐</span> Quatschsätze lesen
+          </button>
+        </article>
+
+      </section>
+
+    </div>
+
+    <!-- =====================================================================
+         VIEW 1: SILBENFLUGZEUG
+         ===================================================================== -->
+    <div class="app-view" id="view-flugzeug">
+
+      <div class="station-header-box">
+        <div class="station-title-group">
+          <h2>✈️ Station 1: Silbenflugzeug</h2>
+          <p>Fliege über den Teppich mit 36 Silben aus Leseblatt 5.</p>
+        </div>
+        <button class="tool-btn" onclick="switchView('hub')">
+          <span>🏠</span> Zur Übersicht
+        </button>
+      </div>
+
+      <!-- Carpet Banner -->
+      <section class="carpet-banner">
+        <div class="carpet-instruction-wrap">
+          <img src="assets/flugzeug.png" alt="Flugzeug" class="airplane-icon">
+          <p class="carpet-instruction">
+            Klicke auf <b>„Nächster Flug“</b> oder tippe direkt auf eine Silbe. Das Flugzeug landet. <b>Lies die Silbe zuerst laut vor!</b> Danach kannst du mit der Selbstkontrolle prüfen.
+          </p>
+        </div>
+        <div class="carpet-controls">
+          <span class="flight-counter-badge" id="flight-counter">
+            ✈️ Flug <b id="flight-num">0</b> / 10
+          </span>
+          <button class="btn-next-flight" id="btn-next-flight" onclick="triggerNextFlight()">
+            <span>🛫</span> Nächster Flug
+          </button>
+        </div>
+      </section>
+
+      <!-- Carpet Grid Table -->
+      <div class="carpet-grid-wrap" id="carpet-grid-wrap">
+        <!-- Flying Plane Element -->
+        <div id="flying-airplane" class="flying-airplane" style="display: none;">
+          <img src="assets/flugzeug.png" alt="Flugzeug" class="flying-airplane-img">
+        </div>
+
+        <table class="carpet-table" id="carpet-table">
+          <tbody>
+            <!-- Row 1: la lo li le ma mo mi ma me sa so si -->
+            <tr>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="la">la</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="lo">lo</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="li">li</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="le">le</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="ma">ma</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="mo">mo</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="mi">mi</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="ma">ma</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="me">me</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="sa">sa</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="so">so</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="si">si</td>
+            </tr>
+            <!-- Row 2: ol il se ta to so si es at ta et te -->
+            <tr>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="ol">ol</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="il">il</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="se">se</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="ta">ta</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="to">to</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="so">so</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="si">si</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="es">es</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="at">at</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="ta">ta</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="et">et</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="te">te</td>
+            </tr>
+            <!-- Row 3: em at ot es et el te at it te set ses -->
+            <tr>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="em">em</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="at">at</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="ot">ot</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="es">es</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="et">et</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="el">el</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="te">te</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="at">at</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="it">it</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="te">te</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="set">set</td>
+              <td class="carpet-cell" onclick="onCellDirectClick(this)" data-val="ses">ses</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Flight Deck (Appears on landing) -->
+      <div class="flight-deck" id="flight-deck" style="display: none;">
+        <div class="flight-deck-left">
+          <span class="flight-deck-label">Gelandet auf:</span>
+          <span class="flight-big-syl" id="flight-deck-syl">le</span>
+          <span class="flight-deck-prompt">🗣️ Lies die Silbe laut vor!</span>
+        </div>
+        <div class="flight-deck-actions">
+          <!-- Selbstkontrolle: ONLY reads aloud when clicked! -->
+          <button class="action-btn-pill btn-self-check" onclick="speakCurrentFlight()" title="Selbstkontrolle: Laut vorlesen lassen">
+            <span>🔊</span> Selbstkontrolle
+          </button>
+          <!-- Voice Recorder -->
+          <button class="action-btn-pill btn-rec" id="btn-rec-flight" onclick="toggleRecordFlight()">
+            <span>🎙️</span> <span id="rec-label-flight">Aufnehmen</span>
+          </button>
+          <button class="action-btn-pill" id="btn-play-flight" onclick="playRecordFlight()" disabled>
+            <span>▶️</span> Anhören
+          </button>
+          <!-- Done button -->
+          <button class="action-btn-pill btn-done-pill" onclick="finishCurrentFlight()">
+            <span>✓</span> Gelesen! Weiter ➔
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =====================================================================
+         VIEW 2: SÄTZE & WORTSCHATZ
+         ===================================================================== -->
+    <div class="app-view" id="view-saetze">
+
+      <div class="station-header-box">
+        <div class="station-title-group">
+          <h2>📖 Station 2: Sätze &amp; Wortschatz</h2>
+          <p>Lies die 5 Sätze und die Wörter in der Wortschatz-Kiste. Prüfe mit der Selbstkontrolle!</p>
+        </div>
+        <button class="tool-btn" onclick="switchView('hub')">
+          <span>🏠</span> Zur Übersicht
+        </button>
+      </div>
+
+      <div class="saetze-station-layout">
+
+        <!-- Linke Spalte: Die 5 Sätze -->
+        <div class="reading-col-card">
+          <div class="reading-col-header">
+            <h3 class="reading-col-title">
+              <span>📝</span> <span>Die Sätze von Leseblatt 5</span>
+            </h3>
+            <span class="reading-progress-pill" id="sentences-progress">0 / 5 gelesen</span>
+          </div>
+
+          <div id="sentences-list">
+
+            <!-- Satz 1: Sa lo me malt Sa la te. -->
+            <div class="sentence-row-card" id="sentence-card-0" onclick="focusSentence(0)">
+              <div class="sentence-text-wrap syllable-colored" id="sentence-text-0">
+                <span><span class="syl-1">Sa</span><span class="syl-2">lo</span><span class="syl-3">me</span></span>
+                <span><span class="syl-1">malt</span></span>
+                <span><span class="syl-1">Sa</span><span class="syl-2">la</span><span class="syl-3">te</span>.</span>
+              </div>
+              <div class="sentence-actions">
+                <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakSentence(0)" title="Selbstkontrolle: Laut vorlesen lassen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-check" id="check-sentence-0" onclick="event.stopPropagation(); toggleSentenceCheck(0)" title="Als gelesen markieren">
+                  ✓
+                </button>
+              </div>
+            </div>
+
+            <!-- Satz 2: Lot te malt E mil am See. -->
+            <div class="sentence-row-card" id="sentence-card-1" onclick="focusSentence(1)">
+              <div class="sentence-text-wrap syllable-colored" id="sentence-text-1">
+                <span><span class="syl-1">Lot</span><span class="syl-2">te</span></span>
+                <span><span class="syl-1">malt</span></span>
+                <span><span class="syl-1">E</span><span class="syl-2">mil</span></span>
+                <span><span class="syl-1">am</span></span>
+                <span><span class="syl-1">See</span>.</span>
+              </div>
+              <div class="sentence-actions">
+                <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakSentence(1)" title="Selbstkontrolle: Laut vorlesen lassen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-check" id="check-sentence-1" onclick="event.stopPropagation(); toggleSentenceCheck(1)" title="Als gelesen markieren">
+                  ✓
+                </button>
+              </div>
+            </div>
+
+            <!-- Satz 3: O ma sam melt al te Tas sen. -->
+            <div class="sentence-row-card" id="sentence-card-2" onclick="focusSentence(2)">
+              <div class="sentence-text-wrap syllable-colored" id="sentence-text-2">
+                <span><span class="syl-1">O</span><span class="syl-2">ma</span></span>
+                <span><span class="syl-1">sam</span><span class="syl-2">melt</span></span>
+                <span><span class="syl-1">al</span><span class="syl-2">te</span></span>
+                <span><span class="syl-1">Tas</span><span class="syl-2">sen</span>.</span>
+              </div>
+              <div class="sentence-actions">
+                <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakSentence(2)" title="Selbstkontrolle: Laut vorlesen lassen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-check" id="check-sentence-2" onclick="event.stopPropagation(); toggleSentenceCheck(2)" title="Als gelesen markieren">
+                  ✓
+                </button>
+              </div>
+            </div>
+
+            <!-- Satz 4: Le o sam melt Mist. -->
+            <div class="sentence-row-card" id="sentence-card-3" onclick="focusSentence(3)">
+              <div class="sentence-text-wrap syllable-colored" id="sentence-text-3">
+                <span><span class="syl-1">Le</span><span class="syl-2">o</span></span>
+                <span><span class="syl-1">sam</span><span class="syl-2">melt</span></span>
+                <span><span class="syl-1">Mist</span>.</span>
+              </div>
+              <div class="sentence-actions">
+                <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakSentence(3)" title="Selbstkontrolle: Laut vorlesen lassen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-check" id="check-sentence-3" onclick="event.stopPropagation(); toggleSentenceCheck(3)" title="Als gelesen markieren">
+                  ✓
+                </button>
+              </div>
+            </div>
+
+            <!-- Satz 5: Ma ma ♡ Lis ten. [Block] -->
+            <div class="sentence-row-card" id="sentence-card-4" onclick="focusSentence(4)">
+              <div class="sentence-text-wrap syllable-colored" id="sentence-text-4">
+                <span><span class="syl-1">Ma</span><span class="syl-2">ma</span></span>
+                <span class="inline-heart-icon" onclick="event.stopPropagation(); playHeartWord()" title="Herz steht für: liebt!">
+                  <img src="assets/herz.png" alt="Herz = liebt">
+                </span>
+                <span><span class="syl-1">Lis</span><span class="syl-2">ten</span>.</span>
+                <img src="assets/listen_block.png" alt="Notizblock" class="inline-block-icon" title="Notizblock mit Listen">
+              </div>
+              <div class="sentence-actions">
+                <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakSentence(4)" title="Selbstkontrolle: Laut vorlesen lassen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-check" id="check-sentence-4" onclick="event.stopPropagation(); toggleSentenceCheck(4)" title="Als gelesen markieren">
+                  ✓
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Rechte Spalte: Die Wortschatz-Kiste mit Auge -->
+        <div class="reading-col-card">
+          <div class="reading-col-header">
+            <h3 class="reading-col-title">
+              <img src="assets/auge.png" alt="Auge" style="width:28px; height:22px; object-fit:contain;">
+              <span>Wortschatz-Kiste</span>
+            </h3>
+            <span class="reading-progress-pill" id="vocab-progress">0 / 6 gemerkt</span>
+          </div>
+
+          <p style="font-size:0.95rem; color:#64748b; margin:0 0 14px 0;">
+            Lies jedes Wort laut vor. Tippe auf <b>🔊</b> zur Selbstkontrolle!
+          </p>
+
+          <div id="vocab-list">
+            <!-- 1: alle -->
+            <div class="vocab-card" id="vocab-card-0" onclick="focusVocab(0)">
+              <div class="vocab-text-group">
+                <span class="vocab-word">al le</span>
+                <span class="vocab-syllables-sub">al · le</span>
+              </div>
+              <div class="vocab-actions">
+                <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakVocab(0)" title="Selbstkontrolle: Laut vorlesen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-check" id="check-vocab-0" onclick="event.stopPropagation(); toggleVocabCheck(0)" title="Als gelernt markieren">
+                  ✓
+                </button>
+              </div>
+            </div>
+
+            <!-- 2: Esel -->
+            <div class="vocab-card" id="vocab-card-1" onclick="focusVocab(1)">
+              <div class="vocab-text-group">
+                <span class="vocab-word">E sel</span>
+                <span class="vocab-syllables-sub">E · sel</span>
+              </div>
+              <div class="vocab-actions">
+                <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakVocab(1)" title="Selbstkontrolle: Laut vorlesen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-check" id="check-vocab-1" onclick="event.stopPropagation(); toggleVocabCheck(1)" title="Als gelernt markieren">
+                  ✓
+                </button>
+              </div>
+            </div>
+
+            <!-- 3: Taste -->
+            <div class="vocab-card" id="vocab-card-2" onclick="focusVocab(2)">
+              <div class="vocab-text-group">
+                <span class="vocab-word">Tas te</span>
+                <span class="vocab-syllables-sub">Tas · te</span>
+              </div>
+              <div class="vocab-actions">
+                <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakVocab(2)" title="Selbstkontrolle: Laut vorlesen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-check" id="check-vocab-2" onclick="event.stopPropagation(); toggleVocabCheck(2)" title="Als gelernt markieren">
+                  ✓
+                </button>
+              </div>
+            </div>
+
+            <!-- 4: Liste -->
+            <div class="vocab-card" id="vocab-card-3" onclick="focusVocab(3)">
+              <div class="vocab-text-group">
+                <span class="vocab-word">Lis te</span>
+                <span class="vocab-syllables-sub">Lis · te</span>
+              </div>
+              <div class="vocab-actions">
+                <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakVocab(3)" title="Selbstkontrolle: Laut vorlesen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-check" id="check-vocab-3" onclick="event.stopPropagation(); toggleVocabCheck(3)" title="Als gelernt markieren">
+                  ✓
+                </button>
+              </div>
+            </div>
+
+            <!-- 5: es -->
+            <div class="vocab-card" id="vocab-card-4" onclick="focusVocab(4)">
+              <div class="vocab-text-group">
+                <span class="vocab-word">es</span>
+                <span class="vocab-syllables-sub">es</span>
+              </div>
+              <div class="vocab-actions">
+                <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakVocab(4)" title="Selbstkontrolle: Laut vorlesen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-check" id="check-vocab-4" onclick="event.stopPropagation(); toggleVocabCheck(4)" title="Als gelernt markieren">
+                  ✓
+                </button>
+              </div>
+            </div>
+
+            <!-- 6: Sessel -->
+            <div class="vocab-card" id="vocab-card-5" onclick="focusVocab(5)">
+              <div class="vocab-text-group">
+                <span class="vocab-word">Ses sel</span>
+                <span class="vocab-syllables-sub">Ses · sel</span>
+              </div>
+              <div class="vocab-actions">
+                <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakVocab(5)" title="Selbstkontrolle: Laut vorlesen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-check" id="check-vocab-5" onclick="event.stopPropagation(); toggleVocabCheck(5)" title="Als gelernt markieren">
+                  ✓
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- =====================================================================
+         VIEW 3: QUATSCHSÄTZE (MONSTER-SPASS)
+         ===================================================================== -->
+    <div class="app-view" id="view-quatsch">
+
+      <div class="station-header-box">
+        <div class="station-title-group">
+          <h2>🤪 Station 3: Quatschsätze vom Monster</h2>
+          <p>Lies die 4 lustigen Quatschsätze laut vor. Stimmt das wirklich? Prüfe mit der Selbstkontrolle!</p>
+        </div>
+        <button class="tool-btn" onclick="switchView('hub')">
+          <span>🏠</span> Zur Übersicht
+        </button>
+      </div>
+
+      <!-- Monster Mascot Hero -->
+      <section class="monster-hero-card">
+        <div class="monster-avatar" onclick="speakMonster()" title="Einstern-Monster! Tippe mich!">
+          <img src="assets/monster.png" alt="Einstern Monster">
+        </div>
+        <div class="monster-speech-bubble">
+          <h3 class="monster-bubble-title">Hihi! Schau mal, was ich mir ausgedacht habe!</h3>
+          <p class="monster-bubble-text">
+            Diese 4 Sätze sind ganz schön verrückt! <b>Lies sie zuerst laut vor</b>. Danach kannst du auf den Lautsprecher <b>🔊</b> tippen, um dich selbst zu kontrollieren!
+          </p>
+        </div>
+      </section>
+
+      <!-- Quatschsätze List -->
+      <div class="quatsch-list">
+
+        <!-- Quatschsatz 1: Im Tee ist Sa la mi. -->
+        <article class="quatsch-card" id="quatsch-card-0" onclick="focusQuatsch(0)">
+          <div style="flex:1;">
+            <span class="quatsch-badge">Quatschsatz 1</span>
+            <div class="quatsch-text syllable-colored">
+              <span><span class="syl-1">Im</span></span>
+              <span><span class="syl-1">Tee</span></span>
+              <span><span class="syl-1">ist</span></span>
+              <span><span class="syl-1">Sa</span><span class="syl-2">la</span><span class="syl-3">mi</span>.</span>
+            </div>
+          </div>
+          <div class="sentence-actions">
+            <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakQuatsch(0)" title="Selbstkontrolle: Laut vorlesen lassen">
+              🔊
+            </button>
+            <button class="icon-action-btn btn-row-check" id="check-quatsch-0" onclick="event.stopPropagation(); toggleQuatschCheck(0)" title="Gelesen!">
+              ✓
+            </button>
+          </div>
+        </article>
+
+        <!-- Quatschsatz 2: Mat tis sam melt al te O mas. -->
+        <article class="quatsch-card" id="quatsch-card-1" onclick="focusQuatsch(1)">
+          <div style="flex:1;">
+            <span class="quatsch-badge">Quatschsatz 2</span>
+            <div class="quatsch-text syllable-colored">
+              <span><span class="syl-1">Mat</span><span class="syl-2">tis</span></span>
+              <span><span class="syl-1">sam</span><span class="syl-2">melt</span></span>
+              <span><span class="syl-1">al</span><span class="syl-2">te</span></span>
+              <span><span class="syl-1">O</span><span class="syl-2">mas</span>.</span>
+            </div>
+          </div>
+          <div class="sentence-actions">
+            <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakQuatsch(1)" title="Selbstkontrolle: Laut vorlesen lassen">
+              🔊
+            </button>
+            <button class="icon-action-btn btn-row-check" id="check-quatsch-1" onclick="event.stopPropagation(); toggleQuatschCheck(1)" title="Gelesen!">
+              ✓
+            </button>
+          </div>
+        </article>
+
+        <!-- Quatschsatz 3: Der Ses sel ist am Ast. -->
+        <article class="quatsch-card" id="quatsch-card-2" onclick="focusQuatsch(2)">
+          <div style="flex:1;">
+            <span class="quatsch-badge">Quatschsatz 3</span>
+            <div class="quatsch-text syllable-colored">
+              <span class="outline-word">Der</span>
+              <span><span class="syl-1">Ses</span><span class="syl-2">sel</span></span>
+              <span><span class="syl-1">ist</span></span>
+              <span><span class="syl-1">am</span></span>
+              <span><span class="syl-1">Ast</span>.</span>
+            </div>
+          </div>
+          <div class="sentence-actions">
+            <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakQuatsch(2)" title="Selbstkontrolle: Laut vorlesen lassen">
+              🔊
+            </button>
+            <button class="icon-action-btn btn-row-check" id="check-quatsch-2" onclick="event.stopPropagation(); toggleQuatschCheck(2)" title="Gelesen!">
+              ✓
+            </button>
+          </div>
+        </article>
+
+        <!-- Quatschsatz 4: Em ma isst li la E sel. -->
+        <article class="quatsch-card" id="quatsch-card-3" onclick="focusQuatsch(3)">
+          <div style="flex:1;">
+            <span class="quatsch-badge">Quatschsatz 4</span>
+            <div class="quatsch-text syllable-colored">
+              <span><span class="syl-1">Em</span><span class="syl-2">ma</span></span>
+              <span><span class="syl-1">isst</span></span>
+              <span><span class="syl-1">li</span><span class="syl-2">la</span></span>
+              <span><span class="syl-1">E</span><span class="syl-2">sel</span>.</span>
+            </div>
+          </div>
+          <div class="sentence-actions">
+            <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakQuatsch(3)" title="Selbstkontrolle: Laut vorlesen lassen">
+              🔊
+            </button>
+            <button class="icon-action-btn btn-row-check" id="check-quatsch-3" onclick="event.stopPropagation(); toggleQuatschCheck(3)" title="Gelesen!">
+              ✓
+            </button>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Golden Star Modal Reward -->
+  <div class="reward-modal-backdrop" id="star-reward-modal" style="display: none;" onclick="closeModalOnBackdrop(event)">
+    <div class="reward-modal-card">
+      <div class="reward-modal-star">⭐</div>
+      <h2 class="reward-modal-title">Fantastisch gemacht!</h2>
+      <p class="reward-modal-desc">
+        Du hast heute alle Übungen für <b>E e (Leseblatt 5)</b> gemeistert: Das Silbenflugzeug, alle Sätze, den Wortschatz und die lustigen Quatschsätze!
+      </p>
+      <button class="btn-modal-close" onclick="closeRewardModal()">
+        <span>🎉</span> Weiter üben!
+      </button>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    /* ==========================================================================
+       APP STATE & CONFIGURATION
+       ========================================================================== */
+    const SENTENCES_DATA = [
+      { text: "Salome malt Salate.", cleanText: "Salome malt Salate." },
+      { text: "Lotte malt Emil am See.", cleanText: "Lotte malt Emil am See." },
+      { text: "Oma sammelt alte Tassen.", cleanText: "Oma sammelt alte Tassen." },
+      { text: "Leo sammelt Mist.", cleanText: "Leo sammelt Mist." },
+      { text: "Mama liebt Listen.", cleanText: "Mama liebt Listen." }
+    ];
+
+    const VOCAB_DATA = [
+      { word: "alle", tts: "alle" },
+      { word: "Esel", tts: "Esel" },
+      { word: "Taste", tts: "Taste" },
+      { word: "Liste", tts: "Liste" },
+      { word: "es", tts: "es" },
+      { word: "Sessel", tts: "Sessel" }
+    ];
+
+    const QUATSCH_DATA = [
+      { text: "Im Tee ist Salami.", tts: "Im Tee ist Salami." },
+      { text: "Mattis sammelt alte Omas.", tts: "Mattis sammelt alte Omas." },
+      { text: "Der Sessel ist am Ast.", tts: "Der Sessel ist am Ast." },
+      { text: "Emma isst lila Esel.", tts: "Emma isst lila Esel." }
+    ];
+
+    // Authentic phonetic mappings for syllables to prevent incorrect TTS expansions:
+    // - "at" must sound like German /at/ ("att"), NEVER English "ät" (@)!
+    // - "em" must sound like /ɛm/ ("emm"), NEVER "Europameisterschaft" or "E-M"!
+    // - "el" must sound like /ɛl/ ("ell"), NEVER "Esslöffel"!
+    // - "ol" / "il" / "et" / "it" / "ot" / "mo" / "mi" / "so" / "sa" protected against weekday abbreviations
+    const SYLLABLE_PHONETICS = {
+      'la': 'la',
+      'lo': 'loh',
+      'li': 'li',
+      'le': 'leh',
+      'ma': 'ma',
+      'mo': 'moh',
+      'mi': 'mieh',
+      'me': 'meh',
+      'sa': 'sah',
+      'so': 'soh',
+      'si': 'sie',
+      'ol': 'oll',
+      'il': 'ill',
+      'se': 'seh',
+      'ta': 'tah',
+      'to': 'toh',
+      'es': 'ess',
+      'at': 'att',
+      'et': 'ett',
+      'te': 'teh',
+      'em': 'emm',
+      'ot': 'ott',
+      'el': 'ell',
+      'it': 'itt',
+      'set': 'sett',
+      'ses': 'sess'
+    };
+
+    let appState = {
+      soundEnabled: true,
+      slowTempo: false,
+      syllableColors: true,
+      flightCount: 0,
+      completedSentences: {},
+      completedVocab: {},
+      completedQuatsch: {},
+      goldenStarAwarded: false
+    };
+
+    // Voice recording variables
+    let activeMediaRecorder = null;
+    let recordedChunks = [];
+    let recordedFlightBlob = null;
+
+    // Flight animation variables
+    let currentTargetCell = null;
+    let planeCurrentPos = null;
+    let isAirplaneFlying = false;
+
+    // Web Audio Context for synthesized sound effects
+    let audioCtx = null;
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContextClass();
+      }
+      return audioCtx;
+    }
+
+    function unlockAudioForIOS() {
+      const ctx = getAudioContext();
+      if (ctx && ctx.state === 'suspended') {
+        ctx.resume();
+      }
+    }
+    ['touchstart', 'touchend', 'click'].forEach(evt => {
+      document.addEventListener(evt, unlockAudioForIOS, { once: true, passive: true });
+    });
+
+    /* ==========================================================================
+       INITIALIZATION
+       ========================================================================== */
+    window.addEventListener('DOMContentLoaded', () => {
+      initFreshState();
+      initSpeech();
+
+      // Check URL hash
+      const hash = window.location.hash.replace('#', '');
+      if (['hub', 'flugzeug', 'saetze', 'quatsch'].includes(hash)) {
+        switchView(hash);
+      }
+    });
+
+    function initFreshState() {
+      appState = {
+        soundEnabled: true,
+        slowTempo: false,
+        syllableColors: true,
+        flightCount: 0,
+        completedSentences: {},
+        completedVocab: {},
+        completedQuatsch: {},
+        goldenStarAwarded: false
+      };
+
+      currentTargetCell = null;
+      planeCurrentPos = null;
+      isAirplaneFlying = false;
+
+      const fNum = document.getElementById('flight-num');
+      if (fNum) fNum.textContent = '0';
+      const fDeck = document.getElementById('flight-deck');
+      if (fDeck) fDeck.style.display = 'none';
+      const fPlane = document.getElementById('flying-airplane');
+      if (fPlane) fPlane.style.display = 'none';
+
+      document.querySelectorAll('.carpet-cell').forEach(c => c.classList.remove('visited-cell', 'landed-target'));
+      document.querySelectorAll('.sentence-row-card').forEach(c => c.classList.remove('is-completed', 'active-focus'));
+      document.querySelectorAll('.btn-row-check').forEach(c => c.classList.remove('checked'));
+      document.querySelectorAll('.vocab-card').forEach(c => c.classList.remove('is-completed'));
+      document.querySelectorAll('.quatsch-card').forEach(c => c.classList.remove('is-completed', 'active-focus'));
+
+      updateProgressBadges();
+    }
+
+    /* ==========================================================================
+       VIEW TOGGLING
+       ========================================================================== */
+    function switchView(viewId) {
+      playPop();
+      const validViews = ['hub', 'flugzeug', 'saetze', 'quatsch'];
+      if (!validViews.includes(viewId)) viewId = 'hub';
+
+      validViews.forEach(v => {
+        const el = document.getElementById('view-' + v);
+        const btn = document.getElementById('nav-btn-' + v);
+        if (el) el.classList.remove('active-view');
+        if (btn) btn.classList.remove('active');
+      });
+
+      const targetEl = document.getElementById('view-' + viewId);
+      const targetBtn = document.getElementById('nav-btn-' + viewId);
+      if (targetEl) targetEl.classList.add('active-view');
+      if (targetBtn) targetBtn.classList.add('active');
+
+      window.location.hash = viewId;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Automatically trigger first flight on opening airplane station if not yet active
+      if (viewId === 'flugzeug' && !currentTargetCell && appState.flightCount === 0) {
+        setTimeout(() => triggerNextFlight(), 350);
+      }
+    }
+
+    /* ==========================================================================
+       SYNTHESIZED SOUND EFFECTS (Web Audio API)
+       ========================================================================== */
+    function playPop() {
+      if (!appState.soundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(340, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(760, ctx.currentTime + 0.08);
+        gain.gain.setValueAtTime(0.2, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.08);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.08);
+      } catch (e) {}
+    }
+
+    function playDing() {
+      if (!appState.soundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(880, ctx.currentTime);
+        gain.gain.setValueAtTime(0.25, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.35);
+      } catch (e) {}
+    }
+
+    function playFlightWhoosh() {
+      if (!appState.soundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(140, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(320, ctx.currentTime + 0.25);
+        osc.frequency.exponentialRampToValueAtTime(180, ctx.currentTime + 0.7);
+        gain.gain.setValueAtTime(0.05, ctx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.18, ctx.currentTime + 0.25);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.7);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.7);
+      } catch (e) {}
+    }
+
+    function playFanfare() {
+      if (!appState.soundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+        const notes = [523.25, 659.25, 783.99, 1046.50];
+        notes.forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.12);
+          gain.gain.setValueAtTime(0.25, now + idx * 0.12);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.12 + 0.35);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now + idx * 0.12);
+          osc.stop(now + idx * 0.12 + 0.35);
+        });
+      } catch (e) {}
+    }
+
+    /* ==========================================================================
+       SPEECH SYNTHESIS ENGINE (GERMAN VOICE & CORRECT PHONETICS)
+       ========================================================================== */
+    let germanVoice = null;
+
+    function initSpeech() {
+      if (!('speechSynthesis' in window)) return;
+      const setVoice = () => {
+        const voices = window.speechSynthesis.getVoices();
+        germanVoice = voices.find(v => v.lang.startsWith('de') && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Katja') || v.name.includes('Hedda')))
+                   || voices.find(v => v.lang.startsWith('de'));
+      };
+      setVoice();
+      if (window.speechSynthesis.onvoiceschanged !== undefined) {
+        window.speechSynthesis.onvoiceschanged = setVoice;
+      }
+    }
+
+    function sanitizeForTTS(text) {
+      if (!text) return '';
+      const lower = text.trim().toLowerCase();
+
+      // Check syllable exact dictionary
+      if (SYLLABLE_PHONETICS[lower]) {
+        return SYLLABLE_PHONETICS[lower];
+      }
+
+      // Sentence word replacements to avoid abbreviations
+      return text
+        .replace(/\bSa lo me\b/gi, 'Salome')
+        .replace(/\bSa la te\b/gi, 'Salate')
+        .replace(/\bLot te\b/gi, 'Lotte')
+        .replace(/\bE mil\b/gi, 'Emil')
+        .replace(/\bO ma\b/gi, 'Oma')
+        .replace(/\bsam melt\b/gi, 'sammelt')
+        .replace(/\bal te\b/gi, 'alte')
+        .replace(/\bTas sen\b/gi, 'Tassen')
+        .replace(/\bLe o\b/gi, 'Leo')
+        .replace(/\bMa ma\b/gi, 'Mama')
+        .replace(/\bLis ten\b/gi, 'Listen')
+        .replace(/\bal le\b/gi, 'alle')
+        .replace(/\bE sel\b/gi, 'Esel')
+        .replace(/\bTas te\b/gi, 'Taste')
+        .replace(/\bLis te\b/gi, 'Liste')
+        .replace(/\bSes sel\b/gi, 'Sessel')
+        .replace(/\bMat tis\b/gi, 'Mattis')
+        .replace(/\bO mas\b/gi, 'Omas')
+        .replace(/\bEm ma\b/gi, 'Emma')
+        .replace(/\bli la\b/gi, 'lila');
+    }
+
+    function speakText(text, rateMultiplier = 1) {
+      if (!appState.soundEnabled) return;
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+
+      const cleaned = sanitizeForTTS(text);
+      const utter = new SpeechSynthesisUtterance(cleaned);
+      utter.lang = 'de-DE';
+      if (germanVoice) utter.voice = germanVoice;
+
+      const baseRate = appState.slowTempo ? 0.72 : 0.88;
+      utter.rate = baseRate * rateMultiplier;
+      utter.pitch = 1.05;
+      window.speechSynthesis.speak(utter);
+    }
+
+    function toggleSound() {
+      appState.soundEnabled = !appState.soundEnabled;
+      const icon = document.getElementById('sound-icon');
+      const btn = document.getElementById('btn-sound-toggle');
+      if (icon && btn) {
+        icon.textContent = appState.soundEnabled ? '🔊' : '🔇';
+        btn.innerHTML = `<span id="sound-icon">${appState.soundEnabled ? '🔊' : '🔇'}</span> Ton: ${appState.soundEnabled ? 'An' : 'Aus'}`;
+      }
+      playPop();
+    }
+
+    function toggleTempo() {
+      appState.slowTempo = !appState.slowTempo;
+      const label = document.getElementById('tempo-label');
+      if (label) {
+        label.textContent = `Tempo: ${appState.slowTempo ? 'Gemächlich' : 'Normal'}`;
+      }
+      playPop();
+      speakText(appState.slowTempo ? "Tempo ist jetzt gemächlich." : "Tempo ist jetzt normal.");
+    }
+
+    function toggleSyllableColors() {
+      appState.syllableColors = !appState.syllableColors;
+      const label = document.getElementById('syllables-label');
+      if (label) {
+        label.textContent = `Silbenfarben: ${appState.syllableColors ? 'An' : 'Aus'}`;
+      }
+      document.querySelectorAll('.sentence-text-wrap, .quatsch-text').forEach(el => {
+        if (appState.syllableColors) {
+          el.classList.add('syllable-colored');
+        } else {
+          el.classList.remove('syllable-colored');
+        }
+      });
+      playPop();
+    }
+
+    function speakEsel() {
+      playPop();
+      const el = document.querySelector('.hub-anlaut-avatar');
+      if (el) {
+        el.style.transform = 'scale(1.22) rotate(-8deg)';
+        setTimeout(() => { el.style.transform = ''; }, 350);
+        launchMiniConfetti(el);
+      }
+      speakText("E wie Esel! I-Aah, schön, dass du da bist!");
+    }
+
+    function speakMonster() {
+      playPop();
+      const el = document.querySelector('.monster-avatar');
+      if (el) {
+        el.style.transform = 'scale(1.2) rotate(8deg)';
+        setTimeout(() => { el.style.transform = ''; }, 350);
+        launchMiniConfetti(el);
+      }
+      speakText("Hihi! Ich bin das Einstern-Monster! Kannst du all meine Quatschsätze lesen?");
+    }
+
+    function playHeartWord() {
+      playPop();
+      speakText("liebt");
+    }
+
+    /* ==========================================================================
+       STATION 1: SILBENFLUGZEUG CONTROLLER
+       ========================================================================== */
+    function getCellCenter(cell, wrapId) {
+      const wrap = document.getElementById(wrapId);
+      if (!wrap || !cell) return { x: 0, y: 0 };
+      const wrapRect = wrap.getBoundingClientRect();
+      const cellRect = cell.getBoundingClientRect();
+      return {
+        x: cellRect.left - wrapRect.left + wrap.scrollLeft + (cellRect.width / 2),
+        y: cellRect.top - wrapRect.top + wrap.scrollTop + 8
+      };
+    }
+
+    function pickRandomCell(currentCell) {
+      const allCells = Array.from(document.querySelectorAll('#carpet-table .carpet-cell'));
+      if (!allCells.length) return null;
+      if (!currentCell) {
+        return allCells[Math.floor(Math.random() * allCells.length)];
+      }
+
+      // 1. Unvisited cells
+      const unvisited = allCells.filter(c => !c.classList.contains('visited-cell') && c !== currentCell);
+      if (unvisited.length > 0) {
+        return unvisited[Math.floor(Math.random() * unvisited.length)];
+      }
+
+      // 2. Any other cell
+      const otherCells = allCells.filter(c => c !== currentCell);
+      if (otherCells.length > 0) {
+        return otherCells[Math.floor(Math.random() * otherCells.length)];
+      }
+
+      return allCells[0];
+    }
+
+    function flyPlaneToCell(targetCell, onLanded) {
+      const wrap = document.getElementById('carpet-grid-wrap');
+      const plane = document.getElementById('flying-airplane');
+      if (!wrap || !plane || !targetCell) {
+        if (onLanded) onLanded();
+        return;
+      }
+
+      isAirplaneFlying = true;
+      const targetPos = getCellCenter(targetCell, 'carpet-grid-wrap');
+      let curPos = planeCurrentPos;
+
+      if (!curPos) {
+        curPos = {
+          x: Math.max(10, targetPos.x - 180),
+          y: Math.max(10, targetPos.y - 70)
+        };
+        planeCurrentPos = curPos;
+        plane.style.transition = 'none';
+        plane.style.left = curPos.x + 'px';
+        plane.style.top = curPos.y + 'px';
+        plane.style.display = 'block';
+        void plane.offsetWidth;
+      }
+
+      plane.classList.remove('landed');
+      plane.classList.add('in-flight');
+
+      const dx = targetPos.x - curPos.x;
+      const dy = targetPos.y - curPos.y;
+      const dist = Math.hypot(dx, dy);
+
+      const durationSec = Math.max(0.65, Math.min(1.2, dist / 420));
+      let scaleX = (dx >= 0) ? -1 : 1;
+      let pitchTilt = 0;
+      if (Math.abs(dx) > 10) {
+        pitchTilt = Math.max(-25, Math.min(25, (dy / Math.abs(dx)) * 25));
+        if (dx >= 0) pitchTilt = -pitchTilt;
+      }
+
+      playFlightWhoosh();
+      targetCell.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+
+      plane.style.transition = `left ${durationSec}s cubic-bezier(0.25, 1, 0.5, 1), top ${durationSec}s cubic-bezier(0.25, 1, 0.5, 1), transform 0.25s ease-out`;
+      plane.style.transform = `translate(-50%, -50%) scaleX(${scaleX}) rotate(${pitchTilt}deg) scale(1.18)`;
+      plane.style.left = targetPos.x + 'px';
+      plane.style.top = targetPos.y + 'px';
+
+      setTimeout(() => {
+        plane.classList.remove('in-flight');
+        plane.classList.add('landed');
+        plane.style.transition = 'transform 0.3s ease-out';
+        plane.style.transform = `translate(-50%, -50%) scaleX(${scaleX}) rotate(0deg) scale(1)`;
+
+        planeCurrentPos = targetPos;
+        isAirplaneFlying = false;
+
+        if (onLanded) onLanded();
+      }, durationSec * 1000);
+    }
+
+    function triggerNextFlight() {
+      if (isAirplaneFlying) return;
+      const nextCell = pickRandomCell(currentTargetCell);
+      if (!nextCell) return;
+
+      document.querySelectorAll('#carpet-table .carpet-cell').forEach(c => c.classList.remove('landed-target'));
+
+      flyPlaneToCell(nextCell, () => {
+        currentTargetCell = nextCell;
+        nextCell.classList.add('landed-target');
+
+        const syl = nextCell.getAttribute('data-val') || nextCell.textContent.trim();
+        const deck = document.getElementById('flight-deck');
+        const sylLabel = document.getElementById('flight-deck-syl');
+        if (deck) deck.style.display = 'flex';
+        if (sylLabel) sylLabel.textContent = syl;
+
+        // Reset voice recording controls
+        resetFlightRecorder();
+
+        // IMPORTANT RULE: SILENT LANDING!
+        // The child reads the syllable aloud THEMSELVES.
+        // Speech is ONLY triggered on "Selbstkontrolle".
+      });
+    }
+
+    function onCellDirectClick(cell) {
+      if (isAirplaneFlying) return;
+
+      document.querySelectorAll('#carpet-table .carpet-cell').forEach(c => c.classList.remove('landed-target'));
+
+      flyPlaneToCell(cell, () => {
+        currentTargetCell = cell;
+        cell.classList.add('landed-target');
+
+        const syl = cell.getAttribute('data-val') || cell.textContent.trim();
+        const deck = document.getElementById('flight-deck');
+        const sylLabel = document.getElementById('flight-deck-syl');
+        if (deck) deck.style.display = 'flex';
+        if (sylLabel) sylLabel.textContent = syl;
+
+        resetFlightRecorder();
+
+        // Silent on tap as well: child reads first!
+      });
+    }
+
+    function speakCurrentFlight() {
+      playPop();
+      if (!currentTargetCell) return;
+      const syl = currentTargetCell.getAttribute('data-val') || currentTargetCell.textContent.trim();
+      speakText(syl, 0.85);
+    }
+
+    function finishCurrentFlight() {
+      if (currentTargetCell) {
+        currentTargetCell.classList.remove('landed-target');
+        currentTargetCell.classList.add('visited-cell');
+        launchMiniConfetti(currentTargetCell);
+      }
+
+      playDing();
+      appState.flightCount++;
+      const el = document.getElementById('flight-num');
+      if (el) el.textContent = appState.flightCount;
+
+      checkGoldenStarProgress();
+
+      if (appState.flightCount < 10) {
+        setTimeout(() => {
+          triggerNextFlight();
+        }, 500);
+      }
+    }
+
+    function resetFlightRecorder() {
+      const recLabel = document.getElementById('rec-label-flight');
+      if (recLabel) recLabel.textContent = 'Aufnehmen';
+      const recBtn = document.getElementById('btn-rec-flight');
+      if (recBtn) recBtn.classList.remove('recording');
+      const playBtn = document.getElementById('btn-play-flight');
+      if (playBtn) playBtn.disabled = true;
+      recordedFlightBlob = null;
+      if (activeMediaRecorder && activeMediaRecorder.state === 'recording') {
+        activeMediaRecorder.stop();
+      }
+    }
+
+    function toggleRecordFlight() {
+      const recBtn = document.getElementById('btn-rec-flight');
+      const recLabel = document.getElementById('rec-label-flight');
+      const playBtn = document.getElementById('btn-play-flight');
+
+      if (activeMediaRecorder && activeMediaRecorder.state === 'recording') {
+        activeMediaRecorder.stop();
+        if (recBtn) recBtn.classList.remove('recording');
+        if (recLabel) recLabel.textContent = 'Aufnehmen';
+        return;
+      }
+
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        alert("Mikrofon-Aufnahme wird von diesem Browser leider nicht unterstützt.");
+        return;
+      }
+
+      navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+        recordedChunks = [];
+        activeMediaRecorder = new MediaRecorder(stream);
+        activeMediaRecorder.ondataavailable = e => {
+          if (e.data.size > 0) recordedChunks.push(e.data);
+        };
+        activeMediaRecorder.onstop = () => {
+          recordedFlightBlob = new Blob(recordedChunks, { type: 'audio/webm' });
+          if (playBtn) playBtn.disabled = false;
+          stream.getTracks().forEach(track => track.stop());
+        };
+        activeMediaRecorder.start();
+        if (recBtn) recBtn.classList.add('recording');
+        if (recLabel) recLabel.textContent = 'Stoppen';
+      }).catch(err => {
+        console.warn("Mikrofon Zugriff verweigert:", err);
+        alert("Bitte erlaube den Mikrofonzugriff, um deine Stimme aufzunehmen!");
+      });
+    }
+
+    function playRecordFlight() {
+      if (!recordedFlightBlob) return;
+      playPop();
+      const audioUrl = URL.createObjectURL(recordedFlightBlob);
+      const audio = new Audio(audioUrl);
+      audio.play();
+    }
+
+    /* ==========================================================================
+       STATION 2: SÄTZE & WORTSCHATZ CONTROLLER
+       ========================================================================== */
+    function focusSentence(idx) {
+      playPop();
+      document.querySelectorAll('.sentence-row-card').forEach((c, i) => {
+        if (i === idx) c.classList.add('active-focus');
+        else c.classList.remove('active-focus');
+      });
+      // NOTE: DO NOT auto-read on row tap!
+      // The child reads quietly or aloud first.
+    }
+
+    function speakSentence(idx) {
+      playPop();
+      if (!SENTENCES_DATA[idx]) return;
+      speakText(SENTENCES_DATA[idx].cleanText, 0.88);
+    }
+
+    function toggleSentenceCheck(idx) {
+      const isChecked = !!appState.completedSentences[idx];
+      appState.completedSentences[idx] = !isChecked;
+
+      const card = document.getElementById(`sentence-card-${idx}`);
+      const btn = document.getElementById(`check-sentence-${idx}`);
+
+      if (appState.completedSentences[idx]) {
+        playDing();
+        if (card) card.classList.add('is-completed');
+        if (btn) btn.classList.add('checked');
+        if (card) launchMiniConfetti(card);
+      } else {
+        playPop();
+        if (card) card.classList.remove('is-completed');
+        if (btn) btn.classList.remove('checked');
+      }
+
+      updateProgressBadges();
+      checkGoldenStarProgress();
+    }
+
+    function focusVocab(idx) {
+      playPop();
+    }
+
+    function speakVocab(idx) {
+      playPop();
+      if (!VOCAB_DATA[idx]) return;
+      speakText(VOCAB_DATA[idx].tts, 0.85);
+    }
+
+    function toggleVocabCheck(idx) {
+      const isChecked = !!appState.completedVocab[idx];
+      appState.completedVocab[idx] = !isChecked;
+
+      const card = document.getElementById(`vocab-card-${idx}`);
+      const btn = document.getElementById(`check-vocab-${idx}`);
+
+      if (appState.completedVocab[idx]) {
+        playDing();
+        if (card) card.classList.add('is-completed');
+        if (btn) btn.classList.add('checked');
+        if (card) launchMiniConfetti(card);
+      } else {
+        playPop();
+        if (card) card.classList.remove('is-completed');
+        if (btn) btn.classList.remove('checked');
+      }
+
+      updateProgressBadges();
+      checkGoldenStarProgress();
+    }
+
+    /* ==========================================================================
+       STATION 3: QUATSCHSÄTZE CONTROLLER
+       ========================================================================== */
+    function focusQuatsch(idx) {
+      playPop();
+      document.querySelectorAll('.quatsch-card').forEach((c, i) => {
+        if (i === idx) c.classList.add('active-focus');
+        else c.classList.remove('active-focus');
+      });
+    }
+
+    function speakQuatsch(idx) {
+      playPop();
+      if (!QUATSCH_DATA[idx]) return;
+      speakText(QUATSCH_DATA[idx].tts, 0.88);
+    }
+
+    function toggleQuatschCheck(idx) {
+      const isChecked = !!appState.completedQuatsch[idx];
+      appState.completedQuatsch[idx] = !isChecked;
+
+      const card = document.getElementById(`quatsch-card-${idx}`);
+      const btn = document.getElementById(`check-quatsch-${idx}`);
+
+      if (appState.completedQuatsch[idx]) {
+        playDing();
+        if (card) card.classList.add('is-completed');
+        if (btn) btn.classList.add('checked');
+        if (card) launchMiniConfetti(card);
+      } else {
+        playPop();
+        if (card) card.classList.remove('is-completed');
+        if (btn) btn.classList.remove('checked');
+      }
+
+      checkGoldenStarProgress();
+    }
+
+    /* ==========================================================================
+       PROGRESS & REWARDS
+       ========================================================================== */
+    function updateProgressBadges() {
+      const sCount = Object.values(appState.completedSentences).filter(Boolean).length;
+      const sBadge = document.getElementById('sentences-progress');
+      if (sBadge) sBadge.textContent = `${sCount} / 5 gelesen`;
+
+      const vCount = Object.values(appState.completedVocab).filter(Boolean).length;
+      const vBadge = document.getElementById('vocab-progress');
+      if (vBadge) vBadge.textContent = `${vCount} / 6 gemerkt`;
+    }
+
+    function checkGoldenStarProgress() {
+      const sCount = Object.values(appState.completedSentences).filter(Boolean).length;
+      const vCount = Object.values(appState.completedVocab).filter(Boolean).length;
+      const qCount = Object.values(appState.completedQuatsch).filter(Boolean).length;
+
+      if (!appState.goldenStarAwarded && appState.flightCount >= 5 && sCount >= 3 && vCount >= 3 && qCount >= 2) {
+        appState.goldenStarAwarded = true;
+        const banner = document.getElementById('hub-star-banner');
+        if (banner) banner.style.display = 'flex';
+        const navStar = document.getElementById('nav-golden-star');
+        if (navStar) navStar.style.display = 'inline-block';
+        awardGoldenStar();
+      }
+    }
+
+    function awardGoldenStar() {
+      playFanfare();
+      launchFullscreenFireworks();
+      const modal = document.getElementById('star-reward-modal');
+      if (modal) modal.style.display = 'flex';
+    }
+
+    function closeRewardModal() {
+      playPop();
+      const modal = document.getElementById('star-reward-modal');
+      if (modal) modal.style.display = 'none';
+    }
+
+    function closeModalOnBackdrop(e) {
+      if (e.target.id === 'star-reward-modal') {
+        closeRewardModal();
+      }
+    }
+
+    /* ==========================================================================
+       CONFETTI & FIREWORKS ANIMATION
+       ========================================================================== */
+    function launchMiniConfetti(anchorEl) {
+      const rect = anchorEl.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+
+      for (let i = 0; i < 20; i++) {
+        createConfettiPiece(cx, cy);
+      }
+    }
+
+    function createConfettiPiece(x, y) {
+      const piece = document.createElement('div');
+      const colors = ['#f43f5e', '#fb7185', '#38bdf8', '#fbbf24', '#34d399', '#a78bfa'];
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const size = Math.floor(Math.random() * 8) + 6;
+
+      piece.style.position = 'fixed';
+      piece.style.left = x + 'px';
+      piece.style.top = y + 'px';
+      piece.style.width = size + 'px';
+      piece.style.height = size + 'px';
+      piece.style.backgroundColor = color;
+      piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      piece.style.zIndex = '99999';
+      piece.style.pointerEvents = 'none';
+      piece.style.transform = 'translate(-50%, -50%)';
+
+      document.body.appendChild(piece);
+
+      const angle = Math.random() * Math.PI * 2;
+      const velocity = Math.random() * 80 + 40;
+      const vx = Math.cos(angle) * velocity;
+      const vy = Math.sin(angle) * velocity - 30;
+
+      let startTime = performance.now();
+      function anim(time) {
+        const dt = (time - startTime) / 1000;
+        if (dt > 0.8) {
+          piece.remove();
+          return;
+        }
+        const px = x + vx * dt;
+        const py = y + vy * dt + 0.5 * 300 * dt * dt;
+        const opacity = 1 - dt / 0.8;
+        piece.style.left = px + 'px';
+        piece.style.top = py + 'px';
+        piece.style.opacity = opacity;
+        requestAnimationFrame(anim);
+      }
+      requestAnimationFrame(anim);
+    }
+
+    function launchFullscreenFireworks() {
+      const canvas = document.getElementById('fireworks-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const particles = [];
+      const colors = ['#e11d48', '#f59e0b', '#10b981', '#2563eb', '#8b5cf6', '#ec4899'];
+
+      for (let burst = 0; burst < 5; burst++) {
+        setTimeout(() => {
+          const bx = Math.random() * (canvas.width * 0.7) + (canvas.width * 0.15);
+          const by = Math.random() * (canvas.height * 0.5) + (canvas.height * 0.15);
+          for (let p = 0; p < 45; p++) {
+            const angle = Math.random() * Math.PI * 2;
+            const speed = Math.random() * 5 + 2;
+            particles.push({
+              x: bx,
+              y: by,
+              vx: Math.cos(angle) * speed,
+              vy: Math.sin(angle) * speed,
+              alpha: 1,
+              color: colors[Math.floor(Math.random() * colors.length)],
+              radius: Math.random() * 3 + 2
+            });
+          }
+        }, burst * 240);
+      }
+
+      let animId;
+      function render() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const pt = particles[i];
+          pt.x += pt.vx;
+          pt.y += pt.vy;
+          pt.vy += 0.08; // gravity
+          pt.alpha -= 0.012;
+
+          if (pt.alpha <= 0) {
+            particles.splice(i, 1);
+            continue;
+          }
+
+          ctx.save();
+          ctx.globalAlpha = pt.alpha;
+          ctx.fillStyle = pt.color;
+          ctx.beginPath();
+          ctx.arc(pt.x, pt.y, pt.radius, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+
+        if (particles.length > 0) {
+          animId = requestAnimationFrame(render);
+        } else {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          cancelAnimationFrame(animId);
+        }
+      }
+      render();
+    }
+  </script>
+</body>
+</html>
