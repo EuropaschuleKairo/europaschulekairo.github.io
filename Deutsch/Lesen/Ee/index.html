@@ -883,6 +883,12 @@
       border-color: #94a3b8;
     }
 
+    .icon-action-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
     .icon-action-btn.btn-row-check.checked {
       background: #22c55e;
       border-color: #16a34a;
@@ -897,6 +903,23 @@
     .icon-action-btn.btn-row-selfcheck:hover {
       background: #dbeafe;
       border-color: #2563eb;
+    }
+
+    .icon-action-btn.btn-row-rec.recording {
+      background: #ffe4e6;
+      border-color: #f43f5e;
+      color: #be123c;
+      animation: recPulse 1s infinite alternate;
+    }
+
+    .icon-action-btn.btn-row-play {
+      background: #f0fdf4;
+      border-color: #86efac;
+      color: #15803d;
+    }
+    .icon-action-btn.btn-row-play:hover {
+      background: #dcfce7;
+      border-color: #22c55e;
     }
 
     /* Vocab Box (Right Column) */
@@ -1257,11 +1280,11 @@
         <article class="hub-tile tile-flugzeug" onclick="switchView('flugzeug')">
           <div>
             <div class="tile-header">
-              <span class="tile-badge">Station 1 • 36 Silben</span>
+              <span class="tile-badge">Station 1 • 20 Flüge</span>
             </div>
             <h2 class="tile-title">✈️ Silbenflugzeug</h2>
             <p class="tile-desc">
-              Fliege über den großen Silbenteppich mit <b>la, lo, li, le, me, se, es, at, et, em, el, te...</b>! Wo landet das Flugzeug? Lies laut vor und prüfe mit der <b>Selbstkontrolle</b>!
+              Fliege <b>20 Runden</b> über den Silbenteppich! Wo landet das Flugzeug? Lies laut vor, nimm deine Stimme auf und prüfe mit der <b>Selbstkontrolle</b>!
             </p>
           </div>
           <button class="tile-action-btn">
@@ -1330,7 +1353,7 @@
         </div>
         <div class="carpet-controls">
           <span class="flight-counter-badge" id="flight-counter">
-            ✈️ Flug <b id="flight-num">0</b> / 10
+            ✈️ Flug <b id="flight-num">0</b> / 20
           </span>
           <button class="btn-next-flight" id="btn-next-flight" onclick="triggerNextFlight()">
             <span>🛫</span> Nächster Flug
@@ -1463,6 +1486,12 @@
                 <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakSentence(0)" title="Selbstkontrolle: Laut vorlesen lassen">
                   🔊
                 </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-s0" onclick="event.stopPropagation(); toggleRecord('s0', 'rec-btn-s0', 'play-btn-s0')" title="Eigene Stimme aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-s0" onclick="event.stopPropagation(); playRecording('s0')" title="Aufnahme anhören" disabled>
+                  ▶️
+                </button>
                 <button class="icon-action-btn btn-row-check" id="check-sentence-0" onclick="event.stopPropagation(); toggleSentenceCheck(0)" title="Als gelesen markieren">
                   ✓
                 </button>
@@ -1482,6 +1511,12 @@
                 <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakSentence(1)" title="Selbstkontrolle: Laut vorlesen lassen">
                   🔊
                 </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-s1" onclick="event.stopPropagation(); toggleRecord('s1', 'rec-btn-s1', 'play-btn-s1')" title="Eigene Stimme aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-s1" onclick="event.stopPropagation(); playRecording('s1')" title="Aufnahme anhören" disabled>
+                  ▶️
+                </button>
                 <button class="icon-action-btn btn-row-check" id="check-sentence-1" onclick="event.stopPropagation(); toggleSentenceCheck(1)" title="Als gelesen markieren">
                   ✓
                 </button>
@@ -1500,6 +1535,12 @@
                 <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakSentence(2)" title="Selbstkontrolle: Laut vorlesen lassen">
                   🔊
                 </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-s2" onclick="event.stopPropagation(); toggleRecord('s2', 'rec-btn-s2', 'play-btn-s2')" title="Eigene Stimme aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-s2" onclick="event.stopPropagation(); playRecording('s2')" title="Aufnahme anhören" disabled>
+                  ▶️
+                </button>
                 <button class="icon-action-btn btn-row-check" id="check-sentence-2" onclick="event.stopPropagation(); toggleSentenceCheck(2)" title="Als gelesen markieren">
                   ✓
                 </button>
@@ -1516,6 +1557,12 @@
               <div class="sentence-actions">
                 <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakSentence(3)" title="Selbstkontrolle: Laut vorlesen lassen">
                   🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-s3" onclick="event.stopPropagation(); toggleRecord('s3', 'rec-btn-s3', 'play-btn-s3')" title="Eigene Stimme aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-s3" onclick="event.stopPropagation(); playRecording('s3')" title="Aufnahme anhören" disabled>
+                  ▶️
                 </button>
                 <button class="icon-action-btn btn-row-check" id="check-sentence-3" onclick="event.stopPropagation(); toggleSentenceCheck(3)" title="Als gelesen markieren">
                   ✓
@@ -1536,6 +1583,12 @@
               <div class="sentence-actions">
                 <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakSentence(4)" title="Selbstkontrolle: Laut vorlesen lassen">
                   🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-s4" onclick="event.stopPropagation(); toggleRecord('s4', 'rec-btn-s4', 'play-btn-s4')" title="Eigene Stimme aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-s4" onclick="event.stopPropagation(); playRecording('s4')" title="Aufnahme anhören" disabled>
+                  ▶️
                 </button>
                 <button class="icon-action-btn btn-row-check" id="check-sentence-4" onclick="event.stopPropagation(); toggleSentenceCheck(4)" title="Als gelesen markieren">
                   ✓
@@ -1571,6 +1624,12 @@
                 <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakVocab(0)" title="Selbstkontrolle: Laut vorlesen">
                   🔊
                 </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-v0" onclick="event.stopPropagation(); toggleRecord('v0', 'rec-btn-v0', 'play-btn-v0')" title="Wort aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-v0" onclick="event.stopPropagation(); playRecording('v0')" title="Aufnahme anhören" disabled>
+                  ▶️
+                </button>
                 <button class="icon-action-btn btn-row-check" id="check-vocab-0" onclick="event.stopPropagation(); toggleVocabCheck(0)" title="Als gelernt markieren">
                   ✓
                 </button>
@@ -1586,6 +1645,12 @@
               <div class="vocab-actions">
                 <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakVocab(1)" title="Selbstkontrolle: Laut vorlesen">
                   🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-v1" onclick="event.stopPropagation(); toggleRecord('v1', 'rec-btn-v1', 'play-btn-v1')" title="Wort aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-v1" onclick="event.stopPropagation(); playRecording('v1')" title="Aufnahme anhören" disabled>
+                  ▶️
                 </button>
                 <button class="icon-action-btn btn-row-check" id="check-vocab-1" onclick="event.stopPropagation(); toggleVocabCheck(1)" title="Als gelernt markieren">
                   ✓
@@ -1603,6 +1668,12 @@
                 <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakVocab(2)" title="Selbstkontrolle: Laut vorlesen">
                   🔊
                 </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-v2" onclick="event.stopPropagation(); toggleRecord('v2', 'rec-btn-v2', 'play-btn-v2')" title="Wort aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-v2" onclick="event.stopPropagation(); playRecording('v2')" title="Aufnahme anhören" disabled>
+                  ▶️
+                </button>
                 <button class="icon-action-btn btn-row-check" id="check-vocab-2" onclick="event.stopPropagation(); toggleVocabCheck(2)" title="Als gelernt markieren">
                   ✓
                 </button>
@@ -1618,6 +1689,12 @@
               <div class="vocab-actions">
                 <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakVocab(3)" title="Selbstkontrolle: Laut vorlesen">
                   🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-v3" onclick="event.stopPropagation(); toggleRecord('v3', 'rec-btn-v3', 'play-btn-v3')" title="Wort aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-v3" onclick="event.stopPropagation(); playRecording('v3')" title="Aufnahme anhören" disabled>
+                  ▶️
                 </button>
                 <button class="icon-action-btn btn-row-check" id="check-vocab-3" onclick="event.stopPropagation(); toggleVocabCheck(3)" title="Als gelernt markieren">
                   ✓
@@ -1635,6 +1712,12 @@
                 <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakVocab(4)" title="Selbstkontrolle: Laut vorlesen">
                   🔊
                 </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-v4" onclick="event.stopPropagation(); toggleRecord('v4', 'rec-btn-v4', 'play-btn-v4')" title="Wort aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-v4" onclick="event.stopPropagation(); playRecording('v4')" title="Aufnahme anhören" disabled>
+                  ▶️
+                </button>
                 <button class="icon-action-btn btn-row-check" id="check-vocab-4" onclick="event.stopPropagation(); toggleVocabCheck(4)" title="Als gelernt markieren">
                   ✓
                 </button>
@@ -1650,6 +1733,12 @@
               <div class="vocab-actions">
                 <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakVocab(5)" title="Selbstkontrolle: Laut vorlesen">
                   🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-v5" onclick="event.stopPropagation(); toggleRecord('v5', 'rec-btn-v5', 'play-btn-v5')" title="Wort aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-v5" onclick="event.stopPropagation(); playRecording('v5')" title="Aufnahme anhören" disabled>
+                  ▶️
                 </button>
                 <button class="icon-action-btn btn-row-check" id="check-vocab-5" onclick="event.stopPropagation(); toggleVocabCheck(5)" title="Als gelernt markieren">
                   ✓
@@ -1711,6 +1800,12 @@
             <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakQuatsch(0)" title="Selbstkontrolle: Laut vorlesen lassen">
               🔊
             </button>
+            <button class="icon-action-btn btn-row-rec" id="rec-btn-q0" onclick="event.stopPropagation(); toggleRecord('q0', 'rec-btn-q0', 'play-btn-q0')" title="Satz aufnehmen">
+              🎤
+            </button>
+            <button class="icon-action-btn btn-row-play" id="play-btn-q0" onclick="event.stopPropagation(); playRecording('q0')" title="Aufnahme anhören" disabled>
+              ▶️
+            </button>
             <button class="icon-action-btn btn-row-check" id="check-quatsch-0" onclick="event.stopPropagation(); toggleQuatschCheck(0)" title="Gelesen!">
               ✓
             </button>
@@ -1731,6 +1826,12 @@
           <div class="sentence-actions">
             <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakQuatsch(1)" title="Selbstkontrolle: Laut vorlesen lassen">
               🔊
+            </button>
+            <button class="icon-action-btn btn-row-rec" id="rec-btn-q1" onclick="event.stopPropagation(); toggleRecord('q1', 'rec-btn-q1', 'play-btn-q1')" title="Satz aufnehmen">
+              🎤
+            </button>
+            <button class="icon-action-btn btn-row-play" id="play-btn-q1" onclick="event.stopPropagation(); playRecording('q1')" title="Aufnahme anhören" disabled>
+              ▶️
             </button>
             <button class="icon-action-btn btn-row-check" id="check-quatsch-1" onclick="event.stopPropagation(); toggleQuatschCheck(1)" title="Gelesen!">
               ✓
@@ -1754,6 +1855,12 @@
             <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakQuatsch(2)" title="Selbstkontrolle: Laut vorlesen lassen">
               🔊
             </button>
+            <button class="icon-action-btn btn-row-rec" id="rec-btn-q2" onclick="event.stopPropagation(); toggleRecord('q2', 'rec-btn-q2', 'play-btn-q2')" title="Satz aufnehmen">
+              🎤
+            </button>
+            <button class="icon-action-btn btn-row-play" id="play-btn-q2" onclick="event.stopPropagation(); playRecording('q2')" title="Aufnahme anhören" disabled>
+              ▶️
+            </button>
             <button class="icon-action-btn btn-row-check" id="check-quatsch-2" onclick="event.stopPropagation(); toggleQuatschCheck(2)" title="Gelesen!">
               ✓
             </button>
@@ -1775,6 +1882,12 @@
             <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakQuatsch(3)" title="Selbstkontrolle: Laut vorlesen lassen">
               🔊
             </button>
+            <button class="icon-action-btn btn-row-rec" id="rec-btn-q3" onclick="event.stopPropagation(); toggleRecord('q3', 'rec-btn-q3', 'play-btn-q3')" title="Satz aufnehmen">
+              🎤
+            </button>
+            <button class="icon-action-btn btn-row-play" id="play-btn-q3" onclick="event.stopPropagation(); playRecording('q3')" title="Aufnahme anhören" disabled>
+              ▶️
+            </button>
             <button class="icon-action-btn btn-row-check" id="check-quatsch-3" onclick="event.stopPropagation(); toggleQuatschCheck(3)" title="Gelesen!">
               ✓
             </button>
@@ -1786,6 +1899,25 @@
     </div>
 
   </main>
+
+  <!-- Modal for 20 Flights Completion -->
+  <div class="reward-modal-backdrop" id="flight-complete-modal" style="display: none;" onclick="closeModalOnBackdrop(event)">
+    <div class="reward-modal-card" style="border-color: #3b82f6;">
+      <div class="reward-modal-star" style="font-size:4rem;">✈️</div>
+      <h2 class="reward-modal-title" style="color: #1d4ed8;">20 Flüge geschafft!</h2>
+      <p class="reward-modal-desc">
+        Großartig! Du bist <b>20-mal sicher gelandet</b> und hast alle Silben laut vorgelesen! Du bist ein echter Flug-Meister!
+      </p>
+      <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+        <button class="btn-modal-close" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);" onclick="closeFlightModal(true)">
+          <span>📖</span> Zu den Sätzen ➔
+        </button>
+        <button class="btn-modal-close" style="background: #f1f5f9; color: #334155; border: 2px solid #cbd5e1; box-shadow: none;" onclick="closeFlightModal(false)">
+          <span>🛫</span> Weiterspielen
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- Golden Star Modal Reward -->
   <div class="reward-modal-backdrop" id="star-reward-modal" style="display: none;" onclick="closeModalOnBackdrop(event)">
@@ -1876,14 +2008,34 @@
     };
 
     // Voice recording variables
+    const audioRecordings = {};
+    let currentRecordingKey = null;
     let activeMediaRecorder = null;
     let recordedChunks = [];
-    let recordedFlightBlob = null;
+    let activeStream = null;
 
     // Flight animation variables
     let currentTargetCell = null;
     let planeCurrentPos = null;
     let isAirplaneFlying = false;
+
+    // Dynamic MIME detection for audio recording (iOS/Safari vs Chrome/Firefox)
+    function getSupportedAudioMimeType() {
+      const types = [
+        'audio/webm;codecs=opus',
+        'audio/webm',
+        'audio/ogg;codecs=opus',
+        'audio/mp4',
+        'audio/aac'
+      ];
+      if (typeof MediaRecorder === 'undefined') return '';
+      for (const t of types) {
+        if (MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(t)) {
+          return t;
+        }
+      }
+      return '';
+    }
 
     // Web Audio Context for synthesized sound effects
     let audioCtx = null;
@@ -1935,6 +2087,11 @@
       planeCurrentPos = null;
       isAirplaneFlying = false;
 
+      stopActiveRecording();
+      for (const k in audioRecordings) delete audioRecordings[k];
+
+      const fCounter = document.getElementById('flight-counter');
+      if (fCounter) fCounter.innerHTML = `✈️ Flug <b id="flight-num">0</b> / 20`;
       const fNum = document.getElementById('flight-num');
       if (fNum) fNum.textContent = '0';
       const fDeck = document.getElementById('flight-deck');
@@ -1948,6 +2105,9 @@
       document.querySelectorAll('.vocab-card').forEach(c => c.classList.remove('is-completed'));
       document.querySelectorAll('.quatsch-card').forEach(c => c.classList.remove('is-completed', 'active-focus'));
 
+      document.querySelectorAll('.btn-row-rec').forEach(c => c.classList.remove('recording'));
+      document.querySelectorAll('.btn-row-play').forEach(c => c.disabled = true);
+
       updateProgressBadges();
     }
 
@@ -1956,6 +2116,7 @@
        ========================================================================== */
     function switchView(viewId) {
       playPop();
+      stopActiveRecording();
       const validViews = ['hub', 'flugzeug', 'saetze', 'quatsch'];
       if (!validViews.includes(viewId)) viewId = 'hub';
 
@@ -2355,36 +2516,50 @@
 
       checkGoldenStarProgress();
 
-      if (appState.flightCount < 10) {
+      if (appState.flightCount >= 20) {
+        const badge = document.getElementById('flight-counter');
+        if (badge) {
+          badge.innerHTML = `✈️ <b>20 / 20 Flüge geschafft!</b> 🌟`;
+        }
+        playFanfare();
+        launchFullscreenFireworks();
+        speakText("Großartig! Du hast alle 20 Flüge geschafft! Super gelesen!", 0.95);
+        const modal = document.getElementById('flight-complete-modal');
+        if (modal) modal.style.display = 'flex';
+      } else {
         setTimeout(() => {
           triggerNextFlight();
         }, 500);
       }
     }
 
-    function resetFlightRecorder() {
-      const recLabel = document.getElementById('rec-label-flight');
-      if (recLabel) recLabel.textContent = 'Aufnehmen';
-      const recBtn = document.getElementById('btn-rec-flight');
-      if (recBtn) recBtn.classList.remove('recording');
-      const playBtn = document.getElementById('btn-play-flight');
-      if (playBtn) playBtn.disabled = true;
-      recordedFlightBlob = null;
+    /* ==========================================================================
+       VOICE RECORDING SYSTEM (CROSS-BROWSER & UNIVERSAL)
+       ========================================================================== */
+    function stopActiveRecording() {
       if (activeMediaRecorder && activeMediaRecorder.state === 'recording') {
-        activeMediaRecorder.stop();
+        try {
+          activeMediaRecorder.stop();
+        } catch (e) {
+          console.warn("Error stopping MediaRecorder:", e);
+        }
       }
     }
 
-    function toggleRecordFlight() {
-      const recBtn = document.getElementById('btn-rec-flight');
-      const recLabel = document.getElementById('rec-label-flight');
-      const playBtn = document.getElementById('btn-play-flight');
+    function toggleRecord(key, recBtnId, playBtnId, labelId) {
+      const recBtn = document.getElementById(recBtnId);
+      const playBtn = document.getElementById(playBtnId);
+      const label = labelId ? document.getElementById(labelId) : null;
 
-      if (activeMediaRecorder && activeMediaRecorder.state === 'recording') {
-        activeMediaRecorder.stop();
-        if (recBtn) recBtn.classList.remove('recording');
-        if (recLabel) recLabel.textContent = 'Aufnehmen';
+      // If user taps the active recording button again, stop recording
+      if (currentRecordingKey === key && activeMediaRecorder && activeMediaRecorder.state === 'recording') {
+        stopActiveRecording();
         return;
+      }
+
+      // If any other recording is underway, stop it before starting new one
+      if (activeMediaRecorder && activeMediaRecorder.state === 'recording') {
+        stopActiveRecording();
       }
 
       if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
@@ -2393,31 +2568,75 @@
       }
 
       navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+        activeStream = stream;
         recordedChunks = [];
-        activeMediaRecorder = new MediaRecorder(stream);
+        const mimeType = getSupportedAudioMimeType();
+        const options = mimeType ? { mimeType } : {};
+
+        try {
+          activeMediaRecorder = new MediaRecorder(stream, options);
+        } catch (e) {
+          activeMediaRecorder = new MediaRecorder(stream);
+        }
+
         activeMediaRecorder.ondataavailable = e => {
-          if (e.data.size > 0) recordedChunks.push(e.data);
+          if (e.data && e.data.size > 0) recordedChunks.push(e.data);
         };
+
         activeMediaRecorder.onstop = () => {
-          recordedFlightBlob = new Blob(recordedChunks, { type: 'audio/webm' });
+          const actualType = activeMediaRecorder.mimeType || mimeType || 'audio/webm';
+          const blob = new Blob(recordedChunks, { type: actualType });
+          audioRecordings[key] = blob;
+
           if (playBtn) playBtn.disabled = false;
-          stream.getTracks().forEach(track => track.stop());
+          if (recBtn) recBtn.classList.remove('recording');
+          if (label) label.textContent = 'Aufnehmen';
+
+          if (activeStream) {
+            activeStream.getTracks().forEach(track => track.stop());
+            activeStream = null;
+          }
+          currentRecordingKey = null;
+          playPop();
         };
+
         activeMediaRecorder.start();
+        currentRecordingKey = key;
         if (recBtn) recBtn.classList.add('recording');
-        if (recLabel) recLabel.textContent = 'Stoppen';
+        if (label) label.textContent = 'Stoppen';
       }).catch(err => {
-        console.warn("Mikrofon Zugriff verweigert:", err);
-        alert("Bitte erlaube den Mikrofonzugriff, um deine Stimme aufzunehmen!");
+        console.warn("Mikrofon Zugriff verweigert oder Fehler:", err);
+        alert("Bitte erlaube den Mikrofonzugriff im Browser, um deine Stimme aufzunehmen!");
       });
     }
 
-    function playRecordFlight() {
-      if (!recordedFlightBlob) return;
+    function playRecording(key) {
+      const blob = audioRecordings[key];
+      if (!blob) return;
       playPop();
-      const audioUrl = URL.createObjectURL(recordedFlightBlob);
+      const audioUrl = URL.createObjectURL(blob);
       const audio = new Audio(audioUrl);
-      audio.play();
+      audio.play().catch(e => console.warn("Audio playback error:", e));
+    }
+
+    function resetFlightRecorder() {
+      const recLabel = document.getElementById('rec-label-flight');
+      if (recLabel) recLabel.textContent = 'Aufnehmen';
+      const recBtn = document.getElementById('btn-rec-flight');
+      if (recBtn) recBtn.classList.remove('recording');
+      const playBtn = document.getElementById('btn-play-flight');
+      if (playBtn) playBtn.disabled = !audioRecordings['flight'];
+      if (currentRecordingKey === 'flight') {
+        stopActiveRecording();
+      }
+    }
+
+    function toggleRecordFlight() {
+      toggleRecord('flight', 'btn-rec-flight', 'btn-play-flight', 'rec-label-flight');
+    }
+
+    function playRecordFlight() {
+      playRecording('flight');
     }
 
     /* ==========================================================================
@@ -2549,7 +2768,7 @@
       const vCount = Object.values(appState.completedVocab).filter(Boolean).length;
       const qCount = Object.values(appState.completedQuatsch).filter(Boolean).length;
 
-      if (!appState.goldenStarAwarded && appState.flightCount >= 5 && sCount >= 3 && vCount >= 3 && qCount >= 2) {
+      if (!appState.goldenStarAwarded && appState.flightCount >= 20 && sCount >= 3 && vCount >= 3 && qCount >= 2) {
         appState.goldenStarAwarded = true;
         const banner = document.getElementById('hub-star-banner');
         if (banner) banner.style.display = 'flex';
@@ -2572,9 +2791,20 @@
       if (modal) modal.style.display = 'none';
     }
 
+    function closeFlightModal(goToSentences) {
+      playPop();
+      const modal = document.getElementById('flight-complete-modal');
+      if (modal) modal.style.display = 'none';
+      if (goToSentences) {
+        switchView('saetze');
+      }
+    }
+
     function closeModalOnBackdrop(e) {
       if (e.target.id === 'star-reward-modal') {
         closeRewardModal();
+      } else if (e.target.id === 'flight-complete-modal') {
+        closeFlightModal(false);
       }
     }
 
