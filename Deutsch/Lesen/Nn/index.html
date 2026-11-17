@@ -2256,9 +2256,58 @@
     });
 
     /* ==========================================================================
+       PSEUDO-RANDOM ORDER ON PAGE LOAD (PREVENTS ROTE MEMORIZATION)
+       ========================================================================== */
+    function shuffleContainerChildren(containerId, updateBadgeSelector = null, badgePrefix = '') {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const items = Array.from(container.children);
+      for (let i = items.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [items[i], items[j]] = [items[j], items[i]];
+      }
+      items.forEach((item, idx) => {
+        container.appendChild(item);
+        if (updateBadgeSelector) {
+          const badge = item.querySelector(updateBadgeSelector);
+          if (badge) {
+            badge.textContent = `${badgePrefix} ${idx + 1}`;
+          }
+        }
+      });
+    }
+
+    function shuffleCarpetCells() {
+      const table = document.getElementById('carpet-table');
+      if (!table) return;
+      const rows = table.querySelectorAll('tbody tr');
+      if (!rows.length) return;
+      const cells = Array.from(table.querySelectorAll('.carpet-cell'));
+      for (let i = cells.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [cells[i], cells[j]] = [cells[j], cells[i]];
+      }
+      const perRow = Math.ceil(cells.length / rows.length);
+      rows.forEach((row, rIdx) => {
+        row.innerHTML = '';
+        const slice = cells.slice(rIdx * perRow, (rIdx + 1) * perRow);
+        slice.forEach(c => row.appendChild(c));
+      });
+    }
+
+    function randomizePageElements() {
+      shuffleCarpetCells();
+      shuffleContainerChildren('sentences-list');
+      shuffleContainerChildren('vocab-list');
+      shuffleContainerChildren('herz-list');
+      shuffleContainerChildren('quatsch-list', '.quatsch-badge', 'Quatsch');
+    }
+
+    /* ==========================================================================
        INITIALIZATION
        ========================================================================== */
     window.addEventListener('DOMContentLoaded', () => {
+      randomizePageElements();
       initFreshState();
       initSpeech();
 
