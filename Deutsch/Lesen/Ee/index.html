@@ -948,22 +948,14 @@
       border-color: #22c55e;
     }
 
-    .vocab-text-group {
-      display: flex;
-      flex-direction: column;
-    }
-
     .vocab-word {
       font-family: var(--font-reading);
       font-size: 1.65rem;
       font-weight: 700;
       color: #1e293b;
-    }
-
-    .vocab-syllables-sub {
-      font-size: 0.95rem;
-      color: #64748b;
-      font-weight: 600;
+      letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
     }
 
     .vocab-actions {
@@ -1610,15 +1602,14 @@
           </div>
 
           <p style="font-size:0.95rem; color:#64748b; margin:0 0 14px 0;">
-            Lies jedes Wort laut vor. Tippe auf <b>🔊</b> zur Selbstkontrolle!
+            Schau dir die Wörter genau an und präge sie dir visuell ein (Sicht-Wortschatz). Tippe auf <b>🔊</b> zur Selbstkontrolle!
           </p>
 
           <div id="vocab-list">
             <!-- 1: alle -->
             <div class="vocab-card" id="vocab-card-0" onclick="focusVocab(0)">
-              <div class="vocab-text-group">
-                <span class="vocab-word">al le</span>
-                <span class="vocab-syllables-sub">al · le</span>
+              <div class="vocab-word syllable-colored">
+                <span class="syl-1">al</span><span class="syl-2">le</span>
               </div>
               <div class="vocab-actions">
                 <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakVocab(0)" title="Selbstkontrolle: Laut vorlesen">
@@ -1630,7 +1621,7 @@
                 <button class="icon-action-btn btn-row-play" id="play-btn-v0" onclick="event.stopPropagation(); playRecording('v0')" title="Aufnahme anhören" disabled>
                   ▶️
                 </button>
-                <button class="icon-action-btn btn-row-check" id="check-vocab-0" onclick="event.stopPropagation(); toggleVocabCheck(0)" title="Als gelernt markieren">
+                <button class="icon-action-btn btn-row-check" id="check-vocab-0" onclick="event.stopPropagation(); toggleVocabCheck(0)" title="Als gemerkt markieren">
                   ✓
                 </button>
               </div>
@@ -1638,9 +1629,8 @@
 
             <!-- 2: Esel -->
             <div class="vocab-card" id="vocab-card-1" onclick="focusVocab(1)">
-              <div class="vocab-text-group">
-                <span class="vocab-word">E sel</span>
-                <span class="vocab-syllables-sub">E · sel</span>
+              <div class="vocab-word syllable-colored">
+                <span class="syl-1">E</span><span class="syl-2">sel</span>
               </div>
               <div class="vocab-actions">
                 <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakVocab(1)" title="Selbstkontrolle: Laut vorlesen">
@@ -1652,7 +1642,7 @@
                 <button class="icon-action-btn btn-row-play" id="play-btn-v1" onclick="event.stopPropagation(); playRecording('v1')" title="Aufnahme anhören" disabled>
                   ▶️
                 </button>
-                <button class="icon-action-btn btn-row-check" id="check-vocab-1" onclick="event.stopPropagation(); toggleVocabCheck(1)" title="Als gelernt markieren">
+                <button class="icon-action-btn btn-row-check" id="check-vocab-1" onclick="event.stopPropagation(); toggleVocabCheck(1)" title="Als gemerkt markieren">
                   ✓
                 </button>
               </div>
@@ -1660,9 +1650,8 @@
 
             <!-- 3: Taste -->
             <div class="vocab-card" id="vocab-card-2" onclick="focusVocab(2)">
-              <div class="vocab-text-group">
-                <span class="vocab-word">Tas te</span>
-                <span class="vocab-syllables-sub">Tas · te</span>
+              <div class="vocab-word syllable-colored">
+                <span class="syl-1">Tas</span><span class="syl-2">te</span>
               </div>
               <div class="vocab-actions">
                 <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakVocab(2)" title="Selbstkontrolle: Laut vorlesen">
@@ -1674,7 +1663,7 @@
                 <button class="icon-action-btn btn-row-play" id="play-btn-v2" onclick="event.stopPropagation(); playRecording('v2')" title="Aufnahme anhören" disabled>
                   ▶️
                 </button>
-                <button class="icon-action-btn btn-row-check" id="check-vocab-2" onclick="event.stopPropagation(); toggleVocabCheck(2)" title="Als gelernt markieren">
+                <button class="icon-action-btn btn-row-check" id="check-vocab-2" onclick="event.stopPropagation(); toggleVocabCheck(2)" title="Als gemerkt markieren">
                   ✓
                 </button>
               </div>
@@ -1682,9 +1671,8 @@
 
             <!-- 4: Liste -->
             <div class="vocab-card" id="vocab-card-3" onclick="focusVocab(3)">
-              <div class="vocab-text-group">
-                <span class="vocab-word">Lis te</span>
-                <span class="vocab-syllables-sub">Lis · te</span>
+              <div class="vocab-word syllable-colored">
+                <span class="syl-1">Lis</span><span class="syl-2">te</span>
               </div>
               <div class="vocab-actions">
                 <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakVocab(3)" title="Selbstkontrolle: Laut vorlesen">
@@ -1696,7 +1684,7 @@
                 <button class="icon-action-btn btn-row-play" id="play-btn-v3" onclick="event.stopPropagation(); playRecording('v3')" title="Aufnahme anhören" disabled>
                   ▶️
                 </button>
-                <button class="icon-action-btn btn-row-check" id="check-vocab-3" onclick="event.stopPropagation(); toggleVocabCheck(3)" title="Als gelernt markieren">
+                <button class="icon-action-btn btn-row-check" id="check-vocab-3" onclick="event.stopPropagation(); toggleVocabCheck(3)" title="Als gemerkt markieren">
                   ✓
                 </button>
               </div>
@@ -1704,9 +1692,8 @@
 
             <!-- 5: es -->
             <div class="vocab-card" id="vocab-card-4" onclick="focusVocab(4)">
-              <div class="vocab-text-group">
-                <span class="vocab-word">es</span>
-                <span class="vocab-syllables-sub">es</span>
+              <div class="vocab-word syllable-colored">
+                <span class="syl-1">es</span>
               </div>
               <div class="vocab-actions">
                 <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakVocab(4)" title="Selbstkontrolle: Laut vorlesen">
@@ -1718,7 +1705,7 @@
                 <button class="icon-action-btn btn-row-play" id="play-btn-v4" onclick="event.stopPropagation(); playRecording('v4')" title="Aufnahme anhören" disabled>
                   ▶️
                 </button>
-                <button class="icon-action-btn btn-row-check" id="check-vocab-4" onclick="event.stopPropagation(); toggleVocabCheck(4)" title="Als gelernt markieren">
+                <button class="icon-action-btn btn-row-check" id="check-vocab-4" onclick="event.stopPropagation(); toggleVocabCheck(4)" title="Als gemerkt markieren">
                   ✓
                 </button>
               </div>
@@ -1726,9 +1713,8 @@
 
             <!-- 6: Sessel -->
             <div class="vocab-card" id="vocab-card-5" onclick="focusVocab(5)">
-              <div class="vocab-text-group">
-                <span class="vocab-word">Ses sel</span>
-                <span class="vocab-syllables-sub">Ses · sel</span>
+              <div class="vocab-word syllable-colored">
+                <span class="syl-1">Ses</span><span class="syl-2">sel</span>
               </div>
               <div class="vocab-actions">
                 <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakVocab(5)" title="Selbstkontrolle: Laut vorlesen">
@@ -1740,7 +1726,7 @@
                 <button class="icon-action-btn btn-row-play" id="play-btn-v5" onclick="event.stopPropagation(); playRecording('v5')" title="Aufnahme anhören" disabled>
                   ▶️
                 </button>
-                <button class="icon-action-btn btn-row-check" id="check-vocab-5" onclick="event.stopPropagation(); toggleVocabCheck(5)" title="Als gelernt markieren">
+                <button class="icon-action-btn btn-row-check" id="check-vocab-5" onclick="event.stopPropagation(); toggleVocabCheck(5)" title="Als gemerkt markieren">
                   ✓
                 </button>
               </div>
@@ -2314,7 +2300,7 @@
       if (label) {
         label.textContent = `Silbenfarben: ${appState.syllableColors ? 'An' : 'Aus'}`;
       }
-      document.querySelectorAll('.sentence-text-wrap, .quatsch-text').forEach(el => {
+      document.querySelectorAll('.sentence-text-wrap, .quatsch-text, .vocab-word').forEach(el => {
         if (appState.syllableColors) {
           el.classList.add('syllable-colored');
         } else {

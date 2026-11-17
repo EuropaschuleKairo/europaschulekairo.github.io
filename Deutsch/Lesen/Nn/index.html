@@ -377,80 +377,6 @@
       box-shadow: 0 6px 16px rgba(13, 148, 136, 0.35);
     }
 
-    /* Weekday Progress Tracker */
-    .weekday-tracker-card {
-      background: #ffffff;
-      border: 3px solid #99f6e4;
-      border-radius: var(--radius-lg);
-      padding: 22px 26px;
-      margin-bottom: 24px;
-      box-shadow: 0 4px 14px rgba(13, 148, 136, 0.05);
-    }
-
-    .weekday-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 14px;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .weekday-header h3 {
-      font-family: var(--font-display);
-      font-size: 1.35rem;
-      margin: 0;
-      color: #0f766e;
-    }
-
-    .weekday-pills-row {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 8px;
-    }
-
-    @media (max-width: 600px) {
-      .weekday-pills-row {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-
-    .weekday-box {
-      background: #f8fafc;
-      border: 2px solid #e2e8f0;
-      border-radius: var(--radius-md);
-      padding: 10px 4px;
-      text-align: center;
-      cursor: pointer;
-      user-select: none;
-      transition: all 0.15s ease;
-    }
-
-    .weekday-box:hover {
-      border-color: #14b8a6;
-      background: #f0fdfa;
-      transform: scale(1.04);
-    }
-
-    .weekday-box.checked {
-      background: #ccfbf1;
-      border-color: #0d9488;
-      color: #0f766e;
-      font-weight: 700;
-    }
-
-    .weekday-box .day-name {
-      display: block;
-      font-size: 0.88rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .weekday-box .day-check-icon {
-      font-size: 1.2rem;
-      display: block;
-    }
-
     /* Golden Star Banner */
     .star-reward-banner {
       background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
@@ -1078,21 +1004,14 @@
       border-color: #86efac;
     }
 
-    .vocab-text-group {
-      display: flex;
-      flex-direction: column;
-    }
-
     .vocab-word {
       font-family: var(--font-reading);
-      font-size: 1.45rem;
+      font-size: 1.65rem;
       font-weight: 700;
       color: #1e293b;
-    }
-
-    .vocab-syllables-sub {
-      font-size: 0.85rem;
-      color: #64748b;
+      letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
     }
 
     .vocab-actions {
@@ -1440,44 +1359,6 @@
 
       </section>
 
-      <!-- Weekly Progress Tracker -->
-      <section class="weekday-tracker-card">
-        <div class="weekday-header">
-          <h3>📅 Wöchentlicher Lese-Begleiter</h3>
-          <span style="font-size:0.95rem; color:#64748b;">Lies jeden Tag eine kleine Portion und hake den Tag ab!</span>
-        </div>
-        <div class="weekday-pills-row">
-          <div class="weekday-box" onclick="toggleWeekday(this, 'Montag')">
-            <span class="day-name">Montag</span>
-            <span class="day-check-icon">⬜</span>
-          </div>
-          <div class="weekday-box" onclick="toggleWeekday(this, 'Dienstag')">
-            <span class="day-name">Dienstag</span>
-            <span class="day-check-icon">⬜</span>
-          </div>
-          <div class="weekday-box" onclick="toggleWeekday(this, 'Mittwoch')">
-            <span class="day-name">Mittwoch</span>
-            <span class="day-check-icon">⬜</span>
-          </div>
-          <div class="weekday-box" onclick="toggleWeekday(this, 'Donnerstag')">
-            <span class="day-name">Donnerstag</span>
-            <span class="day-check-icon">⬜</span>
-          </div>
-          <div class="weekday-box" onclick="toggleWeekday(this, 'Freitag')">
-            <span class="day-name">Freitag</span>
-            <span class="day-check-icon">⬜</span>
-          </div>
-          <div class="weekday-box" onclick="toggleWeekday(this, 'Samstag')">
-            <span class="day-name">Samstag</span>
-            <span class="day-check-icon">⬜</span>
-          </div>
-          <div class="weekday-box" onclick="toggleWeekday(this, 'Sonntag')">
-            <span class="day-name">Sonntag</span>
-            <span class="day-check-icon">⬜</span>
-          </div>
-        </div>
-      </section>
-
     </div>
 
     <!-- =======================================================================
@@ -1793,15 +1674,14 @@
           </div>
 
           <p style="font-size:0.95rem; color:#64748b; margin:0 0 14px 0;">
-            Lies jedes Wort laut vor. Tippe auf <b>🔊</b> zur Selbstkontrolle!
+            Schau dir die Wörter genau an und präge sie dir visuell ein (Sicht-Wortschatz). Tippe auf <b>🔊</b> zur Selbstkontrolle!
           </p>
 
           <div id="vocab-list">
             <!-- 1: an -->
             <div class="vocab-card" id="vocab-card-0" onclick="focusVocab(0)">
-              <div class="vocab-text-group">
-                <span class="vocab-word">an</span>
-                <span class="vocab-syllables-sub">an</span>
+              <div class="vocab-word syllable-colored">
+                <span class="syl-1">an</span>
               </div>
               <div class="vocab-actions">
                 <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakVocab(0)" title="Selbstkontrolle: Laut vorlesen">
@@ -1813,7 +1693,7 @@
                 <button class="icon-action-btn btn-row-play" id="play-btn-v0" onclick="event.stopPropagation(); playRecording('v0')" title="Aufnahme anhören" disabled>
                   ▶️
                 </button>
-                <button class="icon-action-btn btn-row-check" id="check-vocab-0" onclick="event.stopPropagation(); toggleVocabCheck(0)" title="Als gelernt markieren">
+                <button class="icon-action-btn btn-row-check" id="check-vocab-0" onclick="event.stopPropagation(); toggleVocabCheck(0)" title="Als gemerkt markieren">
                   ✓
                 </button>
               </div>
@@ -1821,9 +1701,8 @@
 
             <!-- 2: En te -->
             <div class="vocab-card" id="vocab-card-1" onclick="focusVocab(1)">
-              <div class="vocab-text-group">
-                <span class="vocab-word">En te</span>
-                <span class="vocab-syllables-sub">En · te</span>
+              <div class="vocab-word syllable-colored">
+                <span class="syl-1">En</span><span class="syl-2">te</span>
               </div>
               <div class="vocab-actions">
                 <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakVocab(1)" title="Selbstkontrolle: Laut vorlesen">
@@ -1835,7 +1714,7 @@
                 <button class="icon-action-btn btn-row-play" id="play-btn-v1" onclick="event.stopPropagation(); playRecording('v1')" title="Aufnahme anhören" disabled>
                   ▶️
                 </button>
-                <button class="icon-action-btn btn-row-check" id="check-vocab-1" onclick="event.stopPropagation(); toggleVocabCheck(1)" title="Als gelernt markieren">
+                <button class="icon-action-btn btn-row-check" id="check-vocab-1" onclick="event.stopPropagation(); toggleVocabCheck(1)" title="Als gemerkt markieren">
                   ✓
                 </button>
               </div>
@@ -1843,9 +1722,8 @@
 
             <!-- 3: es sen -->
             <div class="vocab-card" id="vocab-card-2" onclick="focusVocab(2)">
-              <div class="vocab-text-group">
-                <span class="vocab-word">es sen</span>
-                <span class="vocab-syllables-sub">es · sen</span>
+              <div class="vocab-word syllable-colored">
+                <span class="syl-1">es</span><span class="syl-2">sen</span>
               </div>
               <div class="vocab-actions">
                 <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakVocab(2)" title="Selbstkontrolle: Laut vorlesen">
@@ -1857,7 +1735,7 @@
                 <button class="icon-action-btn btn-row-play" id="play-btn-v2" onclick="event.stopPropagation(); playRecording('v2')" title="Aufnahme anhören" disabled>
                   ▶️
                 </button>
-                <button class="icon-action-btn btn-row-check" id="check-vocab-2" onclick="event.stopPropagation(); toggleVocabCheck(2)" title="Als gelernt markieren">
+                <button class="icon-action-btn btn-row-check" id="check-vocab-2" onclick="event.stopPropagation(); toggleVocabCheck(2)" title="Als gemerkt markieren">
                   ✓
                 </button>
               </div>
@@ -1865,9 +1743,8 @@
 
             <!-- 4: le sen -->
             <div class="vocab-card" id="vocab-card-3" onclick="focusVocab(3)">
-              <div class="vocab-text-group">
-                <span class="vocab-word">le sen</span>
-                <span class="vocab-syllables-sub">le · sen</span>
+              <div class="vocab-word syllable-colored">
+                <span class="syl-1">le</span><span class="syl-2">sen</span>
               </div>
               <div class="vocab-actions">
                 <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakVocab(3)" title="Selbstkontrolle: Laut vorlesen">
@@ -1879,7 +1756,7 @@
                 <button class="icon-action-btn btn-row-play" id="play-btn-v3" onclick="event.stopPropagation(); playRecording('v3')" title="Aufnahme anhören" disabled>
                   ▶️
                 </button>
-                <button class="icon-action-btn btn-row-check" id="check-vocab-3" onclick="event.stopPropagation(); toggleVocabCheck(3)" title="Als gelernt markieren">
+                <button class="icon-action-btn btn-row-check" id="check-vocab-3" onclick="event.stopPropagation(); toggleVocabCheck(3)" title="Als gemerkt markieren">
                   ✓
                 </button>
               </div>
@@ -1887,9 +1764,8 @@
 
             <!-- 5: in -->
             <div class="vocab-card" id="vocab-card-4" onclick="focusVocab(4)">
-              <div class="vocab-text-group">
-                <span class="vocab-word">in</span>
-                <span class="vocab-syllables-sub">in</span>
+              <div class="vocab-word syllable-colored">
+                <span class="syl-1">in</span>
               </div>
               <div class="vocab-actions">
                 <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakVocab(4)" title="Selbstkontrolle: Laut vorlesen">
@@ -1901,7 +1777,7 @@
                 <button class="icon-action-btn btn-row-play" id="play-btn-v4" onclick="event.stopPropagation(); playRecording('v4')" title="Aufnahme anhören" disabled>
                   ▶️
                 </button>
-                <button class="icon-action-btn btn-row-check" id="check-vocab-4" onclick="event.stopPropagation(); toggleVocabCheck(4)" title="Als gelernt markieren">
+                <button class="icon-action-btn btn-row-check" id="check-vocab-4" onclick="event.stopPropagation(); toggleVocabCheck(4)" title="Als gemerkt markieren">
                   ✓
                 </button>
               </div>
@@ -1909,9 +1785,8 @@
 
             <!-- 6: ma len -->
             <div class="vocab-card" id="vocab-card-5" onclick="focusVocab(5)">
-              <div class="vocab-text-group">
-                <span class="vocab-word">ma len</span>
-                <span class="vocab-syllables-sub">ma · len</span>
+              <div class="vocab-word syllable-colored">
+                <span class="syl-1">ma</span><span class="syl-2">len</span>
               </div>
               <div class="vocab-actions">
                 <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakVocab(5)" title="Selbstkontrolle: Laut vorlesen">
@@ -1923,7 +1798,7 @@
                 <button class="icon-action-btn btn-row-play" id="play-btn-v5" onclick="event.stopPropagation(); playRecording('v5')" title="Aufnahme anhören" disabled>
                   ▶️
                 </button>
-                <button class="icon-action-btn btn-row-check" id="check-vocab-5" onclick="event.stopPropagation(); toggleVocabCheck(5)" title="Als gelernt markieren">
+                <button class="icon-action-btn btn-row-check" id="check-vocab-5" onclick="event.stopPropagation(); toggleVocabCheck(5)" title="Als gemerkt markieren">
                   ✓
                 </button>
               </div>
@@ -2639,7 +2514,7 @@
       if (label) {
         label.textContent = `Silbenfarben: ${appState.syllableColors ? 'An' : 'Aus'}`;
       }
-      document.querySelectorAll('.sentence-text-wrap, .quatsch-text').forEach(el => {
+      document.querySelectorAll('.sentence-text-wrap, .quatsch-text, .vocab-word').forEach(el => {
         if (appState.syllableColors) {
           el.classList.add('syllable-colored');
         } else {
@@ -2679,21 +2554,6 @@
     function playHeartWord() {
       playPop();
       speakText("liebt");
-    }
-
-    function toggleWeekday(box, dayName) {
-      const isChecked = box.classList.contains('checked');
-      if (isChecked) {
-        box.classList.remove('checked');
-        box.querySelector('.day-check-icon').textContent = '⬜';
-        playPop();
-      } else {
-        box.classList.add('checked');
-        box.querySelector('.day-check-icon').textContent = '⭐';
-        playDing();
-        launchMiniConfetti(box);
-        speakText(`${dayName} geübt! Prima!`);
-      }
     }
 
     /* ==========================================================================
