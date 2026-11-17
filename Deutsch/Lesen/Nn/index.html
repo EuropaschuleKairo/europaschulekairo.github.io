@@ -1074,6 +1074,155 @@
       pointer-events: none;
     }
 
+    /* ==========================================================================
+       SIGHT-WORDS (WORTBILDER IN HOHLSCHRIFT ZUM AUSMALEN: DER, UND, IST)
+       ========================================================================== */
+    .sight-word {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      padding: 2px 10px;
+      margin: 0 3px;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+      cursor: pointer;
+      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+      user-select: none;
+      vertical-align: middle;
+    }
+
+    .sight-word .sight-letter {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      font-weight: 900;
+      line-height: 1;
+      color: #ffffff;
+      -webkit-text-stroke: 2.2px #0f172a;
+      text-stroke: 2.2px #0f172a;
+      letter-spacing: 1.2px;
+      display: inline-block;
+      transition: all 0.2s ease;
+    }
+
+    .sight-word-der {
+      background: linear-gradient(135deg, #ffffff 0%, #f0fdfa 100%);
+      border: 2.5px dashed #0d9488;
+    }
+
+    .sight-word-und {
+      background: linear-gradient(135deg, #ffffff 0%, #fffbeb 100%);
+      border: 2.5px dashed #d97706;
+    }
+
+    .sight-word-ist {
+      background: linear-gradient(135deg, #ffffff 0%, #f5f3ff 100%);
+      border: 2.5px dashed #7c3aed;
+    }
+
+    .sight-word:hover {
+      transform: scale(1.12);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    }
+
+    .sight-word:active {
+      transform: scale(0.95);
+    }
+
+    /* Colored Themes (when tapped / ausgemalt) */
+    .sight-word.color-gelb {
+      background: #fef08a !important;
+      border-color: #ca8a04 !important;
+      border-style: solid !important;
+    }
+    .sight-word.color-gelb .sight-letter {
+      color: #facc15 !important;
+      -webkit-text-stroke: 2px #854d0e !important;
+      text-stroke: 2px #854d0e !important;
+    }
+
+    .sight-word.color-blau {
+      background: #bae6fd !important;
+      border-color: #0284c7 !important;
+      border-style: solid !important;
+    }
+    .sight-word.color-blau .sight-letter {
+      color: #38bdf8 !important;
+      -webkit-text-stroke: 2px #0369a1 !important;
+      text-stroke: 2px #0369a1 !important;
+    }
+
+    .sight-word.color-rot {
+      background: #fecdd3 !important;
+      border-color: #e11d48 !important;
+      border-style: solid !important;
+    }
+    .sight-word.color-rot .sight-letter {
+      color: #fb7185 !important;
+      -webkit-text-stroke: 2px #9f1239 !important;
+      text-stroke: 2px #9f1239 !important;
+    }
+
+    .sight-word.color-gruen {
+      background: #bbf7d0 !important;
+      border-color: #16a34a !important;
+      border-style: solid !important;
+    }
+    .sight-word.color-gruen .sight-letter {
+      color: #4ade80 !important;
+      -webkit-text-stroke: 2px #15803d !important;
+      text-stroke: 2px #15803d !important;
+    }
+
+    .sight-word.color-lila {
+      background: #ddd6fe !important;
+      border-color: #7c3aed !important;
+      border-style: solid !important;
+    }
+    .sight-word.color-lila .sight-letter {
+      color: #a78bfa !important;
+      -webkit-text-stroke: 2px #5b21b6 !important;
+      text-stroke: 2px #5b21b6 !important;
+    }
+
+    .sight-word.color-orange {
+      background: #fed7aa !important;
+      border-color: #ea580c !important;
+      border-style: solid !important;
+    }
+    .sight-word.color-orange .sight-letter {
+      color: #fb923c !important;
+      -webkit-text-stroke: 2px #9a3412 !important;
+      text-stroke: 2px #9a3412 !important;
+    }
+
+    .sight-words-kiste-box {
+      margin-top: 18px;
+      padding: 12px 14px;
+      background: #f8fafc;
+      border: 2px dashed #94a3b8;
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sight-words-kiste-title {
+      font-size: 0.95rem;
+      color: #475569;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sight-words-kiste-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
     .sentence-actions {
       display: flex;
       align-items: center;
@@ -1694,7 +1843,7 @@
                 <span><span class="syl-1">isst</span></span>
                 <span><span class="syl-1">Me</span><span class="syl-2">lo</span><span class="syl-1">ne</span></span>
                 <span><span class="syl-1">in</span></span>
-                <span><span class="syl-1">der</span></span>
+                <span class="sight-word sight-word-der" onclick="event.stopPropagation(); cycleSightWord(this, 'der')" title="Wortbild: der (antippen zum Ausmalen &amp; Vorlesen)"><span class="sight-letter">d</span><span class="sight-letter">e</span><span class="sight-letter">r</span></span>
                 <span><span class="syl-1">Son</span><span class="syl-2">ne</span>.</span>
               </div>
               <div class="sentence-actions">
@@ -1773,9 +1922,9 @@
             <div class="sentence-row-card" id="sentence-card-2" onclick="focusSentence(2)">
               <div class="sentence-text-wrap syllable-colored" id="sentence-text-2">
                 <span><span class="syl-1">Ma</span><span class="syl-2">ma</span></span>
-                <span><span class="syl-1">ist</span></span>
+                <span class="sight-word sight-word-ist" onclick="event.stopPropagation(); cycleSightWord(this, 'ist')" title="Wortbild: ist (antippen zum Ausmalen &amp; Vorlesen)"><span class="sight-letter">i</span><span class="sight-letter">s</span><span class="sight-letter">t</span></span>
                 <span><span class="syl-1">an</span></span>
-                <span><span class="syl-1">der</span></span>
+                <span class="sight-word sight-word-der" onclick="event.stopPropagation(); cycleSightWord(this, 'der')" title="Wortbild: der (antippen zum Ausmalen &amp; Vorlesen)"><span class="sight-letter">d</span><span class="sight-letter">e</span><span class="sight-letter">r</span></span>
                 <span><span class="syl-1">Tan</span><span class="syl-2">ne</span>.</span>
               </div>
               <div class="sentence-actions">
@@ -1823,7 +1972,7 @@
             <div class="sentence-row-card" id="sentence-card-4" onclick="focusSentence(4)">
               <div class="sentence-text-wrap syllable-colored" id="sentence-text-4">
                 <span><span class="syl-1">E</span><span class="syl-2">nes</span></span>
-                <span><span class="syl-1">und</span></span>
+                <span class="sight-word sight-word-und" onclick="event.stopPropagation(); cycleSightWord(this, 'und')" title="Wortbild: und (antippen zum Ausmalen &amp; Vorlesen)"><span class="sight-letter">u</span><span class="sight-letter">n</span><span class="sight-letter">d</span></span>
                 <span><span class="syl-1">An</span><span class="syl-2">na</span></span>
                 <span><span class="syl-1">sol</span><span class="syl-2">len</span></span>
                 <span><span class="syl-1">le</span><span class="syl-2">sen</span>.</span>
@@ -1848,7 +1997,7 @@
             <div class="sentence-row-card" id="sentence-card-5" onclick="focusSentence(5)">
               <div class="sentence-text-wrap syllable-colored" id="sentence-text-5">
                 <span><span class="syl-1">A</span><span class="syl-2">nas</span><span class="syl-1">ta</span><span class="syl-2">si</span><span class="syl-1">a</span></span>
-                <span><span class="syl-1">ist</span></span>
+                <span class="sight-word sight-word-ist" onclick="event.stopPropagation(); cycleSightWord(this, 'ist')" title="Wortbild: ist (antippen zum Ausmalen &amp; Vorlesen)"><span class="sight-letter">i</span><span class="sight-letter">s</span><span class="sight-letter">t</span></span>
                 <span><span class="syl-1">nett</span>.</span>
               </div>
               <div class="sentence-actions">
@@ -2011,6 +2160,24 @@
               </div>
             </div>
 
+          </div>
+
+          <!-- Wortbilder Kasten: der, und, ist -->
+          <div class="sight-words-kiste-box">
+            <div class="sight-words-kiste-title">
+              <span>💡</span> <b>Wortbilder zum Ausmalen (tippen):</b>
+            </div>
+            <div class="sight-words-kiste-row">
+              <span class="sight-word sight-word-der" onclick="event.stopPropagation(); cycleSightWord(this, 'der')" title="Wortbild: der (antippen zum Ausmalen &amp; Vorlesen)">
+                <span class="sight-letter">d</span><span class="sight-letter">e</span><span class="sight-letter">r</span>
+              </span>
+              <span class="sight-word sight-word-und" onclick="event.stopPropagation(); cycleSightWord(this, 'und')" title="Wortbild: und (antippen zum Ausmalen &amp; Vorlesen)">
+                <span class="sight-letter">u</span><span class="sight-letter">n</span><span class="sight-letter">d</span>
+              </span>
+              <span class="sight-word sight-word-ist" onclick="event.stopPropagation(); cycleSightWord(this, 'ist')" title="Wortbild: ist (antippen zum Ausmalen &amp; Vorlesen)">
+                <span class="sight-letter">i</span><span class="sight-letter">s</span><span class="sight-letter">t</span>
+              </span>
+            </div>
           </div>
         </div>
 
@@ -3095,6 +3262,42 @@
     function playHeartWord() {
       playPop();
       speakText("liebt");
+    }
+
+    /* ==========================================================================
+       SIGHT-WORDS CONTROLLER (WORTBILDER: DER, UND, IST)
+       ========================================================================== */
+    const SIGHT_WORD_COLORS = ['color-gelb', 'color-blau', 'color-rot', 'color-gruen', 'color-lila', 'color-orange', ''];
+
+    function cycleSightWord(el, word) {
+      playPop();
+
+      let currentIdx = -1;
+      for (let i = 0; i < SIGHT_WORD_COLORS.length - 1; i++) {
+        if (el.classList.contains(SIGHT_WORD_COLORS[i])) {
+          currentIdx = i;
+          break;
+        }
+      }
+
+      // Remove existing color classes
+      SIGHT_WORD_COLORS.forEach(c => { if (c) el.classList.remove(c); });
+
+      // Move to next color
+      const nextIdx = (currentIdx + 1) % SIGHT_WORD_COLORS.length;
+      const nextColor = SIGHT_WORD_COLORS[nextIdx];
+
+      if (nextColor) {
+        el.classList.add(nextColor);
+        el.style.transform = 'scale(1.18) rotate(-3deg)';
+        setTimeout(() => { el.style.transform = ''; }, 200);
+        launchMiniConfetti(el);
+      } else {
+        el.style.transform = 'scale(0.92)';
+        setTimeout(() => { el.style.transform = ''; }, 160);
+      }
+
+      speakText(word, 0.88);
     }
 
     /* ==========================================================================
