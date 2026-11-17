@@ -885,23 +885,98 @@
     }
 
     /* Inline Symbol Badges (Pizza, Herz, etc.) */
-    .inline-pizza-icon {
-      display: inline-block;
+    .inline-pizza-wrapper {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       vertical-align: middle;
+      background: #ffffff;
+      border: 2px solid #5eead4;
+      border-radius: var(--radius-pill);
+      padding: 2px 10px 2px 4px;
       margin: 0 4px;
+      box-shadow: 0 2px 6px rgba(13, 148, 136, 0.1);
+      transition: all 0.2s ease;
+    }
+
+    .inline-pizza-wrapper:hover {
+      border-color: #0d9488;
+      box-shadow: 0 4px 12px rgba(13, 148, 136, 0.2);
+    }
+
+    .inline-pizza-icon {
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       transition: transform 0.2s ease;
     }
 
-    .inline-pizza-icon img {
-      width: 34px;
-      height: 34px;
-      object-fit: contain;
+    .inline-pizza-icon svg {
+      width: 36px;
+      height: 36px;
+      display: block;
       filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+      transition: transform 0.2s ease;
     }
 
-    .inline-pizza-icon:hover {
-      transform: scale(1.25) rotate(-6deg);
+    .inline-pizza-icon:hover svg {
+      transform: scale(1.22) rotate(-8deg);
+    }
+
+    .pizza-palette-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .pizza-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 1.5px solid #94a3b8;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .pizza-dot:hover {
+      transform: scale(1.3);
+      border-color: #0f172a;
+    }
+
+    .pizza-dot.active-dot {
+      border-color: #0d9488;
+      box-shadow: 0 0 0 2px #0d9488;
+      transform: scale(1.15);
+    }
+
+    .dot-mono { background: #ffffff; }
+    .dot-kaese { background: #fef08a; border-color: #eab308; }
+    .dot-hawai { background: linear-gradient(135deg, #facc15 50%, #fb7185 50%); border-color: #eab308; }
+    .dot-salami { background: #f43f5e; border-color: #be123c; }
+    .dot-veggie { background: #4ade80; border-color: #16a34a; }
+
+    .dot-custom {
+      position: relative;
+      font-size: 14px;
+      cursor: pointer;
+      width: auto;
+      height: auto;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
+      padding: 0 2px;
+    }
+
+    .dot-custom input[type="color"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      pointer-events: none;
     }
 
     .inline-heart-icon {
@@ -1540,8 +1615,37 @@
               <div class="sentence-text-wrap syllable-colored" id="sentence-text-1">
                 <span><span class="syl-1">O</span><span class="syl-2">ma</span></span>
                 <span><span class="syl-1">nimmt</span></span>
-                <span class="inline-pizza-icon" onclick="event.stopPropagation(); playPizzaWord()" title="Pizza!">
-                  <img src="assets/pizza.png" alt="Pizza">
+                <span class="inline-pizza-wrapper" onclick="event.stopPropagation()">
+                  <span class="inline-pizza-icon" id="pizza-icon" onclick="cyclePizzaColor()" title="Pizza antippen zum Einfärben!">
+                    <svg viewBox="0 0 100 100" class="pizza-svg" id="pizza-svg">
+                      <path id="pizza-crust" d="M 72 20 Q 98 48 80 80 Q 72 50 72 20 Z" fill="#d97706" stroke="#1e293b" stroke-width="3" stroke-linejoin="round"/>
+                      <path id="pizza-cheese" d="M 16 75 L 72 22 Q 82 50 73 78 Z" fill="#fef08a" stroke="#1e293b" stroke-width="3" stroke-linejoin="round"/>
+                      <g id="pizza-salami">
+                        <circle cx="44" cy="52" r="6.5" fill="#fb7185" stroke="#1e293b" stroke-width="2"/>
+                        <circle cx="62" cy="38" r="5.5" fill="#fb7185" stroke="#1e293b" stroke-width="2"/>
+                        <circle cx="65" cy="64" r="6.5" fill="#fb7185" stroke="#1e293b" stroke-width="2"/>
+                        <circle cx="43" cy="51" r="1.2" fill="#ffffff" opacity="0.6"/>
+                        <circle cx="64" cy="63" r="1.2" fill="#ffffff" opacity="0.6"/>
+                      </g>
+                      <g id="pizza-ananas">
+                        <polygon points="32,66 38,62 40,69 34,71" fill="#facc15" stroke="#1e293b" stroke-width="2"/>
+                        <polygon points="52,48 59,44 60,51 53,53" fill="#facc15" stroke="#1e293b" stroke-width="2"/>
+                        <polygon points="51,68 57,65 59,71 53,73" fill="#facc15" stroke="#1e293b" stroke-width="2"/>
+                      </g>
+                      <g id="pizza-herbs">
+                        <ellipse cx="37" cy="46" rx="2.5" ry="1.4" transform="rotate(-30 37 46)" fill="#22c55e"/>
+                        <ellipse cx="56" cy="60" rx="2.5" ry="1.4" transform="rotate(40 56 60)" fill="#22c55e"/>
+                      </g>
+                    </svg>
+                  </span>
+                  <span class="pizza-palette-inline">
+                    <span class="pizza-dot dot-hawai active-dot" onclick="setPizzaColor('hawai')" title="Hawai mit Ananas!"></span>
+                    <span class="pizza-dot dot-kaese" onclick="setPizzaColor('kaese')" title="Käse-Gelb"></span>
+                    <span class="pizza-dot dot-salami" onclick="setPizzaColor('salami')" title="Salami-Rot"></span>
+                    <span class="pizza-dot dot-veggie" onclick="setPizzaColor('veggie')" title="Kräuter-Grün"></span>
+                    <span class="pizza-dot dot-mono" onclick="setPizzaColor('mono')" title="Schwarz-Weiß zum Ausmalen"></span>
+                    <label class="dot-custom" title="Eigene Wunschfarbe wählen!">🎨<input type="color" id="pizza-color-input" onchange="setCustomPizzaColor(this.value)"></label>
+                  </span>
                 </span>
                 <span><span class="syl-1">mit</span></span>
                 <span><span class="syl-1">A</span><span class="syl-2">na</span><span class="syl-1">nas</span>.</span>
@@ -2357,6 +2461,7 @@
       document.querySelectorAll('.btn-row-play').forEach(c => c.disabled = true);
 
       updateProgressBadges();
+      setPizzaColor('hawai', false);
     }
 
     /* ==========================================================================
@@ -2593,6 +2698,148 @@
         launchMiniConfetti(el);
       }
       speakText("Hihi! Ich bin das Einstern-Monster! Kannst du all meine Quatsch-Silben lesen?");
+    }
+
+    /* ==========================================================================
+       PIZZA COLORING & THEMES (Satz 2: Oma nimmt Pizza mit Ananas)
+       ========================================================================== */
+    const PIZZA_THEMES = {
+      hawai: {
+        name: "Pizza Hawai mit Ananas",
+        crust: "#d97706",
+        cheese: "#fef08a",
+        salami: "#fb7185", // Schinken/Ham
+        ananas: "#facc15",
+        herbs: "#22c55e",
+        sound: "Lecker! Pizza mit Ananas!"
+      },
+      kaese: {
+        name: "Käse-Pizza Margherita",
+        crust: "#b45309",
+        cheese: "#fde047",
+        salami: "#eab308",
+        ananas: "#fde047",
+        herbs: "#15803d",
+        sound: "Käse-Pizza! Viel leckerer Käse!"
+      },
+      salami: {
+        name: "Salami-Pizza",
+        crust: "#b45309",
+        cheese: "#fef08a",
+        salami: "#dc2626",
+        ananas: "#f87171",
+        herbs: "#166534",
+        sound: "Würzige Salami-Pizza!"
+      },
+      veggie: {
+        name: "Gemüse- & Kräuter-Pizza",
+        crust: "#92400e",
+        cheese: "#ecfccb",
+        salami: "#86efac",
+        ananas: "#bef264",
+        herbs: "#15803d",
+        sound: "Grüne Gemüse-Pizza mit Kräutern!"
+      },
+      mono: {
+        name: "Schwarz-Weiß zum Ausmalen",
+        crust: "#ffffff",
+        cheese: "#ffffff",
+        salami: "#ffffff",
+        ananas: "#ffffff",
+        herbs: "#ffffff",
+        sound: "Ausmal-Pizza! Weiß wie auf dem Papierblatt!"
+      }
+    };
+
+    let currentPizzaTheme = 'hawai';
+    const pizzaCycleOrder = ['hawai', 'kaese', 'salami', 'veggie', 'mono'];
+
+    function applyPizzaColors(theme) {
+      const crust = document.getElementById('pizza-crust');
+      const cheese = document.getElementById('pizza-cheese');
+      const salamiGroup = document.getElementById('pizza-salami');
+      const ananasGroup = document.getElementById('pizza-ananas');
+      const herbsGroup = document.getElementById('pizza-herbs');
+
+      if (crust) crust.setAttribute('fill', theme.crust);
+      if (cheese) cheese.setAttribute('fill', theme.cheese);
+
+      if (salamiGroup) {
+        salamiGroup.querySelectorAll('circle').forEach(c => {
+          const r = parseFloat(c.getAttribute('r') || '0');
+          if (r > 2) {
+            c.setAttribute('fill', theme.salami);
+          }
+        });
+      }
+
+      if (ananasGroup) {
+        ananasGroup.querySelectorAll('polygon').forEach(p => {
+          p.setAttribute('fill', theme.ananas);
+        });
+      }
+
+      if (herbsGroup) {
+        herbsGroup.querySelectorAll('ellipse').forEach(e => {
+          e.setAttribute('fill', theme.herbs);
+        });
+      }
+    }
+
+    function setPizzaColor(themeName, speak = true) {
+      if (!PIZZA_THEMES[themeName]) return;
+      currentPizzaTheme = themeName;
+      const theme = PIZZA_THEMES[themeName];
+      applyPizzaColors(theme);
+
+      // Update active dot indicator
+      document.querySelectorAll('.pizza-dot').forEach(dot => dot.classList.remove('active-dot'));
+      const activeDot = document.querySelector(`.dot-${themeName}`);
+      if (activeDot) activeDot.classList.add('active-dot');
+
+      playPop();
+      const pizzaIcon = document.getElementById('pizza-icon');
+      if (pizzaIcon) {
+        pizzaIcon.style.transform = 'scale(1.25) rotate(-10deg)';
+        setTimeout(() => { pizzaIcon.style.transform = ''; }, 250);
+        launchMiniConfetti(pizzaIcon);
+      }
+
+      if (speak) {
+        speakText(theme.sound || "Pizza!");
+      }
+    }
+
+    function cyclePizzaColor() {
+      const idx = pizzaCycleOrder.indexOf(currentPizzaTheme);
+      const nextIdx = (idx + 1) % pizzaCycleOrder.length;
+      setPizzaColor(pizzaCycleOrder[nextIdx], true);
+    }
+
+    function setCustomPizzaColor(hexColor) {
+      currentPizzaTheme = 'custom';
+      document.querySelectorAll('.pizza-dot').forEach(dot => dot.classList.remove('active-dot'));
+      
+      const customTheme = {
+        name: "Eigene Pizza",
+        crust: "#b45309",
+        cheese: hexColor,
+        salami: "#dc2626",
+        ananas: "#facc15",
+        herbs: "#15803d",
+        sound: "Deine eigene bunte Pizza!"
+      };
+      applyPizzaColors(customTheme);
+      playPop();
+
+      const pizzaIcon = document.getElementById('pizza-icon');
+      if (pizzaIcon) {
+        pizzaIcon.style.transform = 'scale(1.25) rotate(-10deg)';
+        setTimeout(() => { pizzaIcon.style.transform = ''; }, 250);
+        launchMiniConfetti(pizzaIcon);
+      }
+
+      speakText("Deine Wunschfarbe! Sieht lecker aus!");
     }
 
     function playPizzaWord() {
