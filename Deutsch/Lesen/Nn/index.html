@@ -979,22 +979,99 @@
       pointer-events: none;
     }
 
-    .inline-heart-icon {
-      display: inline-block;
+    /* Inline Heart Wrapper & Palette (♡ = liebt) */
+    .inline-heart-wrapper {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
       vertical-align: middle;
+      background: #ffffff;
+      border: 2px solid #fda4af;
+      border-radius: var(--radius-pill);
+      padding: 2px 8px 2px 4px;
       margin: 0 4px;
+      box-shadow: 0 2px 6px rgba(244, 63, 94, 0.1);
+      transition: all 0.2s ease;
+    }
+
+    .inline-heart-wrapper:hover {
+      border-color: #f43f5e;
+      box-shadow: 0 4px 12px rgba(244, 63, 94, 0.2);
+    }
+
+    .inline-heart-icon {
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .inline-heart-icon svg {
+      width: 28px;
+      height: 28px;
+      display: block;
+      filter: drop-shadow(0 2px 4px rgba(225, 29, 72, 0.25));
       transition: transform 0.2s ease;
     }
 
-    .inline-heart-icon img {
-      width: 28px;
-      height: 28px;
-      object-fit: contain;
+    .inline-heart-icon:hover svg {
+      transform: scale(1.25) rotate(-8deg);
     }
 
-    .inline-heart-icon:hover {
-      transform: scale(1.3) rotate(6deg);
+    .heart-palette-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .heart-dot {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      border: 1.5px solid #cbd5e1;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .heart-dot:hover {
+      transform: scale(1.3);
+      border-color: #0f172a;
+    }
+
+    .heart-dot.active-dot {
+      border-color: #e11d48;
+      box-shadow: 0 0 0 2px #fda4af;
+      transform: scale(1.2);
+    }
+
+    .dot-h-rot { background: #ef4444; border-color: #b91c1c; }
+    .dot-h-pink { background: #f43f5e; border-color: #be123c; }
+    .dot-h-lila { background: #a855f7; border-color: #7e22ce; }
+    .dot-h-gold { background: #f59e0b; border-color: #b45309; }
+    .dot-h-mono { background: #ffffff; border-color: #e11d48; }
+
+    .dot-heart-custom {
+      position: relative;
+      font-size: 13px;
+      cursor: pointer;
+      width: auto;
+      height: auto;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
+      padding: 0 1px;
+    }
+
+    .dot-heart-custom input[type="color"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      pointer-events: none;
     }
 
     .sentence-actions {
@@ -1140,13 +1217,14 @@
     .quatsch-card {
       background: #ffffff;
       border: 2px solid #cbd5e1;
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-lg);
       padding: 16px 20px;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      gap: 16px;
+      text-align: center;
+      gap: 12px;
       transition: all 0.2s ease;
       cursor: pointer;
     }
@@ -1167,23 +1245,48 @@
       border-color: #86efac;
     }
 
+    .quatsch-header-row {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
     .quatsch-badge {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 700;
       background: #ccfbf1;
       color: #0f766e;
-      padding: 2px 8px;
+      padding: 3px 12px;
       border-radius: var(--radius-pill);
       display: inline-block;
-      margin-bottom: 4px;
     }
 
-    .quatsch-text {
+    .quatsch-word {
       font-family: var(--font-reading);
-      font-size: 1.55rem;
+      font-size: 2.1rem;
       font-weight: 700;
       color: #1e293b;
-      line-height: 1.35;
+      line-height: 1.25;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      padding: 4px 14px;
+      border-radius: var(--radius-sm);
+      transition: transform 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .quatsch-word:hover {
+      transform: scale(1.06);
+    }
+
+    .quatsch-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
     }
 
     /* ==========================================================================
@@ -1951,8 +2054,20 @@
             <div class="sentence-row-card" id="herz-card-0" onclick="focusHerz(0)">
               <div class="sentence-text-wrap syllable-colored" id="herz-text-0">
                 <span><span class="syl-1">Le</span><span class="syl-2">o</span><span class="syl-1">na</span></span>
-                <span class="inline-heart-icon" onclick="event.stopPropagation(); playHeartWord()" title="Herz = liebt">
-                  <img src="assets/herz.png" alt="Herz">
+                <span class="inline-heart-wrapper" onclick="event.stopPropagation()">
+                  <span class="inline-heart-icon" id="heart-btn-0" onclick="cycleHeartColor(0)" title="Herz antippen zum Einfärben! (♡ = liebt)">
+                    <svg viewBox="0 0 32 32" class="heart-svg" id="heart-svg-0">
+                      <path id="heart-path-0" d="M 16 28.5 C 16 28.5 2.5 19.5 2.5 10.5 C 2.5 5.5 6.5 2 11 2 C 13.8 2 15.3 3.5 16 4.3 C 16.7 3.5 18.2 2 21 2 C 25.5 2 29.5 5.5 29.5 10.5 C 29.5 19.5 16 28.5 16 28.5 Z" fill="#ffffff" stroke="#e11d48" stroke-width="2.5" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span class="heart-palette-inline">
+                    <span class="heart-dot dot-h-rot" onclick="setHeartColor(0, 'rot')" title="Rot"></span>
+                    <span class="heart-dot dot-h-pink" onclick="setHeartColor(0, 'pink')" title="Rosa / Pink"></span>
+                    <span class="heart-dot dot-h-lila" onclick="setHeartColor(0, 'lila')" title="Lila / Violett"></span>
+                    <span class="heart-dot dot-h-gold" onclick="setHeartColor(0, 'gold')" title="Gold"></span>
+                    <span class="heart-dot dot-h-mono active-dot" onclick="setHeartColor(0, 'mono')" title="Weiß zum Selber-Ausmalen"></span>
+                    <label class="dot-heart-custom" title="Wunschfarbe wählen!">🎨<input type="color" onchange="setCustomHeartColor(0, this.value)"></label>
+                  </span>
                 </span>
                 <span><span class="syl-1">es</span><span class="syl-2">sen</span>.</span>
               </div>
@@ -1976,8 +2091,20 @@
             <div class="sentence-row-card" id="herz-card-1" onclick="focusHerz(1)">
               <div class="sentence-text-wrap syllable-colored" id="herz-text-1">
                 <span><span class="syl-1">Ne</span><span class="syl-2">na</span></span>
-                <span class="inline-heart-icon" onclick="event.stopPropagation(); playHeartWord()" title="Herz = liebt">
-                  <img src="assets/herz.png" alt="Herz">
+                <span class="inline-heart-wrapper" onclick="event.stopPropagation()">
+                  <span class="inline-heart-icon" id="heart-btn-1" onclick="cycleHeartColor(1)" title="Herz antippen zum Einfärben! (♡ = liebt)">
+                    <svg viewBox="0 0 32 32" class="heart-svg" id="heart-svg-1">
+                      <path id="heart-path-1" d="M 16 28.5 C 16 28.5 2.5 19.5 2.5 10.5 C 2.5 5.5 6.5 2 11 2 C 13.8 2 15.3 3.5 16 4.3 C 16.7 3.5 18.2 2 21 2 C 25.5 2 29.5 5.5 29.5 10.5 C 29.5 19.5 16 28.5 16 28.5 Z" fill="#ffffff" stroke="#e11d48" stroke-width="2.5" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span class="heart-palette-inline">
+                    <span class="heart-dot dot-h-rot" onclick="setHeartColor(1, 'rot')" title="Rot"></span>
+                    <span class="heart-dot dot-h-pink" onclick="setHeartColor(1, 'pink')" title="Rosa / Pink"></span>
+                    <span class="heart-dot dot-h-lila" onclick="setHeartColor(1, 'lila')" title="Lila / Violett"></span>
+                    <span class="heart-dot dot-h-gold" onclick="setHeartColor(1, 'gold')" title="Gold"></span>
+                    <span class="heart-dot dot-h-mono active-dot" onclick="setHeartColor(1, 'mono')" title="Weiß zum Selber-Ausmalen"></span>
+                    <label class="dot-heart-custom" title="Wunschfarbe wählen!">🎨<input type="color" onchange="setCustomHeartColor(1, this.value)"></label>
+                  </span>
                 </span>
                 <span><span class="syl-1">ma</span><span class="syl-2">len</span>.</span>
               </div>
@@ -2001,8 +2128,20 @@
             <div class="sentence-row-card" id="herz-card-2" onclick="focusHerz(2)">
               <div class="sentence-text-wrap syllable-colored" id="herz-text-2">
                 <span><span class="syl-1">Ni</span><span class="syl-2">no</span></span>
-                <span class="inline-heart-icon" onclick="event.stopPropagation(); playHeartWord()" title="Herz = liebt">
-                  <img src="assets/herz.png" alt="Herz">
+                <span class="inline-heart-wrapper" onclick="event.stopPropagation()">
+                  <span class="inline-heart-icon" id="heart-btn-2" onclick="cycleHeartColor(2)" title="Herz antippen zum Einfärben! (♡ = liebt)">
+                    <svg viewBox="0 0 32 32" class="heart-svg" id="heart-svg-2">
+                      <path id="heart-path-2" d="M 16 28.5 C 16 28.5 2.5 19.5 2.5 10.5 C 2.5 5.5 6.5 2 11 2 C 13.8 2 15.3 3.5 16 4.3 C 16.7 3.5 18.2 2 21 2 C 25.5 2 29.5 5.5 29.5 10.5 C 29.5 19.5 16 28.5 16 28.5 Z" fill="#ffffff" stroke="#e11d48" stroke-width="2.5" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span class="heart-palette-inline">
+                    <span class="heart-dot dot-h-rot" onclick="setHeartColor(2, 'rot')" title="Rot"></span>
+                    <span class="heart-dot dot-h-pink" onclick="setHeartColor(2, 'pink')" title="Rosa / Pink"></span>
+                    <span class="heart-dot dot-h-lila" onclick="setHeartColor(2, 'lila')" title="Lila / Violett"></span>
+                    <span class="heart-dot dot-h-gold" onclick="setHeartColor(2, 'gold')" title="Gold"></span>
+                    <span class="heart-dot dot-h-mono active-dot" onclick="setHeartColor(2, 'mono')" title="Weiß zum Selber-Ausmalen"></span>
+                    <label class="dot-heart-custom" title="Wunschfarbe wählen!">🎨<input type="color" onchange="setCustomHeartColor(2, this.value)"></label>
+                  </span>
                 </span>
                 <span><span class="syl-1">le</span><span class="syl-2">sen</span>.</span>
               </div>
@@ -2026,8 +2165,20 @@
             <div class="sentence-row-card" id="herz-card-3" onclick="focusHerz(3)">
               <div class="sentence-text-wrap syllable-colored" id="herz-text-3">
                 <span><span class="syl-1">Len</span><span class="syl-2">ni</span></span>
-                <span class="inline-heart-icon" onclick="event.stopPropagation(); playHeartWord()" title="Herz = liebt">
-                  <img src="assets/herz.png" alt="Herz">
+                <span class="inline-heart-wrapper" onclick="event.stopPropagation()">
+                  <span class="inline-heart-icon" id="heart-btn-3" onclick="cycleHeartColor(3)" title="Herz antippen zum Einfärben! (♡ = liebt)">
+                    <svg viewBox="0 0 32 32" class="heart-svg" id="heart-svg-3">
+                      <path id="heart-path-3" d="M 16 28.5 C 16 28.5 2.5 19.5 2.5 10.5 C 2.5 5.5 6.5 2 11 2 C 13.8 2 15.3 3.5 16 4.3 C 16.7 3.5 18.2 2 21 2 C 25.5 2 29.5 5.5 29.5 10.5 C 29.5 19.5 16 28.5 16 28.5 Z" fill="#ffffff" stroke="#e11d48" stroke-width="2.5" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span class="heart-palette-inline">
+                    <span class="heart-dot dot-h-rot" onclick="setHeartColor(3, 'rot')" title="Rot"></span>
+                    <span class="heart-dot dot-h-pink" onclick="setHeartColor(3, 'pink')" title="Rosa / Pink"></span>
+                    <span class="heart-dot dot-h-lila" onclick="setHeartColor(3, 'lila')" title="Lila / Violett"></span>
+                    <span class="heart-dot dot-h-gold" onclick="setHeartColor(3, 'gold')" title="Gold"></span>
+                    <span class="heart-dot dot-h-mono active-dot" onclick="setHeartColor(3, 'mono')" title="Weiß zum Selber-Ausmalen"></span>
+                    <label class="dot-heart-custom" title="Wunschfarbe wählen!">🎨<input type="color" onchange="setCustomHeartColor(3, this.value)"></label>
+                  </span>
                 </span>
                 <span><span class="syl-1">mes</span><span class="syl-2">sen</span>.</span>
               </div>
@@ -2066,111 +2217,97 @@
 
           <div id="quatsch-list">
 
-            <!-- Quatsch 1: Le na lo ni -->
+            <!-- Quatsch 1: Lenaloni -->
             <article class="quatsch-card" id="quatsch-card-0" onclick="focusQuatsch(0)">
-              <div style="flex:1;">
+              <div class="quatsch-header-row">
                 <span class="quatsch-badge">Quatsch 1</span>
-                <div class="quatsch-text syllable-colored">
-                  <span><span class="syl-1">Le</span></span>
-                  <span><span class="syl-2">na</span></span>
-                  <span><span class="syl-1">lo</span></span>
-                  <span><span class="syl-2">ni</span></span>
-                </div>
               </div>
-              <div class="sentence-actions">
-                <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakQuatsch(0)" title="Selbstkontrolle">
+              <div class="quatsch-word syllable-colored" onclick="event.stopPropagation(); speakQuatsch(0)" title="Quatschwort vorlesen lassen">
+                <span class="syl-1">Le</span><span class="syl-2">na</span><span class="syl-1">lo</span><span class="syl-2">ni</span>
+              </div>
+              <div class="sentence-actions quatsch-actions">
+                <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakQuatsch(0)" title="Selbstkontrolle: Laut vorlesen lassen">
                   🔊
                 </button>
-                <button class="icon-action-btn btn-row-rec" id="rec-btn-q0" onclick="event.stopPropagation(); toggleRecord('q0', 'rec-btn-q0', 'play-btn-q0')" title="Aufnehmen">
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-q0" onclick="event.stopPropagation(); toggleRecord('q0', 'rec-btn-q0', 'play-btn-q0')" title="Eigene Stimme aufnehmen">
                   🎤
                 </button>
-                <button class="icon-action-btn btn-row-play" id="play-btn-q0" onclick="event.stopPropagation(); playRecording('q0')" title="Anhören" disabled>
+                <button class="icon-action-btn btn-row-play" id="play-btn-q0" onclick="event.stopPropagation(); playRecording('q0')" title="Aufnahme anhören" disabled>
                   ▶️
                 </button>
-                <button class="icon-action-btn btn-row-check" id="check-quatsch-0" onclick="event.stopPropagation(); toggleQuatschCheck(0)" title="Gelesen!">
+                <button class="icon-action-btn btn-row-check" id="check-quatsch-0" onclick="event.stopPropagation(); toggleQuatschCheck(0)" title="Als gelesen markieren">
                   ✓
                 </button>
               </div>
             </article>
 
-            <!-- Quatsch 2: Na ne ni no to -->
+            <!-- Quatsch 2: Naneninoto -->
             <article class="quatsch-card" id="quatsch-card-1" onclick="focusQuatsch(1)">
-              <div style="flex:1;">
+              <div class="quatsch-header-row">
                 <span class="quatsch-badge">Quatsch 2</span>
-                <div class="quatsch-text syllable-colored">
-                  <span><span class="syl-1">Na</span></span>
-                  <span><span class="syl-2">ne</span></span>
-                  <span><span class="syl-1">ni</span></span>
-                  <span><span class="syl-2">no</span></span>
-                  <span><span class="syl-1">to</span></span>
-                </div>
               </div>
-              <div class="sentence-actions">
-                <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakQuatsch(1)" title="Selbstkontrolle">
+              <div class="quatsch-word syllable-colored" onclick="event.stopPropagation(); speakQuatsch(1)" title="Quatschwort vorlesen lassen">
+                <span class="syl-1">Na</span><span class="syl-2">ne</span><span class="syl-1">ni</span><span class="syl-2">no</span><span class="syl-1">to</span>
+              </div>
+              <div class="sentence-actions quatsch-actions">
+                <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakQuatsch(1)" title="Selbstkontrolle: Laut vorlesen lassen">
                   🔊
                 </button>
-                <button class="icon-action-btn btn-row-rec" id="rec-btn-q1" onclick="event.stopPropagation(); toggleRecord('q1', 'rec-btn-q1', 'play-btn-q1')" title="Aufnehmen">
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-q1" onclick="event.stopPropagation(); toggleRecord('q1', 'rec-btn-q1', 'play-btn-q1')" title="Eigene Stimme aufnehmen">
                   🎤
                 </button>
-                <button class="icon-action-btn btn-row-play" id="play-btn-q1" onclick="event.stopPropagation(); playRecording('q1')" title="Anhören" disabled>
+                <button class="icon-action-btn btn-row-play" id="play-btn-q1" onclick="event.stopPropagation(); playRecording('q1')" title="Aufnahme anhören" disabled>
                   ▶️
                 </button>
-                <button class="icon-action-btn btn-row-check" id="check-quatsch-1" onclick="event.stopPropagation(); toggleQuatschCheck(1)" title="Gelesen!">
+                <button class="icon-action-btn btn-row-check" id="check-quatsch-1" onclick="event.stopPropagation(); toggleQuatschCheck(1)" title="Als gelesen markieren">
                   ✓
                 </button>
               </div>
             </article>
 
-            <!-- Quatsch 3: Sa ta lo ni te -->
+            <!-- Quatsch 3: Satalonite -->
             <article class="quatsch-card" id="quatsch-card-2" onclick="focusQuatsch(2)">
-              <div style="flex:1;">
+              <div class="quatsch-header-row">
                 <span class="quatsch-badge">Quatsch 3</span>
-                <div class="quatsch-text syllable-colored">
-                  <span><span class="syl-1">Sa</span></span>
-                  <span><span class="syl-2">ta</span></span>
-                  <span><span class="syl-1">lo</span></span>
-                  <span><span class="syl-2">ni</span></span>
-                  <span><span class="syl-1">te</span></span>
-                </div>
               </div>
-              <div class="sentence-actions">
-                <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakQuatsch(2)" title="Selbstkontrolle">
+              <div class="quatsch-word syllable-colored" onclick="event.stopPropagation(); speakQuatsch(2)" title="Quatschwort vorlesen lassen">
+                <span class="syl-1">Sa</span><span class="syl-2">ta</span><span class="syl-1">lo</span><span class="syl-2">ni</span><span class="syl-1">te</span>
+              </div>
+              <div class="sentence-actions quatsch-actions">
+                <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakQuatsch(2)" title="Selbstkontrolle: Laut vorlesen lassen">
                   🔊
                 </button>
-                <button class="icon-action-btn btn-row-rec" id="rec-btn-q2" onclick="event.stopPropagation(); toggleRecord('q2', 'rec-btn-q2', 'play-btn-q2')" title="Aufnehmen">
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-q2" onclick="event.stopPropagation(); toggleRecord('q2', 'rec-btn-q2', 'play-btn-q2')" title="Eigene Stimme aufnehmen">
                   🎤
                 </button>
-                <button class="icon-action-btn btn-row-play" id="play-btn-q2" onclick="event.stopPropagation(); playRecording('q2')" title="Anhören" disabled>
+                <button class="icon-action-btn btn-row-play" id="play-btn-q2" onclick="event.stopPropagation(); playRecording('q2')" title="Aufnahme anhören" disabled>
                   ▶️
                 </button>
-                <button class="icon-action-btn btn-row-check" id="check-quatsch-2" onclick="event.stopPropagation(); toggleQuatschCheck(2)" title="Gelesen!">
+                <button class="icon-action-btn btn-row-check" id="check-quatsch-2" onclick="event.stopPropagation(); toggleQuatschCheck(2)" title="Als gelesen markieren">
                   ✓
                 </button>
               </div>
             </article>
 
-            <!-- Quatsch 4: En an in te -->
+            <!-- Quatsch 4: Enaninte -->
             <article class="quatsch-card" id="quatsch-card-3" onclick="focusQuatsch(3)">
-              <div style="flex:1;">
+              <div class="quatsch-header-row">
                 <span class="quatsch-badge">Quatsch 4</span>
-                <div class="quatsch-text syllable-colored">
-                  <span><span class="syl-1">En</span></span>
-                  <span><span class="syl-2">an</span></span>
-                  <span><span class="syl-1">in</span></span>
-                  <span><span class="syl-2">te</span></span>
-                </div>
               </div>
-              <div class="sentence-actions">
-                <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakQuatsch(3)" title="Selbstkontrolle">
+              <div class="quatsch-word syllable-colored" onclick="event.stopPropagation(); speakQuatsch(3)" title="Quatschwort vorlesen lassen">
+                <span class="syl-1">En</span><span class="syl-2">an</span><span class="syl-1">in</span><span class="syl-2">te</span>
+              </div>
+              <div class="sentence-actions quatsch-actions">
+                <button class="icon-action-btn btn-row-selfcheck" onclick="event.stopPropagation(); speakQuatsch(3)" title="Selbstkontrolle: Laut vorlesen lassen">
                   🔊
                 </button>
-                <button class="icon-action-btn btn-row-rec" id="rec-btn-q3" onclick="event.stopPropagation(); toggleRecord('q3', 'rec-btn-q3', 'play-btn-q3')" title="Aufnehmen">
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-q3" onclick="event.stopPropagation(); toggleRecord('q3', 'rec-btn-q3', 'play-btn-q3')" title="Eigene Stimme aufnehmen">
                   🎤
                 </button>
-                <button class="icon-action-btn btn-row-play" id="play-btn-q3" onclick="event.stopPropagation(); playRecording('q3')" title="Anhören" disabled>
+                <button class="icon-action-btn btn-row-play" id="play-btn-q3" onclick="event.stopPropagation(); playRecording('q3')" title="Aufnahme anhören" disabled>
                   ▶️
                 </button>
-                <button class="icon-action-btn btn-row-check" id="check-quatsch-3" onclick="event.stopPropagation(); toggleQuatschCheck(3)" title="Gelesen!">
+                <button class="icon-action-btn btn-row-check" id="check-quatsch-3" onclick="event.stopPropagation(); toggleQuatschCheck(3)" title="Als gelesen markieren">
                   ✓
                 </button>
               </div>
@@ -2462,6 +2599,9 @@
 
       updateProgressBadges();
       setPizzaColor('hawai', false);
+      for (let i = 0; i < 4; i++) {
+        setHeartColor(i, 'mono', false);
+      }
     }
 
     /* ==========================================================================
@@ -2845,6 +2985,104 @@
     function playPizzaWord() {
       playPop();
       speakText("Pizza");
+    }
+
+    /* ==========================================================================
+       HERZ-SÄTZE COLORING & THEMES (♡ = liebt)
+       ========================================================================== */
+    const HEART_THEMES = {
+      rot: {
+        name: "Rotes Herz",
+        fill: "#ef4444",
+        stroke: "#b91c1c",
+        sound: "liebt!"
+      },
+      pink: {
+        name: "Rosa Herz",
+        fill: "#f43f5e",
+        stroke: "#be123c",
+        sound: "liebt!"
+      },
+      lila: {
+        name: "Lila Herz",
+        fill: "#a855f7",
+        stroke: "#7e22ce",
+        sound: "liebt!"
+      },
+      gold: {
+        name: "Goldenes Herz",
+        fill: "#f59e0b",
+        stroke: "#b45309",
+        sound: "liebt!"
+      },
+      mono: {
+        name: "Weißes Herz (Ausmal-Herz)",
+        fill: "#ffffff",
+        stroke: "#e11d48",
+        sound: "liebt!"
+      }
+    };
+
+    const heartCycleOrder = ['rot', 'pink', 'lila', 'gold', 'mono'];
+    const heartState = ['mono', 'mono', 'mono', 'mono'];
+
+    function applyHeartColor(idx, fill, stroke) {
+      const path = document.getElementById(`heart-path-${idx}`);
+      if (path) {
+        path.setAttribute('fill', fill);
+        path.setAttribute('stroke', stroke || '#e11d48');
+      }
+    }
+
+    function setHeartColor(idx, themeName, speak = true) {
+      if (!HEART_THEMES[themeName]) return;
+      heartState[idx] = themeName;
+      const theme = HEART_THEMES[themeName];
+      applyHeartColor(idx, theme.fill, theme.stroke);
+
+      // Update active dot in this sentence's heart palette
+      const card = document.getElementById(`herz-card-${idx}`);
+      if (card) {
+        card.querySelectorAll('.heart-dot').forEach(d => d.classList.remove('active-dot'));
+        const active = card.querySelector(`.dot-h-${themeName}`);
+        if (active) active.classList.add('active-dot');
+      }
+
+      playPop();
+      const icon = document.getElementById(`heart-btn-${idx}`);
+      if (icon) {
+        icon.style.transform = 'scale(1.35) rotate(-10deg)';
+        setTimeout(() => { icon.style.transform = ''; }, 250);
+        launchMiniConfetti(icon);
+      }
+
+      if (speak) {
+        speakText(theme.sound || "liebt");
+      }
+    }
+
+    function cycleHeartColor(idx) {
+      const current = heartState[idx] || 'mono';
+      const curPos = heartCycleOrder.indexOf(current);
+      const nextPos = (curPos + 1) % heartCycleOrder.length;
+      setHeartColor(idx, heartCycleOrder[nextPos], true);
+    }
+
+    function setCustomHeartColor(idx, hexColor) {
+      heartState[idx] = 'custom';
+      const card = document.getElementById(`herz-card-${idx}`);
+      if (card) {
+        card.querySelectorAll('.heart-dot').forEach(d => d.classList.remove('active-dot'));
+      }
+      applyHeartColor(idx, hexColor, '#b91c1c');
+      playPop();
+      const icon = document.getElementById(`heart-btn-${idx}`);
+      if (icon) {
+        icon.style.transform = 'scale(1.35) rotate(-10deg)';
+        setTimeout(() => { icon.style.transform = ''; }, 250);
+        launchMiniConfetti(icon);
+      }
+      speakText("liebt!");
     }
 
     function playHeartWord() {
