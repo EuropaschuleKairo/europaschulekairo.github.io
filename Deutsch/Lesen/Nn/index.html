@@ -2394,44 +2394,44 @@
 
     // Authentic phonetic mappings for syllables to prevent incorrect TTS expansions in German
     const SYLLABLE_PHONETICS = {
-      'sol': 'soll',
-      'ton': 'tohn',
-      'nat': 'natt',
-      'tan': 'tann',
-      'tel': 'tell',
-      'mo': 'moh',
-      'las': 'lass',
-      'an': 'ann',
-      'in': 'inn',
-      'nes': 'ness',
-      'sen': 'senn',
-      'nan': 'nann',
-      'sal': 'sall',
-      'tin': 'tinn',
-      'lan': 'lann',
-      'nas': 'nass',
-      'ne': 'neh',
-      'nim': 'nimm',
-      'lon': 'lohn',
-      'ana': 'anna',
-      'len': 'lenn',
-      'nal': 'nahl',
-      'na': 'nah',
-      'nos': 'noss',
-      'ans': 'annss',
-      'ins': 'innss',
-      'ina': 'ina',
-      'min': 'minn',
-      'me': 'meh',
-      'nel': 'nell',
-      'sin': 'sinn',
-      'en': 'enn',
-      'te': 'teh',
-      'to': 'toh',
-      'ta': 'tah',
-      'sa': 'sah',
-      'lo': 'loh',
-      'ni': 'nie'
+      'sol': 'Soll',
+      'ton': 'Tohn',
+      'nat': 'Natt',
+      'tan': 'Tann',
+      'tel': 'Tell',
+      'mo': 'Moh',
+      'las': 'Lass',
+      'an': 'Ann',
+      'in': 'Inn',
+      'nes': 'Ness',
+      'sen': 'Senn',
+      'nan': 'Nann',
+      'sal': 'Sall',
+      'tin': 'Tinn',
+      'lan': 'Lann',
+      'nas': 'Nass',
+      'ne': 'Neh',
+      'nim': 'Nimm',
+      'lon': 'Lohn',
+      'ana': 'Ah-nah',
+      'len': 'Lenn',
+      'nal': 'Nahl',
+      'na': 'Nah',
+      'nos': 'Noss',
+      'ans': 'Ans',
+      'ins': 'Ins',
+      'ina': 'Ih-nah',
+      'min': 'Mihn',
+      'me': 'Meh',
+      'nel': 'Nell',
+      'sin': 'Sinn',
+      'en': 'Enn',
+      'te': 'Teh',
+      'to': 'Toh',
+      'ta': 'Tah',
+      'sa': 'Sah',
+      'lo': 'Loh',
+      'ni': 'Nie'
     };
 
     let appState = {
@@ -2733,13 +2733,20 @@
 
     function sanitizeForTTS(text) {
       if (!text) return '';
-      const lower = text.trim().toLowerCase();
+      const clean = text.trim();
+      const lower = clean.toLowerCase();
+      const key = lower.replace(/[^a-zäöüß]/gi, '');
 
+      if (SYLLABLE_PHONETICS[key]) {
+        return SYLLABLE_PHONETICS[key];
+      }
       if (SYLLABLE_PHONETICS[lower]) {
         return SYLLABLE_PHONETICS[lower];
       }
 
       return text
+        .replace(/\bmin\b/gi, 'Mihn')
+        .replace(/\bminn\b/gi, 'Mihn')
         .replace(/\bAn ton\b/gi, 'Anton')
         .replace(/\bMe lo ne\b/gi, 'Melone')
         .replace(/\bSon ne\b/gi, 'Sonne')
@@ -3202,7 +3209,9 @@
         const deck = document.getElementById('flight-deck');
         const sylLabel = document.getElementById('flight-deck-syl');
         if (deck) deck.style.display = 'flex';
-        if (sylLabel) sylLabel.textContent = syl;
+        if (sylLabel) {
+          sylLabel.innerHTML = nextCell.innerHTML;
+        }
 
         // Reset voice recording controls for new flight
         resetFlightRecorder();
@@ -3226,7 +3235,9 @@
         const deck = document.getElementById('flight-deck');
         const sylLabel = document.getElementById('flight-deck-syl');
         if (deck) deck.style.display = 'flex';
-        if (sylLabel) sylLabel.textContent = syl;
+        if (sylLabel) {
+          sylLabel.innerHTML = cell.innerHTML;
+        }
 
         resetFlightRecorder();
 
