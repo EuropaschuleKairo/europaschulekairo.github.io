@@ -1528,62 +1528,68 @@ function renderHeroContent(){
       </div>
 
       <div class="svg-scroll-wrap">
-        <svg viewBox="0 0 940 270" style="max-width:100%; height:auto; background:var(--card-2); border-radius:var(--radius-md); border:2px solid var(--line);">
+        <svg viewBox="0 0 1020 280" style="max-width:100%; height:auto; background:var(--card-2); border-radius:var(--radius-md); border:2px solid var(--line);">
           <!-- 1. STRECKE -->
           <g opacity="${curLine === 'strecke' ? '1' : '0.45'}" style="cursor:pointer;" onclick="setActiveLineType('strecke')">
-            <line x1="60" y1="46" x2="60" y2="74" stroke="#2563eb" stroke-width="${curLine === 'strecke' ? '5' : '3'}" stroke-linecap="round"/>
-            <text x="60" y="38" font-family="var(--display)" font-size="18" fill="#2563eb" text-anchor="middle">A</text>
-            <line x1="60" y1="60" x2="300" y2="60" stroke="#2563eb" stroke-width="${curLine === 'strecke' ? '5' : '3.5'}"/>
-            <line x1="300" y1="46" x2="300" y2="74" stroke="#2563eb" stroke-width="${curLine === 'strecke' ? '5' : '3'}" stroke-linecap="round"/>
-            <text x="300" y="38" font-family="var(--display)" font-size="18" fill="#2563eb" text-anchor="middle">B</text>
-            
-            <!-- Titel: Strecke AB mit Überstrich (\overline{AB}) -->
-            <text x="335" y="66" font-family="var(--display)" font-size="21" fill="#2563eb">Strecke</text>
-            <text x="418" y="66" font-family="var(--display)" font-size="21" fill="#2563eb">AB</text>
-            <line x1="417" y1="46" x2="447" y2="46" stroke="#2563eb" stroke-width="2.8" stroke-linecap="round"/>
+            <line x1="50" y1="46" x2="50" y2="74" stroke="#2563eb" stroke-width="${curLine === 'strecke' ? '5' : '3'}" stroke-linecap="round"/>
+            <text x="50" y="38" font-family="var(--display), sans-serif" font-size="18" font-weight="700" fill="#2563eb" text-anchor="middle">A</text>
+            <line x1="50" y1="60" x2="230" y2="60" stroke="#2563eb" stroke-width="${curLine === 'strecke' ? '5' : '3.5'}"/>
+            <line x1="230" y1="46" x2="230" y2="74" stroke="#2563eb" stroke-width="${curLine === 'strecke' ? '5' : '3'}" stroke-linecap="round"/>
+            <text x="230" y="38" font-family="var(--display), sans-serif" font-size="18" font-weight="700" fill="#2563eb" text-anchor="middle">B</text>
 
-            <!-- Begrenzungskasten rechts (vollständig lesbar mit Innenabstand) -->
-            <rect x="470" y="44" width="440" height="34" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1.5"/>
-            <text x="485" y="66" font-family="var(--body)" font-size="14" font-weight="700" fill="var(--ink-soft)">2 Begrenzungspunkte (senkrechte Striche) • messbare Länge |AB|</text>
+            <!-- Titel: Strecke AB mit deutlichem Überstrich -->
+            <text x="255" y="66" font-family="var(--display), sans-serif" font-size="22" font-weight="700" fill="#2563eb">Strecke</text>
+            <text x="345" y="66" font-family="var(--display), sans-serif" font-size="22" font-weight="700" fill="#2563eb">AB</text>
+            <line x1="344" y1="46" x2="376" y2="46" stroke="#2563eb" stroke-width="3.5" stroke-linecap="round"/>
+
+            <!-- Begrenzungskasten rechts (605px Breite, reichlich Reserve, kein Textüberlauf!) -->
+            <rect x="395" y="40" width="605" height="42" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1.5"/>
+            <text x="412" y="66" font-family="var(--body), sans-serif" font-size="14" font-weight="700" fill="var(--ink-soft)">Kennzeichnung: </text>
+            <text x="532" y="66" font-family="var(--display), sans-serif" font-size="17" font-weight="700" fill="#2563eb">AB</text>
+            <line x1="531" y1="50" x2="556" y2="50" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round"/>
+            <text x="564" y="66" font-family="var(--body), sans-serif" font-size="14" font-weight="700" fill="var(--ink-soft)">• 2 feste Endpunkte • messbare Länge |</text>
+            <text x="822" y="66" font-family="var(--display), sans-serif" font-size="16" font-weight="700" fill="#2563eb">AB</text>
+            <line x1="821" y1="51" x2="844" y2="51" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round"/>
+            <text x="845" y="66" font-family="var(--body), sans-serif" font-size="14" font-weight="700" fill="var(--ink-soft)">|</text>
 
             ${curLine === 'strecke' ? `
-              <!-- Bemaßungspfeil -->
-              <line x1="60" y1="84" x2="300" y2="84" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4 2"/>
-              <text x="180" y="98" font-family="var(--body)" font-size="13" font-weight="700" fill="#2563eb" text-anchor="middle">kürzeste Verbindung: |AB| = 6 cm</text>
+              <!-- Bemaßungslinie mit Strecken-Überstrich -->
+              <line x1="50" y1="88" x2="230" y2="88" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4 2"/>
+              <text x="140" y="104" font-family="var(--body), sans-serif" font-size="13" font-weight="700" fill="#2563eb" text-anchor="middle">Länge: |AB| = 6 cm (kürzeste Verbindung)</text>
+              <line x1="117" y1="92" x2="135" y2="92" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round"/>
             ` : ''}
           </g>
 
           <!-- 2. STRAHL -->
           <g opacity="${curLine === 'strahl' ? '1' : '0.45'}" style="cursor:pointer;" onclick="setActiveLineType('strahl')">
-            <line x1="60" y1="126" x2="60" y2="154" stroke="#b45309" stroke-width="${curLine === 'strahl' ? '5' : '3'}" stroke-linecap="round"/>
-            <text x="60" y="118" font-family="var(--display)" font-size="18" fill="#b45309" text-anchor="middle">A (Start)</text>
-            <line x1="60" y1="140" x2="325" y2="140" stroke="#b45309" stroke-width="${curLine === 'strahl' ? '5' : '3.5'}"/>
-            <circle cx="190" cy="140" r="4.5" fill="#b45309"/>
-            <text x="190" y="128" font-family="var(--display)" font-size="16" fill="#b45309" text-anchor="middle">B</text>
+            <line x1="50" y1="126" x2="50" y2="154" stroke="#b45309" stroke-width="${curLine === 'strahl' ? '5' : '3'}" stroke-linecap="round"/>
+            <text x="50" y="118" font-family="var(--display), sans-serif" font-size="18" font-weight="700" fill="#b45309" text-anchor="middle">A (Start)</text>
+            <line x1="50" y1="140" x2="245" y2="140" stroke="#b45309" stroke-width="${curLine === 'strahl' ? '5' : '3.5'}"/>
+            <circle cx="140" cy="140" r="4.5" fill="#b45309"/>
+            <text x="140" y="128" font-family="var(--display), sans-serif" font-size="16" font-weight="700" fill="#b45309" text-anchor="middle">B</text>
 
             <!-- Titel -->
-            <text x="335" y="146" font-family="var(--display)" font-size="21" fill="#b45309">Strahl s</text>
+            <text x="255" y="146" font-family="var(--display), sans-serif" font-size="22" font-weight="700" fill="#b45309">Strahl s</text>
 
             <!-- Begrenzungskasten rechts -->
-            <rect x="470" y="124" width="440" height="34" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1.5"/>
-            <text x="485" y="146" font-family="var(--body)" font-size="14" font-weight="700" fill="var(--ink-soft)">1 fester Anfangspunkt (senkrechter Strich) • keine Pfeile</text>
+            <rect x="395" y="120" width="605" height="42" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1.5"/>
+            <text x="412" y="146" font-family="var(--body), sans-serif" font-size="14" font-weight="700" fill="var(--ink-soft)">Kennzeichnung: <tspan font-family="var(--display), sans-serif" font-size="17" fill="#b45309">s</tspan> • 1 fester Anfangspunkt A • keine Pfeile • unbegrenzt</text>
           </g>
 
           <!-- 3. GERADE -->
           <g opacity="${curLine === 'gerade' ? '1' : '0.45'}" style="cursor:pointer;" onclick="setActiveLineType('gerade')">
-            <!-- Gerade generell OHNE Pfeilspitzen (durchgehende Linie) -->
-            <line x1="30" y1="210" x2="325" y2="210" stroke="#15803d" stroke-width="${curLine === 'gerade' ? '5' : '3.5'}"/>
-            <circle cx="110" cy="210" r="4.5" fill="#15803d"/>
-            <text x="110" y="198" font-family="var(--display)" font-size="16" fill="#15803d" text-anchor="middle">A</text>
-            <circle cx="230" cy="210" r="4.5" fill="#15803d"/>
-            <text x="230" y="198" font-family="var(--display)" font-size="16" fill="#15803d" text-anchor="middle">B</text>
+            <line x1="25" y1="220" x2="245" y2="220" stroke="#15803d" stroke-width="${curLine === 'gerade' ? '5' : '3.5'}"/>
+            <circle cx="90" cy="220" r="4.5" fill="#15803d"/>
+            <text x="90" y="208" font-family="var(--display), sans-serif" font-size="16" font-weight="700" fill="#15803d" text-anchor="middle">A</text>
+            <circle cx="180" cy="220" r="4.5" fill="#15803d"/>
+            <text x="180" y="208" font-family="var(--display), sans-serif" font-size="16" font-weight="700" fill="#15803d" text-anchor="middle">B</text>
 
             <!-- Titel -->
-            <text x="335" y="216" font-family="var(--display)" font-size="21" fill="#15803d">Gerade g</text>
+            <text x="255" y="226" font-family="var(--display), sans-serif" font-size="22" font-weight="700" fill="#15803d">Gerade g</text>
 
             <!-- Begrenzungskasten rechts -->
-            <rect x="470" y="194" width="440" height="34" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1.5"/>
-            <text x="485" y="216" font-family="var(--body)" font-size="14" font-weight="700" fill="var(--ink-soft)">Kein Anfang, kein Ende • keine Pfeile • unbegrenzt</text>
+            <rect x="395" y="200" width="605" height="42" rx="8" fill="var(--card)" stroke="var(--line)" stroke-width="1.5"/>
+            <text x="412" y="226" font-family="var(--body), sans-serif" font-size="14" font-weight="700" fill="var(--ink-soft)">Kennzeichnung: <tspan font-family="var(--display), sans-serif" font-size="17" fill="#15803d">g</tspan> • Kein Anfang, kein Ende • keine Pfeile • unbegrenzt</text>
           </g>
         </svg>
       </div>
@@ -1591,7 +1597,7 @@ function renderHeroContent(){
       <div class="hero-explainer">
         <div class="hero-explainer-text" id="lines-expl-text">
           ${curLine === 'strecke' ?
-            '<b>Die Strecke:</b> Eine Strecke ist die <b>kürzeste Verbindung</b> zwischen zwei Punkten A und B. Beide Enden werden durch <b>senkrechte Striche</b> markiert. Die mathematische Kennzeichnung ist ein Querstrich über den Buchstaben: <span class="math-overline">AB</span>. Ihre Länge kann man genau in Zentimetern und Millimetern messen: <b>|AB| = 6 cm</b>.' :
+            '<b>Die Strecke:</b> Eine Strecke ist die <b>kürzeste Verbindung</b> zwischen zwei Punkten A und B. Beide Enden werden durch <b>senkrechte Striche</b> markiert. Die mathematische Kennzeichnung ist ein Querstrich über den Buchstaben: <span class="math-overline">AB</span>. Ihre Länge kann man genau in Zentimetern und Millimetern messen: <b>|<span class="math-overline">AB</span>| = 6 cm</b>.' :
             curLine === 'strahl' ?
             '<b>Der Strahl (Halbgerade):</b> Verlängert man eine Strecke über einen Endpunkt hinaus, entsteht ein <b>Strahl</b>. Er hat genau einen festen <b>Anfangspunkt A</b>, der durch einen <b>senkrechten Strich</b> markiert ist, aber <b>keinen Endpunkt</b>. In der Geometrie zeichnet man <b>keine Pfeile</b>! Man bezeichnet ihn mit einem Kleinbuchstaben wie <b>Strahl s</b> (oder Strahl von A durch B).' :
             '<b>Die Gerade:</b> Verlängert man eine Strecke über beide Punkte hinaus ins Unendliche, entsteht eine <b>Gerade</b>. Eine Gerade hat <b>weder Anfang noch Ende</b> und ebenfalls <b>keine Pfeile</b>. Sie ist in beide Richtungen unbegrenzt lang. Man zeichnet sie ohne Begrenzungsstriche und ohne Pfeile und bezeichnet sie mit kleinen Buchstaben wie <b>g</b> oder <b>h</b>.'}
