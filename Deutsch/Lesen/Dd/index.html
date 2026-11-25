@@ -1,0 +1,3184 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Lese-Haus • Buchstabe D d • Leseblatt 7</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #ffffff;
+      --ink: #064e3b;
+      --ink-muted: #475569;
+      --border-pencil: #a7f3d0;
+      
+      --accent-coral: #059669;
+      --accent-coral-dark: #047857;
+      --accent-coral-light: #d1fae5;
+      --accent-rose: #10b981;
+      --accent-amber: #d97706;
+      --accent-amber-light: #fef3c7;
+      --accent-blue: #0284c7;
+      --accent-blue-light: #e0f2fe;
+      --accent-green: #10b981;
+      --accent-green-light: #ecfdf5;
+      --accent-purple: #7c3aed;
+      --accent-purple-light: #f5f3ff;
+      
+      --syl-blue: #1d4ed8;
+      --syl-red: #dc2626;
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-pill: 999px;
+      
+      --font-body: "Atkinson Hyperlegible", "Andika", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-heading: "Atkinson Hyperlegible", "Andika", sans-serif;
+      --font-reading: "Atkinson Hyperlegible", "Andika", sans-serif;
+      --font-display: "Fredoka", "Atkinson Hyperlegible", sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f0fdf4;
+      background-image: radial-gradient(#a7f3d0 1.2px, transparent 1.2px);
+      background-size: 24px 24px;
+      font-family: var(--font-body);
+      color: var(--ink);
+      font-size: 19px;
+      line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* Top Utility Bar */
+    .top-toolbar {
+      background: #ffffff;
+      border-bottom: 2px solid #a7f3d0;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(5, 150, 105, 0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .toolbar-left, .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .toolbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: #047857;
+      text-decoration: none;
+      font-size: 1.15rem;
+    }
+
+    .toolbar-brand:hover {
+      color: #059669;
+    }
+
+    .toolbar-pill-btn {
+      background: #ffffff;
+      border: 2px solid #a7f3d0;
+      border-radius: var(--radius-pill);
+      padding: 6px 14px;
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #047857;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .toolbar-pill-btn:hover {
+      background: #d1fae5;
+      border-color: #059669;
+      color: #064e3b;
+      transform: translateY(-1px);
+    }
+
+    .btn-back-hub {
+      background: #d1fae5;
+      border-color: #10b981;
+      color: #047857;
+    }
+
+    .btn-back-hub:hover {
+      background: #a7f3d0;
+    }
+
+    /* Main Container */
+    .main-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 80px 16px;
+    }
+
+    /* Navigation Bar between sections */
+    .section-nav-bar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .nav-tab-btn {
+      background: #ffffff;
+      border: 2px solid #cbd5e1;
+      border-radius: var(--radius-pill);
+      padding: 10px 22px;
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #475569;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+
+    .nav-tab-btn:hover {
+      border-color: #10b981;
+      color: #047857;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.12);
+    }
+
+    .nav-tab-btn.active {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      border-color: #047857;
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(5, 150, 105, 0.25);
+    }
+
+    /* App Views */
+    .app-view {
+      display: none;
+      animation: fadeIn 0.25s ease-out;
+    }
+
+    .app-view.active-view {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ==========================================================================
+       VIEW: HUB OVERVIEW
+       ========================================================================== */
+    .hub-hero-banner {
+      background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+      border: 3px solid #a7f3d0;
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      margin-bottom: 28px;
+      box-shadow: 0 6px 20px rgba(5, 150, 105, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .hub-hero-content {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .hub-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .badge-letter {
+      background: #d1fae5;
+      color: #047857;
+      border: 2px solid #6ee7b7;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: var(--radius-pill);
+    }
+
+    .badge-sheet {
+      background: #f1f5f9;
+      color: #475569;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+    }
+
+    .hub-hero-title {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      margin: 0 0 8px 0;
+      color: #047857;
+      line-height: 1.15;
+    }
+
+    .hub-hero-desc {
+      color: #334155;
+      margin: 0;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    .hub-hero-mascot-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: #ffffff;
+      border: 2px dashed #6ee7b7;
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .hub-hero-mascot-wrap:hover {
+      transform: scale(1.03);
+    }
+
+    .hub-mascot-img {
+      width: 76px;
+      height: 76px;
+      object-fit: contain;
+    }
+
+    .hub-mascot-bubble {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #065f46;
+      line-height: 1.3;
+    }
+
+    /* Star Reward Banner */
+    .star-reward-banner {
+      background: #ffffff;
+      border: 2px solid #fef08a;
+      border-radius: var(--radius-md);
+      padding: 14px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.08);
+    }
+
+    .star-progress-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .star-badge-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #f8fafc;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      border: 1.5px solid #e2e8f0;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #64748b;
+    }
+
+    .star-badge-item.achieved {
+      background: #fef3c7;
+      border-color: #f59e0b;
+      color: #b45309;
+    }
+
+    .star-grand-reward {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: #92400e;
+      font-size: 1.05rem;
+    }
+
+    /* Hub Cards Grid */
+    .hub-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .station-card {
+      background: #ffffff;
+      border: 2px solid #e2e8f0;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .station-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(5, 150, 105, 0.12);
+      border-color: #10b981;
+    }
+
+    .station-card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .station-card-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+
+    .station-card-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      margin: 0 0 4px 0;
+      color: #064e3b;
+    }
+
+    .station-card-sub {
+      font-size: 0.95rem;
+      color: #64748b;
+      margin: 0;
+    }
+
+    .station-card-body {
+      flex: 1;
+      margin-bottom: 18px;
+    }
+
+    .station-card-desc {
+      color: #334155;
+      font-size: 1rem;
+      line-height: 1.45;
+      margin: 0 0 12px 0;
+    }
+
+    .station-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .card-meta-pill {
+      background: #f1f5f9;
+      color: #475569;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+    }
+
+    .btn-open-station {
+      background: #059669;
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 12px 20px;
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.18s ease;
+      width: 100%;
+      box-shadow: 0 3px 8px rgba(5, 150, 105, 0.25);
+    }
+
+    .btn-open-station:hover {
+      background: #047857;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(5, 150, 105, 0.35);
+    }
+
+
+    /* ==========================================================================
+       VIEW: STATION 1 - DAS SILBENFLUGZEUG
+       ========================================================================== */
+    .station-header-box {
+      background: #ffffff;
+      border: 2px solid #a7f3d0;
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .station-title-group h2 {
+      margin: 0 0 4px 0;
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: #047857;
+    }
+
+    .station-title-group p {
+      margin: 0;
+      color: #64748b;
+      font-size: 1rem;
+    }
+
+    .carpet-banner {
+      background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+      border: 3px solid #6ee7b7;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: 0 6px 20px rgba(5, 150, 105, 0.08);
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .carpet-instruction-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .carpet-instruction {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #064e3b;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .carpet-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-next-flight {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 10px 22px;
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+      transition: all 0.18s ease;
+    }
+
+    .btn-next-flight:hover {
+      background: linear-gradient(135deg, #047857 0%, #064e3b 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(5, 150, 105, 0.35);
+    }
+
+    .flight-counter-pill {
+      background: #ffffff;
+      border: 2px solid #a7f3d0;
+      border-radius: var(--radius-pill);
+      padding: 8px 16px;
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #047857;
+    }
+
+    /* Flying Airplane Callout Deck (Untendrunter) */
+    .flight-deck {
+      background: #ffffff;
+      border: 3px solid #6ee7b7;
+      border-radius: var(--radius-lg);
+      padding: 20px 26px;
+      box-shadow: 0 6px 18px rgba(5, 150, 105, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .flight-deck-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .flight-deck-syl-display {
+      font-family: var(--font-reading);
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: #047857;
+      background: #f0fdf4;
+      border: 3px solid #a7f3d0;
+      border-radius: var(--radius-md);
+      padding: 8px 30px;
+      letter-spacing: 2px;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.04);
+      min-width: 140px;
+      text-align: center;
+    }
+
+    .flight-deck-prompt {
+      margin: 0;
+      font-size: 1.05rem;
+      color: #475569;
+      line-height: 1.4;
+    }
+
+    .flight-deck-prompt b {
+      color: #047857;
+    }
+
+    .flight-deck-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-action-listen {
+      background: #d1fae5;
+      border: 2px solid #6ee7b7;
+      border-radius: var(--radius-pill);
+      padding: 10px 18px;
+      font-family: var(--font-heading);
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: #047857;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-action-listen:hover {
+      background: #a7f3d0;
+      border-color: #059669;
+      transform: translateY(-2px);
+    }
+
+    .btn-action-rec {
+      background: #ffffff;
+      border: 2px solid #cbd5e1;
+      border-radius: var(--radius-pill);
+      padding: 10px 18px;
+      font-family: var(--font-heading);
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: #334155;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-action-rec:hover {
+      border-color: #ef4444;
+      color: #dc2626;
+      background: #fef2f2;
+    }
+
+    .btn-action-rec.recording {
+      background: #ef4444;
+      border-color: #b91c1c;
+      color: #ffffff;
+      animation: recPulse 1s infinite alternate;
+    }
+
+    @keyframes recPulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.06); }
+    }
+
+    .btn-action-play {
+      background: #ffffff;
+      border: 2px solid #cbd5e1;
+      border-radius: var(--radius-pill);
+      padding: 10px 16px;
+      font-family: var(--font-heading);
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: #334155;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-action-play:hover:not(:disabled) {
+      border-color: #059669;
+      color: #047857;
+      background: #d1fae5;
+    }
+
+    .btn-action-play:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .btn-action-complete {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 11px 22px;
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+      transition: all 0.15s ease;
+    }
+
+    .btn-action-complete:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(16, 185, 129, 0.4);
+    }
+
+    /* Carpet Grid Table */
+    .carpet-grid-wrap {
+      overflow-x: auto;
+      background: #ffffff;
+      border: 2px solid #cbd5e1;
+      border-radius: var(--radius-md);
+      padding: 12px;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.02);
+      position: relative;
+    }
+
+    .carpet-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 6px;
+      table-layout: fixed;
+    }
+
+    .carpet-cell {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: var(--radius-sm);
+      text-align: center;
+      padding: 14px 6px;
+      font-family: var(--font-reading);
+      font-size: 1.35rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+      user-select: none;
+      position: relative;
+    }
+
+    .carpet-cell:hover {
+      background: #ecfdf5;
+      border-color: #10b981;
+      transform: scale(1.08);
+      z-index: 2;
+      box-shadow: 0 4px 10px rgba(5, 150, 105, 0.15);
+    }
+
+    .carpet-cell.landed-target {
+      background: #fef08a !important;
+      border-color: #f59e0b !important;
+      color: #92400e !important;
+      transform: scale(1.15) !important;
+      z-index: 5 !important;
+      box-shadow: 0 6px 18px rgba(245, 158, 11, 0.35) !important;
+      animation: pulseTarget 1.2s infinite alternate;
+    }
+
+    @keyframes pulseTarget {
+      from { transform: scale(1.1); box-shadow: 0 4px 10px rgba(245, 158, 11, 0.25); }
+      to { transform: scale(1.18); box-shadow: 0 8px 22px rgba(245, 158, 11, 0.45); }
+    }
+
+    .carpet-cell.visited-cell {
+      background: #d1fae5;
+      border-color: #6ee7b7;
+      color: #047857;
+    }
+
+    /* Flying Airplane Avatar */
+    #flying-airplane {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      pointer-events: none;
+      z-index: 50;
+      transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      display: none;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    }
+
+    /* Syllable Colors */
+    .syllable-colored .syl-1 {
+      color: var(--syl-blue) !important;
+    }
+
+    .syllable-colored .syl-2 {
+      color: var(--syl-red) !important;
+    }
+
+    /* ==========================================================================
+       VIEW: STATION 2 - SÄTZE & WORTSCHATZ-KISTE
+       ========================================================================== */
+    .reading-two-col {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (max-width: 860px) {
+      .reading-two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .reading-col-card {
+      background: #ffffff;
+      border: 2px solid #a7f3d0;
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: 0 4px 16px rgba(5, 150, 105, 0.05);
+    }
+
+    .reading-col-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #f1f5f9;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .reading-col-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      color: #047857;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .reading-progress-pill {
+      background: #f1f5f9;
+      color: #475569;
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+    }
+
+    .reading-progress-pill.all-done {
+      background: #d1fae5;
+      color: #047857;
+      border: 1px solid #6ee7b7;
+    }
+
+    /* Sentence Card Rows */
+    .sentence-row-card {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .sentence-row-card:hover {
+      background: #ffffff;
+      border-color: #10b981;
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.08);
+      transform: translateX(2px);
+    }
+
+    .sentence-row-card.active-focus {
+      background: #ffffff;
+      border-color: #059669;
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
+    }
+
+    .sentence-row-card.is-completed {
+      background: #f0fdf4;
+      border-color: #6ee7b7;
+    }
+
+    .sentence-text-wrap {
+      flex: 1;
+      font-family: var(--font-reading);
+      font-size: 1.42rem;
+      line-height: 1.4;
+      color: #0f172a;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sentence-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+
+    /* Action Buttons (Speaker, Mic, Play, Check) */
+    .icon-action-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      border: 2px solid #cbd5e1;
+      background: #ffffff;
+      font-size: 1.15rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      color: #334155;
+    }
+
+    .icon-action-btn:hover:not(:disabled) {
+      border-color: #059669;
+      background: #d1fae5;
+      color: #047857;
+      transform: scale(1.05);
+    }
+
+    .icon-action-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .btn-row-check.checked {
+      background: #059669;
+      border-color: #047857;
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .btn-row-star {
+      font-size: 1.25rem;
+      line-height: 1;
+      color: #94a3b8;
+      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .btn-row-star:hover:not(:disabled) {
+      border-color: #f59e0b;
+      background: #fef3c7;
+      color: #d97706;
+      transform: scale(1.15);
+    }
+
+    .btn-row-star.checked {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: #f59e0b;
+      color: #d97706;
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.45);
+      transform: scale(1.1);
+      animation: starPop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes starPop {
+      0% { transform: scale(0.8); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1.1); }
+    }
+
+    .btn-row-rec.recording {
+      background: #fee2e2;
+      border-color: #ef4444;
+      color: #dc2626;
+      animation: pulseRec 1s infinite alternate;
+    }
+
+    @keyframes pulseRec {
+      from { transform: scale(1); }
+      to { transform: scale(1.12); box-shadow: 0 0 10px rgba(239, 68, 68, 0.4); }
+    }
+
+
+    /* Wortschatz Cards */
+    .vocab-card {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition: all 0.18s ease;
+      cursor: pointer;
+    }
+
+    .vocab-card:hover {
+      background: #ffffff;
+      border-color: #10b981;
+      transform: translateX(2px);
+    }
+
+    .vocab-card.is-completed {
+      background: #f0fdf4;
+      border-color: #6ee7b7;
+    }
+
+    .vocab-word {
+      font-family: var(--font-reading);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .vocab-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+
+    /* Blitzlesen modal / interactive flash */
+    .blitz-btn {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 8px 16px;
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 6px rgba(217, 119, 6, 0.2);
+      transition: all 0.15s ease;
+    }
+
+    .blitz-btn:hover {
+      background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+      transform: translateY(-1px);
+    }
+
+    /* ==========================================================================
+       VIEW: STATION 3 - MONSTER-SÄTZE & QUATSCH-REIHEN
+       ========================================================================== */
+    .monster-hero-card {
+      background: linear-gradient(135deg, #ffffff 0%, #fef3c7 100%);
+      border: 3px solid #fde68a;
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 6px 18px rgba(245, 158, 11, 0.08);
+      flex-wrap: wrap;
+    }
+
+    .monster-avatar-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .monster-avatar-wrap:hover {
+      transform: scale(1.05);
+    }
+
+    .monster-avatar-img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+    }
+
+    .monster-bubble-text {
+      flex: 1;
+      min-width: 260px;
+      font-size: 1.05rem;
+      color: #78350f;
+      line-height: 1.45;
+    }
+
+    .quatsch-row-card {
+      background: #ffffff;
+      border: 2px solid #e2e8f0;
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .quatsch-row-card:hover {
+      border-color: #f59e0b;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.1);
+      transform: translateX(2px);
+    }
+
+    .quatsch-row-card.is-completed {
+      background: #fffbeb;
+      border-color: #fde68a;
+    }
+
+    /* ==========================================================================
+       MODALS & CELEBRATION
+       ========================================================================== */
+    .app-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .app-modal-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      border: 4px solid #facc15;
+      animation: popModal 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes popModal {
+      from { transform: scale(0.85); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-trophy {
+      font-size: 4rem;
+      line-height: 1;
+      margin-bottom: 12px;
+      animation: floatTrophy 2s ease-in-out infinite;
+    }
+
+    @keyframes floatTrophy {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .modal-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: #064e3b;
+      margin: 0 0 10px 0;
+    }
+
+    .modal-desc {
+      font-size: 1.1rem;
+      color: #334155;
+      line-height: 1.5;
+      margin: 0 0 24px 0;
+    }
+
+    .btn-modal-close {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 12px 32px;
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3);
+      transition: all 0.18s ease;
+    }
+
+    .btn-modal-close:hover {
+      background: linear-gradient(135deg, #047857 0%, #064e3b 100%);
+      transform: translateY(-2px);
+    }
+
+    /* Confetti Canvas */
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10000;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Flying Airplane Image -->
+  <img id="flying-airplane" src="assets/flugzeug.png" alt="Flugzeug">
+
+  <!-- Top Utility Bar -->
+  <header class="top-toolbar">
+    <div class="toolbar-left">
+      <a href="../index.html" class="toolbar-brand" title="Zurück zur Lese-Haus Übersicht">
+        <span>🏠</span> Lese-Haus • Buchstabe D d
+      </a>
+      <span class="badge-sheet">Leseblatt 7</span>
+    </div>
+    <div class="toolbar-right">
+      <button class="toolbar-pill-btn" id="btn-sound-toggle" onclick="toggleSound()" title="Ton an / aus">
+        <span>🔊</span> Ton an
+      </button>
+      <button class="toolbar-pill-btn" id="btn-tempo-toggle" onclick="toggleTempo()" title="Lesetempo umschalten">
+        <span>🐢</span> 1.0x
+      </button>
+      <button class="toolbar-pill-btn" id="btn-color-toggle" onclick="toggleSyllableColors()" title="Silbenfarben blau/rot an/aus">
+        <span>🔴🔵</span> Silben
+      </button>
+      <button class="toolbar-pill-btn" onclick="speakDino()" title="Dino antippen!">
+        <span>🦖</span> Dino
+      </button>
+      <button class="toolbar-pill-btn" onclick="speakMonster()" title="Monster antippen!">
+        <span>👾</span> Monster
+      </button>
+      <button class="toolbar-pill-btn btn-back-hub" onclick="switchView('hub')" title="Zur Hauptübersicht von Leseblatt 7">
+        <span>⭐</span> Übersicht
+      </button>
+    </div>
+  </header>
+
+  <div class="main-wrap">
+
+    <!-- Section Navigation Tabs -->
+    <nav class="section-nav-bar" aria-label="Stationen Navigation">
+      <button class="nav-tab-btn active" id="tab-hub" onclick="switchView('hub')">
+        <span>🏠</span> Übersicht
+      </button>
+      <button class="nav-tab-btn" id="tab-flugzeug" onclick="switchView('flugzeug')">
+        <span>✈️</span> Station 1: Silbenflugzeug
+      </button>
+      <button class="nav-tab-btn" id="tab-saetze" onclick="switchView('saetze')">
+        <span>📖</span> Station 2: Sätze &amp; Wortschatz
+      </button>
+      <button class="nav-tab-btn" id="tab-quatsch" onclick="switchView('quatsch')">
+        <span>👾</span> Station 3: Monster-Sätze &amp; Quatsch
+      </button>
+    </nav>
+
+    <!-- =======================================================================
+         VIEW 1: HUB OVERVIEW
+         ======================================================================= -->
+    <div class="app-view active-view" id="view-hub">
+
+      <section class="hub-hero-banner">
+        <div class="hub-hero-content">
+          <div class="hub-badge-row">
+            <span class="badge-letter">D d</span>
+            <span class="badge-sheet">Leseblatt 7 • 1. Klasse</span>
+            <span class="badge-sheet">Einsterns Schwester (Bayern)</span>
+          </div>
+          <h1 class="hub-hero-title">Hallo! Ich bin Dino! 🦖</h1>
+          <p class="hub-hero-desc">
+            Willkommen zu deinem interaktiven Leseblatt 7! Heute üben wir den Buchstaben <b>D d</b>.
+            Fliege durch den Silbenteppich, lies spannende Sätze und entdecke lustige Rätsel mit dem Einstern-Monster!
+          </p>
+        </div>
+        <div class="hub-hero-mascot-wrap" onclick="speakDino()" title="Tippe mich an!">
+          <img src="assets/dino.png" alt="Dino" class="hub-mascot-img">
+          <div class="hub-mascot-bubble">
+            „Roaaar! Schön, dass du da bist!<br>Lass uns zusammen lesen!“
+          </div>
+        </div>
+      </section>
+
+      <!-- Star Reward Banner -->
+      <section class="star-reward-banner" id="hub-star-banner">
+        <div class="star-progress-group">
+          <span style="font-weight:700; color:#475569;">Deine Sterne:</span>
+          <div class="star-badge-item" id="star-station-1">
+            <span>✈️</span> Station 1 <span class="star-icon">☆</span>
+          </div>
+          <div class="star-badge-item" id="star-station-2">
+            <span>📖</span> Station 2 <span class="star-icon">☆</span>
+          </div>
+          <div class="star-badge-item" id="star-station-3">
+            <span>👾</span> Station 3 <span class="star-icon">☆</span>
+          </div>
+        </div>
+        <div class="star-grand-reward" id="grand-reward-label">
+          <span>🏆</span> Großer Lesestern: <span id="grand-star-status">Noch offen</span>
+        </div>
+      </section>
+
+      <!-- Cards Grid -->
+      <section class="hub-cards-grid">
+
+        <!-- Card 1: Silbenflugzeug -->
+        <article class="station-card">
+          <div>
+            <div class="station-card-header">
+              <div class="station-card-icon-wrap" style="background:#d1fae5; border:2px solid #6ee7b7;">
+                ✈️
+              </div>
+              <div>
+                <h2 class="station-card-title">Station 1: Silbenflugzeug</h2>
+                <p class="station-card-sub">Silbenteppich mit 36 Silben</p>
+              </div>
+            </div>
+            <div class="station-card-body">
+              <p class="station-card-desc">
+                Das Flugzeug landet auf einer Silbe. Lies sie laut vor! Schaffe ca. 20 Flüge und hole dir den Flug-Pokal!
+              </p>
+              <div class="station-card-meta">
+                <span class="card-meta-pill">36 Silben (do, di, de, da...)</span>
+                <span class="card-meta-pill" id="hub-flight-pill">0 / 20 Flüge</span>
+              </div>
+            </div>
+          </div>
+          <button class="btn-open-station" onclick="switchView('flugzeug')">
+            <span>🛫</span> Zum Silbenflugzeug ➔
+          </button>
+        </article>
+
+        <!-- Card 2: Sätze & Wortschatz -->
+        <article class="station-card">
+          <div>
+            <div class="station-card-header">
+              <div class="station-card-icon-wrap" style="background:#d1fae5; border:2px solid #6ee7b7;">
+                📖
+              </div>
+              <div>
+                <h2 class="station-card-title">Station 2: Sätze &amp; Wortschatz</h2>
+                <p class="station-card-sub">5 Sätze + Blitzlesen</p>
+              </div>
+            </div>
+            <div class="station-card-body">
+              <p class="station-card-desc">
+                Lies die Sätze über Lisa, Tim und Dino im Laden. Übe die Wortschatz-Kiste mit <i>da, das, des, sind, Dose, Mond, Ende</i>!
+              </p>
+              <div class="station-card-meta">
+                <span class="card-meta-pill">5 Sätze</span>
+                <span class="card-meta-pill">7 Wortschatz-Wörter</span>
+                <span class="card-meta-pill" id="hub-saetze-pill">0 / 12 erledigt</span>
+              </div>
+            </div>
+          </div>
+          <button class="btn-open-station" onclick="switchView('saetze')">
+            <span>👓</span> Zu den Sätzen &amp; Wörtern ➔
+          </button>
+        </article>
+
+        <!-- Card 3: Monster-Sätze & Quatsch -->
+        <article class="station-card">
+          <div>
+            <div class="station-card-header">
+              <div class="station-card-icon-wrap" style="background:#fef3c7; border:2px solid #fde68a;">
+                👾
+              </div>
+              <div>
+                <h2 class="station-card-title">Station 3: Monster-Sätze</h2>
+                <p class="station-card-sub">Lustige Sätze &amp; Quatsch-Reihen</p>
+              </div>
+            </div>
+            <div class="station-card-body">
+              <p class="station-card-desc">
+                Was isst Dino am Ende? Was nimmt Tim in Dosen? Lies die 4 lustigen Monster-Sätze und meistere die Silben-Quatschreihen!
+              </p>
+              <div class="station-card-meta">
+                <span class="card-meta-pill">4 Monster-Sätze</span>
+                <span class="card-meta-pill">4 Quatsch-Reihen</span>
+                <span class="card-meta-pill" id="hub-quatsch-pill">0 / 8 erledigt</span>
+              </div>
+            </div>
+          </div>
+          <button class="btn-open-station" onclick="switchView('quatsch')">
+            <span>🤪</span> Zu den Monster-Sätzen ➔
+          </button>
+        </article>
+
+      </section>
+
+
+
+    </div>
+
+    <!-- =======================================================================
+         VIEW 2: SILBENFLUGZEUG
+         ======================================================================= -->
+    <div class="app-view" id="view-flugzeug">
+
+      <div class="station-header-box">
+        <div class="station-title-group">
+          <h2>✈️ Station 1: Das Silbenflugzeug</h2>
+          <p>Tippe auf „Nächster Flug“ oder direkt auf eine Silbe. Schaffe 20 Flüge!</p>
+        </div>
+        <button class="toolbar-pill-btn btn-back-hub" onclick="switchView('hub')">
+          <span>🏠</span> Zur Übersicht
+        </button>
+      </div>
+
+      <section class="carpet-banner">
+        <div class="carpet-instruction-wrap">
+          <div class="carpet-instruction">
+            <img src="assets/flugzeug.png" alt="Flugzeug" style="width:36px; height:36px; object-fit:contain;">
+            <span>Hier zeigen Sie auf die Silbe, die gelesen werden soll. Ca. 20 Flüge.</span>
+          </div>
+          <div class="carpet-controls">
+            <span class="flight-counter-pill" id="flight-counter">✈️ Flug <b id="flight-num">0</b> / 20</span>
+            <button class="btn-next-flight" onclick="triggerNextFlight()">
+              <span>🛫</span> Nächster Flug!
+            </button>
+            <button class="toolbar-pill-btn" onclick="shuffleCarpetCells()" title="Silben durcheinanderwirbeln">
+              <span>🔀</span> Mischen
+            </button>
+          </div>
+        </div>
+
+        <!-- Carpet Table Wrap -->
+        <div class="carpet-grid-wrap" id="carpet-wrap">
+          <table class="carpet-table syllable-colored" id="carpet-table">
+            <tbody>
+              <!-- Row 1 (12 syllables) -->
+              <tr>
+                <td class="carpet-cell" data-val="do" onclick="onCellDirectClick(this)"><span class="syl-1">do</span></td>
+                <td class="carpet-cell" data-val="di" onclick="onCellDirectClick(this)"><span class="syl-1">di</span></td>
+                <td class="carpet-cell" data-val="de" onclick="onCellDirectClick(this)"><span class="syl-1">de</span></td>
+                <td class="carpet-cell" data-val="da" onclick="onCellDirectClick(this)"><span class="syl-1">da</span></td>
+                <td class="carpet-cell" data-val="ti" onclick="onCellDirectClick(this)"><span class="syl-1">ti</span></td>
+                <td class="carpet-cell" data-val="ta" onclick="onCellDirectClick(this)"><span class="syl-1">ta</span></td>
+                <td class="carpet-cell" data-val="to" onclick="onCellDirectClick(this)"><span class="syl-1">to</span></td>
+                <td class="carpet-cell" data-val="te" onclick="onCellDirectClick(this)"><span class="syl-1">te</span></td>
+                <td class="carpet-cell" data-val="so" onclick="onCellDirectClick(this)"><span class="syl-1">so</span></td>
+                <td class="carpet-cell" data-val="si" onclick="onCellDirectClick(this)"><span class="syl-1">si</span></td>
+                <td class="carpet-cell" data-val="se" onclick="onCellDirectClick(this)"><span class="syl-1">se</span></td>
+                <td class="carpet-cell" data-val="sa" onclick="onCellDirectClick(this)"><span class="syl-1">sa</span></td>
+              </tr>
+              <!-- Row 2 (12 syllables) -->
+              <tr>
+                <td class="carpet-cell" data-val="del" onclick="onCellDirectClick(this)"><span class="syl-1">del</span></td>
+                <td class="carpet-cell" data-val="ma" onclick="onCellDirectClick(this)"><span class="syl-1">ma</span></td>
+                <td class="carpet-cell" data-val="im" onclick="onCellDirectClick(this)"><span class="syl-1">im</span></td>
+                <td class="carpet-cell" data-val="in" onclick="onCellDirectClick(this)"><span class="syl-1">in</span></td>
+                <td class="carpet-cell" data-val="om" onclick="onCellDirectClick(this)"><span class="syl-1">om</span></td>
+                <td class="carpet-cell" data-val="on" onclick="onCellDirectClick(this)"><span class="syl-1">on</span></td>
+                <td class="carpet-cell" data-val="am" onclick="onCellDirectClick(this)"><span class="syl-1">am</span></td>
+                <td class="carpet-cell" data-val="an" onclick="onCellDirectClick(this)"><span class="syl-1">an</span></td>
+                <td class="carpet-cell" data-val="at" onclick="onCellDirectClick(this)"><span class="syl-1">at</span></td>
+                <td class="carpet-cell" data-val="la" onclick="onCellDirectClick(this)"><span class="syl-1">la</span></td>
+                <td class="carpet-cell" data-val="li" onclick="onCellDirectClick(this)"><span class="syl-1">li</span></td>
+                <td class="carpet-cell" data-val="lo" onclick="onCellDirectClick(this)"><span class="syl-1">lo</span></td>
+              </tr>
+              <!-- Row 3 (12 syllables) -->
+              <tr>
+                <td class="carpet-cell" data-val="no" onclick="onCellDirectClick(this)"><span class="syl-1">no</span></td>
+                <td class="carpet-cell" data-val="mo" onclick="onCellDirectClick(this)"><span class="syl-1">mo</span></td>
+                <td class="carpet-cell" data-val="me" onclick="onCellDirectClick(this)"><span class="syl-1">me</span></td>
+                <td class="carpet-cell" data-val="em" onclick="onCellDirectClick(this)"><span class="syl-1">em</span></td>
+                <td class="carpet-cell" data-val="es" onclick="onCellDirectClick(this)"><span class="syl-1">es</span></td>
+                <td class="carpet-cell" data-val="et" onclick="onCellDirectClick(this)"><span class="syl-1">et</span></td>
+                <td class="carpet-cell" data-val="man" onclick="onCellDirectClick(this)"><span class="syl-1">man</span></td>
+                <td class="carpet-cell" data-val="na" onclick="onCellDirectClick(this)"><span class="syl-1">na</span></td>
+                <td class="carpet-cell" data-val="le" onclick="onCellDirectClick(this)"><span class="syl-1">le</span></td>
+                <td class="carpet-cell" data-val="al" onclick="onCellDirectClick(this)"><span class="syl-1">al</span></td>
+                <td class="carpet-cell" data-val="den" onclick="onCellDirectClick(this)"><span class="syl-1">den</span></td>
+                <td class="carpet-cell" data-val="das" onclick="onCellDirectClick(this)"><span class="syl-1">das</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Flight Deck: Gelandete Silbe & Interaktion (Untendrunter) -->
+        <section class="flight-deck" id="flight-deck" style="display: none; margin-top: 24px;">
+          <div class="flight-deck-left">
+            <div class="flight-deck-syl-display" id="flight-deck-syl">do</div>
+            <div>
+              <p class="flight-deck-prompt">
+                Das Flugzeug ist gelandet! <b>Lies die Silbe laut vor!</b><br>
+                Tippe danach auf <b>🔊 Selbstkontrolle</b> oder nimm deine Stimme auf!
+              </p>
+            </div>
+          </div>
+          <div class="flight-deck-actions">
+            <button class="btn-action-listen" onclick="speakCurrentFlight()" title="Selbstkontrolle: Laut vorlesen lassen">
+              <span>🔊</span> Selbstkontrolle
+            </button>
+            <button class="btn-action-rec" id="btn-rec-flight" onclick="toggleRecordFlight()" title="Eigene Stimme aufnehmen">
+              <span>🎤</span> <span id="rec-label-flight">Aufnehmen</span>
+            </button>
+            <button class="btn-action-play" id="btn-play-flight" onclick="playRecordFlight()" title="Eigene Aufnahme anhören" disabled>
+              <span>▶️</span> Anhören
+            </button>
+            <button class="btn-action-complete" onclick="finishCurrentFlight()" title="Silbe fertig gelesen!">
+              <span>✓</span> Gelesen! Weiter ➔
+            </button>
+          </div>
+        </section>
+      </section>
+
+    </div>
+
+    <!-- =======================================================================
+         VIEW 3: SÄTZE & WORTSCHATZ-KISTE
+         ======================================================================= -->
+    <div class="app-view" id="view-saetze">
+
+      <div class="station-header-box">
+        <div class="station-title-group">
+          <h2>📖 Station 2: Sätze &amp; Wortschatz-Kiste</h2>
+          <p>Lies jeden Satz laut vor und merke dir die Wörter • Tippe auf 🔊 zur Selbstkontrolle!</p>
+        </div>
+        <button class="toolbar-pill-btn btn-back-hub" onclick="switchView('hub')">
+          <span>🏠</span> Zur Übersicht
+        </button>
+      </div>
+
+      <div class="reading-two-col">
+
+        <!-- Linke Spalte: Die 5 Sätze -->
+        <div class="reading-col-card">
+          <div class="reading-col-header">
+            <h3 class="reading-col-title">
+              <img src="assets/brille.png" alt="Brille" style="width:34px; height:24px; object-fit:contain;">
+              <span>Sätze lesen</span>
+            </h3>
+            <span class="reading-progress-pill" id="sentences-progress">0 / 5 gelesen</span>
+          </div>
+
+          <p style="font-size:0.95rem; color:#64748b; margin:0 0 14px 0;">
+            Lies laut vor und klicke auf den Stern ⭐, wenn du einen Satz gelesen hast!
+          </p>
+
+          <div id="sentences-list">
+
+            <!-- Satz 0: Lisa und Tim sind im Laden. -->
+            <div class="sentence-row-card" id="sentence-card-0" onclick="focusSentence(0)">
+              <div class="sentence-text-wrap syllable-colored" id="sentence-text-0">
+                <span><span class="syl-1">Li</span><span class="syl-2">sa</span></span>
+                <span><span class="syl-1">und</span></span>
+                <span><span class="syl-1">Tim</span></span>
+                <span><span class="syl-1">sind</span></span>
+                <span><span class="syl-1">im</span></span>
+                <span><span class="syl-1">La</span><span class="syl-2">den</span>.</span>
+              </div>
+              <div class="sentence-actions">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); speakSentence(0)" title="Selbstkontrolle: Laut vorlesen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-s0" onclick="event.stopPropagation(); toggleRecord('s0', 'rec-btn-s0', 'play-btn-s0')" title="Eigene Stimme aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-s0" onclick="event.stopPropagation(); playRecording('s0')" title="Aufnahme anhören" disabled>
+                  ▶️
+                </button>
+                <button class="icon-action-btn btn-row-star" id="check-sentence-0" onclick="event.stopPropagation(); toggleSentenceCheck(0)" title="Satz gelesen: Stern sammeln!">
+                  <span class="star-icon">☆</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Satz 1: Dino isst Mandeln. -->
+            <div class="sentence-row-card" id="sentence-card-1" onclick="focusSentence(1)">
+              <div class="sentence-text-wrap syllable-colored" id="sentence-text-1">
+                <span><span class="syl-1">Di</span><span class="syl-2">no</span></span>
+                <span><span class="syl-1">isst</span></span>
+                <span><span class="syl-1">Man</span><span class="syl-2">deln</span>.</span>
+              </div>
+              <div class="sentence-actions">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); speakSentence(1)" title="Selbstkontrolle: Laut vorlesen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-s1" onclick="event.stopPropagation(); toggleRecord('s1', 'rec-btn-s1', 'play-btn-s1')" title="Eigene Stimme aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-s1" onclick="event.stopPropagation(); playRecording('s1')" title="Aufnahme anhören" disabled>
+                  ▶️
+                </button>
+                <button class="icon-action-btn btn-row-star" id="check-sentence-1" onclick="event.stopPropagation(); toggleSentenceCheck(1)" title="Satz gelesen: Stern sammeln!">
+                  <span class="star-icon">☆</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Satz 2: Oma malt den Mond. -->
+            <div class="sentence-row-card" id="sentence-card-2" onclick="focusSentence(2)">
+              <div class="sentence-text-wrap syllable-colored" id="sentence-text-2">
+                <span><span class="syl-1">O</span><span class="syl-2">ma</span></span>
+                <span><span class="syl-1">malt</span></span>
+                <span><span class="syl-1">den</span></span>
+                <span><span class="syl-1">Mond</span>.</span>
+              </div>
+              <div class="sentence-actions">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); speakSentence(2)" title="Selbstkontrolle: Laut vorlesen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-s2" onclick="event.stopPropagation(); toggleRecord('s2', 'rec-btn-s2', 'play-btn-s2')" title="Eigene Stimme aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-s2" onclick="event.stopPropagation(); playRecording('s2')" title="Aufnahme anhören" disabled>
+                  ▶️
+                </button>
+                <button class="icon-action-btn btn-row-star" id="check-sentence-2" onclick="event.stopPropagation(); toggleSentenceCheck(2)" title="Satz gelesen: Stern sammeln!">
+                  <span class="star-icon">☆</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Satz 3: Da im Sand ist Imo. -->
+            <div class="sentence-row-card" id="sentence-card-3" onclick="focusSentence(3)">
+              <div class="sentence-text-wrap syllable-colored" id="sentence-text-3">
+                <span><span class="syl-1">Da</span></span>
+                <span><span class="syl-1">im</span></span>
+                <span><span class="syl-1">Sand</span></span>
+                <span><span class="syl-1">ist</span></span>
+                <span><span class="syl-1">I</span><span class="syl-2">mo</span>.</span>
+              </div>
+              <div class="sentence-actions">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); speakSentence(3)" title="Selbstkontrolle: Laut vorlesen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-s3" onclick="event.stopPropagation(); toggleRecord('s3', 'rec-btn-s3', 'play-btn-s3')" title="Eigene Stimme aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-s3" onclick="event.stopPropagation(); playRecording('s3')" title="Aufnahme anhören" disabled>
+                  ▶️
+                </button>
+                <button class="icon-action-btn btn-row-star" id="check-sentence-3" onclick="event.stopPropagation(); toggleSentenceCheck(3)" title="Satz gelesen: Stern sammeln!">
+                  <span class="star-icon">☆</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Satz 4: Mami und Lisa lesen den Namen. -->
+            <div class="sentence-row-card" id="sentence-card-4" onclick="focusSentence(4)">
+              <div class="sentence-text-wrap syllable-colored" id="sentence-text-4">
+                <span><span class="syl-1">Ma</span><span class="syl-2">mi</span></span>
+                <span><span class="syl-1">und</span></span>
+                <span><span class="syl-1">Li</span><span class="syl-2">sa</span></span>
+                <span><span class="syl-1">le</span><span class="syl-2">sen</span></span>
+                <span><span class="syl-1">den</span></span>
+                <span><span class="syl-1">Na</span><span class="syl-2">men</span>.</span>
+              </div>
+              <div class="sentence-actions">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); speakSentence(4)" title="Selbstkontrolle: Laut vorlesen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-s4" onclick="event.stopPropagation(); toggleRecord('s4', 'rec-btn-s4', 'play-btn-s4')" title="Eigene Stimme aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-s4" onclick="event.stopPropagation(); playRecording('s4')" title="Aufnahme anhören" disabled>
+                  ▶️
+                </button>
+                <button class="icon-action-btn btn-row-star" id="check-sentence-4" onclick="event.stopPropagation(); toggleSentenceCheck(4)" title="Satz gelesen: Stern sammeln!">
+                  <span class="star-icon">☆</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Rechte Spalte: Wortschatz-Kiste (Blitzlesen) -->
+        <div class="reading-col-card">
+          <div class="reading-col-header">
+            <h3 class="reading-col-title">
+              <img src="assets/auge.png" alt="Auge" style="width:34px; height:24px; object-fit:contain;">
+              <span>Wortschatz-Kiste</span>
+            </h3>
+            <span class="reading-progress-pill" id="vocab-progress">0 / 7 gelesen</span>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <p style="font-size:0.95rem; color:#64748b; margin:0;">
+              Blitzlesen mit dem Auge 👁️:
+            </p>
+            <button class="blitz-btn" onclick="startBlitzTraining()">
+              <span>⚡</span> Blitz-Training
+            </button>
+          </div>
+
+          <div id="vocab-list">
+
+            <!-- Wort 0: da -->
+            <div class="vocab-card" id="vocab-card-0" onclick="focusVocab(0)">
+              <div class="vocab-word syllable-colored">
+                <span class="syl-1">da</span>
+              </div>
+              <div class="vocab-actions">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); speakVocab(0)" title="Selbstkontrolle: Vorlesen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-v0" onclick="event.stopPropagation(); toggleRecord('v0', 'rec-btn-v0', 'play-btn-v0')" title="Wort aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-v0" onclick="event.stopPropagation(); playRecording('v0')" title="Aufnahme anhören" disabled>
+                  ▶️
+                </button>
+                <button class="icon-action-btn btn-row-check" id="check-vocab-0" onclick="event.stopPropagation(); toggleVocabCheck(0)" title="Als gelesen markieren">
+                  ✓
+                </button>
+              </div>
+            </div>
+
+            <!-- Wort 1: das -->
+            <div class="vocab-card" id="vocab-card-1" onclick="focusVocab(1)">
+              <div class="vocab-word syllable-colored">
+                <span class="syl-1">das</span>
+              </div>
+              <div class="vocab-actions">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); speakVocab(1)" title="Selbstkontrolle: Vorlesen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-v1" onclick="event.stopPropagation(); toggleRecord('v1', 'rec-btn-v1', 'play-btn-v1')" title="Wort aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-v1" onclick="event.stopPropagation(); playRecording('v1')" title="Aufnahme anhören" disabled>
+                  ▶️
+                </button>
+                <button class="icon-action-btn btn-row-check" id="check-vocab-1" onclick="event.stopPropagation(); toggleVocabCheck(1)" title="Als gelesen markieren">
+                  ✓
+                </button>
+              </div>
+            </div>
+
+            <!-- Wort 2: des -->
+            <div class="vocab-card" id="vocab-card-2" onclick="focusVocab(2)">
+              <div class="vocab-word syllable-colored">
+                <span class="syl-1">des</span>
+              </div>
+              <div class="vocab-actions">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); speakVocab(2)" title="Selbstkontrolle: Vorlesen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-v2" onclick="event.stopPropagation(); toggleRecord('v2', 'rec-btn-v2', 'play-btn-v2')" title="Wort aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-v2" onclick="event.stopPropagation(); playRecording('v2')" title="Aufnahme anhören" disabled>
+                  ▶️
+                </button>
+                <button class="icon-action-btn btn-row-check" id="check-vocab-2" onclick="event.stopPropagation(); toggleVocabCheck(2)" title="Als gelesen markieren">
+                  ✓
+                </button>
+              </div>
+            </div>
+
+            <!-- Wort 3: sind -->
+            <div class="vocab-card" id="vocab-card-3" onclick="focusVocab(3)">
+              <div class="vocab-word syllable-colored">
+                <span class="syl-1">sind</span>
+              </div>
+              <div class="vocab-actions">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); speakVocab(3)" title="Selbstkontrolle: Vorlesen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-v3" onclick="event.stopPropagation(); toggleRecord('v3', 'rec-btn-v3', 'play-btn-v3')" title="Wort aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-v3" onclick="event.stopPropagation(); playRecording('v3')" title="Aufnahme anhören" disabled>
+                  ▶️
+                </button>
+                <button class="icon-action-btn btn-row-check" id="check-vocab-3" onclick="event.stopPropagation(); toggleVocabCheck(3)" title="Als gelesen markieren">
+                  ✓
+                </button>
+              </div>
+            </div>
+
+            <!-- Wort 4: Dose -->
+            <div class="vocab-card" id="vocab-card-4" onclick="focusVocab(4)">
+              <div class="vocab-word syllable-colored">
+                <span class="syl-1">Do</span><span class="syl-2">se</span>
+              </div>
+              <div class="vocab-actions">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); speakVocab(4)" title="Selbstkontrolle: Vorlesen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-v4" onclick="event.stopPropagation(); toggleRecord('v4', 'rec-btn-v4', 'play-btn-v4')" title="Wort aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-v4" onclick="event.stopPropagation(); playRecording('v4')" title="Aufnahme anhören" disabled>
+                  ▶️
+                </button>
+                <button class="icon-action-btn btn-row-check" id="check-vocab-4" onclick="event.stopPropagation(); toggleVocabCheck(4)" title="Als gelesen markieren">
+                  ✓
+                </button>
+              </div>
+            </div>
+
+            <!-- Wort 5: Mond -->
+            <div class="vocab-card" id="vocab-card-5" onclick="focusVocab(5)">
+              <div class="vocab-word syllable-colored">
+                <span class="syl-1">Mond</span>
+              </div>
+              <div class="vocab-actions">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); speakVocab(5)" title="Selbstkontrolle: Vorlesen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-v5" onclick="event.stopPropagation(); toggleRecord('v5', 'rec-btn-v5', 'play-btn-v5')" title="Wort aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-v5" onclick="event.stopPropagation(); playRecording('v5')" title="Aufnahme anhören" disabled>
+                  ▶️
+                </button>
+                <button class="icon-action-btn btn-row-check" id="check-vocab-5" onclick="event.stopPropagation(); toggleVocabCheck(5)" title="Als gelesen markieren">
+                  ✓
+                </button>
+              </div>
+            </div>
+
+            <!-- Wort 6: Ende -->
+            <div class="vocab-card" id="vocab-card-6" onclick="focusVocab(6)">
+              <div class="vocab-word syllable-colored">
+                <span class="syl-1">En</span><span class="syl-2">de</span>
+              </div>
+              <div class="vocab-actions">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); speakVocab(6)" title="Selbstkontrolle: Vorlesen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-v6" onclick="event.stopPropagation(); toggleRecord('v6', 'rec-btn-v6', 'play-btn-v6')" title="Wort aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-v6" onclick="event.stopPropagation(); playRecording('v6')" title="Aufnahme anhören" disabled>
+                  ▶️
+                </button>
+                <button class="icon-action-btn btn-row-check" id="check-vocab-6" onclick="event.stopPropagation(); toggleVocabCheck(6)" title="Als gelesen markieren">
+                  ✓
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- =======================================================================
+         VIEW 4: MONSTER-SÄTZE & QUATSCH-REIHEN
+         ======================================================================= -->
+    <div class="app-view" id="view-quatsch">
+
+      <div class="station-header-box">
+        <div class="station-title-group">
+          <h2>👾 Station 3: Monster-Sätze &amp; Quatsch-Reihen 🤪</h2>
+          <p>Lustige Sätze vom Einstern-Monster &amp; Dino! Lies laut vor und prüfe mit 🔊.</p>
+        </div>
+        <button class="toolbar-pill-btn btn-back-hub" onclick="switchView('hub')">
+          <span>🏠</span> Zur Übersicht
+        </button>
+      </div>
+
+      <!-- Monster Hero Banner -->
+      <section class="monster-hero-card">
+        <div class="monster-avatar-wrap" onclick="speakMonster()" title="Monster antippen!">
+          <img src="assets/monster.png" alt="Monster" class="monster-avatar-img">
+        </div>
+        <div class="monster-bubble-text">
+          <b>Hihi! Schau mal, was Dino und ich uns ausgedacht haben!</b><br>
+          Wer isst hier alle Melonen? Und was macht die Ananas in der Dose? 
+          Lies jeden Satz laut vor und meistere die Silben-Quatschreihen!
+        </div>
+      </section>
+
+      <div class="reading-two-col">
+
+        <!-- Linke Spalte: Die 4 Monster-Sätze aus Leseblatt 7 -->
+        <div class="reading-col-card">
+          <div class="reading-col-header">
+            <h3 class="reading-col-title">
+              <img src="assets/monster.png" alt="Monster" style="width:28px; height:28px; object-fit:contain;">
+              <span>Monster-Sätze (Leseblatt 7)</span>
+            </h3>
+            <span class="reading-progress-pill" id="monster-progress">0 / 4 gelesen</span>
+          </div>
+
+          <div id="monster-list">
+
+            <!-- Monster-Satz 0: Tim nimmt Ananas und Tomaten in Dosen. -->
+            <div class="sentence-row-card" id="monster-card-0" onclick="focusMonster(0)">
+              <div class="sentence-text-wrap syllable-colored" id="monster-text-0">
+                <span><span class="syl-1">Tim</span></span>
+                <span><span class="syl-1">nimmt</span></span>
+                <span><span class="syl-1">A</span><span class="syl-2">na</span><span class="syl-1">nas</span></span>
+                <span><span class="syl-1">und</span></span>
+                <span><span class="syl-1">To</span><span class="syl-2">ma</span><span class="syl-1">ten</span></span>
+                <span><span class="syl-1">in</span></span>
+                <span><span class="syl-1">Do</span><span class="syl-2">sen</span>.</span>
+              </div>
+              <div class="sentence-actions">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); speakMonsterSentence(0)" title="Selbstkontrolle: Laut vorlesen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-m0" onclick="event.stopPropagation(); toggleRecord('m0', 'rec-btn-m0', 'play-btn-m0')" title="Eigene Stimme aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-m0" onclick="event.stopPropagation(); playRecording('m0')" title="Aufnahme anhören" disabled>
+                  ▶️
+                </button>
+                <button class="icon-action-btn btn-row-star" id="check-monster-0" onclick="event.stopPropagation(); toggleMonsterCheck(0)" title="Satz gelesen: Stern sammeln!">
+                  <span class="star-icon">☆</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Monster-Satz 1: Oma isst Linsen mit Salat. -->
+            <div class="sentence-row-card" id="monster-card-1" onclick="focusMonster(1)">
+              <div class="sentence-text-wrap syllable-colored" id="monster-text-1">
+                <span><span class="syl-1">O</span><span class="syl-2">ma</span></span>
+                <span><span class="syl-1">isst</span></span>
+                <span><span class="syl-1">Lin</span><span class="syl-2">sen</span></span>
+                <span><span class="syl-1">mit</span></span>
+                <span><span class="syl-1">Sa</span><span class="syl-2">lat</span>.</span>
+              </div>
+              <div class="sentence-actions">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); speakMonsterSentence(1)" title="Selbstkontrolle: Laut vorlesen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-m1" onclick="event.stopPropagation(); toggleRecord('m1', 'rec-btn-m1', 'play-btn-m1')" title="Eigene Stimme aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-m1" onclick="event.stopPropagation(); playRecording('m1')" title="Aufnahme anhören" disabled>
+                  ▶️
+                </button>
+                <button class="icon-action-btn btn-row-star" id="check-monster-1" onclick="event.stopPropagation(); toggleMonsterCheck(1)" title="Satz gelesen: Stern sammeln!">
+                  <span class="star-icon">☆</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Monster-Satz 2: Dino isst am Ende alle Melonen. -->
+            <div class="sentence-row-card" id="monster-card-2" onclick="focusMonster(2)">
+              <div class="sentence-text-wrap syllable-colored" id="monster-text-2">
+                <span><span class="syl-1">Di</span><span class="syl-2">no</span></span>
+                <span><span class="syl-1">isst</span></span>
+                <span><span class="syl-1">am</span></span>
+                <span><span class="syl-1">En</span><span class="syl-2">de</span></span>
+                <span><span class="syl-1">al</span><span class="syl-2">le</span></span>
+                <span><span class="syl-1">Me</span><span class="syl-2">lo</span><span class="syl-1">nen</span>.</span>
+              </div>
+              <div class="sentence-actions">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); speakMonsterSentence(2)" title="Selbstkontrolle: Laut vorlesen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-m2" onclick="event.stopPropagation(); toggleRecord('m2', 'rec-btn-m2', 'play-btn-m2')" title="Eigene Stimme aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-m2" onclick="event.stopPropagation(); playRecording('m2')" title="Aufnahme anhören" disabled>
+                  ▶️
+                </button>
+                <button class="icon-action-btn btn-row-star" id="check-monster-2" onclick="event.stopPropagation(); toggleMonsterCheck(2)" title="Satz gelesen: Stern sammeln!">
+                  <span class="star-icon">☆</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Monster-Satz 3: Tante Dana und Tim essen Dosenananas. -->
+            <div class="sentence-row-card" id="monster-card-3" onclick="focusMonster(3)">
+              <div class="sentence-text-wrap syllable-colored" id="monster-text-3">
+                <span><span class="syl-1">Tan</span><span class="syl-2">te</span></span>
+                <span><span class="syl-1">Da</span><span class="syl-2">na</span></span>
+                <span><span class="syl-1">und</span></span>
+                <span><span class="syl-1">Tim</span></span>
+                <span><span class="syl-1">es</span><span class="syl-2">sen</span></span>
+                <span><span class="syl-1">Do</span><span class="syl-2">sen</span><span class="syl-1">a</span><span class="syl-2">na</span><span class="syl-1">nas</span>.</span>
+              </div>
+              <div class="sentence-actions">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); speakMonsterSentence(3)" title="Selbstkontrolle: Laut vorlesen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-m3" onclick="event.stopPropagation(); toggleRecord('m3', 'rec-btn-m3', 'play-btn-m3')" title="Eigene Stimme aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-m3" onclick="event.stopPropagation(); playRecording('m3')" title="Aufnahme anhören" disabled>
+                  ▶️
+                </button>
+                <button class="icon-action-btn btn-row-star" id="check-monster-3" onclick="event.stopPropagation(); toggleMonsterCheck(3)" title="Satz gelesen: Stern sammeln!">
+                  <span class="star-icon">☆</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Rechte Spalte: Quatsch-Reihen (Silbenketten) -->
+        <div class="reading-col-card">
+          <div class="reading-col-header">
+            <h3 class="reading-col-title">
+              <span>🤪</span>
+              <span>Dino-Quatschreihen</span>
+            </h3>
+            <span class="reading-progress-pill" id="quatsch-progress">0 / 4 gelesen</span>
+          </div>
+
+          <p style="font-size:0.95rem; color:#64748b; margin:0 0 14px 0;">
+            Lies diese verrückten Silben-Reihen wie ein einziges langes Wort vor!
+          </p>
+
+          <div id="quatsch-list">
+
+            <!-- Quatsch 0 -->
+            <div class="quatsch-row-card" id="quatsch-card-0" onclick="focusQuatsch(0)">
+              <div>
+                <span style="font-size:0.82rem; font-weight:700; color:#b45309; text-transform:uppercase;">Dino-Quatsch 1</span>
+                <div class="sentence-text-wrap syllable-colored" style="font-size:1.35rem; font-weight:700; letter-spacing:0.5px;">
+                  <span class="syl-1">Do</span><span class="syl-2">de</span><span class="syl-1">di</span><span class="syl-2">da</span><span class="syl-1">no</span>
+                </div>
+              </div>
+              <div class="sentence-actions">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); speakQuatsch(0)" title="Vorlesen lassen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-q0" onclick="event.stopPropagation(); toggleRecord('q0', 'rec-btn-q0', 'play-btn-q0')" title="Aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-q0" onclick="event.stopPropagation(); playRecording('q0')" title="Anhören" disabled>
+                  ▶️
+                </button>
+                <button class="icon-action-btn btn-row-check" id="check-quatsch-0" onclick="event.stopPropagation(); toggleQuatschCheck(0)">
+                  ✓
+                </button>
+              </div>
+            </div>
+
+            <!-- Quatsch 1 -->
+            <div class="quatsch-row-card" id="quatsch-card-1" onclick="focusQuatsch(1)">
+              <div>
+                <span style="font-size:0.82rem; font-weight:700; color:#b45309; text-transform:uppercase;">Dino-Quatsch 2</span>
+                <div class="sentence-text-wrap syllable-colored" style="font-size:1.35rem; font-weight:700; letter-spacing:0.5px;">
+                  <span class="syl-1">Da</span><span class="syl-2">di</span><span class="syl-1">do</span><span class="syl-2">del</span><span class="syl-1">man</span>
+                </div>
+              </div>
+              <div class="sentence-actions">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); speakQuatsch(1)" title="Vorlesen lassen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-q1" onclick="event.stopPropagation(); toggleRecord('q1', 'rec-btn-q1', 'play-btn-q1')" title="Aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-q1" onclick="event.stopPropagation(); playRecording('q1')" title="Anhören" disabled>
+                  ▶️
+                </button>
+                <button class="icon-action-btn btn-row-check" id="check-quatsch-1" onclick="event.stopPropagation(); toggleQuatschCheck(1)">
+                  ✓
+                </button>
+              </div>
+            </div>
+
+            <!-- Quatsch 2 -->
+            <div class="quatsch-row-card" id="quatsch-card-2" onclick="focusQuatsch(2)">
+              <div>
+                <span style="font-size:0.82rem; font-weight:700; color:#b45309; text-transform:uppercase;">Dino-Quatsch 3</span>
+                <div class="sentence-text-wrap syllable-colored" style="font-size:1.35rem; font-weight:700; letter-spacing:0.5px;">
+                  <span class="syl-1">Mo</span><span class="syl-2">do</span><span class="syl-1">to</span><span class="syl-2">so</span><span class="syl-1">na</span>
+                </div>
+              </div>
+              <div class="sentence-actions">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); speakQuatsch(2)" title="Vorlesen lassen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-q2" onclick="event.stopPropagation(); toggleRecord('q2', 'rec-btn-q2', 'play-btn-q2')" title="Aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-q2" onclick="event.stopPropagation(); playRecording('q2')" title="Anhören" disabled>
+                  ▶️
+                </button>
+                <button class="icon-action-btn btn-row-check" id="check-quatsch-2" onclick="event.stopPropagation(); toggleQuatschCheck(2)">
+                  ✓
+                </button>
+              </div>
+            </div>
+
+            <!-- Quatsch 3 -->
+            <div class="quatsch-row-card" id="quatsch-card-3" onclick="focusQuatsch(3)">
+              <div>
+                <span style="font-size:0.82rem; font-weight:700; color:#b45309; text-transform:uppercase;">Dino-Quatsch 4</span>
+                <div class="sentence-text-wrap syllable-colored" style="font-size:1.35rem; font-weight:700; letter-spacing:0.5px;">
+                  <span class="syl-1">Den</span><span class="syl-2">das</span><span class="syl-1">des</span><span class="syl-2">sand</span><span class="syl-1">mond</span>
+                </div>
+              </div>
+              <div class="sentence-actions">
+                <button class="icon-action-btn" onclick="event.stopPropagation(); speakQuatsch(3)" title="Vorlesen lassen">
+                  🔊
+                </button>
+                <button class="icon-action-btn btn-row-rec" id="rec-btn-q3" onclick="event.stopPropagation(); toggleRecord('q3', 'rec-btn-q3', 'play-btn-q3')" title="Aufnehmen">
+                  🎤
+                </button>
+                <button class="icon-action-btn btn-row-play" id="play-btn-q3" onclick="event.stopPropagation(); playRecording('q3')" title="Anhören" disabled>
+                  ▶️
+                </button>
+                <button class="icon-action-btn btn-row-check" id="check-quatsch-3" onclick="event.stopPropagation(); toggleQuatschCheck(3)">
+                  ✓
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div> <!-- /main-wrap -->
+
+  <!-- Modal: 20 Flüge geschafft -->
+  <div class="app-modal-overlay" id="flight-modal" onclick="closeModalOnBackdrop(event, 'flight-modal')">
+    <div class="app-modal-card">
+      <div class="modal-trophy">✈️ 🌟</div>
+      <h2 class="modal-title">20 Flüge geschafft!</h2>
+      <p class="modal-desc">
+        Hervorragend gelesen! Du bist ein echter Silben-Pilot! Du hast deinen Silben-Stern für Station 1 verdient!
+      </p>
+      <button class="btn-modal-close" onclick="closeFlightModal()">
+        Weiter zur Station 2 ➔
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal: Großer Lesestern (Alle 3 Stationen fertig) -->
+  <div class="app-modal-overlay" id="reward-modal" onclick="closeModalOnBackdrop(event, 'reward-modal')">
+    <div class="app-modal-card">
+      <div class="modal-trophy">🏆 🦖</div>
+      <h2 class="modal-title">Fantastisch gemacht!</h2>
+      <p class="modal-desc">
+        Du hast alle 3 Stationen von Leseblatt 7 (D d) erfolgreich gemeistert!
+        Dino und das Einstern-Monster sind riesig stolz auf dich!
+      </p>
+      <button class="btn-modal-close" onclick="closeRewardModal()">
+        Juhu! 🌟
+      </button>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    /* ==========================================================================
+       DATA STRUCTURES (Leseblatt 7 • Einsterns Schwester Bayern)
+       ========================================================================== */
+    const SENTENCES_DATA = [
+      { text: "Lisa und Tim sind im Laden.", cleanText: "Lisa und Tim sind im Laden." },
+      { text: "Dino isst Mandeln.", cleanText: "Dino isst Mandeln." },
+      { text: "Oma malt den Mond.", cleanText: "Oma malt den Mond." },
+      { text: "Da im Sand ist Imo.", cleanText: "Da im Sand ist Imo." },
+      { text: "Mami und Lisa lesen den Namen.", cleanText: "Mami und Lisa lesen den Namen." }
+    ];
+
+    const VOCAB_DATA = [
+      { word: "da", tts: "da" },
+      { word: "das", tts: "das" },
+      { word: "des", tts: "des" },
+      { word: "sind", tts: "sind" },
+      { word: "Dose", tts: "Dose" },
+      { word: "Mond", tts: "Mond" },
+      { word: "Ende", tts: "Ende" }
+    ];
+
+    const MONSTER_DATA = [
+      { text: "Tim nimmt Ananas und Tomaten in Dosen.", cleanText: "Tim nimmt Ananas und Tomaten in Dosen." },
+      { text: "Oma isst Linsen mit Salat.", cleanText: "Oma isst Linsen mit Salat." },
+      { text: "Dino isst am Ende alle Melonen.", cleanText: "Dino isst am Ende alle Melonen." },
+      { text: "Tante Dana und Tim essen Dosenananas.", cleanText: "Tante Dana und Tim essen Dosenananas." }
+    ];
+
+    const QUATSCH_DATA = [
+      { text: "Do de di da no", tts: "Do de di da no" },
+      { text: "Da di do del man", tts: "Da di do del man" },
+      { text: "Mo do to so na", tts: "Mo do to so na" },
+      { text: "Den das des sand mond", tts: "Den das des Sand Mond" }
+    ];
+
+    const SYLLABLE_PHONETICS = {
+      'do': 'doh',
+      'di': 'dieh',
+      'de': 'deh',
+      'da': 'dah',
+      'ti': 'tieh',
+      'ta': 'tah',
+      'to': 'toh',
+      'te': 'teh',
+      'so': 'soh',
+      'si': 'sieh',
+      'se': 'seh',
+      'sa': 'sah',
+      'del': 'dell',
+      'ma': 'mah',
+      'im': 'im',
+      'in': 'in',
+      'om': 'Ohm',
+      'on': 'onn',
+      'am': 'am',
+      'an': 'an',
+      'at': 'att',
+      'la': 'lah',
+      'li': 'lieh',
+      'lo': 'loh',
+      'no': 'noh',
+      'mo': 'moh',
+      'me': 'meh',
+      'em': 'emm',
+      'es': 'es',
+      'et': 'ett',
+      'man': 'man',
+      'na': 'nah',
+      'le': 'leh',
+      'al': 'all',
+      'den': 'den',
+      'das': 'das',
+      'sand': 'Sand',
+      'mond': 'Mond',
+      'dose': 'Dose'
+    };
+
+    /* ==========================================================================
+       APP STATE
+       ========================================================================== */
+    let appState = {
+      soundEnabled: true,
+      slowTempo: false,
+      syllableColors: true,
+      flightCount: 0,
+      completedSentences: {},
+      completedVocab: {},
+      completedMonster: {},
+      completedQuatsch: {},
+      goldenStarAwarded: false
+    };
+
+    const audioRecordings = {};
+    let currentRecordingKey = null;
+    let activeMediaRecorder = null;
+    let recordedChunks = [];
+    let activeStream = null;
+
+    let currentTargetCell = null;
+    let planeCurrentPos = null;
+    let isAirplaneFlying = false;
+
+    /* ==========================================================================
+       AUDIO & RECORDING SUPPORT
+       ========================================================================== */
+    function getSupportedAudioMimeType() {
+      const types = [
+        'audio/webm;codecs=opus',
+        'audio/webm',
+        'audio/mp4',
+        'audio/aac',
+        'audio/ogg'
+      ];
+      for (const t of types) {
+        if (typeof MediaRecorder !== 'undefined' && MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(t)) {
+          return t;
+        }
+      }
+      return '';
+    }
+
+    let audioCtx = null;
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) audioCtx = new AudioContextClass();
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function unlockAudioForIOS() {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      const buffer = ctx.createBuffer(1, 1, 22050);
+      const source = ctx.createBufferSource();
+      source.buffer = buffer;
+      source.connect(ctx.destination);
+      if (source.start) source.start(0);
+      else if (source.noteOn) source.noteOn(0);
+    }
+    document.addEventListener('touchstart', unlockAudioForIOS, { once: true });
+    document.addEventListener('click', unlockAudioForIOS, { once: true });
+
+    /* Sound Effects */
+    function playPop() {
+      if (!appState.soundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(480, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(780, ctx.currentTime + 0.08);
+        gain.gain.setValueAtTime(0.18, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.09);
+      } catch (e) {}
+    }
+
+    function playDing() {
+      if (!appState.soundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(880, ctx.currentTime);
+        osc.frequency.setValueAtTime(1320, ctx.currentTime + 0.08);
+        gain.gain.setValueAtTime(0.2, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.36);
+      } catch (e) {}
+    }
+
+    function playFlightWhoosh() {
+      if (!appState.soundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(260, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(540, ctx.currentTime + 0.25);
+        osc.frequency.exponentialRampToValueAtTime(320, ctx.currentTime + 0.5);
+        gain.gain.setValueAtTime(0.01, ctx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.15, ctx.currentTime + 0.2);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.5);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.52);
+      } catch (e) {}
+    }
+
+    function playFanfare() {
+      if (!appState.soundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+        const notes = [523.25, 659.25, 783.99, 1046.50];
+        notes.forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.1);
+          gain.gain.setValueAtTime(0, ctx.currentTime + idx * 0.1);
+          gain.gain.linearRampToValueAtTime(0.22, ctx.currentTime + idx * 0.1 + 0.02);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + idx * 0.1 + (idx === 3 ? 0.6 : 0.25));
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(ctx.currentTime + idx * 0.1);
+          osc.stop(ctx.currentTime + idx * 0.1 + (idx === 3 ? 0.65 : 0.3));
+        });
+      } catch (e) {}
+    }
+
+    /* ==========================================================================
+       TEXT-TO-SPEECH (TTS)
+       ========================================================================== */
+    function sanitizeForTTS(text) {
+      if (!text) return '';
+      const clean = text.trim();
+      const lower = clean.toLowerCase();
+      const key = lower.replace(/[^a-zäöüß]/gi, '');
+
+      if (SYLLABLE_PHONETICS[key]) {
+        return SYLLABLE_PHONETICS[key];
+      }
+      if (SYLLABLE_PHONETICS[lower]) {
+        return SYLLABLE_PHONETICS[lower];
+      }
+
+      return text
+        .replace(/\bD\s*d\b/gi, 'D')
+        .replace(/\bDd\b/g, 'D')
+        .replace(/\bLi sa\b/gi, 'Lisa')
+        .replace(/\bLa den\b/gi, 'Laden')
+        .replace(/\bDi no\b/gi, 'Dino')
+        .replace(/\bMan deln\b/gi, 'Mandeln')
+        .replace(/\bO ma\b/gi, 'Oma')
+        .replace(/\bI mo\b/gi, 'Imo')
+        .replace(/\bMa mi\b/gi, 'Mami')
+        .replace(/\ble sen\b/gi, 'lesen')
+        .replace(/\bNa men\b/gi, 'Namen')
+        .replace(/\bDo se\b/gi, 'Dose')
+        .replace(/\bDo sen\b/gi, 'Dosen')
+        .replace(/\bEn de\b/gi, 'Ende')
+        .replace(/\bA na nas\b/gi, 'Ananas')
+        .replace(/\bTo ma ten\b/gi, 'Tomaten')
+        .replace(/\bLin sen\b/gi, 'Linsen')
+        .replace(/\bSa lat\b/gi, 'Salat')
+        .replace(/\bMe lo nen\b/gi, 'Melonen')
+        .replace(/\bTan te\b/gi, 'Tante')
+        .replace(/\bDa na\b/gi, 'Dana')
+        .replace(/\bes sen\b/gi, 'essen')
+        .replace(/\bDo sen a na nas\b/gi, 'Dosenananas')
+        .replace(/\bDo sen-a na nas\b/gi, 'Dosenananas')
+        .replace(/\bom\b/gi, 'Ohm')
+        .replace(/\bon\b/gi, 'onn')
+        .replace(/\bat\b/gi, 'att')
+        .replace(/\bet\b/gi, 'ett')
+        .replace(/\bem\b/gi, 'emm');
+    }
+
+    function speakText(text, onEnd) {
+      if (!window.speechSynthesis) return;
+      window.speechSynthesis.cancel();
+
+      const spoken = sanitizeForTTS(text);
+      const utter = new SpeechSynthesisUtterance(spoken);
+      utter.lang = 'de-DE';
+      utter.rate = appState.slowTempo ? 0.75 : 0.95;
+      utter.pitch = 1.05;
+
+      const voices = window.speechSynthesis.getVoices();
+      const germanVoice = voices.find(v => v.lang.startsWith('de') && (v.name.includes('Anna') || v.name.includes('Marlene') || v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Hedda')));
+      if (germanVoice) utter.voice = germanVoice;
+
+      if (onEnd) utter.onend = onEnd;
+      window.speechSynthesis.speak(utter);
+    }
+
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+      window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+    }
+
+    /* Mascot Speech */
+    function speakDino() {
+      playPop();
+      const el = document.querySelector('.hub-hero-mascot-wrap');
+      if (el) {
+        el.style.transform = 'scale(1.12) rotate(-3deg)';
+        setTimeout(() => { el.style.transform = ''; }, 350);
+      }
+      speakText("D wie Dino! Roaaar, schön, dass du da bist! Lass uns zusammen lesen!");
+    }
+
+    function speakMonster() {
+      playDing();
+      speakText("Hihi! Ich bin das Einstern Monster! Zeig mir, wie spitze du lesen kannst!");
+    }
+
+    /* Controls */
+    function toggleSound() {
+      appState.soundEnabled = !appState.soundEnabled;
+      const btn = document.getElementById('btn-sound-toggle');
+      if (btn) {
+        btn.innerHTML = appState.soundEnabled ? '<span>🔊</span> Ton an' : '<span>🔇</span> Ton aus';
+      }
+      playPop();
+    }
+
+    function toggleTempo() {
+      appState.slowTempo = !appState.slowTempo;
+      const btn = document.getElementById('btn-tempo-toggle');
+      if (btn) {
+        btn.innerHTML = appState.slowTempo ? '<span>🐢</span> 0.8x' : '<span>🐇</span> 1.0x';
+      }
+      playPop();
+    }
+
+    function toggleSyllableColors() {
+      appState.syllableColors = !appState.syllableColors;
+      const wrap = document.querySelector('.main-wrap');
+      if (wrap) {
+        if (appState.syllableColors) {
+          wrap.classList.remove('no-syllable-colors');
+        } else {
+          wrap.classList.add('no-syllable-colors');
+        }
+      }
+      playPop();
+    }
+
+    /* ==========================================================================
+       VIEW SWITCHING
+       ========================================================================== */
+    function switchView(viewName) {
+      playPop();
+      document.querySelectorAll('.app-view').forEach(v => v.classList.remove('active-view'));
+      document.querySelectorAll('.nav-tab-btn').forEach(b => b.classList.remove('active'));
+
+      const targetView = document.getElementById('view-' + viewName);
+      if (targetView) targetView.classList.add('active-view');
+
+      const targetTab = document.getElementById('tab-' + viewName);
+      if (targetTab) targetTab.classList.add('active');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* ==========================================================================
+       STATION 1: SILBENFLUGZEUG LOGIC
+       ========================================================================== */
+    function getCellCenter(cell) {
+      const rect = cell.getBoundingClientRect();
+      const wrapRect = document.getElementById('carpet-wrap').getBoundingClientRect();
+      return {
+        x: rect.left - wrapRect.left + rect.width / 2,
+        y: rect.top - wrapRect.top + rect.height / 2
+      };
+    }
+
+    function pickRandomCell(currentCell) {
+      const allCells = Array.from(document.querySelectorAll('#carpet-table .carpet-cell'));
+      if (!allCells.length) return null;
+      if (!currentCell) {
+        return allCells[Math.floor(Math.random() * allCells.length)];
+      }
+
+      const unvisited = allCells.filter(c => !c.classList.contains('visited-cell') && c !== currentCell);
+      if (unvisited.length > 0) {
+        return unvisited[Math.floor(Math.random() * unvisited.length)];
+      }
+
+      const otherCells = allCells.filter(c => c !== currentCell);
+      if (otherCells.length > 0) {
+        return otherCells[Math.floor(Math.random() * otherCells.length)];
+      }
+
+      return allCells[0];
+    }
+
+    function flyPlaneToCell(cell, callback) {
+      const plane = document.getElementById('flying-airplane');
+      const wrap = document.getElementById('carpet-wrap');
+      if (!plane || !wrap || !cell) return;
+
+      const center = getCellCenter(cell);
+      plane.style.display = 'block';
+
+      if (!planeCurrentPos) {
+        planeCurrentPos = { x: -40, y: center.y };
+        plane.style.left = planeCurrentPos.x + 'px';
+        plane.style.top = planeCurrentPos.y + 'px';
+      }
+
+      playFlightWhoosh();
+      isAirplaneFlying = true;
+
+      setTimeout(() => {
+        plane.style.left = (center.x - 22) + 'px';
+        plane.style.top = (center.y - 22) + 'px';
+        planeCurrentPos = center;
+
+        setTimeout(() => {
+          isAirplaneFlying = false;
+          if (callback) callback();
+        }, 620);
+      }, 50);
+    }
+
+    function triggerNextFlight() {
+      if (isAirplaneFlying) return;
+      const targetCell = pickRandomCell(currentTargetCell);
+      if (!targetCell) return;
+
+      document.querySelectorAll('#carpet-table .carpet-cell').forEach(c => c.classList.remove('landed-target'));
+
+      flyPlaneToCell(targetCell, () => {
+        currentTargetCell = targetCell;
+        targetCell.classList.add('landed-target');
+
+        const deck = document.getElementById('flight-deck');
+        const display = document.getElementById('flight-deck-syl');
+        if (deck) deck.style.display = 'flex';
+        if (display) display.innerHTML = targetCell.innerHTML;
+
+        // SILENT LANDING: child reads the syllable aloud themselves first!
+        // Speech is ONLY triggered on "Selbstkontrolle" (play button).
+        playDing();
+
+        resetFlightRecorder();
+      });
+    }
+
+    function onCellDirectClick(cell) {
+      if (isAirplaneFlying) return;
+      document.querySelectorAll('#carpet-table .carpet-cell').forEach(c => c.classList.remove('landed-target'));
+
+      flyPlaneToCell(cell, () => {
+        currentTargetCell = cell;
+        cell.classList.add('landed-target');
+
+        const deck = document.getElementById('flight-deck');
+        const display = document.getElementById('flight-deck-syl');
+        if (deck) deck.style.display = 'flex';
+        if (display) display.innerHTML = cell.innerHTML;
+
+        // SILENT LANDING: child reads the syllable aloud themselves!
+        // Speech is ONLY triggered on "Selbstkontrolle".
+        playDing();
+
+        resetFlightRecorder();
+      });
+    }
+
+    function speakCurrentFlight() {
+      if (!currentTargetCell) return;
+      const val = currentTargetCell.getAttribute('data-val') || currentTargetCell.textContent.trim();
+      speakText(val);
+    }
+
+    function finishCurrentFlight() {
+      if (currentTargetCell) {
+        currentTargetCell.classList.remove('landed-target');
+        currentTargetCell.classList.add('visited-cell');
+      }
+
+      playPop();
+      appState.flightCount++;
+      const numElem = document.getElementById('flight-num');
+      if (numElem) numElem.textContent = appState.flightCount;
+
+      const hubPill = document.getElementById('hub-flight-pill');
+      if (hubPill) hubPill.textContent = `${appState.flightCount} / 20 Flüge`;
+
+      checkGoldenStarProgress();
+
+      if (appState.flightCount === 20) {
+        playFanfare();
+        launchMiniConfetti();
+        const modal = document.getElementById('flight-modal');
+        if (modal) modal.style.display = 'flex';
+      } else {
+        setTimeout(() => {
+          triggerNextFlight();
+        }, 400);
+      }
+    }
+
+    function shuffleCarpetCells() {
+      playPop();
+      const tbody = document.querySelector('#carpet-table tbody');
+      if (!tbody) return;
+      const cells = Array.from(tbody.querySelectorAll('.carpet-cell'));
+      cells.sort(() => Math.random() - 0.5);
+
+      const rows = tbody.querySelectorAll('tr');
+      let idx = 0;
+      rows.forEach(r => {
+        r.innerHTML = '';
+        for (let i = 0; i < 12 && idx < cells.length; i++) {
+          r.appendChild(cells[idx++]);
+        }
+      });
+    }
+
+    /* ==========================================================================
+       VOICE RECORDER (MediaRecorder API)
+       ========================================================================== */
+    function stopActiveRecording(callback) {
+      if (activeMediaRecorder && activeMediaRecorder.state === 'recording') {
+        activeMediaRecorder.onstop = () => {
+          if (activeStream) {
+            activeStream.getTracks().forEach(t => t.stop());
+            activeStream = null;
+          }
+          if (callback) callback();
+        };
+        activeMediaRecorder.stop();
+      } else {
+        if (activeStream) {
+          activeStream.getTracks().forEach(t => t.stop());
+          activeStream = null;
+        }
+        if (callback) callback();
+      }
+    }
+
+    function toggleRecord(key, recBtnId, playBtnId, labelId) {
+      playPop();
+      const recBtn = document.getElementById(recBtnId);
+      const playBtn = document.getElementById(playBtnId);
+      const label = labelId ? document.getElementById(labelId) : null;
+
+      if (activeMediaRecorder && activeMediaRecorder.state === 'recording') {
+        if (currentRecordingKey === key) {
+          stopActiveRecording(() => {
+            if (recBtn) recBtn.classList.remove('recording');
+            if (label) label.textContent = 'Aufnehmen';
+            if (playBtn) playBtn.disabled = false;
+            playDing();
+          });
+          return;
+        } else {
+          stopActiveRecording();
+          document.querySelectorAll('.btn-row-rec, .btn-action-rec').forEach(b => b.classList.remove('recording'));
+          document.querySelectorAll('#rec-label-flight').forEach(l => l.textContent = 'Aufnehmen');
+        }
+      }
+
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        alert("Mikrofon-Aufnahme wird auf diesem Gerät im Browser leider nicht unterstützt.");
+        return;
+      }
+
+      navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+        activeStream = stream;
+        currentRecordingKey = key;
+        recordedChunks = [];
+
+        const mime = getSupportedAudioMimeType();
+        const options = mime ? { mimeType: mime } : {};
+        try {
+          activeMediaRecorder = new MediaRecorder(stream, options);
+        } catch (e) {
+          activeMediaRecorder = new MediaRecorder(stream);
+        }
+
+        activeMediaRecorder.ondataavailable = e => {
+          if (e.data && e.data.size > 0) recordedChunks.push(e.data);
+        };
+
+        activeMediaRecorder.onstop = () => {
+          const blob = new Blob(recordedChunks, { type: mime || 'audio/webm' });
+          audioRecordings[key] = URL.createObjectURL(blob);
+          if (recBtn) recBtn.classList.remove('recording');
+          if (label) label.textContent = 'Aufnehmen';
+          if (playBtn) playBtn.disabled = false;
+        };
+
+        activeMediaRecorder.start();
+        if (recBtn) recBtn.classList.add('recording');
+        if (label) label.textContent = 'Stoppen';
+      }).catch(err => {
+        console.warn("Mic error:", err);
+        alert("Bitte erlaube den Mikrofon-Zugriff, um deine Stimme aufzunehmen.");
+      });
+    }
+
+    function playRecording(key) {
+      const url = audioRecordings[key];
+      if (!url) return;
+      playPop();
+      const aud = new Audio(url);
+      aud.play();
+    }
+
+    /* Airplane Callout Deck Recorder */
+    function resetFlightRecorder() {
+      const recLabel = document.getElementById('rec-label-flight');
+      if (recLabel) recLabel.textContent = 'Aufnehmen';
+      const recBtn = document.getElementById('btn-rec-flight');
+      if (recBtn) recBtn.classList.remove('recording');
+      const playBtn = document.getElementById('btn-play-flight');
+      if (playBtn) playBtn.disabled = !audioRecordings['flight'];
+      if (currentRecordingKey === 'flight') {
+        stopActiveRecording();
+      }
+    }
+
+    function toggleRecordFlight() {
+      toggleRecord('flight', 'btn-rec-flight', 'btn-play-flight', 'rec-label-flight');
+    }
+
+    function playRecordFlight() {
+      playRecording('flight');
+    }
+
+    /* ==========================================================================
+       STATION 2: SÄTZE & WORTSCHATZ LOGIC
+       ========================================================================== */
+    function focusSentence(idx) {
+      document.querySelectorAll('.sentence-row-card').forEach(c => c.classList.remove('active-focus'));
+      const card = document.getElementById('sentence-card-' + idx);
+      if (card) card.classList.add('active-focus');
+    }
+
+    function speakSentence(idx) {
+      focusSentence(idx);
+      playDing();
+      const s = SENTENCES_DATA[idx];
+      if (s) speakText(s.cleanText);
+    }
+
+    function toggleSentenceCheck(idx) {
+      playPop();
+      const btn = document.getElementById('check-sentence-' + idx);
+      const card = document.getElementById('sentence-card-' + idx);
+      if (!btn || !card) return;
+
+      const isChecked = btn.classList.toggle('checked');
+      const starSpan = btn.querySelector('.star-icon');
+      if (isChecked) {
+        if (starSpan) starSpan.textContent = '⭐';
+        card.classList.add('is-completed');
+        appState.completedSentences[idx] = true;
+        playDing();
+      } else {
+        if (starSpan) starSpan.textContent = '☆';
+        card.classList.remove('is-completed');
+        delete appState.completedSentences[idx];
+      }
+
+      updateProgressBadges();
+      checkGoldenStarProgress();
+    }
+
+
+    /* Vocab / Blitzlesen */
+    function focusVocab(idx) {
+      document.querySelectorAll('.vocab-card').forEach(c => c.classList.remove('active-focus'));
+      const card = document.getElementById('vocab-card-' + idx);
+      if (card) card.classList.add('active-focus');
+    }
+
+    function speakVocab(idx) {
+      focusVocab(idx);
+      playDing();
+      const v = VOCAB_DATA[idx];
+      if (v) speakText(v.tts || v.word);
+    }
+
+    function toggleVocabCheck(idx) {
+      playPop();
+      const btn = document.getElementById('check-vocab-' + idx);
+      const card = document.getElementById('vocab-card-' + idx);
+      if (!btn || !card) return;
+
+      const isChecked = btn.classList.toggle('checked');
+      if (isChecked) {
+        card.classList.add('is-completed');
+        appState.completedVocab[idx] = true;
+        playDing();
+      } else {
+        card.classList.remove('is-completed');
+        delete appState.completedVocab[idx];
+      }
+
+      updateProgressBadges();
+      checkGoldenStarProgress();
+    }
+
+    function startBlitzTraining() {
+      playFanfare();
+      let idx = 0;
+      function showNext() {
+        if (idx >= VOCAB_DATA.length) {
+          playDing();
+          speakText("Super Blitzlesen!");
+          return;
+        }
+        focusVocab(idx);
+        speakVocab(idx);
+        idx++;
+        setTimeout(showNext, 1800);
+      }
+      showNext();
+    }
+
+
+    /* ==========================================================================
+       STATION 3: MONSTER-SÄTZE & QUATSCH LOGIC
+       ========================================================================== */
+    function focusMonster(idx) {
+      document.querySelectorAll('#monster-list .sentence-row-card').forEach(c => c.classList.remove('active-focus'));
+      const card = document.getElementById('monster-card-' + idx);
+      if (card) card.classList.add('active-focus');
+    }
+
+    function speakMonsterSentence(idx) {
+      focusMonster(idx);
+      playDing();
+      const m = MONSTER_DATA[idx];
+      if (m) speakText(m.cleanText);
+    }
+
+    function toggleMonsterCheck(idx) {
+      playPop();
+      const btn = document.getElementById('check-monster-' + idx);
+      const card = document.getElementById('monster-card-' + idx);
+      if (!btn || !card) return;
+
+      const isChecked = btn.classList.toggle('checked');
+      const starSpan = btn.querySelector('.star-icon');
+      if (isChecked) {
+        if (starSpan) starSpan.textContent = '⭐';
+        card.classList.add('is-completed');
+        appState.completedMonster[idx] = true;
+        playDing();
+      } else {
+        if (starSpan) starSpan.textContent = '☆';
+        card.classList.remove('is-completed');
+        delete appState.completedMonster[idx];
+      }
+
+      updateProgressBadges();
+      checkGoldenStarProgress();
+    }
+
+    /* Quatsch-Reihen */
+    function focusQuatsch(idx) {
+      document.querySelectorAll('.quatsch-row-card').forEach(c => c.classList.remove('active-focus'));
+      const card = document.getElementById('quatsch-card-' + idx);
+      if (card) card.classList.add('active-focus');
+    }
+
+    function speakQuatsch(idx) {
+      focusQuatsch(idx);
+      playDing();
+      const q = QUATSCH_DATA[idx];
+      if (q) speakText(q.tts || q.text);
+    }
+
+    function toggleQuatschCheck(idx) {
+      playPop();
+      const btn = document.getElementById('check-quatsch-' + idx);
+      const card = document.getElementById('quatsch-card-' + idx);
+      if (!btn || !card) return;
+
+      const isChecked = btn.classList.toggle('checked');
+      if (isChecked) {
+        card.classList.add('is-completed');
+        appState.completedQuatsch[idx] = true;
+        playDing();
+      } else {
+        card.classList.remove('is-completed');
+        delete appState.completedQuatsch[idx];
+      }
+
+      updateProgressBadges();
+      checkGoldenStarProgress();
+    }
+
+
+    /* ==========================================================================
+       PROGRESS & REWARDS
+       ========================================================================== */
+    function updateProgressBadges() {
+      // Sentences
+      const sCount = Object.keys(appState.completedSentences).length;
+      const sPill = document.getElementById('sentences-progress');
+      if (sPill) {
+        sPill.textContent = `${sCount} / 5 gelesen`;
+        if (sCount === 5) sPill.classList.add('all-done');
+        else sPill.classList.remove('all-done');
+      }
+
+      // Vocab
+      const vCount = Object.keys(appState.completedVocab).length;
+      const vPill = document.getElementById('vocab-progress');
+      if (vPill) {
+        vPill.textContent = `${vCount} / 7 gelesen`;
+        if (vCount === 7) vPill.classList.add('all-done');
+        else vPill.classList.remove('all-done');
+      }
+
+      // Station 2 total
+      const hubSaetzePill = document.getElementById('hub-saetze-pill');
+      if (hubSaetzePill) {
+        hubSaetzePill.textContent = `${sCount + vCount} / 12 erledigt`;
+      }
+
+      // Monster Sätze
+      const mCount = Object.keys(appState.completedMonster).length;
+      const mPill = document.getElementById('monster-progress');
+      if (mPill) {
+        mPill.textContent = `${mCount} / 4 gelesen`;
+        if (mCount === 4) mPill.classList.add('all-done');
+        else mPill.classList.remove('all-done');
+      }
+
+      // Quatsch
+      const qCount = Object.keys(appState.completedQuatsch).length;
+      const qPill = document.getElementById('quatsch-progress');
+      if (qPill) {
+        qPill.textContent = `${qCount} / 4 gelesen`;
+        if (qCount === 4) qPill.classList.add('all-done');
+        else qPill.classList.remove('all-done');
+      }
+
+      // Station 3 total
+      const hubQuatschPill = document.getElementById('hub-quatsch-pill');
+      if (hubQuatschPill) {
+        hubQuatschPill.textContent = `${mCount + qCount} / 8 erledigt`;
+      }
+
+      // Star 1: Flight (20 flights or 10+ flights)
+      const star1 = document.getElementById('star-station-1');
+      if (star1) {
+        if (appState.flightCount >= 20) {
+          star1.classList.add('achieved');
+          star1.querySelector('.star-icon').textContent = '★';
+        } else {
+          star1.classList.remove('achieved');
+          star1.querySelector('.star-icon').textContent = '☆';
+        }
+      }
+
+      // Star 2: Sätze & Vocab (all 5 sentences + 7 vocab done)
+      const star2 = document.getElementById('star-station-2');
+      if (star2) {
+        if (sCount === 5 && vCount === 7) {
+          star2.classList.add('achieved');
+          star2.querySelector('.star-icon').textContent = '★';
+        } else {
+          star2.classList.remove('achieved');
+          star2.querySelector('.star-icon').textContent = '☆';
+        }
+      }
+
+      // Star 3: Monster & Quatsch (all 4 monster + 4 quatsch done)
+      const star3 = document.getElementById('star-station-3');
+      if (star3) {
+        if (mCount === 4 && qCount === 4) {
+          star3.classList.add('achieved');
+          star3.querySelector('.star-icon').textContent = '★';
+        } else {
+          star3.classList.remove('achieved');
+          star3.querySelector('.star-icon').textContent = '☆';
+        }
+      }
+    }
+
+    function checkGoldenStarProgress() {
+      updateProgressBadges();
+
+      const st1Done = appState.flightCount >= 20;
+      const st2Done = Object.keys(appState.completedSentences).length === 5 && Object.keys(appState.completedVocab).length === 7;
+      const st3Done = Object.keys(appState.completedMonster).length === 4 && Object.keys(appState.completedQuatsch).length === 4;
+
+      if (st1Done && st2Done && st3Done && !appState.goldenStarAwarded) {
+        appState.goldenStarAwarded = true;
+        const grandLabel = document.getElementById('grand-star-status');
+        if (grandLabel) {
+          grandLabel.textContent = 'ERHALTEN! ★★★';
+          grandLabel.style.color = '#15803d';
+        }
+
+        setTimeout(() => {
+          playFanfare();
+          launchFullscreenFireworks();
+          const modal = document.getElementById('reward-modal');
+          if (modal) modal.style.display = 'flex';
+        }, 600);
+      }
+    }
+
+    function closeFlightModal() {
+      playPop();
+      const modal = document.getElementById('flight-modal');
+      if (modal) modal.style.display = 'none';
+      switchView('saetze');
+    }
+
+    function closeRewardModal() {
+      playPop();
+      const modal = document.getElementById('reward-modal');
+      if (modal) modal.style.display = 'none';
+    }
+
+    function closeModalOnBackdrop(e, modalId) {
+      if (e.target && e.target.id === modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) modal.style.display = 'none';
+      }
+    }
+
+    /* ==========================================================================
+       CONFETTI & FIREWORKS ANIMATIONS
+       ========================================================================== */
+    function launchMiniConfetti() {
+      const canvas = document.getElementById('confetti-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const particles = [];
+      const colors = ['#059669', '#10b981', '#f59e0b', '#3b82f6', '#ec4899', '#facc15'];
+
+      for (let i = 0; i < 70; i++) {
+        particles.push({
+          x: canvas.width / 2 + (Math.random() - 0.5) * 200,
+          y: canvas.height * 0.4,
+          vx: (Math.random() - 0.5) * 12,
+          vy: (Math.random() - 0.7) * 14,
+          size: Math.random() * 8 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rot: Math.random() * 360,
+          vrot: (Math.random() - 0.5) * 10
+        });
+      }
+
+      let frame = 0;
+      function anim() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.35;
+          p.rot += p.vrot;
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rot * Math.PI) / 180);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+          ctx.restore();
+        });
+
+        frame++;
+        if (frame < 120) requestAnimationFrame(anim);
+        else ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+      anim();
+    }
+
+    function launchFullscreenFireworks() {
+      const canvas = document.getElementById('confetti-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const particles = [];
+      const colors = ['#059669', '#10b981', '#f59e0b', '#3b82f6', '#ec4899', '#facc15', '#a855f7'];
+
+      for (let i = 0; i < 180; i++) {
+        particles.push({
+          x: canvas.width * 0.5,
+          y: canvas.height * 0.45,
+          vx: (Math.random() - 0.5) * 18,
+          vy: (Math.random() - 0.6) * 18,
+          size: Math.random() * 10 + 5,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rot: Math.random() * 360,
+          vrot: (Math.random() - 0.5) * 12
+        });
+      }
+
+      let frame = 0;
+      function anim() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.32;
+          p.rot += p.vrot;
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rot * Math.PI) / 180);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+          ctx.restore();
+        });
+
+        frame++;
+        if (frame < 180) requestAnimationFrame(anim);
+        else ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+      anim();
+    }
+
+    /* Initialize */
+    updateProgressBadges();
+  </script>
+</body>
+</html>
